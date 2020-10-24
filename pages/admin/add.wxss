@@ -1,0 +1,58 @@
+/* pages/admin/add.wxss */
+
+.wrap{background: #fafafc;}
+.form-item{display: flex;justify-content: space-between;align-items: center;height: 108rpx;}
+.form-item .item-text{color: #1c1c28;width: 154rpx;text-align: right;padding-right: 10rpx;}
+.form-item .input-text{
+  width: 536rpx;
+	height: 88rpx;
+  border: solid 1px #f2f2f5;
+  padding: 25rpx;
+  background: #fff;
+}
+
+.addBtn{height: 112rpx;
+  background-image: linear-gradient(313deg, 
+  #fe6959 0%,
+		#ff1656 100%
+		);
+	box-shadow: 0px 3px 6px 0px 
+    rgba(255, 59, 59, 0.26);
+  color: #fff;
+  margin: 0 auto;
+  font-size: 36rpx;
+  text-align: center;
+  line-height: 112rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+
+.tab-title{display: flex;align-items: center;justify-content: center;margin-bottom: 20rpx;}
+  .tab-title view{align-items: center;font-size: 32rpx;height: 80rpx;width: 200rpx;color: #1c1c28;display: flex;justify-content: center;}
+  .tab-title .cur{color: #ff3b3b;border-bottom: solid 3px #ff5c5c;}
+
+.list .item{
+  width: 690rpx;
+	height: 240rpx;
+	background-color: #ffffff;
+	box-shadow: 0px 1px 2px 0px 
+		rgba(96, 97, 112, 0.16);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24rpx 20rpx;
+  margin-bottom: 20rpx;
+}
+  .list .item image{width: 192rpx;height: 192rpx;background-color: #a49595;border-radius: 3px;}
+  .list .item .info{width: 434rpx;height: 192rpx;}
+    .list .item .info .title{font-size: 32rpx;font-weight: bold;height: 50rpx;line-height: 50rpx;display: flex;align-items: center;justify-content: space-between;}
+      .list .item .info .title .tel{font-size: 24rpx;font-weight: normal;}
+    .list .item .info .address{height: 62rpx;line-height: 62rpx;border-bottom: solid 1px #f2f2f5;margin-bottom: 20rpx;width: 434rpx;overflow: hidden;display: flex;align-items: center;justify-content: space-between;}
+    .list .item .info .address image{background: none;border-radius: 0;width: 40rpx;height: 40rpx;}
+    .list .item .info .address text{width: 384rpx;overflow: hidden;height: 62rpx;}
+    .list .item .info .btns{display: flex;align-items: center;justify-content: flex-end;}
+      .list .item .info .btns>view{width: 130rpx;display: flex;align-items: center;justify-content: center;height: 60rpx;border-radius: 3px;border: solid 1px #e4e4eb;margin-left: 26rpx;}

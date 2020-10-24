@@ -1,0 +1,94 @@
+/* pages/mission/list.wxss */
+
+.cates{
+  height: 80rpx;
+  background-color: #ffffff;
+	box-shadow: 0px 1px 2px 0px 
+    rgba(96, 97, 112, 0.16);
+
+  white-space: nowrap;
+}
+.cates .item{margin-right: 30rpx;height: 80rpx;line-height: 80rpx;display: inline-block;}
+.cates .cur{border-bottom: solid 3px #ff5c5c;}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.list{padding-bottom: 26rpx;}
+.list .item{
+  margin-top: 26rpx;
+  width: 690rpx;
+	height: 276rpx;
+	background-color: #ffffff;
+	box-shadow: 0px 1px 2px 0px 
+		rgba(96, 97, 112, 0.16);
+  border-radius: 5px;
+  padding: 20rpx;
+}
+
+.sb{display: flex;align-items: center;justify-content: space-between;}
+
+
+.list .item .head {height: 42rpx;}
+  .list .item .head .title{width: 520rpx; height: 42rpx;line-height: 42rpx;font-size: 32rpx;color: #1c1c28;overflow: hidden;}
+  .list .item .head .see{height: 32rpx;line-height: 32rpx;font-size: 24rpx;}
+
+.list .item .info{height: 86rpx;}
+  .list .item .info .price{height: 86rpx;display: flex;align-items: center; font-size: 44rpx;color: #ff5c5c;}
+  .list .item .info .btn{
+    width: 110rpx;
+    height: 52rpx;
+    background-color: #ffa61d;
+    border-radius: 3px;
+    color: #fff;text-align: center;
+    line-height: 52rpx;
+  }
+.list .item .location{margin-bottom: 10rpx;height: 46rpx;line-height: 47rpx;}
+.list .item .user{align-items: flex-end;font-size: 20rpx;border-top: solid 1px #f2f2f5;height: 52rpx;}
+  .list .item .user .username{display: flex;align-items: center;}
+  .list .item .user .username image{width: 32rpx;height: 32rpx;border-radius: 50%;margin-right: 10rpx;}
+
+.login-btn{
+  width: 100rpx;
+  height: 100rpx;
+  position: fixed;
+  /* top: 154rpx; */
+  right: 60rpx;
+  bottom: 160rpx;
+  z-index: 666;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 24rpx;
+  line-height: 100rpx;
+  color: #fff;
+  font-weight: normal;
+
+  background-image: linear-gradient(322deg, 
+      #f59301 0%, 
+      #fddd09 100%);
+    box-shadow: 0px 6px 12px 0px 
+      rgba(246, 152, 2, 0.6);
+}
+  .add{
+    width: 100rpx;
+    height: 100rpx;
+    position: fixed;
+    /* top: 154rpx; */
+    right: 60rpx;
+    z-index: 666;
+    background-image: linear-gradient(322deg, 
+      #f59301 0%, 
+      #fddd09 100%);
+    box-shadow: 0px 6px 12px 0px 
+      rgba(246, 152, 2, 0.6);
+    border-radius: 50%;
+    padding: 30rpx 0 0 30rpx;
+  }
+  
+  .add image{
+    width: 40rpx;
+    height: 40rpx;
+  }
+  

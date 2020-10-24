@@ -1,0 +1,55 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/rescue/index",
+    "pages/repair/index",
+
+
+    "pages/moments/list",
+    "pages/moments/add",
+    "pages/bike/index",
+    "pages/bike/list",
+    "pages/bike/detail",
+
+    "pages/mission/list",
+    "pages/mission/detail",
+    "pages/mission/add",
+    "pages/myMission/list",
+    "pages/personal/index",
+    "pages/admin/shop_location",
+    "pages/admin/add",
+
+    "pages/shop/list",
+    "pages/shop/comment",
+    "pages/shop/detail"
+
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "backgroundColor":"#fff",
+    "backgroundColorTop":"#fe2f57",
+    "backgroundColorBottom":"#ff0",
+    "navigationBarBackgroundColor": "#fe2f57",
+    "navigationBarTitleText": "骑友帮",
+    "navigationBarTextStyle":"white",
+    "navigationStyle":"custom"
+    
+  },
+  "usingComponents": {
+    "navBar": "/components/navBar/navBar"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "plugins": {
+    "chooseLocation": {
+      "version": "1.0.3",
+      "provider": "wx76a9a06e5b4e693e"
+    }
+  }
+}

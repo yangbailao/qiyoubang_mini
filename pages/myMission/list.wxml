@@ -1,0 +1,41 @@
+<navBar back="true" title='我发布的任务'/>
+
+<view class="cates wrap">
+  <view class="item {{typeActive == 1 ? 'cur' : ''}}" bindtap="changeStatus" data-type="1" >进行中</view>
+  <view class="item {{typeActive == 0 ? 'cur' : ''}}" bindtap="changeStatus" data-type="0" >已结束</view>
+
+</view>
+
+<scroll-view 
+  class="list wrap" 
+  scroll-y 
+  style="height:{{listHeight}}rpx"
+  refresher-enabled="{{true}}"
+  refresher-threshold="{{100}}"
+  refresher-triggered="{{triggered}}"
+  bindrefresherabort="onAbort"
+  bindscrolltolower="onScrollTolower"
+>
+
+    <!-- <list list='{{list}}' isEnd="{{isEnd}}" page="{{page}}"></list> -->
+    <view class="item" wx:for="{{list}}" wx:key="index">
+      <navigator url="/pages/mission/detail?id={{item.id}}">
+      <view class="head sb">
+        <view class="title">{{item.title}}</view>
+        <view class="see">{{item.view}}人看过</view>
+      </view>
+      </navigator>
+      <view class="time">发布时间：{{item.create_at}}</view>
+
+      <view class="btns">
+        <view wx:if="{{item.status == 1}}" bindtap="handleEnd" data-id="{{item.id}}" data-title="{{item.title}}">结束任务</view>
+        <navigator url="/pages/mission/add?id={{item.id}}">
+          <view wx:if="{{item.status == 1}}" data-id="{{item.id}}">编辑</view>
+        </navigator> 
+        <view bindtap="handleDel" data-id="{{item.id}}" data-title="{{item.title}}">删除</view>
+      </view>
+      
+    </view>
+  
+
+</scroll-view>

@@ -1,0 +1,35 @@
+<!--pages/moments/add.wxml-->
+<navBar title='发表想法' back />
+<view class="bg"></view>
+<view class="wrap form" style="height:{{scrollHeight}}rpx">
+
+  <textarea placeholder="请输入这一刻的想法" bindinput="inputText" value="{{text}}" />
+
+  <view class="photo">
+    <view class="head">上传照片或视频 (<text class="red">{{uploadImg.length}}</text>/9)</view>
+
+    <view>
+      <view class="uploadList">
+        <view wx:for="{{uploadImg}}" wx:key="index" class="uploadItem">
+          <image src="{{item}}" mode="aspectFill"></image>
+          <icon data-index="{{index}}" bindtap="del" class="icon-small" type="cancel" size="23"></icon>
+        </view>
+
+        <view wx:if="{{uploadVideo}}" class="video">
+          <video src="{{uploadVideo}}"></video>
+          <icon bindtap="delVideo" class="icon-small" type="cancel" size="23"></icon>
+        </view>
+
+        <view class="uploadBtn {{uploadImg.length >= 9 || uploadVideo ? 'hide': ''}}" bindtap="addPhoto">
+          <image src="/images/icon-add.svg"></image>
+        </view>
+
+      </view>
+      
+    </view>
+
+  </view>
+
+</view>
+
+<view class="submit" bindtap="submit">发布</view>

@@ -1,0 +1,17 @@
+<!--pages/rescue/index.wxml-->
+<navBar title='{{shop_name}}' back />
+
+<map 
+id="map" 
+scale="15" 
+longitude='{{longitude}}' 
+latitude='{{latitude}}' 
+markers="{{markers}}" 
+bindmarkertap="markertap"  bindregionchange="regionchange" 
+show-location 
+show-scale
+style="width: 100%; height: {{contentHeight}}rpx;"
+subkey="GQZBZ-ABDHS-6ZPOH-6P2WY-RPQGZ-PPFV5" 
+layer-style="1"
+>
+</map>

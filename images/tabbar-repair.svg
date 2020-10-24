@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="98" height="98" viewBox="0 0 98 98">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: #fafafc;
+        stroke: rgba(0,0,0,0);
+        font-size: 13px;
+        font-family: PingFangSC-Medium, PingFang SC;
+        font-weight: 500;
+      }
+
+      .cls-3 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-4 {
+        filter: url(#路径_1213);
+      }
+
+      .cls-5 {
+        filter: url(#路径_2765);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.929" y1="0.965" x2="0.235" y2="0.091" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#3a9e0e"/>
+      <stop offset="1" stop-color="#79e530"/>
+    </linearGradient>
+    <filter id="路径_2765" x="0" y="0" width="98" height="98" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#45ad19" flood-opacity="0.259"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.502"/>
+    </linearGradient>
+    <filter id="路径_1213" x="26" y="16.986" width="45.02" height="45.02" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-color="#318c0b" flood-opacity="0.71"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="组_1195" data-name="组 1195" transform="translate(-182 -540.014)">
+    <g class="cls-5" transform="matrix(1, 0, 0, 1, 182, 540.01)">
+      <path id="路径_2765-2" data-name="路径 2765" class="cls-1" d="M4.878,0H75.122C77.816,0,80,2.755,80,6.154V73.846C80,77.245,77.816,80,75.122,80H4.878C2.184,80,0,77.245,0,73.846V6.154C0,2.755,2.184,0,4.878,0Z" transform="translate(9 6)"/>
+    </g>
+    <text id="修车" class="cls-2" transform="translate(231 610.014)"><tspan x="-13" y="0">修车</tspan></text>
+    <g id="组件_46_23" data-name="组件 46 – 23" transform="translate(217 563)">
+      <g class="cls-4" transform="matrix(1, 0, 0, 1, -35, -22.99)">
+        <path id="路径_1213-2" data-name="路径 1213" class="cls-3" d="M139.886,136.453l4.908,4.908-3.433,3.433-4.908-4.908A8.618,8.618,0,0,0,147.1,152.121l9.217,9.217a3.552,3.552,0,0,0,5.023-5.023l-9.217-9.217a8.618,8.618,0,0,0-12.235-10.645Z" transform="translate(-100.36 -112.37)"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="54" height="54" viewBox="0 0 54 54">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        fill: url(#linear-gradient-2);
+      }
+
+      .cls-3 {
+        filter: url(#路径_1213);
+      }
+
+      .cls-4 {
+        filter: url(#路径_2670);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.929" y1="0.965" x2="0.235" y2="0.091" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#3a9e0e"/>
+      <stop offset="1" stop-color="#79e530"/>
+    </linearGradient>
+    <filter id="路径_2670" x="0" y="0" width="54" height="54" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#45ad19" flood-opacity="0.502"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.502"/>
+    </linearGradient>
+    <filter id="路径_1213" x="9" y="8" width="37.044" height="37.044" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur-2"/>
+      <feFlood flood-color="#318c0b" flood-opacity="0.71"/>
+      <feComposite operator="in" in2="blur-2"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="组件_46_1" data-name="组件 46 – 1" transform="translate(9 6)">
+    <g class="cls-4" transform="matrix(1, 0, 0, 1, -9, -6)">
+      <path id="路径_2670-2" data-name="路径 2670" class="cls-1" d="M18,0A18,18,0,1,1,0,18,18,18,0,0,1,18,0Z" transform="translate(9 6)"/>
+    </g>
+    <g class="cls-3" transform="matrix(1, 0, 0, 1, -9, -6)">
+      <path id="路径_1213-2" data-name="路径 1213" class="cls-2" d="M138.549,136.13l3.459,3.459-2.42,2.42-3.459-3.459a6.074,6.074,0,0,0,7.5,8.624l6.5,6.5a2.5,2.5,0,1,0,3.54-3.54l-6.5-6.5a6.074,6.074,0,0,0-8.624-7.5Z" transform="translate(-117.36 -121.36)"/>
+    </g>
+  </g>
+</svg>

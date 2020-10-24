@@ -1,0 +1,19 @@
+<view class="item" wx:for="{{list}}" wx:key="id">
+  <view class="head sb">
+    <view class="title">{{item.title}}</view>
+    <view class="see">{{item.view}}人看过</view>
+  </view>
+  <view class="info sb">
+    <view class="price">￥{{item.bouns}}</view>
+    <view class="btn">详情</view>
+  </view>
+  <view class="location">任务地点：{{item.locale}}</view>
+
+  <view class="user sb">
+    <view class="username">
+      <image src="{{item.avatar_url}}" mode="cover"></image>
+      {{item.nickname}}
+    </view>
+    <view class="fen">帮帮分:<text class="red">98分</text></view>
+  </view>
+</view>

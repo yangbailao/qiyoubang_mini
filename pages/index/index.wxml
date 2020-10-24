@@ -1,0 +1,127 @@
+<!--index.wxml-->
+
+<navBar title='骑友帮' background='rgba(0,0,0,0)' />
+
+<view class="user-info wrap">
+  <block wx:if="{{!userInfo}}">
+  <view class="userinfo-avatar li un-login">
+    <image src="/images/avatar.svg" mode="cover"></image>
+  </view>
+  
+  <view class="detail li">
+    <view class="login">
+      HI，等您很久了！ <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+    </view>
+  </view>
+  </block>
+  <block wx:else>
+  <image class="userinfo-avatar li" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+  <view class="detail li">
+    <view class="username">{{userInfo.nickName}}</view>
+    <view class="info">
+        <view>
+          <image src="/images/icon-phone.svg"></image>已认证手机
+        </view>
+        <view>
+          <image src="/images/icon-bangbangfen.svg"></image>帮帮分：98分
+        </view>
+      </view>
+  </view>
+  <view class="right-bar">
+    <navigator url="/pages/personal/index" open-type="redirect">
+      <view class="button">个人中心</view>
+     </navigator>
+  </view>
+  </block>
+  
+  
+</view>
+
+<view class="notice wrap">
+  <image class="icon-notice fl" src="/images/icon-notice.svg"></image>
+  <view class="detail fl">这里是公告</view>
+</view>
+
+<scroll-view class="list-1" scroll-x="true" >
+  <view class="detail detail-1" bindtap="test">
+    <view><image class="img" src="/images/index-btn-share.svg"></image></view>
+    <view class="text">
+      <view class="title">分享有礼</view>
+      <view class="desc">免费修车大礼包</view>
+    </view>
+    
+  </view>
+  <view class="detail detail-2"></view>
+  <view class="detail detail-3"></view>
+</scroll-view>
+
+<view class="title-box wrap">
+  <view class="title">活动中心</view>
+  <view class="more">查看全部</view>
+</view>
+
+<scroll-view class="activity-list wrap" scroll-y="true" style="height:{{scrollHeight}}rpx">
+  <view class="activity-box">
+    <view class="img">活动图</view>
+    <view class="title">推荐有礼</view>
+    <view class="desc">靠谱省心 限时福利</view>
+    <view class="btn">了解更多</view>
+  </view>
+  <view class="activity-box">
+    <view class="img">活动图</view>
+    <view class="title">推荐有礼</view>
+    <view class="desc">靠谱省心 限时福利</view>
+    <view class="btn">了解更多</view>
+  </view>
+  <view class="activity-box">
+    <view class="img">活动图</view>
+    <view class="title">推荐有礼</view>
+    <view class="desc">靠谱省心 限时福利</view>
+    <view class="btn">了解更多</view>
+  </view>
+  <view class="activity-box">
+    <view class="img">活动图</view>
+    <view class="title">推荐有礼</view>
+    <view class="desc">靠谱省心 限时福利</view>
+    <view class="btn">了解更多</view>
+  </view>
+  <view class="activity-box">
+    <view class="img">活动图</view>
+    <view class="title">推荐有礼</view>
+    <view class="desc">靠谱省心 限时福利</view>
+    <view class="btn">了解更多</view>
+  </view>
+  <view class="activity-box">
+    <view class="img">活动图</view>
+    <view class="title">推荐有礼</view>
+    <view class="desc">靠谱省心 限时福利</view>
+    <view class="btn">了解更多</view>
+  </view>
+  <view class="activity-box">
+    <view class="img">活动图</view>
+    <view class="title">推荐有礼</view>
+    <view class="desc">靠谱省心 限时福利</view>
+    <view class="btn">了解更多</view>
+  </view>
+  <view class="activity-box">
+    <view class="img">活动图</view>
+    <view class="title">推荐有礼</view>
+    <view class="desc">靠谱省心 限时福利</view>
+    <view class="btn">了解更多</view>
+  </view>
+  
+</scroll-view>
+
+<import src="../../template/tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
+<view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
+<import src="../../template/tabbar-index-menu.wxml" />
+<view wx:if="{{indexMenuFlag}}">
+  <template is="indexMenu" />
+</view>
+<import src="../../template/tabbar-main-menu.wxml" />
+<view wx:if="{{mainMenuFlag}}">
+  <template is="mainMenu" />
+</view>
+  
+

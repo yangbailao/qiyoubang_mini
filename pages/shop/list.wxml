@@ -1,0 +1,34 @@
+<navBar back="true" title='店铺列表'/>
+<wxs src="../../filter/filter.wxs" module="filter"></wxs>
+<scroll-view 
+  class="list wrap" 
+  scroll-y 
+  style="height:{{listHeight}}rpx"
+  refresher-enabled="{{true}}"
+  refresher-threshold="{{100}}"
+  refresher-triggered="{{triggered}}"
+  bindrefresherabort="onAbort"
+  bindscrolltolower="onScrollTolower"
+  show-scrollbar="false"
+  enhanced="true"
+>
+
+  <view class="item" wx:for="{{list}}" wx:key="index">
+    <navigator url="/pages/shop/detail?id={{item.id}}">
+      <image src="/images/shop_img.jpg"></image>
+    </navigator>
+    <view class="info">
+      <navigator url="/pages/shop/detail?id={{item.id}}">
+        <view class="title">{{item.shop_name}}</view>
+        <view class="rank">
+          <view>{{item.rate}}分,{{item.rate_times}}人次评价</view>
+          <view>{{filter.distance(item.latitude,item.longitude,lat,long)}}km</view>
+        </view>
+        <view class="address">{{item.address}}</view>
+        <view class="tel">{{item.shop_tel}}</view>
+      </navigator>
+    </view>
+    
+  </view>
+
+</scroll-view>

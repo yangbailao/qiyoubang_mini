@@ -1,0 +1,86 @@
+<!--pages/rescue/index.wxml-->
+<navBar title='修车'/>
+
+<map 
+id="map" 
+scale="14" 
+longitude='{{longitude}}' 
+latitude='{{latitude}}' 
+markers="{{markers}}" 
+bindmarkertap="markertap"  bindregionchange="regionchange" 
+show-location 
+show-scale
+style="width: 100%; height: {{contentHeight}}rpx;"
+subkey="GQZBZ-ABDHS-6ZPOH-6P2WY-RPQGZ-PPFV5" 
+layer-style="1"
+>
+</map>
+
+<!-- <view class="searchBar">
+  <image src="/images/icon-localtion.svg"></image>
+  <input class="weui-input" placeholder="请输入您的位置"/>
+</view> -->
+
+<view class="my-location" bindtap="getLocation">
+  <image src="/images/map-location.svg"></image>
+</view>
+
+<view class='pop-box {{unfold==0?"on":""}} {{unfold==1?"off":""}}'>
+  <view class="list wrap">
+    <view bindtap='unfold' class="switch">
+      <image src="{{unfold === 1 || unfold === null? '/images/icon-open.svg' : '/images/icon-close.svg'}}"></image>
+      
+    </view>
+    <view class="title">
+      <view class="text">项目价格</view>
+      <navigator url="/pages/shop/list?lat={{latitude}}&long={{longitude}}">
+        <view class="more">查看更多店铺列表</view>
+      </navigator>
+      
+      
+    </view>
+
+    <view class="item">
+      <view class="name">修车</view>
+      <view class="price">20元起</view>
+    </view>
+
+    <view class="item">
+      <view class="name">修车</view>
+      <view class="price">20元起</view>
+    </view>
+
+    <view class="item">
+      <view class="name">修车</view>
+      <view class="price">20元起</view>
+    </view>
+
+    <view class="item">
+      <view class="name">修车</view>
+      <view class="price">20元起</view>
+    </view>
+
+    <view class="item">
+      <view class="name">修车</view>
+      <view class="price">20元起</view>
+    </view>
+  </view>
+
+  
+
+</view>
+
+
+<!-- tabbar -->
+<import src="../../template/tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
+<view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
+<import src="../../template/tabbar-index-menu.wxml" />
+<view wx:if="{{indexMenuFlag}}">
+  <template is="indexMenu" />
+</view>
+<import src="../../template/tabbar-main-menu.wxml" />
+<view wx:if="{{mainMenuFlag}}">
+  <template is="mainMenu" />
+</view>
+<!-- tabbar -->

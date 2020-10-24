@@ -1,0 +1,57 @@
+<!--pages/moments/add.wxml-->
+<navBar title='评价店铺' back />
+<view class="shop">
+  <image wx:if="{{shop.img}}" src="{{shop.img}}" class="img"></image>
+  <image wx:else src="/images/shop_img.jpg" class="img"></image>
+  <view class="info">
+    <view class="title">{{shop.title}}</view>
+    <view class="tel">
+      <image src="/images/icon-tel.svg" class="title-icon"></image>
+      联系电话：{{shop.tel}}
+    </view>
+    <view class="address">
+        <image src="/images/icon-location-dark.svg" class="title-icon"></image>{{shop.address}}
+    </view>
+  </view>
+</view>
+
+<view class="wrap form">
+  <view class="item-title"><text>*</text>服务内容</view>
+  <input type="text" class="input" bindtap="showCate" placeholder="点击选择您的服务项目" value="{{form.cate_title}}" />
+  <view class="item-title"><text>*</text>服务评价</view>
+  <view class="rank">
+    <rate bindratechange="rateChange"></rate>
+    <view>{{rateText}}</view>
+  </view>
+  <textarea placeholder="请输入这一刻的想法" bindinput="inputText" value="{{form.content}}" />
+
+  <view class="photo">
+    <view class="head">上传照片 (<text class="red">{{uploadImg.length}}</text>/9)</view>
+
+    <view>
+      <view class="uploadList">
+        <view wx:for="{{uploadImg}}" wx:key="index" class="uploadItem">
+          <image src="{{item}}" mode="aspectFill"></image>
+          <icon data-index="{{index}}" bindtap="del" class="icon-small" type="cancel" size="23"></icon>
+        </view>
+
+        <view wx:if="{{uploadVideo}}" class="video">
+          <video src="{{uploadVideo}}"></video>
+          <icon bindtap="delVideo" class="icon-small" type="cancel" size="23"></icon>
+        </view>
+
+        <view class="uploadBtn {{uploadImg.length >= 9 || uploadVideo ? 'hide': ''}}" bindtap="takePhoto">
+          <image src="/images/icon-add.svg"></image>
+        </view>
+
+      </view>
+      
+    </view>
+
+  </view>
+
+</view>
+
+<view style="height:240rpx"></view>
+
+<view class="submit" bindtap="submit">发布</view>

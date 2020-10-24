@@ -1,0 +1,16 @@
+<template name="mainMenu">
+  <view class="tabbar-main-menu">
+    <navigator url="/pages/rescue/index" open-type="reLaunch">
+      <view class="li">
+        <image src="/images/tabbar-rescue.svg" class="img"></image>
+      </view>
+    </navigator>
+    <navigator url="/pages/repair/index" open-type="reLaunch">
+      <view class="li">
+        <image src="/images/tabbar-repair.svg" class="img"></image>
+      </view>
+    </navigator>
+    <view class="triangle-down triangle-down1"></view>
+  </view>
+  
+</template>

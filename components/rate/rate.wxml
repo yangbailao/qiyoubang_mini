@@ -1,0 +1,5 @@
+<view class='itembox'>
+  <view wx:for="{{imgs}}" wx:key="index" bindtap='select' data-index="{{item.id}}">
+    <image class="star" src="{{item.id>starId?src2:src1}}"></image>
+  </view>
+</view>

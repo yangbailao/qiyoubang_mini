@@ -1,0 +1,27 @@
+<!--pages/admin/index.wxml-->
+<navBar title='店铺录入'/>
+
+<map 
+id="map" 
+scale="15" 
+longitude='{{longitude}}' 
+latitude='{{latitude}}' 
+
+show-location 
+show-scale
+style="width: 100%; height: {{contentHeight}}rpx;"
+subkey="GQZBZ-ABDHS-6ZPOH-6P2WY-RPQGZ-PPFV5" 
+layer-style="1"
+>
+</map>
+
+
+<view class="my-location" bindtap="getLocation">
+  <image src="/images/map-location.svg"></image>
+</view>
+
+
+
+<view class="btn" bindtap="add">
+  店铺录入
+</view>

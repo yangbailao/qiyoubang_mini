@@ -1,0 +1,17 @@
+<template name="indexMenu">
+  <view class="tabbar-index-menu">
+    <navigator url="/pages/index/index" open-type="reLaunch">
+      <view class="li" hover-class="li-hover">骑友首页</view>
+    </navigator>
+    <view class="line"></view>
+    <navigator url="/pages/personal/index" open-type="redirect">
+      <view class="li">个人中心</view>
+    </navigator>
+    <view class="line"></view>
+    <view class="li">我的服务站</view>
+    <view class="line"></view>
+    <view class="triangle-down triangle-down2"></view>
+  </view>
+  
+  
+</template>

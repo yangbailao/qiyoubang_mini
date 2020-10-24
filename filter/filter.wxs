@@ -1,0 +1,128 @@
+
+var formatNumber=function(n){
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+var formatTime = function (date, format){
+  date = getDate(date)
+  var year = formatNumber(date.getFullYear())
+  var month = formatNumber(date.getMonth() + 1)
+  var day = formatNumber(date.getDate())
+  var hour = formatNumber(date.getHours())
+  var minute = formatNumber(date.getMinutes())
+  var second = formatNumber(date.getSeconds())
+
+  var time = year+'-'+month+'-'+day+' '+hour+':'+minute
+
+  if (format) {
+    if ('年月日 h:m:s' === format) {
+      time = year+'年'+month+'月'+day+'日'+' '+hour+':'+minute+':'+second 
+    }
+
+    if ('月日 h:m' === format) {
+      time = month+'月'+day+'日'+' '+hour+':'+minute
+    }
+
+    if ('yyyy-mm-dd' === format) {
+      time = year+'-'+month+'-'+day
+    }
+
+    if ('h:m:s' === format) {
+      time = hour+':'+minute+':'+second
+    }
+    if ('h:m' === format) {
+      time = hour+':'+minute
+    }
+  }
+
+  return time
+}
+
+module.exports = {
+  // 计算两点间距离
+  distance:function(la1, lo1, la2, lo2) {
+    console.log(la1, lo1, la2, lo2)
+    var La1 = la1 * Math.PI / 180.0;
+    var La2 = la2 * Math.PI / 180.0;
+    var La3 = La1 - La2;
+    var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;
+    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));
+       s = s * 6378.137;//地球半径
+       s = Math.round(s * 10000) / 10000;
+       return s
+       // console.log("计算结果",s)
+  },
+  totalPrice: function(price,acount,couponVal){
+    var total = 0;
+    var fixPrice = acount * price
+    if (couponVal) {
+      total = (fixPrice - couponVal) <= 0 ? 0 : (fixPrice * 100 - couponVal * 100) / 100
+    } else {
+      total = fixPrice
+    }
+    return total;
+  },
+  formatTime: formatTime,
+  activityTime: function(start, end, format, currentDate){
+    var start = start * 1000;
+    var end = end * 1000;
+    currentDate = currentDate || getDate().getTime()
+    var nowTime = getDate(currentDate).getTime();
+    var hour = getDate(start).getHours()
+    var minute = getDate(start).getMinutes()
+    var h = 3600000   // 一个小时毫秒数
+    var d = 86400000  // 一天的毫秒数
+    var fix = start - nowTime // 计算活动时间的时间差
+    if (end > nowTime) {
+      // 活动结束时间大于现在时间
+      if (start < nowTime) {
+        // 返回倒计时秒数
+        return (end - nowTime) / 1000
+      }
+      if (start > nowTime) {
+        if (fix < h) {
+          // 活动时间小于一个小时
+          return '即将开始: ' + formatNumber(hour) + ':' + formatNumber(minute)
+        } else {
+          var s = ''
+          if (format) {
+            s = formatTime(start, format) + '开始'
+          } else {
+            s = '开始时间: ' + (formatTime(start))
+          }
+          return s
+        }
+      }
+    } else {
+      return '活动已结束'
+    }
+  },
+  gerOrderStatus: function(status) {
+    var storte = {
+      status0: '待付款',
+      status1: '待发货',
+      status2: '待收货',
+      status3: '待评价',
+      status4: '已评价',
+      status10: '退款申请',
+      status11: '等待退货中',
+      status12: '退货的物流已填写',
+      status13: '退款成功',
+      status14: '拒绝退款',
+      status20: '交易关闭'
+    }
+    return storte['status'+status]
+  },
+  phoneCode: function(phone){
+      // 手机加密
+    // var reg = /^(\d{3})\d+(\d{4})$/;
+    var reg1 = getRegExp('^(\d{3})\d+(\d{4})$')
+    return phone.replace(reg1, "$1 **** $2");
+  },
+  cardCode: function(card){
+    // 银行卡加密
+    // var reg = /^(\d{4})\d+(\d{4})$/;
+    var reg1 = getRegExp('^(\d{4})\d+(\d{4})$')
+    return card.replace(reg1, "$1 **** **** $2");
+  }
+}

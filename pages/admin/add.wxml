@@ -1,0 +1,53 @@
+<!--pages/admin/add.wxml-->
+<navBar title='店铺管理'/>
+<view class="tab-title">
+  <view data-index="0" class="{{tabIndex == 0 ? 'cur' : ''}}" bindtap="switchTab">店铺录入</view>
+  <view data-index="1" class="{{tabIndex == 1 ? 'cur' : ''}}" bindtap="switchTab">店铺列表</view>
+</view>
+<view class="tab">
+  <view class="tab-box" style="display:{{tabIndex == 0 ? 'block' : 'none'}}">
+    <view class="wrap">
+      <view class="form-item">
+        <view class="item-text">店铺名称：</view>
+        <input class="input-text" bindinput="changeName" value="{{shop.shop_name}}" />
+      </view>
+      <view class="form-item">
+        <view class="item-text">老板：</view>
+        <input class="input-text" bindinput="changeBoss" value="{{shop.shop_boss}}" />
+      </view>
+      <view class="form-item">
+        <view class="item-text">联系电话：</view>
+        <input class="input-text" bindinput="changeTel" value="{{shop.shop_tel}}" />
+      </view>
+      <view class="form-item">
+        <view class="item-text">店铺地址：</view>
+        <input class="input-text" placeholder="点击选择位置" bindtap="chooseAddress"  value="{{shop.map_name}}" />
+      </view>
+    </view>
+    
+    <view class="addBtn" bindtap="updateShop">提交</view>
+  </view>
+  <view class="tab-box" style="display:{{tabIndex == 1 ? 'block' : 'none'}}">
+    
+    <view class="list wrap">
+      <block wx:for="{{list}}" wx:key="id">
+      <view class="item">
+        <image src="/images/no-images.svg"></image>
+        <view class="info">
+          <view class="title">{{item.shop_name}}<text class="tel">{{item.shop_tel}}({{item.shop_boss}})</text></view>
+          <view class="address" data-shop="{{item}}" bindtap="showShopInMap">
+            <image src="/images/icon-location-dark.svg"></image>
+            <text>{{item.address}}</text>
+          </view>
+          <view class="btns">
+            <view bindtap="edit" data-id="{{item.id}}">编辑</view>
+            <view bindtap="del" data-id="{{item.id}}">删除</view>
+          </view>
+        </view>
+      </view>
+      </block>
+    </view>
+    
+  </view>
+</view>
+

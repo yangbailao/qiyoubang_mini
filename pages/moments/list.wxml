@@ -1,0 +1,112 @@
+<!--pages/moments/list.wxml-->
+<navBar title='骑友录'/>
+
+<scroll-view scroll-y="true" style="height:{{scrollHeight}}rpx">
+  <view class="user-info wrap">
+    <block wx:if="{{!userInfo}}">
+    <view class="userinfo-avatar li un-login">
+      <image src="/images/avatar.svg" mode="cover"></image>
+    </view>
+    
+    <view class="detail li">
+      <view class="login">
+        HI，等您很久了！ <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+      </view>
+    </view>
+    </block>
+    <block wx:else>
+    <image class="userinfo-avatar li" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <view class="detail li">
+      <view class="username">{{userInfo.nickName}}</view>
+      <view class="info">
+          <view>
+            <image src="/images/icon-phone.svg"></image>已认证手机
+          </view>
+          <view>
+            <image src="/images/icon-bangbangfen.svg"></image>帮帮分：98分
+          </view>
+        </view>
+    </view>
+    </block>
+    
+    
+  </view>
+  
+
+
+<view bindtap="goToAdd" class="add" style="top:{{addTop}}rpx"><image src="/images/moments-add.svg"></image></view>
+
+
+
+<view class="list">
+  <view class="notice">
+    <image class="fl" src="https://wx.qlogo.cn/mmopen/vi_32/Q3auHgzwzM5C3BttKuwFENB8q8A1tCT90LK9ciaibKErcygkIn42aK4PUBrIEzibMgqMiaPoFJcJSaQEeXLd3JlVkQ/132"></image>
+    <view class="fl">5条新消息</view>
+  </view>
+
+  <wxs src="../../utils/util.wxs" module="js" />
+  <block wx:for="{{list}}" wx:key="id">
+  <view class="moments wrap">
+    <view class="author">
+      <image src="{{item.avatar_url}}"></image>
+      <view class="nickname">{{item.nickname}}</view>
+      <view class="created_at">{{item.created_at}}</view>
+    </view>
+    <view class="content">
+      <view class="text">
+        {{item.content}}
+      </view>
+      <view class="images">
+
+        <block wx:if="{{js.length(item.video) > 0}}">
+          <video src="{{qiniuShowUrl + item.video}}"></video>
+        </block>
+
+        <block wx:if="{{js.length(item.images) > 0}}">
+          <block wx:for="{{item.images}}" wx:for-item="v" wx:key="index">
+          <image src="{{qiniuShowUrl + v}}" style="height:{{imgHeight}}rpx;width:{{imgHeight}}rpx;" mode="center" bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
+          </block>
+        </block>
+
+      </view>
+      <view class="comment-bar">
+        <text class="fl" wx:if="{{item.user_id == 100}}">删除</text>
+        <text class="fr">评论</text>
+        <text class="fr">点赞</text>
+      </view>
+      <view class="comment-content">
+        <view class="good">
+          <image src="/images/zan-kongxin.svg"></image>
+          <text>小程序开发,马云,马化腾,王健林,许家印,齐达内,马云,马化腾,王健林,许家印,齐达内</text>
+        </view>
+        <view class="comments">
+          <view class="comment">
+            <text class="nickname">马化腾</text>：不错
+          </view>
+          <view class="comment">
+            <text class="nickname">马云</text>回复<text class="nickname">马化腾</text>：准备入股
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="empty-box"></view>
+  </view>
+  </block>
+
+</view>
+</scroll-view>
+
+<!-- tabbar -->
+<import src="../../template/tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
+<view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
+<import src="../../template/tabbar-index-menu.wxml" />
+<view wx:if="{{indexMenuFlag}}">
+  <template is="indexMenu" />
+</view>
+<import src="../../template/tabbar-main-menu.wxml" />
+<view wx:if="{{mainMenuFlag}}">
+  <template is="mainMenu" />
+</view>
+<!-- tabbar -->
+

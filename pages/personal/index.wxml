@@ -1,0 +1,106 @@
+<!--pages/personal/index.wxml-->
+<navBar back="true" title='个人中心'/>
+<view class="user-info wrap">
+  <block wx:if="{{!userInfo}}">
+    <view class="userinfo-avatar li un-login">
+      <image src="/images/avatar.svg" mode="cover"></image>
+    </view>
+    
+    <view class="detail li">
+      <view class="login">
+        HI，等您很久了！ <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+      </view>
+    </view>
+    </block>
+    <block wx:else>
+    <image class="userinfo-avatar li" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <view class="detail li">
+      <view class="username">{{userInfo.nickName}}</view>
+      <view class="info">
+          <view>
+            <image src="/images/icon-phone.svg"></image>已认证手机
+          </view>
+          <view>
+            <image src="/images/icon-bangbangfen.svg"></image>帮帮分：{{userInfo.credit}}分
+          </view>
+        </view>
+    </view>
+  </block>
+</view>
+
+
+<!-- bar1 start -->
+<view class="bar1">
+  <view class="btn">
+    <image src="/images/icon-my-bike.svg" style="width:62rpx"></image>
+    <view>发布的二手车</view>
+  </view>
+  <view class="btn" bindtap="goTo" data-url="/pages/myMission/list">
+    <image src="/images/icon-my-mission.svg"></image>
+    <view>发布的任务</view>
+  </view>
+  <view class="btn">
+    <image src="/images/icon-my-favor-shop.svg"></image>
+    <view>收藏的店铺</view>
+  </view>
+</view>
+<!-- bar1 end -->
+<!-- bar2 start -->
+<view class="bar2 wrap">
+  <view class="btn blue">
+    <view class="icon">
+      <image src="/images/icon-btn-shop-reg.svg"></image>
+    </view>
+    <view class="text">
+      <view class="title">商家加盟</view>
+      <view class="desc">优质客户自动上门</view>
+    </view>
+  </view>
+  <view class="btn purple">
+    <view class="icon">
+      <image src="/images/icon-btn-share.svg"></image>
+    </view>
+    <view class="text">
+      <view class="title">分享有礼</view>
+      <view class="desc">免费修车大礼包</view>
+    </view>
+  </view>
+</view>
+<!-- bar2 end -->
+
+<!-- list start -->
+<view class="list">
+  <view class="item">
+    <image src="/images/icon-menu-teade.svg" class="menu"></image>
+    <text>我的订单</text>
+    <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+  </view>
+  <view class="item">
+    <image src="/images/icon-menu-my-service-shop.svg" class="menu"></image>
+    <text>我的服务站</text>
+    <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+  </view>
+  <view class="item">
+    <image src="/images/icon-menu-my-shop.svg" class="menu"></image>
+    <text>我的店铺</text>
+    <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+  </view>
+  <view class="item">
+    <image src="/images/icon-menu-my-comment.svg" class="menu"></image>
+    <text>我的评价</text>
+    <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+  </view>
+</view>
+
+<view class="list" style="margin-top:22rpx">
+  <view class="item">
+    <image src="/images/icon-menu-contact.svg" class="menu"></image>
+    <text>联系客服</text>
+    <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+  </view>
+  <view class="item">
+    <image src="/images/icon-menu-message.svg" class="menu"></image>
+    <text>意见反馈</text>
+    <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+  </view>
+</view>

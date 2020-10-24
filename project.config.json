@@ -1,0 +1,152 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": []
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.12.0",
+  "appid": "wx673da90efa5ccb91",
+  "projectname": "%E9%AA%91%E5%8F%8B%E5%B8%AE",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "scripts": {},
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "current": -1,
+      "list": []
+    },
+    "conversation": {
+      "current": -1,
+      "list": []
+    },
+    "plugin": {
+      "current": -1,
+      "list": []
+    },
+    "game": {
+      "current": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "current": -1,
+      "list": []
+    },
+    "miniprogram": {
+      "current": -1,
+      "list": [
+        {
+          "id": -1,
+          "name": "骑友录",
+          "pathName": "pages/moments/list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "救援",
+          "pathName": "pages/rescue/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "二手车列表",
+          "pathName": "pages/bike/list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "任务帮",
+          "pathName": "pages/mission/list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "个人中心",
+          "pathName": "pages/personal/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 7,
+          "name": "店铺录入表单页",
+          "pathName": "pages/admin/add",
+          "query": "latitude=22.78121&longitude=108.27331",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "发表朋友圈",
+          "pathName": "pages/moments/add",
+          "query": "latitude=22.78121&longitude=108.27331",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "我发布的任务",
+          "pathName": "pages/myMission/list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "店铺列表",
+          "pathName": "pages/shop/list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "店铺详情",
+          "pathName": "pages/shop/detail",
+          "query": "id=15",
+          "scene": null
+        },
+        {
+          "id": 10,
+          "name": "评价店铺",
+          "pathName": "pages/shop/comment",
+          "query": "id=15&title=草榴汽修&img=&address=富德农贸市场&tel=18367442342",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

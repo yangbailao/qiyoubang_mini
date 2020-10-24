@@ -1,0 +1,55 @@
+<!--pages/bike/list.wxml-->
+<navBar title='二手电车'/>
+<dropdownmenu dropDownMenuTitle='{{dropDownMenuTitle}}' dropDownMenuDistrictData='{{data1}}' dropDownMenuSourceData='{{data2}}' dropDownMenuStyleData='{{data3}}' dropDownMenuFilterData='{{data4}}' bind:selectedItem='selectedItem' bind:changeStyle='changeStyle' />
+
+<scroll-view scroll-y="true" style="height:{{scrollHeight}}rpx">
+  <view class="{{listStyle % 2 == 1 ? 'list' : 'big'}} wrap">
+    <view class="item">
+      <view class="images">
+        <image src="http://img.lw81888.com/159505915038430.jpeg" mode="center"></image>
+      </view>
+      <view class="info">
+        <view class="head">
+          <view class="title">特斯拉model X</view>
+          <view class="see">24人看过</view>
+        </view>
+        <view class="price">￥222222.00</view>
+        <view class="user">
+          <view class="username">
+            <image src="https://wx.qlogo.cn/mmopen/vi_32/Q3auHgzwzM5C3BttKuwFENB8q8A1tCT90LK9ciaibKErcygkIn42aK4PUBrIEzibMgqMiaPoFJcJSaQEeXLd3JlVkQ/132" mode="cover"></image>
+            马化腾
+          </view>
+          <view class="fen">帮帮分:<text class="red">98分</text></view>
+        </view>
+      </view>
+    </view>
+    <view class="item">
+
+    </view>
+    <view class="item">
+
+    </view>
+    <view class="item">
+
+    </view>
+    <view class="item">
+
+    </view>
+    <view class="item">
+
+    </view>
+  </view>
+</scroll-view>
+<!-- tabbar -->
+<import src="../../template/tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
+<view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
+<import src="../../template/tabbar-index-menu.wxml" />
+<view wx:if="{{indexMenuFlag}}">
+  <template is="indexMenu" />
+</view>
+<import src="../../template/tabbar-main-menu.wxml" />
+<view wx:if="{{mainMenuFlag}}">
+  <template is="mainMenu" />
+</view>
+<!-- tabbar -->

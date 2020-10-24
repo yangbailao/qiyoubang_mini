@@ -1,0 +1,57 @@
+/* 搜索框样式 */
+@import '/assets/style/sprites.wxss';
+/* .container {
+  padding-bottom: 20rpx;
+} */
+.main {
+  padding-top: 114px;
+}
+.search_bar{
+  background-image: linear-gradient(to right, #d6598e 30%, #ad255f);
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+.top-search{
+  height: 50px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.section{
+  /* width: 610rpx; */
+  /* margin: 0 110rpx 0 30rpx; */
+  flex: 1;
+  margin-left: 30rpx;
+  background: #fff;
+  border-radius: 80rpx;
+  position: relative;
+}
+.search-cion{
+  position: absolute;
+  left: 19rpx;
+  top: 18rpx;
+}
+.section input{
+  height: 70rpx;
+  width: 550rpx;
+  padding-left: 62rpx;
+  font-size: 28rpx;
+  box-sizing: border-box;
+}
+.section .text-placeholder{
+  color: #b2b2b2;
+}
+.search-btn{
+  width: 120rpx;
+  text-align: center;
+  color: #fff;
+  /* position: absolute;
+  right: -107rpx;
+  top: 10rpx;
+  font-size: 32rpx;
+  color: #fff;
+  padding: 0 20rpx; */
+}

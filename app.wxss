@@ -1,0 +1,178 @@
+/**app.wxss**/
+view,
+text,
+scroll-view,
+input,
+button,
+image,
+cover-view {
+  box-sizing: border-box;
+}
+page {
+  --height: 44px; /* 4*2+32 */
+  --right: 97px; /* 10+87 */
+  --navBarExtendHeight: 4px;
+  box-sizing: border-box;
+  background: #fafafc;
+  color: #555770;
+  font-size: 28rpx;
+}
+.wrap {
+  height: 100%;
+  width: 100%;
+  padding: 0rpx 30rpx;
+  font-size: 28rpx;
+}
+
+.fl{float: left;}
+.fr{float: right;}
+.cl{clear: both;}
+.red{color: #ff5c5c;}
+
+/* 自定义底部菜单 开始*/
+ 
+.menu-item {
+  width: 20%;
+  float: left;
+  /* border-right: 1px solid rgb(200, 200, 200); */
+  text-align: center;
+  padding-top: 8px;
+}
+
+.menu-main .img{
+  width: 150rpx;
+  height: 150rpx;
+  position: absolute;
+  top: -44rpx;
+}
+
+ 
+.img {
+  width: 40rpx;
+  height: 40rpx;
+  display: block;
+  margin: auto;
+}
+ 
+.clear {
+  clear: both;
+}
+ 
+.tab-bar {
+  background-color:rgb(255, 255, 255);
+  box-shadow: 0px -3px 6px 0px 
+		rgba(0, 0, 0, 0.06);
+  /* opacity: .8; */
+  position: fixed;
+  width: 100%;
+  font-size: 24rpx;
+  padding-bottom: 8px;
+  /* padding: 0px 2%; */
+  z-index: 900;
+  height: 112rpx;
+}
+
+.mask{
+  width:100%;
+  height:100%;
+  position:absolute;
+  background-color:#999;
+  z-index:888;
+  top:0;
+  left:0;
+  opacity:0.5;
+  -moz-opacity: 0.7;  
+  opacity: 0.70;  
+  filter: alpha(opacity=70); 
+}
+.triangle-down{
+  width: 0;
+  height: 0;
+  border-left: 12rpx solid transparent;
+  border-right: 12rpx solid transparent;
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 999;
+}
+
+.triangle-down1{
+  border-top: 12rpx solid #fff;
+  left:154rpx;
+  top:170rpx;
+}
+.triangle-down2{
+  border-top: 12rpx solid #ff3757;
+  left:34rpx;
+  top:248rpx;
+}
+
+.tabbar-index-menu{
+  z-index: 999;
+  position: fixed;
+  left:30rpx;
+  bottom:124rpx;
+  width: 208rpx;
+	height: 238rpx;
+	background-image: linear-gradient(312deg, 
+		#ff1656 0%, 
+		#fe6959 100%);
+	box-shadow: 0px 3px 6px 0px rgba(255, 59, 59, 0.16);
+  border-radius: 6%;
+  padding-top: 10rpx;
+}
+.tabbar-index-menu .li-hover{
+  color: #ff1656;
+}
+.tabbar-index-menu .li{
+  text-align: center;
+  color: #fff;
+  line-height: 72rpx;
+  font-size: 24rpx;
+}
+
+.tabbar-index-menu .line {
+	width: 184rpx;
+	height: 0px;
+  border-top: dotted 1px rgba(255, 255, 255, 0.16);
+  margin: auto;
+}
+
+.tabbar-main-menu{
+  z-index: 999;
+  position: fixed;
+  left:205rpx;
+  bottom:162rpx;
+  width: 340rpx;
+	height: 170rpx;
+	background:#fff;
+	/* box-shadow: 0px 3px 6px 0px rgba(255, 59, 59, 0.16); */
+  border-radius: 5rpx;
+  border-radius: 15rpx;
+  padding: 10rpx 10rpx 0rpx 10rpx;
+}
+
+.tabbar-main-menu .li{
+  float: left;
+  width: 160rpx;
+  height: 160rpx;
+  /* background-image: linear-gradient(315deg, 
+		#ff1656 0%, 
+		#ffba50 100%); */
+
+}
+.tabbar-main-menu .li .img{
+  width: 160rpx;
+  height: 160rpx;
+  /* box-shadow: 0px 3px 6px 0px 
+		rgba(255, 54, 85, 0.26); */
+}
+
+/* 自定义底部菜单 结束 */
+
+.notData {
+  text-align: center;
+  padding-top: 100rpx;
+  font-size: 40rpx;
+  color: #999;
+}

@@ -1,0 +1,50 @@
+/* pages/mission/add.wxss */
+
+.submit{position: fixed;bottom: 40rpx;left: 50rpx;width: 650rpx;
+	height: 110rpx;
+	background-image: linear-gradient(313deg, 
+  #fe6959 0%, 
+  #ff1656 100%);
+	box-shadow: 0px 3px 6px 0px 
+		rgba(255, 59, 59, 0.26);
+  border-radius: 5px;
+  margin:0 auto;
+  color: #fff;
+  text-align: center;
+  line-height: 110rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+  z-index: 9999;
+}
+
+.bg{
+  height: 250rpx;
+  background-image: linear-gradient(313deg, 
+  #fe6959 0%, 
+  #ff1656 100%);
+}
+  .bg image{width: 750rpx;height: 200rpx;}
+
+.form{
+  background: #fff;
+  border-radius: 40rpx;
+  padding-top: 40rpx;
+  position: relative;
+  top: -50rpx;
+
+}
+  .form .form-item{
+    display: flex;
+    height: 88rpx;
+    margin-bottom: 20rpx;
+    line-height: 88rpx;
+  }
+  .form .form-item text{font-size: 30rpx;width: 174rpx;height: 88rpx;}
+  .form .form-item input{border: 1px solid #f8f8fa;width: 516rpx;height: 88rpx;border-radius: 10rpx;padding: 0 20rpx;}
+  .form .form-item textarea{border: 1px solid #f8f8fa;width: 690rpx;border-radius: 10rpx;padding: 20rpx;}
+
+
+.plaClass {
+  color: #ccc;
+  font-size: 28rpx;
+}

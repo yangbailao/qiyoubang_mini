@@ -1,0 +1,85 @@
+<navBar back="true" title='店铺详情'/>
+<wxs src="../../filter/filter.wxs" module="filter"></wxs>
+
+<image class="shop-img" src="/images/shop_img.jpg"></image>
+<view class="info wrap">
+  <view class="title">{{detail.shop_name}}</view>
+  <view class="rank">
+    <text>{{detail.rate}}分 {{detail.rate_times}}人次评价</text>
+  </view>
+  <view class="open-time">
+    <image src="/images/icon-open-time.svg" class="title-icon"></image>
+    营业时间：08:00 - 12:00
+  </view>
+  <view class="tel">
+    <image src="/images/icon-tel.svg" class="title-icon"></image>
+    联系电话：{{detail.shop_tel}}
+  </view>
+  <view class="address">
+    <view>
+      <image src="/images/icon-location-dark.svg" class="title-icon"></image>{{detail.address}}
+    </view>
+    <view>
+      <!-- <image src="/images/icon-juli2.svg" class="title-icon"></image> -->
+      8km
+    </view>
+  </view>
+</view>
+
+<!-- 项目价格 -->
+<view class="price-list">
+  <view class="item">
+    <text class="title">补胎</text>
+    <text class="price">20元起</text>
+  </view>
+  <view class="item">
+    <text class="title">补胎</text>
+    <text class="price">20元起</text>
+  </view>
+</view>
+
+<!-- 评价 -->
+<view class="comment">
+
+    <view wx:for="{{comments}}" wx:key="index" class="commentItem">
+      <view class="userInfo">
+        <view>
+          <image src="{{item.avatar_url}}"></image>
+        </view>
+        <view class="userInfo_R">
+          <view class="nickname">
+            <view>{{item.nickname}}</view>
+            <view class="time">{{filter.formatTime(item.create_at * 1000,'yyyy-mm-dd')}}</view>
+          </view>
+          <view class="cate">服务项目：{{item.service_cate_title}}</view>
+        </view>
+      </view>
+      <view class="commentContent">
+        <view class="userMsg">
+          {{item.comment}}
+        </view>
+        <view class="images">
+          <block wx:for="{{item.images}}" wx:for-item="v" wx:key="index">
+            <image src="{{qiniuShowUrl + v}}" mode="center" bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
+          </block>
+        </view>
+      </view>
+    </view>
+    <view class="notData" wx:if="{{!comments.length}}">此店铺暂无人评价</view>
+
+</view>
+
+<!-- 底部 -->
+<view class="footer">
+  <view class="btns">
+    <image src="/images/icon-stars-no.svg"></image>收藏店铺
+  </view>
+  <view class="btns">
+    <navigator url="/pages/shop/comment?id={{detail.id}}&title={{detail.shop_name}}&img={{detail.img}}&address={{detail.address}}&tel={{detail.shop_tel}}">
+      <image src="/images/icon-comment.svg"></image>评价店铺
+    </navigator>
+  </view>
+  <view class="call">
+    <image src="/images/call.svg"></image>
+  </view>
+</view>

@@ -1,0 +1,15 @@
+<svg id="组_700" data-name="组 700" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+      }
+
+      .cls-2 {
+        fill: #8f90a6;
+      }
+    </style>
+  </defs>
+  <rect id="矩形_635" data-name="矩形 635" class="cls-1" width="16" height="16"/>
+  <path id="路径_1182" data-name="路径 1182" class="cls-2" d="M3.656,4.17.085,7.714a.327.327,0,0,0,0,.44L.2,8.267a.329.329,0,0,0,.441,0L4.555,4.4a.327.327,0,0,0,0-.44L.661.085a.329.329,0,0,0-.441,0L.106.2a.327.327,0,0,0,0,.44Z" transform="translate(6 4)"/>
+</svg>
