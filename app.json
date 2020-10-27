@@ -20,6 +20,10 @@
     "pages/admin/shop_location",
     "pages/admin/add",
 
+    "pages/information/list",
+    "pages/information/detail",
+    "pages/information/add",
+
     "pages/shop/list",
     "pages/shop/comment",
     "pages/shop/detail"

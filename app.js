@@ -172,8 +172,8 @@ App({
  
           selectedIconPath: "/images/tabbar-bike-cur.svg",
           iconPath: "/images/tabbar-bike.svg",
-          pagePath: "/pages/bike/list",
-          text: "二手电车",
+          pagePath: "/pages/information/list",
+          text: "便民信息",
           clas: "menu-item",
           selected: false,
           nav: true,
