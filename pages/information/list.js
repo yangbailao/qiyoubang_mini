@@ -7,8 +7,8 @@ import {
 } from '../../api/login'
 import {scrollLoadList} from '../../utils/util'
 import {
-  missionList,
-  getMissionCate
+  informationList,
+  getInformationCate
 } from '../../api/api'
 import { cache } from '../../utils/cache.js'
 Page({
@@ -30,7 +30,7 @@ Page({
     pageSize: 10,
     totalPage: 1,
     total: 1,
-    allCategory: [], // 任务分类
+    allCategory: [], // 信息分类
     isOnload: false,  // 是否曾经加载过
     cateActive: 0,
     focus: true,
@@ -70,7 +70,7 @@ Page({
 
 
 
-    // 读取任务分类
+    // 读取信息分类
     this.getCates()
 
   },
@@ -91,7 +91,7 @@ Page({
     // if (isOnload && cateActive != id) {
     //   this.reloadData()
     // }
-    // 读取任务列表
+    // 读取信息列表
     this.reloadData()
   },
 
@@ -226,7 +226,7 @@ Page({
       isEnd,
       isLoading,
       list,
-      apiPost: missionList,
+      apiPost: informationList,
       data:{
         page,
         pageSize,
@@ -253,9 +253,9 @@ Page({
       }
     })
   },
-  // 读取任务分类
+  // 读取信息分类
   getCates(){
-    getMissionCate().then(res => {
+    getInformationCate().then(res => {
       this.setData({
         allCategory : res.data.allList
       })

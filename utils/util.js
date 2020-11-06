@@ -78,9 +78,44 @@ const scrollLoadList = (status) => {
   }
 }
 
+const scrollMomentsLoadList = (status) => {
+  let {isEnd,isLoading,apiPost,beforeLoad,list,afterLoad,data,myLike} = status
+  if (!isEnd && !isLoading) {
+    data.page < 2 && wx.showLoading({title: '加载中...', mask: true})
+    beforeLoad()
+    apiPost(data).then(result => {
+      let totalPage = Math.ceil(result.data.total / data.pageSize);
+      data.page = totalPage >= data.page ? (++data.page) : totalPage;
+      wx.hideLoading()
+      console.log(typeof result.data.list,typeof result.data.myLike)
+      afterLoad({
+        lists: [...list,...result.data.list],
+        myLikes: [...myLike,...result.data.myLike],
+        page:data.page,
+        totalPage,
+        isLoading: false,
+        isEnd: totalPage < data.page || totalPage === 0,
+        total:result.data.total,
+        currentDate: result.headerDate
+      })
+    }).catch(() => {
+      afterLoad({
+        lists: [],
+        myLikes:[],
+        page:1,
+        totalPage: 15,
+        isLoading: false,
+        isEnd: true,
+        total: 0
+      })
+    })
+  }
+}
+
 module.exports = {
   formatTime,
   getSign,
   checkPhone,
-  scrollLoadList
+  scrollLoadList,
+  scrollMomentsLoadList
 }

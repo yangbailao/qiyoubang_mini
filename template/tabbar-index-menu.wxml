@@ -4,11 +4,13 @@
       <view class="li" hover-class="li-hover">骑友首页</view>
     </navigator>
     <view class="line"></view>
-    <navigator url="/pages/personal/index" open-type="redirect">
+    <navigator url="/pages/personal/index">
       <view class="li">个人中心</view>
     </navigator>
     <view class="line"></view>
-    <view class="li">我的服务站</view>
+    <navigator url="/pages/personal/myServiceShop">
+      <view class="li">我的服务站</view>
+    </navigator>
     <view class="line"></view>
     <view class="triangle-down triangle-down2"></view>
   </view>

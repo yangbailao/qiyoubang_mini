@@ -116,6 +116,22 @@ export function getUserInfo() {
   })
 }
 
+// 发表朋友圈评论
+export function addMomentComment(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/MomentsComment/add',
+      data,
+      success: function (data) {
+        console.log('发表朋友圈评论', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
 // 发表朋友圈
 export function momentAdd(data) {
   return new Promise((resolve) => {
@@ -132,6 +148,22 @@ export function momentAdd(data) {
   })
 }
 
+// 删除朋友圈
+export function delMoments(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/Moments/del',
+      data,
+      success: function (data) {
+        console.log('删除朋友圈', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
 //朋友圈列表
 export function getMomentsList(data) {
   return new Promise((resolve) => {
@@ -140,6 +172,38 @@ export function getMomentsList(data) {
       data,
       success: function (data) {
         console.log('朋友圈列表', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+//朋友圈点赞
+export function addMomentLike(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/moments_like/add',
+      data,
+      success: function (data) {
+        console.log('点赞', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+//朋友圈取消点赞
+export function delMomentLike(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/moments_like/del',
+      data,
+      success: function (data) {
+        console.log('取消点赞', data)
         if (data.code == '1') {
           resolve(data)
         }
@@ -276,7 +340,100 @@ export function endMission(data) {
 
 
 
+// 获取信息分类
+export function getInformationCate() {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/information_cate/getList',
+      success: function (data) {
+        console.log('任务分类', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
 
+// 信息列表
+export function informationList(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/information/getList',
+      data,
+      success: function (data) {
+        console.log('信息列表', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+// 发布便民信息
+export function informationUpdate(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/information/update',
+      data,
+      success: function (data) {
+        console.log('发布便民信息', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+// 信息详情
+export function getInformationById(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/information/getById',
+      data,
+      success: function (data) {
+        console.log('信息详情', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+// 删除任务
+export function delInformation(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/information/del',
+      data,
+      success: function (data) {
+        console.log('删除任务', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+// 更新用户信息
+export function updateUser(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/user/update',
+      data,
+      success: function (data) {
+        console.log('更新用户信息', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
 
 
 

@@ -1,8 +1,8 @@
 import { cache } from './cache.js'
 import { getSign } from './util'
 import { md5 } from './md5.js'
-// const BaseURL = 'http://www.qiyouapi.com'
-const BaseURL = 'http://qiyou.lw81888.com'
+var BaseURL = 'https://dev.cunxiyuan.com'
+BaseURL = 'http://www.qiyouapi.com'
 
 export function http(opt) {
   const token = cache.get('token')

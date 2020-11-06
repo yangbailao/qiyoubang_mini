@@ -1,2 +1,24 @@
-<!--pages/information/add.wxml-->
-<text>pages/information/add.wxml</text>
+<!--pages/moments/add.wxml-->
+<navBar wx:if="{{form.id == 0}}" title='发布便民信息' back />
+<navBar wx:else title='编辑信息任务' back />
+<view class="bg"><image src="/images/mission-add-bg.png"></image></view>
+<view class="wrap form" style="height:{{scrollHeight}}rpx">
+  <view class="form-item wrap">
+    <text>信息标题：</text>
+    <input type="text" bindinput="changeTitle" value="{{form.title}}" placeholder-class="plaClass" placeholder="请输入任务名称" />
+  </view>
+  <view class="form-item wrap">
+    <text>信息分类：</text>
+    <input type="text" bindtap="showCate" value="{{form.cate_title}}" placeholder-class="plaClass" placeholder="请选择所属分类"/>
+  </view>
+  <view class="form-item wrap">
+    <text>联系方式：</text>
+    <input type="text" bindinput="changeTel" value="{{form.tel}}" placeholder-class="plaClass" placeholder="手机号" />
+  </view>
+  
+  <view class="form-item wrap">
+    <textarea placeholder="填写信息详情" bindinput="changeContent" value="{{form.content}}" />
+  </view>
+</view>
+
+<view class="submit" bindtap="submit">提交</view>

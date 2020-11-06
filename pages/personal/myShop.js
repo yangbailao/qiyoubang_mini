@@ -1,27 +1,18 @@
-// pages/mission/detail.js
-
-import {
-  getInformationById
-} from '../../api/api'
+// pages/personal/myShop.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    id : 0,
-    detail : null,
-    userInfo : null
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      id : options.id
-    })
-    this.getInformationDetail()
+
   },
 
   /**
@@ -71,22 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
-
-  // 读取任务详情
-  getInformationDetail(){
-    wx.showLoading({
-      title: '加载中',
-    })
-    getInformationById({id:this.data.id}).then( res => {
-      this.setData({
-        detail : res.data.info,
-        userInfo : res.data.user
-      })
-      wx.hideLoading({
-        success: (res) => {},
-      })
-    })
-    
   }
 })

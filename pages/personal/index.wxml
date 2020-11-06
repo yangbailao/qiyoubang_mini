@@ -13,9 +13,9 @@
     </view>
     </block>
     <block wx:else>
-    <image class="userinfo-avatar li" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <image class="userinfo-avatar li" src="{{userInfo.avatar_url}}" mode="cover"></image>
     <view class="detail li">
-      <view class="username">{{userInfo.nickName}}</view>
+      <view class="username">{{userInfo.nickname}}</view>
       <view class="info">
           <view>
             <image src="/images/icon-phone.svg"></image>已认证手机
@@ -31,9 +31,9 @@
 
 <!-- bar1 start -->
 <view class="bar1">
-  <view class="btn">
+  <view class="btn" bindtap="goTo" data-url="/pages/myInformation/list">
     <image src="/images/icon-my-bike.svg" style="width:62rpx"></image>
-    <view>发布的二手车</view>
+    <view>发布的信息</view>
   </view>
   <view class="btn" bindtap="goTo" data-url="/pages/myMission/list">
     <image src="/images/icon-my-mission.svg"></image>
@@ -75,7 +75,7 @@
     <text>我的订单</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>
   </view>
-  <view class="item">
+  <view class="item" bindtap="goTo" data-url="/pages/personal/myServiceShop">
     <image src="/images/icon-menu-my-service-shop.svg" class="menu"></image>
     <text>我的服务站</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>

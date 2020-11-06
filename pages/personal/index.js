@@ -19,8 +19,10 @@ Page({
    */
   onLoad: function (options) {
     if (cache.get('userInfo')) {
-      getUser().then(() => {
-        this.setUserInfo()
+      getUser().then(res => {
+        this.setData({
+          userInfo:res
+        })
       })
     }
   },
@@ -75,8 +77,10 @@ Page({
   },
   getUserInfo: function(e) {
     app.authAndLogin(e.detail.userInfo, loginUser).then(() => {
-      getUser().then(() => {
-        this.setUserInfo()
+      getUser().then( res => {
+        this.setData({
+          userInfo : res
+        })
       })
     })
   },

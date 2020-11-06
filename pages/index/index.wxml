@@ -1,6 +1,6 @@
 <!--index.wxml-->
 
-<navBar title='骑友帮' background='rgba(0,0,0,0)' />
+<navBar title='骑行帮' background='rgba(0,0,0,0)' />
 
 <view class="user-info wrap">
   <block wx:if="{{!userInfo}}">
@@ -10,7 +10,7 @@
   
   <view class="detail li">
     <view class="login">
-      HI，等您很久了！ <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+      骑行帮，能帮就帮<button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
     </view>
   </view>
   </block>
@@ -28,7 +28,7 @@
       </view>
   </view>
   <view class="right-bar">
-    <navigator url="/pages/personal/index" open-type="redirect">
+    <navigator url="/pages/personal/index">
       <view class="button">个人中心</view>
      </navigator>
   </view>

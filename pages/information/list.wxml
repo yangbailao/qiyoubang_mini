@@ -1,8 +1,8 @@
 <!--pages/mission/list.wxml-->
-<navBar title='骑友帮'/>
+<navBar title='便民信息'/>
 
 <block wx:if="{{userInfo}}">
-<navigator open-type="navigate" url="/pages/mission/add">
+<navigator open-type="navigate" url="/pages/information/add">
   <view class="add" style="bottom:160rpx"><image src="/images/moments-add.svg"></image></view>
 </navigator>
 </block>
@@ -29,16 +29,16 @@
 
     <!-- <list list='{{list}}' isEnd="{{isEnd}}" page="{{page}}"></list> -->
     <view class="item" wx:for="{{list}}" wx:key="index">
-      <navigator url="/pages/mission/detail?id={{item.id}}">
+      <navigator url="/pages/information/detail?id={{item.id}}">
       <view class="head sb">
         <view class="title">{{item.title}}</view>
         <view class="see">{{item.view}}人看过</view>
       </view>
-      <view class="info sb">
+      <!-- <view class="info sb">
         <view class="price">￥{{item.bouns}}</view>
         <view class="btn">详情</view>
       </view>
-      <view class="location">任务地点：{{item.locale}}</view>
+      <view class="location">任务地点：{{item.locale}}</view> -->
 
       <view class="user sb">
         <view class="username">

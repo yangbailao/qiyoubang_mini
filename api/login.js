@@ -17,10 +17,11 @@ export function getUser(){
           balance: res.data.balance,
           tel: res.data.tel,
           status: res.data.status,
-          id :res.data.id
+          id :res.data.id,
+          shop_id: res.data.shop_id,
+          serivce_shop_id: res.data.serivce_shop_id
         }))
-        cache.set('balance', res.data.balance)
-        resolve()
+        resolve(res.data)
       }
     })
   })

@@ -1,0 +1,30 @@
+.info{
+  background: #fff;
+}
+.info .title,.info .rank,.info .open-time,.info .tel,.info .address{padding: 0 20rpx;}
+.info .title{font-size: 34rpx;font-weight: bold;height: 75rpx;line-height: 75rpx;color: #000;padding-top: 15rpx;}
+.info .rank{color: #f00;height: 60rpx;display: flex;align-items: center;font-size: 28rpx;}
+.info .rank text{font-size: 24rpx;color: #666;margin-left: 5rpx;}
+.info .open-time,.info .tel,.info .address{display: flex;align-items: center;height: 50rpx;}
+.info .title-icon{width: 30rpx;height: 30rpx;margin-right: 10rpx;}
+.info .address{justify-content:space-between;border-top: 1px solid #e4e4eb;height: 80rpx;margin-top: 15rpx;}
+
+
+.no-shop{padding: 30rpx;text-align: center;margin-top: 40%;}
+.select{
+  position: fixed;bottom: 40rpx;left: 50rpx;width: 650rpx;
+	height: 110rpx;
+	background-image: linear-gradient(313deg, 
+  #fe6959 0%, 
+  #ff1656 100%);
+	box-shadow: 0px 3px 6px 0px 
+		rgba(255, 59, 59, 0.26);
+  border-radius: 5px;
+  margin:0 auto;
+  color: #fff;
+  text-align: center;
+  line-height: 110rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+  z-index: 9999;
+}

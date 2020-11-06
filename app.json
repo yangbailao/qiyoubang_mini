@@ -16,7 +16,10 @@
     "pages/mission/detail",
     "pages/mission/add",
     "pages/myMission/list",
+    "pages/myInformation/list",
     "pages/personal/index",
+    "pages/personal/myShop",
+    "pages/personal/myServiceShop",
     "pages/admin/shop_location",
     "pages/admin/add",
 

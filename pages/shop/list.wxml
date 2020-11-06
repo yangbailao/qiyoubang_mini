@@ -25,8 +25,9 @@
           <view>{{filter.distance(item.latitude,item.longitude,lat,long)}}km</view>
         </view>
         <view class="address">{{item.address}}</view>
-        <view class="tel">{{item.shop_tel}}</view>
       </navigator>
+        <view class="tel"><text>{{item.shop_tel}}</text> <view bindtap="choose" data-id="{{item.id}}" class="btn" wx:if="{{act}}">选择</view></view>
+      
     </view>
     
   </view>

@@ -1,0 +1,71 @@
+
+.cates{
+  height: 100rpx;
+  background-color: #ffffff;
+	box-shadow: 0px 1px 2px 0px 
+    rgba(96, 97, 112, 0.16);
+  display: flex;
+  justify-content: center;
+  white-space: nowrap;
+}
+.cates .item{padding:0 20rpx;margin-right: 30rpx;height: 80rpx;line-height: 80rpx;display: inline-block;}
+.cates .cur{border-bottom: solid 3px #ff5c5c;}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+.list{padding-top: 26rpx;}
+.list .item{
+  margin-bottom: 26rpx;
+  width: 690rpx;
+	height: 222rpx;
+	background-color: #ffffff;
+	box-shadow: 0px 1px 2px 0px 
+		rgba(96, 97, 112, 0.16);
+  border-radius: 5px;
+  padding: 20rpx;
+}
+
+.sb{display: flex;align-items: center;justify-content: space-between;}
+
+
+.list .item .head {height: 42rpx;}
+  .list .item .head .title{width: 520rpx; height: 42rpx;line-height: 42rpx;font-size: 32rpx;color: #1c1c28;overflow: hidden;}
+  .list .item .head .see{height: 32rpx;line-height: 32rpx;font-size: 24rpx;}
+
+.list .item .info{height: 86rpx;}
+  .list .item .info .price{height: 86rpx;display: flex;align-items: center; font-size: 44rpx;color: #ff5c5c;}
+  .list .item .info .btn{
+    width: 110rpx;
+    height: 52rpx;
+    background-color: #ffa61d;
+    border-radius: 3px;
+    color: #fff;text-align: center;
+    line-height: 52rpx;
+  }
+.list .item .time{
+  line-height: 47rpx;
+  font-size: 24rpx;
+  color: #666;
+  padding: 10rpx 0;
+}
+.list .item .btns{
+  font-size: 20rpx;
+  border-top: solid 1px #f2f2f5;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20rpx 0;
+}
+.list .item .btns view{
+  background: #ff5c5c;
+  color: #fff;
+  margin-left: 20rpx;
+  border-radius: 5rpx;
+  font-size: 28rpx;
+  line-height: 30rpx;
+  padding: 10rpx 20rpx;
+}
+
+

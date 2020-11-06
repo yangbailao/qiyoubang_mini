@@ -8,7 +8,11 @@ import {
 } from '../../api/login'
 import {
   getMomentsList,
-  getQiniu
+  getQiniu,
+  addMomentLike,
+  delMomentLike,
+  addMomentComment,
+  delMoments
 } from '../../api/api'
 import { cache } from '../../utils/cache.js'
 Page({
@@ -22,12 +26,15 @@ Page({
     mainMenuFlag :false,
     show: false,
     list:[],
-    listData:{
-      page: 1,
-      pageSize: 5,
-      totalPage: 1,
-      total: 1,
-    },
+    isRefresh: false,
+    isLoading:false,
+    isEnd: false,
+    page: 1,
+    pageSize: 2,
+    totalPage: 1,
+    total: 1,
+    triggered: false,
+    
     isShow: false,//控制emoji表情是否显示
     isLoad: true,//解决初试加载时emoji动画执行一次
     content: "",//评论框的内容
@@ -48,6 +55,10 @@ Page({
     ],
     emojis: [],//qq、微信原始表情
     alipayEmoji: [],//支付宝表情
+
+    focusInput: false,
+    height: '',
+    isInput: false
   },
 
   /**
@@ -74,17 +85,17 @@ Page({
     this.setData({
       scrollHeight,
       imgHeight,
-      addTop
+      addTop,
+      windowHeight: windowHeight * rpxR
     });
 
     if (cache.get('userInfo')) {
-      getUser().then(() => {
-        this.setUserInfo()
+      getUser().then(res => {
+        this.setData({
+          userInfo:res
+        })
       })
     }
-
-    //读取骑友录数据
-    this.getMomentsList()
 
     //获取7牛配置信息
     getQiniu().then((res) => {
@@ -107,7 +118,8 @@ Page({
    */
   onShow: function () {
     //读取骑友录数据
-    this.getMomentsList()
+    this.reloadData()
+    console.log(this.data.userInfo)
   },
 
   /**
@@ -128,7 +140,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    // 刷新完成
+    this.setData({
+      isRefresh: true
+    },()=> {
+      wx.stopPullDownRefresh()
+      this.reloadData()
+    })
   },
 
   /**
@@ -177,8 +195,11 @@ Page({
   },
   getUserInfo: function(e) {
     app.authAndLogin(e.detail.userInfo, loginUser).then(() => {
-      getUser().then(() => {
-        this.setUserInfo()
+      getUser().then(res => {
+        this.setData({
+          userInfo : res
+        })
+        console.log(this.data.userInfo)
       })
     })
   },
@@ -205,31 +226,74 @@ Page({
     console.log(event.detail);
   },
 
-  /**
-   * 获取列表
-   */
-  getMomentsList : function() {
-    // console.log(this.data.listData)
-    let {isEnd,isLoading} = this.data;
-    var requestData = Object.assign({}, this.data.listData)
+  // 拉到最底部
+  onScrollTolower(e){
+    console.log(e)
+    if(this.data.isEnd)
+    {
+      wx.showToast({
+        title: '所有数据已加载完成',
+        icon:'none'
+      })
+    }
+    else
+    {
+      wx.showLoading({
+        title: '数据加载中……',
+      })
+    }
+    this.searchList()
+  },
+  // 下拉刷新
+  onAbort(e) {
+    this.reloadData()
+  },
+
+  // 重新加载数据
+  reloadData() {
+
+    this.setData({
+      isEnd: false,
+      page: 1,
+      list: []
+    },() => {
+      this.searchList()
+    })
+  },
+  searchList() {
+    let {
+      page,
+      list,
+      isEnd,
+      isLoading,
+      pageSize
+    } = this.data;
+    
     scrollLoadList({
       isEnd,
       isLoading,
-      list:this.data.list,
+      list,
       apiPost: getMomentsList,
-      data: requestData,
-      beforeLoad:()=> {
-        this.setData({isLoading: true})
+      data:{
+        page,
+        pageSize
       },
-      afterLoad: ({lists,page,totalPage,total,isLoading,isEnd})=> {
+      beforeLoad:() => {
         this.setData({
-          list: lists,
-          'listData.page' : page,
-          'listData.totalPage' : totalPage,
-          'listData.total' : total,
+          isLoading: true,
+          isShowAllPop: false
+        })
+      },
+      afterLoad: ({lists,page,totalPage,total,isLoading,isEnd}) => {
+        this.setData({
           isLoading,
+          page,
+          totalPage,
+          list: lists,
+          total,
           isEnd
-        });
+        })
+        // wx.stopPullDownRefresh()
       }
     })
   },
@@ -249,5 +313,165 @@ Page({
         icon : 'none'
       })
     }
+  },
+  /**
+   * 点赞
+   */
+  like(e){
+    if(this.data.userInfo)
+    {
+      wx.showLoading({
+        title: '处理中……',
+        mask:true
+      })
+      const id = e.currentTarget.dataset.id
+      const index = e.currentTarget.dataset.index
+      const user = this.data.userInfo
+      console.log(user)
+      const like = {id:user.id,nickname:user.nickname}
+
+      const list = this.data.list
+      console.log(index)
+      addMomentLike({id}).then(res=>{
+        list[index].hasLike = 1
+        list[index].like.unshift(like)
+        console.log(list[index].like)
+        this.setData({
+          list
+        })
+        wx.hideLoading({
+          success: (res) => {},
+        })
+      })
+    }
+    else
+    {
+      wx.showToast({
+        title: '请先登录再点赞',
+        duration : 2000,
+        icon : 'none'
+      })
+    }
+  },
+  /**
+   * 取消点赞
+   */
+  notLike(e){
+    wx.showLoading({
+      title: '处理中……',
+      mask:true
+    })
+    const id = e.currentTarget.dataset.id
+    const index = e.currentTarget.dataset.index
+    const likeIndex = e.currentTarget.dataset.like_index
+    
+    const list = this.data.list
+    console.log(likeIndex,list[index].like[likeIndex])
+    
+    delMomentLike({id}).then(res=>{
+      list[index].hasLike = 0
+      list[index].like.splice(likeIndex,1)
+      this.setData({
+        list
+      })
+      wx.hideLoading({
+        success: (res) => {},
+      })
+    })
+  },
+  /**
+   * 
+   * 评论
+   */
+  comment(e){
+    console.log(e)
+    this.setData({
+      isInput : true,
+      focusInput : true,
+      commentContent: '',
+      momentsId : e.currentTarget.dataset.momentsid,
+      commentId : e.currentTarget.dataset.commentid
+    })
+  },
+
+  /**
+   *  提交评论
+   * */ 
+  submitComment(){
+    if(this.data.userInfo)
+    {
+      wx.showLoading({
+        title: '处理中……',
+        mask:true
+      })
+      const comment_id = this.data.commentId
+      const moments_id = this.data.momentsId
+      const comment = this.data.commentContent
+      const list = this.data.list
+      addMomentComment({comment_id,moments_id,comment}).then(res=>{
+        this.reloadData()
+        wx.hideLoading({
+          success: (res) => {},
+        })
+      })
+    }
+    else
+    {
+      wx.showToast({
+        title: '请先登录再评论',
+        duration : 2000,
+        icon : 'none'
+      })
+    }
+  },
+
+
+  inputFocus(e) {
+    console.log(e, '键盘弹起')
+    const inputTop = this.data.windowHeight - e.detail.height
+    this.setData({
+      inputTop: inputTop,
+      height:e.detail.height,
+      isInput: true
+    })
+  },
+  inputBlur() {
+    console.log('键盘收起')
+    this.setData({
+      isInput: false
+    })
+  },
+ 
+  focusButn: function () {
+    this.setData({
+      focusInput: true,
+      isInput: true
+    })
+  },
+  /**
+   * 输入框
+   */
+  inputText(e){
+    this.setData({
+      commentContent: e.detail.value
+    })
+  },
+  /**
+   * 删除朋友圈
+   */
+  delMoments(e){
+    wx.showModal({
+      title: '提示',
+      content: '确定要删除这条骑友录吗？',
+      success: res => {
+        if (res.confirm) {
+          delMoments({id:e.currentTarget.dataset.id}).then(res=>{
+            this.reloadData()
+          })
+        } else if (res.cancel) {
+          console.log('用户点击取消')
+        }
+      }
+    })
   }
 })

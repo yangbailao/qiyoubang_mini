@@ -1,0 +1,29 @@
+<navBar back="true" title='我的服务站'/>
+
+<view class="info wrap" wx:if="{{detail}}">
+  <view class="title">{{detail.shop_name}}</view>
+  <view class="rank">
+    <text>{{detail.rate}}分 {{detail.rate_times}}人次评价</text>
+  </view>
+  <view class="open-time">
+    <image src="/images/icon-open-time.svg" class="title-icon"></image>
+    营业时间：08:00 - 12:00
+  </view>
+  <view class="tel">
+    <image src="/images/icon-tel.svg" class="title-icon"></image>
+    联系电话：{{detail.shop_tel}}
+  </view>
+  <view class="address">
+    <view>
+      <image src="/images/icon-location-dark.svg" class="title-icon"></image>{{detail.address}}
+    </view>
+    <view>
+      <!-- <image src="/images/icon-juli2.svg" class="title-icon"></image> -->
+      8km
+    </view>
+  </view>
+</view>
+
+<view class="no-shop" wx:else>尚未选择我的服务站</view>
+
+<view class="select" bindtap="selectShop">选择我的服务站</view>

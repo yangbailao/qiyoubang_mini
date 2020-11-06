@@ -1,9 +1,10 @@
-// pages/shop/list.js
+// pages/myMission/list.js
 const app = getApp()
 import {scrollLoadList} from '../../utils/util'
 import {
-  getShopList,
-  updateUser
+  informationList,
+  delMission,
+  endMission
 } from '../../api/api'
 Page({
 
@@ -11,17 +12,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    typeActive : 1,
+    list:[],
+    // listHeitht : app.globalSystemInfo.contentHeight - 100,
     isRefresh: false,
     isLoading:false,
     isEnd: false,
-    isShowAllPop: false,
-    list: [],
     page: 1,
     pageSize: 10,
     totalPage: 1,
     total: 1,
-    lat:0,
-    long:0
+    triggered: false
   },
 
   /**
@@ -29,15 +30,10 @@ Page({
    */
   onLoad: function (options) {
     const {
-      contentHeight
+      contentHeight,
     } = app.globalSystemInfo;
-
-    let listHeight = contentHeight;
     this.setData({
-      listHeight,
-      lat : options.lat,
-      long : options.long,
-      act : options.act
+      listHeight:contentHeight
     })
   },
 
@@ -45,7 +41,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
@@ -73,7 +69,13 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    // 刷新完成
+    this.setData({
+      isRefresh: true
+    },()=> {
+      wx.stopPullDownRefresh()
+      this.reloadData()
+    })
   },
 
   /**
@@ -89,11 +91,9 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onAbort(e) {
-    this.reloadData()
-  },
   // 拉到最底部
   onScrollTolower(e){
+    console.log(e)
     if(this.data.isEnd)
     {
       wx.showToast({
@@ -109,43 +109,54 @@ Page({
     }
     this.searchList()
   },
+  // 下拉刷新
+  onAbort(e) {
+    this.reloadData()
+  },
+  // 点击切换状态
+  changeStatus(e) {
+    const {type} = e.currentTarget.dataset
+    this.setData({
+      page: 1,
+      list: [],
+      isEnd: false,
+      isLoading: false,
+      typeActive : type
+    },() => {
+      // app.globalData.myMissionType = type
+      this.reloadData()
+    })
+  }, 
   // 重新加载数据
   reloadData() {
-    console.log('f')
-    const {id, name} = app.globalData.category
+
     this.setData({
       isEnd: false,
       page: 1,
       list: [],
-      title: name,
-      cateActive: id
     },() => {
       this.searchList()
     })
   },
-
   searchList() {
     let {
       page,
       list,
-      cateActive,
       isEnd,
       isLoading,
-      pageSize,
-      lat,
-      long
+      pageSize
     } = this.data;
     
     scrollLoadList({
       isEnd,
       isLoading,
       list,
-      apiPost: getShopList,
+      apiPost: informationList,
       data:{
         page,
         pageSize,
-        lat,
-        long
+        user_id : 1,
+        cate_id : 0
       },
       beforeLoad:() => {
         this.setData({
@@ -162,20 +173,50 @@ Page({
           total,
           isEnd
         })
-
         // wx.stopPullDownRefresh()
       }
     })
   },
-  /**
-   * 选择我的店铺
-   */
-  choose(e){
-    const id = e.currentTarget.dataset.id
-    updateUser({service_shop_id:id,fuck:'ddd'}).then(res=>{
-      wx.navigateTo({
-        url: '/pages/personal/myServiceShop',
-      })
+  // 删除
+  handleDel(e){
+    const item = e.currentTarget.dataset
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title : '删除任务',
+      content: '即将删除' + item.title + '，是否继续？',
+      success : res =>{
+        if(res.cancel){
+          console.log('quxiao')
+        }else if(res.confirm){
+          delMission({id:item.id}).then(res=>{
+            wx.showToast({
+              title: '删除成功'
+            })
+            setTimeout(() => {this.reloadData()},1000)
+          })
+        }
+      }
+    })
+  },
+  // 结束任务
+  handleEnd(e){
+    const item = e.currentTarget.dataset
+    wx.showModal({
+      cancelColor: 'cancelColor',
+      title : '结束任务',
+      content: '即将结束' + item.title + '，是否继续？',
+      success : res =>{
+        if(res.cancel){
+          console.log('quxiao')
+        }else if(res.confirm){
+          endMission({id:item.id}).then(res=>{
+            wx.showToast({
+              title: '操作成功'
+            })
+            setTimeout(() => {this.reloadData()},1000)
+          })
+        }
+      }
     })
   }
 })

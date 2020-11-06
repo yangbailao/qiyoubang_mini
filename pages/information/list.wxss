@@ -18,9 +18,9 @@
 }
 .list{padding-bottom: 26rpx;}
 .list .item{
-  margin-top: 26rpx;
+  margin-top: 16rpx;
   width: 690rpx;
-	height: 276rpx;
+	height: 166rpx;
 	background-color: #ffffff;
 	box-shadow: 0px 1px 2px 0px 
 		rgba(96, 97, 112, 0.16);
@@ -31,8 +31,8 @@
 .sb{display: flex;align-items: center;justify-content: space-between;}
 
 
-.list .item .head {height: 42rpx;}
-  .list .item .head .title{width: 520rpx; height: 42rpx;line-height: 42rpx;font-size: 32rpx;color: #1c1c28;overflow: hidden;}
+.list .item .head {height: 72rpx;}
+  .list .item .head .title{width: 520rpx; height: 42rpx;line-height: 42rpx;font-size: 32rpx;color: #1c1c28;overflow: hidden;padding-bottom: 30rpx;}
   .list .item .head .see{height: 32rpx;line-height: 32rpx;font-size: 24rpx;}
 
 .list .item .info{height: 86rpx;}
