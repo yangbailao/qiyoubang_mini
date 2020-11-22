@@ -40,7 +40,12 @@ layer-style="1"
       
     </view>
 
-    <view class="item">
+    <view class="item" wx:for="{{priceList}}" wx:key="index">
+      <view class="name">{{item.title}}</view>
+      <view class="price">{{item.price}}元起</view>
+    </view>
+
+    <!-- <view class="item">
       <view class="name">修车</view>
       <view class="price">20元起</view>
     </view>
@@ -58,12 +63,7 @@ layer-style="1"
     <view class="item">
       <view class="name">修车</view>
       <view class="price">20元起</view>
-    </view>
-
-    <view class="item">
-      <view class="name">修车</view>
-      <view class="price">20元起</view>
-    </view>
+    </view> -->
   </view>
 
   

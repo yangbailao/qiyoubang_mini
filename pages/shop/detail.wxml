@@ -71,8 +71,8 @@
 
 <!-- 底部 -->
 <view class="footer">
-  <view class="btns">
-    <image src="/images/icon-stars-no.svg"></image>收藏店铺
+  <view class="btns" bindtap="touchToCollection">
+    <image src="{{detail.favor == 1?'/images/icon-stars-yes.svg':'/images/icon-stars-no.svg'}}  "></image>收藏店铺
   </view>
   <view class="btns">
     <navigator url="/pages/shop/comment?id={{detail.id}}&title={{detail.shop_name}}&img={{detail.img}}&address={{detail.address}}&tel={{detail.shop_tel}}">
@@ -80,6 +80,9 @@
     </navigator>
   </view>
   <view class="call">
-    <image src="/images/call.svg"></image>
+    <button open-type="contact">
+      <image src="/images/call.svg"></image>
+    </button>
+    
   </view>
 </view>

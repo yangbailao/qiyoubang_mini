@@ -20,6 +20,9 @@
     "pages/personal/index",
     "pages/personal/myShop",
     "pages/personal/myServiceShop",
+    "pages/personal/collection",
+    "pages/personal/myComment",
+    "pages/personal/feedback",
     "pages/admin/shop_location",
     "pages/admin/add",
 
@@ -29,7 +32,10 @@
 
     "pages/shop/list",
     "pages/shop/comment",
-    "pages/shop/detail"
+    "pages/shop/detail",
+    "pages/help/index",
+    "pages/help/detail",
+    "pages/certification/index"
 
   ],
   "window":{

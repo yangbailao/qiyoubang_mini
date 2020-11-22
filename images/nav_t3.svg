@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="45.277" height="46.368" viewBox="0 0 45.277 46.368">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#linear-gradient);
+      }
+
+      .cls-2 {
+        filter: url(#路径_2936);
+      }
+    </style>
+    <linearGradient id="linear-gradient" x1="0.188" x2="0.733" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0.502"/>
+    </linearGradient>
+    <filter id="路径_2936" x="0" y="0" width="45.277" height="46.368" filterUnits="userSpaceOnUse">
+      <feOffset dy="3" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feFlood flood-color="#d6451e" flood-opacity="0.812"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g class="cls-2" transform="matrix(1, 0, 0, 1, 0, 0)">
+    <path id="路径_2936-2" data-name="路径 2936" class="cls-1" d="M122.911,113.457h-4.364a1.091,1.091,0,1,0,0,2.182h4.364a1.091,1.091,0,1,0,0-2.182ZM128.366,108h-9.82a1.091,1.091,0,0,0,0,2.182h9.82a1.091,1.091,0,1,0,0-2.182Zm0-5.455h-9.82a1.091,1.091,0,0,0,0,2.182h9.82a1.091,1.091,0,1,0,0-2.182Zm6.546-1.091v-1.091A4.377,4.377,0,0,0,130.548,96H116.364A4.377,4.377,0,0,0,112,100.364V120a4.377,4.377,0,0,0,4.364,4.364h18.548A4.377,4.377,0,0,0,139.277,120V105.82A4.377,4.377,0,0,0,134.912,101.455ZM137.095,120a2.189,2.189,0,0,1-2.182,2.182H116.364A2.189,2.189,0,0,1,114.182,120V100.364a2.189,2.189,0,0,1,2.182-2.182h14.184a2.189,2.189,0,0,1,2.182,2.182V116.73a1.091,1.091,0,1,0,2.182,0V103.637a2.189,2.189,0,0,1,2.182,2.182Z" transform="translate(-103 -90)"/>
+  </g>
+</svg>

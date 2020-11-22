@@ -2,7 +2,8 @@
 //获取应用实例
 const app = getApp()
 import {
-  getShopList
+  getShopList,
+  getPriceList
 } from '../../api/api'
 Page({
 
@@ -23,7 +24,8 @@ Page({
       longitude: 109.59364,
       width: 50,
       height: 50
-    }]
+    }],
+    type:1
   },
 
 
@@ -33,6 +35,7 @@ Page({
    */
   onLoad: function (options) {
     app.editTabBar();
+    app.chengeNeed()
     const {
       contentHeight
     } = app.globalSystemInfo;
@@ -47,6 +50,7 @@ Page({
 
     //读取身边的店铺列表并标记
     this.getShops()
+    this.getPrice()
   },
 
   /**
@@ -192,12 +196,17 @@ Page({
             markers
           })
         })
-        
-          
-        
-        
       }
     )
+  },
+  getPrice:function(){
+    let that = this
+    getPriceList({page:1,pageSize:10,type:that.type}).then(res => {
+      let list = res.data.list
+      that.setData({
+        priceList:list
+      })
+    })
   }
   
 })

@@ -435,10 +435,6 @@ export function updateUser(data) {
   })
 }
 
-
-
-
-
 /**
  * 下面开始是乐竞购的接口
  */
@@ -957,6 +953,193 @@ export function queryKd() {
           title: '请求失败了',
           image: '/assets/images/close.png'
         })
+      }
+    })
+  })
+}
+
+// 首页数据
+export function fetchIndex(){
+  return new Promise((resolve) => {
+    http({
+      url:'/mini_api/index/index',
+      success:function(data){
+        if(data.code == '1'){
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+// 价格列表
+export function getPriceList(data) {
+  return new Promise((resolve, reject) => {
+    http({
+      url: '/mini_api/shop_base_price/getList',
+      data,
+      success: function (data) {
+        console.log('价格列表', data)
+        resolve(data)
+      }
+    })
+  })
+}
+// 收藏列表
+export function fetchCollectionList(data){
+  return new Promise((resolve) => {
+    http({
+      url:'/mini_api/user_favor/getList',
+      data,
+      success:function(res) {
+        console.log("显示收藏",res)
+        resolve(res)
+      }
+    })
+  })
+}
+// 收藏/取消
+export function fetchCollection(data){
+  return new Promise((resolve) => {
+    http({
+      url:'/mini_api/user_favor/create',
+      data,
+      success:function(res) {
+        console.log("收藏",res)
+        resolve(res)
+      }
+    })
+  })
+}
+
+// 评论列表
+export function fetchCommentList(data){
+  return new Promise((resolve) => {
+    http({
+      url:'/mini_api/shop_comment/myComment',
+      data,
+      success:function(res) {
+        console.log("我的评论",res)
+        resolve(res)
+      }
+    })
+  })
+}
+
+// 意见反馈
+export function upDateFeedback(data){
+  return new Promise((resolve) => {
+    http({
+      url:'/mini_api/message/add',
+      data,
+      success:function(res) {
+        console.log("意见反馈",res)
+        resolve(res)
+      }
+    })
+  })
+}
+
+// 接单
+export function getTake(data){
+  return new Promise((resolve) => {
+    http({
+      url:'/mini_api/mission/take',
+      data,
+      success:function(res) {
+        console.log("接单",res)
+        resolve(res)
+      }
+    })
+  })
+}
+
+// 检查是否有未完成的操作
+export function getCheckFinish(data){
+  return new Promise((resolve) => {
+    http({
+      url:'/mini_api/mission/checkFinish',
+      data,
+      success:function(res) {
+        console.log("是否有未完成",res)
+        resolve(res)
+      }
+    })
+  })
+}
+// 接任务反馈
+export function getConfirmMission(data){
+  return new Promise((resolve) => {
+    http({
+      url:'/mini_api/mission/confirmMission',
+      data,
+      success:function(res) {
+        console.log("是否接任务",res)
+        resolve(res)
+      }
+    })
+  })
+}
+
+// 获取我来帮分类
+export function getWorkerCate() {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/worker_cate/getList',
+      success: function (data) {
+        console.log('我来帮任务分类', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+// 我来帮信息列表
+export function workerList(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/user/getWorkerList',
+      data,
+      success: function (data) {
+        console.log('我来帮信息列表', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+// 我来帮信息详情
+export function fetchHelpDetail(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/user/getById',
+      data,
+      success: function (data) {
+        console.log('我来帮信息详情', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+
+// 信息列表
+export function updateBindTel(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/user/bindTel',
+      data,
+      success: function (data) {
+        console.log('提交认证', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
       }
     })
   })

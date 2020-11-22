@@ -2,23 +2,23 @@
 
 <navBar title='骑行帮' background='rgba(0,0,0,0)' />
 
-<view class="user-info wrap">
+<!-- <view class="user-info wrap">
   <block wx:if="{{!userInfo}}">
-  <view class="userinfo-avatar li un-login">
-    <image src="/images/avatar.svg" mode="cover"></image>
-  </view>
-  
-  <view class="detail li">
-    <view class="login">
-      骑行帮，能帮就帮<button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+    <view class="userinfo-avatar li un-login">
+      <image src="/images/avatar.svg" mode="cover"></image>
     </view>
-  </view>
+
+    <view class="detail li">
+      <view class="login">
+        骑行帮，能帮就帮<button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
+      </view>
+    </view>
   </block>
   <block wx:else>
-  <image class="userinfo-avatar li" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-  <view class="detail li">
-    <view class="username">{{userInfo.nickName}}</view>
-    <view class="info">
+    <image class="userinfo-avatar li" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <view class="detail li">
+      <view class="username">{{userInfo.nickName}}</view>
+      <view class="info">
         <view>
           <image src="/images/icon-phone.svg"></image>已认证手机
         </view>
@@ -26,41 +26,118 @@
           <image src="/images/icon-bangbangfen.svg"></image>帮帮分：98分
         </view>
       </view>
-  </view>
-  <view class="right-bar">
-    <navigator url="/pages/personal/index">
-      <view class="button">个人中心</view>
-     </navigator>
-  </view>
+    </view>
+    <view class="right-bar">
+      <navigator url="/pages/personal/index">
+        <view class="button">个人中心</view>
+      </navigator>
+    </view>
   </block>
-  
-  
+</view> -->
+
+<view class="navTab">
+  <view class="item" bindtap="touchNext" data-url="/pages/repair/index?type=1">
+    <view class="imgView"><image src="/images/nav_t1.svg" mode="widthFix" alt=""></image></view>
+    <view class="name">修车</view>
+  </view>
+  <view class="item" bindtap="touchNext" data-url="/pages/rescue/index?type=2">
+    <view class="imgView"><image src="/images/nav_t2.svg" mode="widthFix" alt=""></image></view>
+    <view class="name">救援</view>
+  </view>
+  <view class="item" bindtap="touchNext" data-url="/pages/mission/list">
+    <view class="imgView"><image src="/images/nav_t3.svg" mode="widthFix" alt=""></image></view>
+    <view class="name">任务帮</view>
+  </view>
+  <view class="item" bindtap="touchNext" data-url="/pages/help/index">
+    <view class="imgView"><image src="/images/nav_t4.svg" mode="widthFix" alt=""></image></view>
+    <view class="name">我来帮</view>
+  </view>
+</view>
+<!-- 轮播图  -->
+<view class="bannerView">
+  <view class="page-section page-section-spacing swiper">
+    <swiper class="banner-slide" bindchange="swiperChange" autoplay="true" duration="500" circular="true"
+      style="height:{{swiperHeight}}px">
+      <swiper-item wx:for="{{imagesList}}" wx:key="index">
+        <view class='banner-item'>
+          <navigator url="">
+            <image src="{{item.url}}" class="banner-img" width="636" height="375" mode="widthFix"></image>
+          </navigator>
+        </view>
+      </swiper-item>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{imagesList}}" wx:key="*">
+        <view class="dot {{index == current ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
 </view>
 
+<!-- 文字广告 -->
 <view class="notice wrap">
-  <image class="icon-notice fl" src="/images/icon-notice.svg"></image>
-  <view class="detail fl">这里是公告</view>
+  <view class="notice_cv">
+    <view class="icon"><image class="icon-notice" src="/images/icon-notice.svg"></image></view>
+  <!-- <view class="detail fl">这里是公告</view> -->
+  <view class="swiper_gg detail fl">
+    <swiper class="banner-slide" duration="500" vertical="true" autoplay="true" circular="true">
+      <swiper-item wx:for="{{ newsList }}" wx:key="index">
+        <view class='banner-item'>
+          {{item.title}}
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+  </view>
 </view>
-
-<scroll-view class="list-1" scroll-x="true" >
+<view class="container">
+  
+  <!-- <scroll-view class="list-1" scroll-x="true" >
   <view class="detail detail-1" bindtap="test">
     <view><image class="img" src="/images/index-btn-share.svg"></image></view>
     <view class="text">
       <view class="title">分享有礼</view>
       <view class="desc">免费修车大礼包</view>
     </view>
-    
   </view>
   <view class="detail detail-2"></view>
   <view class="detail detail-3"></view>
-</scroll-view>
+</scroll-view> -->
+  <!-- <view class="bannerImg">
+    <image src="http://static.tx520.cn/ling/huajian/image/202010/57d192b08dcda6ae83873b4ac0ddecf5.jpg" mode="widthFix">
+    </image>
+  </view> -->
 
-<view class="title-box wrap">
-  <view class="title">活动中心</view>
-  <view class="more">查看全部</view>
-</view>
+  <view class="title-box wrap">
+    <view class="title">任务帮</view>
+    <view class="more" bindtap="touchNext" data-url="/pages/mission/list">查看全部</view>
+  </view>
+  <view class="list wrap">
+    <view class="item" wx:for="{{list}}" wx:key="index">
+      <navigator url="/pages/mission/detail?id={{item.id}}">
+        <view class="head sb">
+          <view class="title">{{item.title}}</view>
+          <view class="see">{{item.view}}人看过</view>
+        </view>
+        <view class="info sb">
+          <view class="price">￥{{item.bouns}}</view>
+          <view class="btn">详情</view>
+        </view>
+        <view class="location">任务地点：{{item.locale}}</view>
 
-<scroll-view class="activity-list wrap" scroll-y="true" style="height:{{scrollHeight}}rpx">
+        <view class="user sb">
+          <view class="username">
+            <image src="{{item.avatar_url}}" mode="cover"></image>
+            {{item.nickname}}
+          </view>
+          <view class="fen">帮帮分:<text class="red">{{item.credit}}分</text></view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+
+
+  <!-- <scroll-view class="activity-list wrap" scroll-y="true" style="height:{{scrollHeight}}rpx">
   <view class="activity-box">
     <view class="img">活动图</view>
     <view class="title">推荐有礼</view>
@@ -110,18 +187,18 @@
     <view class="btn">了解更多</view>
   </view>
   
-</scroll-view>
+  </scroll-view> -->
+</view>
+
 
 <import src="../../template/tabbar.wxml" />
 <template is="tabBar" data="{{tabBar}}" />
 <view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
-<import src="../../template/tabbar-index-menu.wxml" />
+<!-- <import src="../../template/tabbar-index-menu.wxml" />
 <view wx:if="{{indexMenuFlag}}">
   <template is="indexMenu" />
-</view>
+</view> -->
 <import src="../../template/tabbar-main-menu.wxml" />
 <view wx:if="{{mainMenuFlag}}">
   <template is="mainMenu" />
 </view>
-  
-

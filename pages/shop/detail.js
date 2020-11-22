@@ -1,8 +1,10 @@
 // pages/shop/detail.js
 import {
   getShopById,
-  getQiniu
+  getQiniu,
+  fetchCollection
 } from '../../api/api'
+const app = getApp()
 Page({
 
   /**
@@ -16,6 +18,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.chengeNeed()
     this.setData({
       id : options.id
     })
@@ -109,4 +112,28 @@ Page({
     })
   },
   // 收藏店铺
+  touchToCollection:function(){
+    let that = this
+    let data = {'shop_id':that.data.id}
+    fetchCollection(data).then((res) => {
+      if(res.code == 1) {
+        if(that.data.detail.favor == 0) {
+          wx.showToast({
+            title: '收藏成功',
+          })
+        } else {
+          wx.showToast({
+            title: '取消收藏成功',
+            icon:'none'
+          })
+        }
+        that.getDetail()
+      } else {
+        wx.showToast({
+          title: '收藏失败',
+          icon:'none'
+        })
+      }
+    })
+  }
 })

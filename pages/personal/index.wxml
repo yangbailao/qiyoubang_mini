@@ -1,5 +1,5 @@
 <!--pages/personal/index.wxml-->
-<navBar back="true" title='个人中心'/>
+<navBar title='个人中心'/>
 <view class="user-info wrap">
   <block wx:if="{{!userInfo}}">
     <view class="userinfo-avatar li un-login">
@@ -39,7 +39,7 @@
     <image src="/images/icon-my-mission.svg"></image>
     <view>发布的任务</view>
   </view>
-  <view class="btn">
+  <view class="btn" bindtap="goTo" data-url="/pages/personal/collection">
     <image src="/images/icon-my-favor-shop.svg"></image>
     <view>收藏的店铺</view>
   </view>
@@ -70,6 +70,11 @@
 
 <!-- list start -->
 <view class="list">
+  <view class="item" bindtap="goTo" data-url="/pages/certification/index">
+    <image src="/images/icon-menu-message.svg" class="menu"></image>
+    <text>我要认证</text>
+    <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+  </view>
   <view class="item">
     <image src="/images/icon-menu-teade.svg" class="menu"></image>
     <text>我的订单</text>
@@ -85,7 +90,7 @@
     <text>我的店铺</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>
   </view>
-  <view class="item">
+  <view class="item" bindtap="goTo" data-url="/pages/personal/myComment">
     <image src="/images/icon-menu-my-comment.svg" class="menu"></image>
     <text>我的评价</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>
@@ -94,13 +99,29 @@
 
 <view class="list" style="margin-top:22rpx">
   <view class="item">
-    <image src="/images/icon-menu-contact.svg" class="menu"></image>
-    <text>联系客服</text>
-    <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+    <button class="serive_btn" open-type="contact">
+      <image src="/images/icon-menu-contact.svg" class="menu"></image>
+      <text>联系客服</text>
+      <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+    </button>
   </view>
-  <view class="item">
+  <view class="item" bindtap="goTo" data-url="/pages/personal/feedback?id={{userInfo.id}}">
     <image src="/images/icon-menu-message.svg" class="menu"></image>
     <text>意见反馈</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>
   </view>
 </view>
+
+<!-- tabbar -->
+<import src="../../template/tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
+<view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
+<!-- <import src="../../template/tabbar-index-menu.wxml" />
+<view wx:if="{{indexMenuFlag}}">
+  <template is="indexMenu" />
+</view> -->
+<import src="../../template/tabbar-main-menu.wxml" />
+<view wx:if="{{mainMenuFlag}}">
+  <template is="mainMenu" />
+</view>
+<!-- tabbar -->

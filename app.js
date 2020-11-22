@@ -71,6 +71,25 @@ App({
       tabBar: tabBar
     });
   },
+  chengeNeed:function(){
+    let need = wx.getStorageSync('need')
+    if(need && need > 0) {
+      let takeId = wx.getStorageSync('takeId')
+      wx.showModal({
+        title:'提示',
+        content:'有一个任务未完成，是否查看？',
+        confirmText:'去查看',
+        showCancel:false,
+        success:function(res){
+          if(res.confirm){
+            wx.navigateTo({
+              url: '/pages/mission/detail?id=' + takeId + '&showAccpte=true' ,
+            })
+          }
+        }
+      })
+    }
+  },
 
   showMenu: function (index) {
     var _curPageArr = getCurrentPages();
@@ -142,10 +161,10 @@ App({
           text: "首页",
           clas: "menu-item",
           selected: false,
-          nav: false,
+          nav: true,
           index:1
         },
- 
+
         {
           selectedIconPath: "/images/tabbar-moments-cur.svg",
           iconPath: "/images/tabbar-moments.svg",
@@ -157,16 +176,16 @@ App({
           index:2
         },
 
-        {
-          selectedIconPath: "/images/tabbar-main.svg",
-          iconPath: "/images/tabbar-main.svg",
-          pagePath: "/pages/repair/index",
-          text: "",
-          clas: "menu-item menu-main",
-          selected: false,
-          nav: false,
-          index:3
-        },
+        // {
+        //   selectedIconPath: "/images/tabbar-main.svg",
+        //   iconPath: "/images/tabbar-main.svg",
+        //   pagePath: "/pages/repair/index",
+        //   text: "",
+        //   clas: "menu-item menu-main",
+        //   selected: false,
+        //   nav: false,
+        //   index:3
+        // },
  
         {
  
@@ -179,17 +198,27 @@ App({
           nav: true,
           index:4
         },
+        // {
+        //   selectedIconPath: "/images/tabbar-mission-cur.svg",
+        //   iconPath: "/images/tabbar-mission.svg",
+        //   pagePath: "/pages/mission/list",
+        //   text: "骑友帮",
+        //   clas: "menu-item",
+        //   selected: false,
+        //   nav: true,
+        //   index:5
+        // }
+ 
         {
-          selectedIconPath: "/images/tabbar-mission-cur.svg",
-          iconPath: "/images/tabbar-mission.svg",
-          pagePath: "/pages/mission/list",
-          text: "骑友帮",
+          selectedIconPath: "/images/tabbar-user-on.svg",
+          iconPath: "/images/tabbar-user.svg",
+          pagePath: "/pages/personal/index",
+          text: "个人中心",
           clas: "menu-item",
           selected: false,
           nav: true,
           index:5
         }
- 
       ],
  
       position: "bottom"

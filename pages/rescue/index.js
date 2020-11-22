@@ -2,7 +2,8 @@
 //获取应用实例
 const app = getApp()
 import {
-  getShopList
+  getShopList,
+  getPriceList
 } from '../../api/api'
 Page({
 
@@ -23,7 +24,9 @@ Page({
       longitude: 109.59364,
       width: 50,
       height: 50
-    }]
+    }],
+    type:2,
+    priceList:[]
   },
 
 
@@ -33,6 +36,7 @@ Page({
    */
   onLoad: function (options) {
     app.editTabBar();
+    app.chengeNeed()
     const {
       contentHeight
     } = app.globalSystemInfo;
@@ -40,13 +44,19 @@ Page({
     this.setData({
       contentHeight
     })
-
+    console.log("显示传值____",options.type)
+    if(options.type != undefined && options.type.length > 0){
+      this.setData({
+        type:options.type
+      })
+    }
 
     //获取当前的地理位置、速度
     this.getLocation();
 
     //读取身边的店铺列表并标记
     this.getShops()
+    this.getPrice()
   },
 
   /**
@@ -192,12 +202,17 @@ Page({
             markers
           })
         })
-        
-          
-        
-        
       }
     )
+  },
+  getPrice:function(){
+    let that = this
+    getPriceList({page:1,pageSize:10,type:that.type}).then(res => {
+      let list = res.data.list
+      that.setData({
+        priceList:list
+      })
+    })
   }
   
 })

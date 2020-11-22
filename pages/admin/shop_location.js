@@ -27,6 +27,7 @@ Page({
    */
   onLoad: function (opt) {
     app.editTabBar();
+    app.chengeNeed()
     const {
       contentHeight
     } = app.globalSystemInfo;

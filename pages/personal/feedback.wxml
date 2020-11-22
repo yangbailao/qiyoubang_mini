@@ -1,0 +1,42 @@
+<!--pages/personal/feedback.wxml-->
+<navBar title='意见反馈' back />
+<view class="bg"><image src="/images/mission-add-bg.png"></image></view>
+<view class="wrap form" style="height:{{scrollHeight}}rpx">
+  <view class="form-item wrap">
+    <view class="title"><text>*</text>请填写您的标题</view>
+    <input type="text" class="input" bindinput="changeTitle" placeholder="" value="{{form.title}}" />
+  </view>
+  <view class="form-item wrap">
+    <textarea placeholder="请填写您的建议，我们将为您不断改进" bindinput="changeContent" value="{{form.content}}" />
+  </view>
+  <view class="photo">
+    <view class="head">上传相关问题的截图或者照片! (<text class="red">{{uploadImg.length}}</text>/3)</view>
+
+    <view>
+      <view class="uploadList">
+        <view wx:for="{{uploadImg}}" wx:key="index" class="uploadItem">
+          <image src="{{item}}" mode="aspectFill"></image>
+          <icon data-index="{{index}}" bindtap="del" class="icon-small" type="cancel" size="23"></icon>
+        </view>
+
+        <!-- <view wx:if="{{uploadVideo}}" class="video">
+          <video src="{{uploadVideo}}"></video>
+          <icon bindtap="delVideo" class="icon-small" type="cancel" size="23"></icon>
+        </view> -->
+
+        <view class="uploadBtn {{uploadImg.length >= 3 || uploadVideo ? 'hide': ''}}" bindtap="takePhoto">
+          <image src="/images/icon-add.svg"></image>
+        </view>
+
+      </view>
+      
+    </view>
+
+  </view>
+
+
+</view>
+
+
+
+<view class="submit" bindtap="submit">提交</view>

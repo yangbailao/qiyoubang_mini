@@ -1,6 +1,6 @@
 import {
   login,
-  getUserInfo
+  getUserInfo, fetchIndex
 } from './api';
 import { cache } from '../utils/cache.js';
 const app = getApp()
@@ -53,6 +53,17 @@ export function loginUser(wxUser){
         } else {
           console.log('登录失败！' + res.errMsg)
         }
+      }
+    })
+  })
+}
+
+export function getIndex(){
+  return new Promise((resolve) => {
+    fetchIndex().then(res => {
+      // console.log(res);
+      if (res.code == '1') {
+        resolve(res.data)
       }
     })
   })

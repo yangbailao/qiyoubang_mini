@@ -1,0 +1,27 @@
+<!--pages/personal/collection.wxml-->
+<navBar back='true' title='会员收藏'> </navBar>
+<view class="container">
+  <view class="listView">
+    <view class="item" wx:for="{{list}}" wx:key="index">
+      <view class="infoView">
+        <view class="imgView">
+          <image src="{{item.img}}"></image>
+        </view>
+        <view class="info_rv">
+          <view class="title">
+            <view class="name">{{item.shop_name}}</view>
+            <image bindtap="touchCollection" data-id="{{item.id}}" src="/images/zan-shixin.svg"></image>
+          </view>
+          <view class="time">
+            <image src="/images/icon-open-time.svg"></image>
+            <view class="tt">营业时间：8:00-18:00</view>
+          </view>
+          <view class="address">
+            <image src="/images/icon-location-dark.svg"></image>
+            <view class="tt">{{item.address}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,86 @@
+<!--pages/certification/index.wxml-->
+<navBar title='认证' back />
+<view class="container">
+  <view class="info">
+    <view class="info-bar">
+      <view class="info-name">姓名</view>
+      <input placeholder="请输入姓名" bindblur="updateData" bindinput="changeInput" data-name="name" value="{{fromData.name}}"
+        class="info-txt"></input>
+    </view>
+    <view class="line"></view>
+    <view class="info-bar">
+      <view class="info-name">电话号码</view>
+      <input type="number" placeholder="请输入电话号码" bindblur="updateData" bindinput="changeInput" data-name="phone" value="{{fromData.phone}}"
+        class="info-txt"></input>
+    </view>
+    <view class="line"></view>
+    <view class="info-bar">
+      <view class="info-name">验证码</view>
+      <input placeholder="请输入验证码" bindblur="updateData" bindinput="changeInput" data-name="code" value="{{fromData.code}}"
+        class="info-txt"></input>
+        <button class="getcodenow" bindtap="getVerifyCode" disabled="{{countDown != 0}}">{{verifyText}}</button>
+    </view>
+    <view class="line"></view>
+    <view class="info-bar">
+      <view class="info-name">身份证号码</view>
+      <input placeholder="请输入身份证号码" bindblur="updateData" bindinput="changeInput" data-name="card" value="{{fromData.card}}"
+        class="info-txt"></input>
+    </view>
+    <view class="line"></view>
+    <view class="info-bar">
+      <view class="info-name">选择分类</view>
+      <view class="clear cateView">
+        <view class="item {{item.selected?'active':''}}" wx:for="{{allCategory}}" wx:key="index" bindtap="touchCate" data-index="{{index}}">
+          {{item.title}}
+        </view>
+      </view>
+    </view>
+    <view class="line"></view>
+
+    <view class="info-bar info-bar2">
+      <view class="info-name">简介简历</view>
+      <textarea placeholder="请输入简介简历" bindblur="updateData" bindinput="changeInput" data-name="introduction"
+        value="{{fromData.introduction}}"></textarea>
+    </view>
+    <view class="line"></view>
+
+  </view>
+
+  <view class="title">上传营业执照（点击下方上传图片）</view>
+  <view class="up-wrap">
+    <view class="user_card" bindtap="takePhoto" data-index="1">
+      <block wx:if="{{image1 == ''}}">
+        <image src="/images/cardup_bg1.jpg" mode="" class="cardimg"></image>
+        <view class="user_cardupbox">
+          <view class="user_cardup_ico">
+            <image src="/images/camera_ico2.png"></image>
+          </view>
+          <text>请上传身份证正面</text>
+        </view>
+      </block>
+
+      <block v-else>
+        <image src="{{image1}}" mode="" class="cardimg"></image>
+      </block>
+
+    </view>
+    <view class="user_card" bindtap="takePhoto" data-index="2">
+      <block wx:if="{{image2 == ''}}">
+        <image src="/images/cardup_bg2.jpg" mode="" class="cardimg"></image>
+        <view class="user_cardupbox">
+          <view class="user_cardup_ico">
+            <image src="/images/camera_ico2.png"></image>
+          </view>
+          <text>请上传身份证反面</text>
+        </view>
+      </block>
+      <block v-else>
+        <image src="{{image2}}" mode="" class="cardimg"></image>
+      </block>
+    </view>
+  </view>
+
+  <view class="up-btn" style="padding-bottom: {{buBottom}}rpx">
+    <view class="tixian-btn" bindtap="save">确认提交</view>
+  </view>
+</view>

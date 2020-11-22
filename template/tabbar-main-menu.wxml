@@ -1,11 +1,11 @@
 <template name="mainMenu">
   <view class="tabbar-main-menu">
-    <navigator url="/pages/rescue/index" open-type="reLaunch">
+    <navigator url="/pages/rescue/index?type=2" open-type="reLaunch">
       <view class="li">
         <image src="/images/tabbar-rescue.svg" class="img"></image>
       </view>
     </navigator>
-    <navigator url="/pages/repair/index" open-type="reLaunch">
+    <navigator url="/pages/repair/index?type=1" open-type="reLaunch">
       <view class="li">
         <image src="/images/tabbar-repair.svg" class="img"></image>
       </view>

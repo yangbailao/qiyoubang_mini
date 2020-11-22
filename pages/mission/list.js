@@ -34,7 +34,9 @@ Page({
     isOnload: false,  // 是否曾经加载过
     cateActive: 0,
     focus: true,
-    triggered: false
+    triggered: false,
+    searchShow:false,
+    searchStr:''
   },
 
   /**
@@ -42,6 +44,7 @@ Page({
    */
   onLoad: function (options) {
     app.editTabBar();
+    app.chengeNeed()
     const {
       contentHeight,
       navBarExtendHeight,
@@ -135,7 +138,21 @@ Page({
   onShareAppMessage: function () {
 
   },
-
+  touchSearch:function(){
+    this.setData({
+      searchShow:true,
+      focus:true
+    })
+  },
+  touchToSearch:function(e){
+    let value = e.detail.value
+    this.setData({
+      page:1,
+      searchStr:value
+    })
+    
+    this.reloadData()
+  },
   /**
    * tabbar
    */
@@ -219,7 +236,8 @@ Page({
       cateActive,
       isEnd,
       isLoading,
-      pageSize
+      pageSize,
+      searchStr
     } = this.data;
     
     scrollLoadList({
@@ -231,7 +249,8 @@ Page({
         page,
         pageSize,
         cate_id: cateActive || 0,
-        status : 1
+        status : 1,
+        title:searchStr
       },
       beforeLoad:() => {
         this.setData({

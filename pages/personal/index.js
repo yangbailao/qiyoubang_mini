@@ -11,13 +11,17 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    maskFlag : false,
+    indexMenuFlag :false,
+    mainMenuFlag :false,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.editTabBar();
+    app.chengeNeed()
     if (cache.get('userInfo')) {
       getUser().then(res => {
         this.setData({
@@ -75,6 +79,23 @@ Page({
   onShareAppMessage: function () {
 
   },
+  /**
+   * tabbar
+   */
+  showMenu : function(e){
+    this.setData({
+      maskFlag : true
+    })
+    app.showMenu(e.currentTarget.dataset.index);
+  },
+  hideMask : function(e){
+    this.setData({
+      maskFlag : false,
+      indexMenuFlag : false,
+      mainMenuFlag :false
+    })
+  },
+  /******* tabbar *******/ 
   getUserInfo: function(e) {
     app.authAndLogin(e.detail.userInfo, loginUser).then(() => {
       getUser().then( res => {

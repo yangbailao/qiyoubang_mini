@@ -1,12 +1,14 @@
 //index.js
 //获取应用实例
 const app = getApp()
+import {scrollLoadList} from '../../utils/util';
 import {
   loginUser,
-  getUser
+  getUser,
+  getIndex
 } from '../../api/login'
 import { cache } from '../../utils/cache.js'
-
+import {missionList} from '../../api/api'
 Page({
   data: {
     motto: 'Hello World',
@@ -16,15 +18,50 @@ Page({
     maskFlag : false,
     indexMenuFlag :false,
     mainMenuFlag :false,
+    swiperHeight:0,
+    newsList:[],
+    imagesList:[],
+    current:0,
+    isRefresh:false,
+    isLoading:false,
+    isEnd: false,
+    list: [],
+    page: 1,
+    pageSize: 10,
+    cateActive: 0,
   },
+    // 拉到最底部
+    onScrollTolower(e){
+      if(this.data.isEnd)
+      {
+        wx.showToast({
+          title: '所有数据已加载完成',
+          icon:'none'
+        })
+      }
+      else
+      {
+        wx.showLoading({
+          title: '数据加载中……',
+        })
+      }
+      this.searchList()
+    },
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
+  swiperChange:function(e){
+    var that = this;
+    that.setData({
+      current: e.detail.current,
+    })
+  },
   onLoad: function () {
     app.editTabBar();
+    app.chengeNeed()
     const {
       navBarHeight,
       navBarExtendHeight,
@@ -46,7 +83,56 @@ Page({
         this.setUserInfo()
       })
     }
-
+    getIndex().then((res) => {
+      this.setData({
+        imagesList:res.images,
+        newsList:res.notice
+      })
+    })
+    let title = '送文件'
+    this.setData({
+      page: 1,
+      list: [],
+      isEnd: false,
+      isLoading: false,
+      title,
+      cateActive: '4'
+    },() => {
+      this.searchList()
+    })
+  },
+  onShow:function(){
+    let getHeight = (wx.getSystemInfoSync().windowWidth - 30)*9/16
+    this.setData({
+      swiperHeight:getHeight
+    })
+  },
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+  onPullDownRefresh: function () {
+    let that = this
+    // 刷新完成
+    that.setData({
+      isRefresh: true
+    },()=> {
+      wx.stopPullDownRefresh()
+      that.searchList()
+    })
+  },
+    /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom: function () {
+    let that = this
+    // 刷新完成
+    that.setData({
+      isRefresh: true,
+      page:that.data.page-0+1
+    },()=> {
+      wx.stopPullDownRefresh()
+      that.searchList()
+    })
   },
   getUserInfo: function(e) {
     app.authAndLogin(e.detail.userInfo, loginUser).then(() => {
@@ -73,7 +159,47 @@ Page({
   test : function(){
     console.log(this.data)
   },
+  searchList() {
+    let {
+      page,
+      list,
+      cateActive,
+      isEnd,
+      isLoading,
+      pageSize
+    } = this.data;
+    
+    scrollLoadList({
+      isEnd,
+      isLoading,
+      list,
+      apiPost: missionList,
+      data:{
+        page,
+        pageSize,
+        cate_id: cateActive || 0,
+        status : 1
+      },
+      beforeLoad:() => {
+        this.setData({
+          isLoading: true,
+          isShowAllPop: false
+        })
+      },
+      afterLoad: ({lists,page,totalPage,total,isLoading,isEnd}) => {
+        this.setData({
+          isLoading,
+          page,
+          totalPage,
+          list: lists,
+          total,
+          isEnd
+        })
 
+        // wx.stopPullDownRefresh()
+      }
+    })
+  },
   // tabbar
   showMenu : function(e){
     this.setData({
@@ -87,6 +213,12 @@ Page({
       indexMenuFlag : false,
       mainMenuFlag :false
     })
-  }
+  },
   // tabbar
+  touchNext:function(e){
+    let url = e.currentTarget.dataset.url
+    wx.navigateTo({
+      url: url,
+    })
+  }
 })

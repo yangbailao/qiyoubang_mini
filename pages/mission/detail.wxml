@@ -19,10 +19,6 @@
 
 </view>
 
-
-  
-
-
 <view class="user-detail">
   <view class="item">
     <view class="val"><text>{{userInfo.credit}}</text>分</view>
@@ -57,7 +53,7 @@
   </view>
 </view>
 
-<view class="call">
+<view class="call" bindtap="touchToPhone">
   <view class="title">
     <image src="/images/call.svg"></image>
     <text>电话联系</text> 

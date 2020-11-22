@@ -3,6 +3,7 @@
 import {
   getInformationById
 } from '../../api/api'
+const app = getApp()
 Page({
 
   /**
@@ -22,6 +23,7 @@ Page({
       id : options.id
     })
     this.getInformationDetail()
+    app.chengeNeed()
   },
 
   /**

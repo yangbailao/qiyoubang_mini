@@ -104,4 +104,7 @@
   align-items: center;
   justify-content: center;
 }
+.footer .call button {
+  background-color: transparent;
+}
 .footer .call image{width: 100rpx;height: 100rpx;}

@@ -28,6 +28,7 @@
       "disablePlugins": [],
       "outputPath": ""
     },
+    "enableEngineNative": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
@@ -47,12 +48,6 @@
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
-    "search": {
-      "list": []
-    },
-    "conversation": {
-      "list": []
-    },
     "plugin": {
       "list": []
     },
@@ -152,6 +147,37 @@
           "id": -1,
           "name": "我的服务站",
           "pathName": "pages/personal/myServiceShop",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "收藏列表",
+          "pathName": "pages/personal/collection",
+          "query": "id=15",
+          "scene": null
+        },
+        {
+          "name": "我的评论",
+          "pathName": "pages/personal/myComment",
+          "query": "id=15",
+          "scene": null
+        },
+        {
+          "name": "意见反馈",
+          "pathName": "pages/personal/feedback",
+          "query": "id=15",
+          "scene": null
+        },
+        {
+          "name": "认证",
+          "pathName": "pages/certification/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我来帮",
+          "pathName": "pages/help/index",
+          "query": "",
           "scene": null
         }
       ]

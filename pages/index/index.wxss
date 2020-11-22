@@ -81,21 +81,37 @@
 .notice{
   clear: both;
   height: 76rpx;
-  padding-top:16rpx;
-  padding-bottom:16rpx;
-  background: rgba(255, 10, 70, 1);
+  /* padding-top:16rpx;
+  padding-bottom:16rpx; */
+  /* background: rgba(255, 10, 70, 1); */
   font-size: 24rpx;
   color: #fff;
 }
+.notice_cv {
+  box-shadow: 0rpx 1rpx 4rpx 0rpx 
+		rgba(96, 97, 112, 0.16);
+  border-radius: 8rpx;
+  background-color: #fff;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.notice_cv .icon {
+  padding: 10rpx 0;
+  width: 70rpx;
+  background-color: rgba(255, 10, 70, 1);
+  text-align: center;
+}
 
 .notice .icon-notice{ 
-  padding-top: 10rpx;
+  /* padding-top: 10rpx; */
   width: 42rpx;
   height: 42rpx;
 }
 
 .notice .detail{ 
-  padding-top: 10rpx;
+  padding-top: 5rpx;
   padding-left: 10rpx;
   width: 648rpx;
   height: 42rpx;
@@ -157,6 +173,7 @@
   line-height: 44rpx;
   color: #555770;
   margin-bottom: 18rpx;
+  margin-top: 18rpx;
 }
 
 .title-box .title{
@@ -170,7 +187,7 @@
 
 .activity-list{
   height: auto;
-  position: fixed;
+  /* position: fixed; */
 }
 .activity-list .activity-box{
   width: 690rpx;
@@ -206,4 +223,132 @@
   width: 170rpx;
   height: 170rpx;
   border: solid 1px #707070;
+}
+
+/* 轮播图 */
+.bannerView {
+  padding: 0 30rpx;
+  position: relative;
+  z-index: 50;
+  margin-top: -80rpx;
+  margin-bottom: 30rpx;
+}
+.swiper {
+  /* margin-top: 33rpx; */
+  position: relative;
+  border-radius: 10rpx;
+  overflow: hidden;
+  border:4rpx solid #fff;
+  box-shadow: 0rpx 6rpx 12rpx 0rpx 
+		rgba(0, 0, 0, 0.26);
+}
+.swiper swiper{
+  /* height: 380rpx; */
+  height: 445rpx;
+}
+.swiper swiper-item {
+  /* padding: 0 7rpx; */
+  box-sizing: border-box;
+  width: 636rpx;
+}
+.banner-item {
+  width: 100%;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  color: #666;
+  font-size: 26rpx;
+}
+.banner-item image {
+  width: 100%;
+  display: block;
+}
+
+.dots{
+  position: absolute;
+  right: 20rpx;
+  bottom: 20rpx;
+  display: flex;
+  justify-content: center;
+  z-index: 99;
+}
+.dots .dot{
+  margin: 0 5rpx;
+  width: 10rpx;
+  height: 10rpx;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5rpx;
+  transition: all .5s;
+}
+.dots .dot.active{
+  width: 50rpx;
+  background: #fff;
+  transition: 0.5s all;
+}
+
+/* 广告图 */
+.bannerImg image {
+  width: 100%;
+  display: block;
+}
+
+/* 列表 */
+.list {margin-bottom: 50px;}
+.list{padding-bottom: 26rpx;}
+.list .item{
+  margin-top: 26rpx;
+  width: 690rpx;
+	height: 276rpx;
+	background-color: #ffffff;
+	box-shadow: 0px 1px 2px 0px 
+		rgba(96, 97, 112, 0.16);
+  border-radius: 5px;
+  padding: 20rpx;
+}
+
+.sb{display: flex;align-items: center;justify-content: space-between;}
+
+
+.list .item .head {height: 42rpx;}
+  .list .item .head .title{width: 520rpx; height: 42rpx;line-height: 42rpx;font-size: 32rpx;color: #1c1c28;overflow: hidden;}
+  .list .item .head .see{height: 32rpx;line-height: 32rpx;font-size: 24rpx;}
+
+.list .item .info{height: 86rpx;}
+  .list .item .info .price{height: 86rpx;display: flex;align-items: center; font-size: 44rpx;color: #ff5c5c;}
+  .list .item .info .btn{
+    width: 110rpx;
+    height: 52rpx;
+    background-color: #ffa61d;
+    border-radius: 3px;
+    color: #fff;text-align: center;
+    line-height: 52rpx;
+  }
+.list .item .location{margin-bottom: 10rpx;height: 46rpx;line-height: 47rpx;}
+.list .item .user{align-items: flex-end;font-size: 20rpx;border-top: solid 1px #f2f2f5;height: 52rpx;}
+  .list .item .user .username{display: flex;align-items: center;}
+  .list .item .user .username image{width: 32rpx;height: 32rpx;border-radius: 50%;margin-right: 10rpx;}
+
+/* 导航菜单 */
+.navTab {
+  padding: 24rpx 40rpx;
+  padding-bottom: 120rpx;
+  border-bottom-left-radius: 80rpx;
+  border-bottom-right-radius: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
+}
+.navTab .item {
+  text-align: center;
+  font-size: 32rpx;
+  color: #fff;
+}
+.navTab .item .imgView {
+  height: 110rpx;
+  overflow: hidden;
+}
+.navTab .item image {
+  width: 110rpx;
+  display: block;
 }

@@ -4,6 +4,7 @@ import {
   updateShop,getShopList,getShopById,delShop
 } from '../../api/api';
 import {scrollLoadList} from '../../utils/util';
+const app = getApp()
 Page({
 
   /**
@@ -36,6 +37,7 @@ Page({
       longitude: options.longitude,
     })
     console.log(that.data)
+    app.chengeNeed()
   },
 
   /**

@@ -1,0 +1,62 @@
+<!--pages/help/detail.wxml-->
+<navBar title='任务详情' back />
+<view class="user-info wrap">
+
+<image class="userinfo-avatar li" src="{{detail.avatar_url}}" mode="cover"></image>
+<view class="detail li">
+  <view class="username">{{detail.nickname}}</view>
+  <view class="info">
+      <view>
+        <image src="/images/icon-phone.svg"></image>已认证手机
+      </view>
+      <view>
+        <image src="/images/icon-bangbangfen.svg"></image>帮帮分：{{detail.credit}}分
+      </view>
+    </view>
+</view>
+
+<view class="line"></view>
+
+</view>
+
+<view class="user-detail">
+<view class="item">
+  <view class="val"><text>{{detail.credit}}</text>分</view>
+  <view class="title">帮帮分</view>
+</view>
+<view class="item">
+  <view class="val"><text>{{detail.regDay}}</text>天</view>
+  <view class="title">来骑友帮</view>
+</view>
+<view class="item">
+  <view class="val"><text>{{detail.info}}</text>条</view>
+  <view class="title">发布信息</view>
+</view>
+<view class="item">
+  <view class="val"><text>{{detail.mission}}</text>次</view>
+  <view class="title">发布任务</view>
+</view>
+</view>
+
+<view class="mission-detail">
+<view class="title">
+  {{detail.title}}<text class="status end" wx:if="{{detail.status == 0}}">已结束</text>
+</view>
+<view class="info">
+  <!-- <text>{{detail.cateName}}</text> -->
+  <text>{{detail.worker_view}}人看过</text>
+</view>
+<!-- <view class="locale">任务地点：{{detail.locale}}</view> -->
+<view class="content">
+  <view class="content-title">任务描述</view>
+  <view class="content-body">{{detail.worker_desc}}</view>
+</view>
+</view>
+
+<!-- <view class="call" bindtap="touchToPhone">
+<view class="title">
+  <image src="/images/call.svg"></image>
+  <text>电话联系</text> 
+</view>
+<view class="desc">联系时请说是在骑友帮看到的信息</view>
+</view> -->

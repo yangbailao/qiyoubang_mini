@@ -1,7 +1,10 @@
 // pages/mission/detail.js
 
 import {
-  getMissionById
+  getMissionById,
+  getTake,
+  getCheckFinish,
+  getConfirmMission
 } from '../../api/api'
 Page({
 
@@ -11,7 +14,8 @@ Page({
   data: {
     id : 0,
     detail : null,
-    userInfo : null
+    userInfo : null,
+    showAccpte:false
   },
 
   /**
@@ -19,9 +23,14 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id : options.id
+      id : options.id,
+      showAccpte:options.showAccpte?options.showAccpte:false
     })
     this.getMissionDetail()
+    
+    if(options.showAccpte){
+      that.fetchTake()
+    }
   },
 
   /**
@@ -35,7 +44,11 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    let needShow = wx.getStorageSync('needShow')
+    if(needShow){
+      this.fetchCheckFinish()
+    }
+    console.log("显示内容___",needShow)
   },
 
   /**
@@ -88,5 +101,76 @@ Page({
       })
     })
     
+  },
+  // 拨打电话
+  touchToPhone:function(){
+    let t = this
+    wx.showModal({
+      title:'接单提示',
+      content:'确认要接此单?',
+      cancelText:'取消',
+      confirmText:'确定',
+      success:function(res){
+        if(res.confirm){
+          t.fetchTake()
+        }
+      }
+    })
+    
+  },
+  fetchTake:function(){
+    let that = this
+    const {detail} = this.data
+    getTake({'id':detail.id}).then((res) =>{
+      if(res.code == 1){
+        wx.makePhoneCall({
+          phoneNumber: detail.tel,
+          success:function(){
+            wx.setStorageSync('needShow', 'true')
+            that.fetchTake()
+          },
+          fail:function(res){
+            that.fetchTake()
+            // wx.showToast({
+            //   title: '拨打失败！',
+            //   icon:'none'
+            // })
+          }
+        })
+      }
+    })
+  },
+  fetchCheckFinish:function(){
+    getCheckFinish({}).then((res) => {
+      if(res.code == 1){
+        wx.setStorageSync('need', res.data)
+        wx.setStorageSync('takeId', this.data.id)
+      }
+    })
+  },
+  fetchTake:function(){
+    const {id} = this.data
+    wx.showModal({
+      title:'是否已接受此任务？',
+      cancelText:'拒绝',
+      confirmText:'接受',
+      success:function(res){
+        let status = 0
+        if(res.confirm){
+          status = 1
+        }
+        getConfirmMission({'id':id,'status':status}).then((res) => {
+          if(res.code == 1) {
+            console.log("显示结果_____",res)
+            console.log("显示结果_____",status)
+            if(status == 1) {
+              wx.removeStorageSync('need')
+              wx.removeStorageSync('takeId')
+            }
+          }
+        })
+        
+      }
+    })
   }
 })

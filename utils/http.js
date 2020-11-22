@@ -6,7 +6,7 @@ var BaseURL = 'https://api.lyhxxkj.com'
 
 export function http(opt) {
   const token = cache.get('token')
-  // console.log('token', token)
+  console.log('token', token)
   opt = opt || {}
   opt.url = opt.url || ''
   opt.data = opt.data || {}

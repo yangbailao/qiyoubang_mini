@@ -43,7 +43,10 @@
   
 
 
-<view bindtap="goToAdd" class="add" style="top:{{addTop}}rpx"><image src="/images/moments-add.svg"></image></view>
+<view bindtap="goToAdd" class="add" style="top:{{addTop}}rpx">
+  <!-- <image src="/images/moments-add.svg"></image> -->
+  发布
+</view>
 
 
 
@@ -117,10 +120,10 @@
 <import src="../../template/tabbar.wxml" />
 <template is="tabBar" data="{{tabBar}}" />
 <view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
-<import src="../../template/tabbar-index-menu.wxml" />
+<!-- <import src="../../template/tabbar-index-menu.wxml" />
 <view wx:if="{{indexMenuFlag}}">
   <template is="indexMenu" />
-</view>
+</view> -->
 <import src="../../template/tabbar-main-menu.wxml" />
 <view wx:if="{{mainMenuFlag}}">
   <template is="mainMenu" />

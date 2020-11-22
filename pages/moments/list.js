@@ -66,6 +66,7 @@ Page({
    */
   onLoad: function (options) {
     app.editTabBar();
+    app.chengeNeed()
     const {
       navBarHeight,
       navBarExtendHeight,
@@ -251,7 +252,6 @@ Page({
 
   // 重新加载数据
   reloadData() {
-
     this.setData({
       isEnd: false,
       page: 1,
@@ -279,6 +279,7 @@ Page({
         pageSize
       },
       beforeLoad:() => {
+        wx.stopPullDownRefresh()
         this.setData({
           isLoading: true,
           isShowAllPop: false
