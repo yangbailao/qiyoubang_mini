@@ -160,45 +160,36 @@ Page({
     console.log(this.data)
   },
   searchList() {
+    let that = this
     let {
       page,
       list,
       cateActive,
       isEnd,
-      isLoading,
       pageSize
     } = this.data;
-    
-    scrollLoadList({
-      isEnd,
-      isLoading,
-      list,
-      apiPost: missionList,
-      data:{
-        page,
-        pageSize,
-        cate_id: cateActive || 0,
-        status : 1
-      },
-      beforeLoad:() => {
-        this.setData({
-          isLoading: true,
-          isShowAllPop: false
+    wx.showLoading({
+      title: '加载中...',
+    })
+    missionList({page:page,pageSize:pageSize,cate_id:cateActive || 0,status:1}).then((res) =>{
+      wx.hideLoading()
+      wx.stopPullDownRefresh()
+      if(res.code == 1){
+        let getList = res.data.list
+        if(page == 1){
+          list = []
+        }
+        isEnd = (getList.length <= pageSize)
+        if(getList.length > 0){
+          list = list.concat(getList)
+        }
+        that.setData({
+          list:list,
+          isEnd:isEnd
         })
-      },
-      afterLoad: ({lists,page,totalPage,total,isLoading,isEnd}) => {
-        this.setData({
-          isLoading,
-          page,
-          totalPage,
-          list: lists,
-          total,
-          isEnd
-        })
-
-        // wx.stopPullDownRefresh()
       }
     })
+
   },
   // tabbar
   showMenu : function(e){
