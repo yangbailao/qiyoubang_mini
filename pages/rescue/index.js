@@ -42,7 +42,7 @@ Page({
     } = app.globalSystemInfo;
 
     this.setData({
-      contentHeight
+      contentHeight : contentHeight + 112
     })
     console.log("显示传值____",options.type)
     if(options.type != undefined && options.type.length > 0){

@@ -28,7 +28,7 @@
       <navigator url="/pages/help/detail?id={{item.id}}">
       <view class="head sb">
         <view class="title">{{item.title}}</view>
-        <view class="see">{{item.view}}人看过</view>
+        <view class="see">{{item.worker_view}}人看过</view>
       </view>
       <!-- <view class="info sb">
         <view class="price">￥{{item.bouns}}</view>

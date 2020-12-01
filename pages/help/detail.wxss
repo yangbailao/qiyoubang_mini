@@ -138,7 +138,7 @@
 .mission-detail .content .content-body{
   padding: 20rpx 10rpx 100rpx 10rpx;
 }
-
+/* 
 .call{
   background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
   height: 120rpx;
@@ -167,4 +167,31 @@
 .call .desc{
   font-size: 24rpx;
   text-align: center;
+} */
+
+
+/* 底部 */
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  height: 120rpx;
+  width: 750rpx;
+  background: #fff;
 }
+.footer .btns{display: flex;align-items: center;justify-content: center;width: 250rpx;}
+.footer .btns image{width: 32rpx;height: 32rpx;margin-right: 10rpx;}
+.footer .call{
+  width: 250rpx;
+  background-image: linear-gradient(312deg, 
+		#ff1656 0%, 
+    #fe6959 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer .call button {
+  background-color: transparent;
+}
+.footer .call image{width: 100rpx;height: 100rpx;}

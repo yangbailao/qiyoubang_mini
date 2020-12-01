@@ -1,5 +1,5 @@
 <!--pages/rescue/index.wxml-->
-<navBar title='救援'/>
+<navBar title='救援' back />
 
 <map 
 id="map" 
@@ -70,17 +70,3 @@ layer-style="1"
 
 </view>
 
-
-<!-- tabbar -->
-<import src="../../template/tabbar.wxml" />
-<template is="tabBar" data="{{tabBar}}" />
-<view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
-<import src="../../template/tabbar-index-menu.wxml" />
-<view wx:if="{{indexMenuFlag}}">
-  <template is="indexMenu" />
-</view>
-<import src="../../template/tabbar-main-menu.wxml" />
-<view wx:if="{{mainMenuFlag}}">
-  <template is="mainMenu" />
-</view>
-<!-- tabbar -->

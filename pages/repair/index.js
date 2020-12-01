@@ -41,7 +41,7 @@ Page({
     } = app.globalSystemInfo;
 
     this.setData({
-      contentHeight
+      contentHeight : contentHeight + 112
     })
 
 

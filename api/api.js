@@ -439,13 +439,11 @@ export function updateUser(data) {
  * 下面开始是乐竞购的接口
  */
 // 发送验证码
-export function sendCode(tel) {
+export function sendCode(data) {
   return new Promise((resolve) => {
     http({
       url: '/mini_api/user_tel_code/sendCode',
-      data: {
-        tel
-      },
+      data,
       success: function (data) {
         console.log('验证码回调', data)
         if (data.code == '1') {
@@ -1003,6 +1001,32 @@ export function fetchCollection(data){
   return new Promise((resolve) => {
     http({
       url:'/mini_api/user_favor/create',
+      data,
+      success:function(res) {
+        console.log("收藏",res)
+        resolve(res)
+      }
+    })
+  })
+}
+// 收藏列表
+export function fetchWorkerCollectionList(data){
+  return new Promise((resolve) => {
+    http({
+      url:'/mini_api/user_worker_favor/getList',
+      data,
+      success:function(res) {
+        console.log("显示收藏",res)
+        resolve(res)
+      }
+    })
+  })
+}
+// 收藏/取消
+export function fetchWorkerCollection(data){
+  return new Promise((resolve) => {
+    http({
+      url:'/mini_api/user_worker_favor/create',
       data,
       success:function(res) {
         console.log("收藏",res)

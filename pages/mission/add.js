@@ -22,9 +22,13 @@ Page({
       bouns:'',
       content:''
     },
+    maskFlag : false,
     cateList:[],
     cateData:[],
-    cateDataId :[]
+    cateDataId :[],
+    show: false, //控制下拉列表的显示隐藏，false隐藏、true显示
+    selectData: ['消费账户', '平台返利账户', '微信钱包'], //下拉列表的数据
+    index: 0, //选择的下拉列 表下标,
   },
 
   /**
@@ -117,7 +121,7 @@ Page({
   getCates(){
     getMissionCate().then(res => {
       this.setData({
-        cateList : res.data.cates, // 用做选择的数组
+        selectData : res.data.cates, // 用做选择的数组
         cateData : res.data.list, // 用做选中的选项内容的数组
         cateDataId : res.data.listId // 数组下标与分类id匹配的数组 
       })
@@ -218,5 +222,22 @@ Page({
       }
     })
     
+  },
+  // 点击下拉显示框
+  selectTap() {
+    this.setData({
+      show: !this.data.show,
+      maskFlag: !this.data.maskFlag
+    });
+  },
+  // 点击下拉列表
+  optionTap(e) {
+    let Index = e.currentTarget.dataset.index; //获取点击的下拉列表的下标
+    this.setData({
+      index: Index,
+      show: !this.data.show,
+      maskFlag: !this.data.maskFlag,
+      'form.cate_id' : this.data.cateData[Index].id,
+    });
   },
 })

@@ -1,7 +1,8 @@
 // pages/help/detail.js
 import {
   fetchHelpDetail,
-  getWorkerCate
+  getWorkerCate,
+  fetchWorkerCollection
 } from '../../api/api'
 Page({
 
@@ -25,7 +26,7 @@ Page({
       showAccpte:options.showAccpte?options.showAccpte:false
     })
     
-    this.getMissionDetail()
+    this.getDetail()
     
     
   },
@@ -94,7 +95,7 @@ Page({
       })
     },
   // 读取任务详情
-  getMissionDetail(){
+  getDetail(){
     wx.showLoading({
       title: '加载中',
     })
@@ -109,6 +110,49 @@ Page({
     })
     
   },
+  // 收藏店铺
+  touchToCollection:function(){
+    let data = {'worker_id':this.data.id}
+    fetchWorkerCollection(data).then((res) => {
+      if(res.code == 1) {
+        if(this.data.detail.favor == 0) {
+          wx.showToast({
+            title: '收藏成功',
+          })
+          this.setData({
+            'detail.favor':0
+          })
+          console.log(this.data.detail.favor)
+        } else {
+          wx.showToast({
+            title: '取消收藏成功',
+            icon:'none'
+          })
+          this.setData({
+            'detail.favor':1
+          })
+          console.log(this.data.detail.favor)
+        }
+        this.getDetail()
+      } else {
+        wx.showToast({
+          title: '收藏失败',
+          icon:'none'
+        })
+      }
+    })
+  },
+  //拨打电话
+  call(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.detail.shop_tel,
+    })
+  },
+  goTo(e){
+    wx.navigateTo({
+      url: e.currentTarget.dataset.url,
+    })
+  }
   
   
   

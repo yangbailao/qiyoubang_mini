@@ -179,6 +179,30 @@
           "pathName": "pages/help/index",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "任务详情页",
+          "pathName": "pages/mission/detail",
+          "query": "id=27",
+          "scene": null
+        },
+        {
+          "name": "发布任务",
+          "pathName": "pages/mission/add",
+          "query": "id=27",
+          "scene": null
+        },
+        {
+          "name": "认证页面",
+          "pathName": "pages/certification/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "便民信息详情",
+          "pathName": "pages/information/detail",
+          "query": "id=31",
+          "scene": null
         }
       ]
     }

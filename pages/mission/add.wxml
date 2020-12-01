@@ -7,10 +7,24 @@
     <text>任务名称：</text>
     <input type="text" bindinput="changeTitle" value="{{form.title}}" placeholder-class="plaClass" placeholder="请输入任务名称" />
   </view>
-  <view class="form-item wrap">
+  <!-- <view class="form-item wrap">
     <text>信息分类：</text>
     <input type="text" bindtap="showCate" value="{{form.cate_title}}" placeholder-class="plaClass" placeholder="请选择所属分类"/>
+  </view> -->
+  <view class="form-item wrap">
+    <text>信息分类：</text>
+    <view class='select_box'>
+      <view class='select' catchtap='selectTap'>
+        <text class='select_text'>{{selectData[index]}}</text>
+        <!-- <image class='words_img' src='../../images/dv.png'></image>
+        <image class='select_img {{show&&"select_img_rotate"}}' src='/image/gobottom.png'></image> -->
+      </view>
+      <view class='option_box' style='height:{{show?(selectData.length>5?440:selectData.length*88):0}}rpx;'>
+        <view class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item}}</view>
+      </view>
+    </view>
   </view>
+
   <view class="form-item wrap">
     <text>联系方式：</text>
     <input type="text" bindinput="changeTel" value="{{form.tel}}" placeholder-class="plaClass" placeholder="手机号（系统自动加密保护）" />
@@ -29,3 +43,5 @@
 </view>
 
 <view class="submit" bindtap="submit">提交</view>
+
+<view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>

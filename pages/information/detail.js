@@ -90,5 +90,12 @@ Page({
       })
     })
     
+  },
+
+  //拨打电话
+  call(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.detail.tel,
+    })
   }
 })

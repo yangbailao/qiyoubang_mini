@@ -41,7 +41,7 @@
 
   overflow: hidden;
   position: fixed;
-  bottom: 112rpx;
+  bottom: 0rpx;
   left: 30rpx;
 }
 

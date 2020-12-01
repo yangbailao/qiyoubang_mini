@@ -80,7 +80,7 @@
 
 .notice{
   clear: both;
-  height: 76rpx;
+  height: 70rpx;
   /* padding-top:16rpx;
   padding-bottom:16rpx; */
   /* background: rgba(255, 10, 70, 1); */
@@ -227,24 +227,19 @@
 
 /* 轮播图 */
 .bannerView {
-  padding: 0 30rpx;
-  position: relative;
+  padding: 0;
+
   z-index: 50;
-  margin-top: -80rpx;
+  height: 300rpx;
   margin-bottom: 30rpx;
 }
 .swiper {
-  /* margin-top: 33rpx; */
   position: relative;
-  border-radius: 10rpx;
   overflow: hidden;
-  border:4rpx solid #fff;
-  box-shadow: 0rpx 6rpx 12rpx 0rpx 
-		rgba(0, 0, 0, 0.26);
 }
 .swiper swiper{
-  /* height: 380rpx; */
-  height: 445rpx;
+  height: 300rpx;
+  /* height: 445rpx; */
 }
 .swiper swiper-item {
   /* padding: 0 7rpx; */
@@ -297,13 +292,13 @@
 .list{padding-bottom: 26rpx;}
 .list .item{
   margin-top: 26rpx;
-  width: 690rpx;
+  /* width: 690rpx; */
 	height: 276rpx;
 	background-color: #ffffff;
 	box-shadow: 0px 1px 2px 0px 
 		rgba(96, 97, 112, 0.16);
-  border-radius: 5px;
-  padding: 20rpx;
+  /* border-radius: 5px; */
+  padding: 20rpx 40rpx;
 }
 
 .sb{display: flex;align-items: center;justify-content: space-between;}
@@ -331,24 +326,40 @@
 /* 导航菜单 */
 .navTab {
   padding: 24rpx 40rpx;
-  padding-bottom: 120rpx;
-  border-bottom-left-radius: 80rpx;
-  border-bottom-right-radius: 80rpx;
+  /* padding-bottom: 120rpx; */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
+  /* background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%); */
 }
 .navTab .item {
   text-align: center;
   font-size: 32rpx;
-  color: #fff;
+  color: #000;
 }
 .navTab .item .imgView {
-  height: 110rpx;
+  width: 110rpx;
+  height: 90rpx;
   overflow: hidden;
+  display: flex;
+  
+  align-items: center;
+  justify-content: center;
 }
 .navTab .item image {
-  width: 110rpx;
+  width: 50rpx;
+  height: 50rpx;
   display: block;
+}
+.navTab .item .dayidian
+{
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.banner2{
+  height: 200rpx;
+  background: #ffba40;
+  color: #fff;
+  margin-top: 30rpx;
 }

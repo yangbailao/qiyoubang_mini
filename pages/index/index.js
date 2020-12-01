@@ -96,7 +96,7 @@ Page({
       isEnd: false,
       isLoading: false,
       title,
-      cateActive: '4'
+      cateActive: '0'
     },() => {
       this.searchList()
     })

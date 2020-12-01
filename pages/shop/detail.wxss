@@ -94,7 +94,7 @@
   background: #fff;
 }
 .footer .btns{display: flex;align-items: center;justify-content: center;width: 250rpx;}
-.footer .btns image{width: 50rpx;height: 50rpx;margin-right: 10rpx;}
+.footer .btns image{width: 32rpx;height: 32rpx;margin-right: 10rpx;}
 .footer .call{
   width: 250rpx;
   background-image: linear-gradient(312deg, 

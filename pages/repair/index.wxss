@@ -41,7 +41,7 @@
 
   overflow: hidden;
   position: fixed;
-  bottom: 112rpx;
+  bottom: 0;
   left: 30rpx;
 }
 
@@ -119,3 +119,5 @@
 .list .item{font-size: 32rpx;display: flex;justify-content:space-between;border-bottom: dotted 1px #e4e4eb;line-height: 78rpx;height: 78rpx;}
 
 .list .item .price{color: #ff5c5c;}
+
+

@@ -4,7 +4,8 @@ import {
   getUploadToken,
   updateBindTel,
   getWorkerCate,
-  sendCode
+  sendCode,
+  getUserInfo
 } from '../../api/api'
 import {md5} from '../../utils/md5'
 Page({
@@ -37,6 +38,25 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    getUserInfo().then(res => {
+      if(res.data.is_worker == 1)
+      {
+
+        // wx.showModal({
+        //   confirmText: '好的',
+        //   content: '您已经通过实名认证，您的信息将会在我来帮中展示',
+        //   showCancel: false,
+        //   title: '提示',
+        //   success : res=>{
+        //     wx.navigateBack({
+        //       delta: 1,
+        //     })
+        //   }
+
+        // })
+
+      }
+    })
     this.getCates()
     getUploadToken().then(res => {
       this.setData({
@@ -132,6 +152,8 @@ Page({
       })
       return
     }
+    // console.log(this.data.fromData.phone)
+    // return
     sendCode({tel:this.data.fromData.phone}).then((res) =>{
       if(res.code == 1) {
         wx.showToast({
@@ -219,17 +241,13 @@ Page({
   save:function(){
     // let fromData = this.data.fromData
     const {fromData,keys,allCategory} = this.data
-    let cate = ''
+    let cate = []
     allCategory.map((item,index) =>{
       if(item.selected){
-        cate = item.id + ','
+        cate.push(item.id)
       }
     })
 
-    console.log("显示内容___11__",fromData.name)
-    console.log("显示内容___22__",fromData.phone)
-    console.log("显示内容___33__",fromData.code)
-    console.log("显示内容___44__",fromData.card)
 
 
     if(fromData.name.length === 0 || fromData.phone.length === 0 || fromData.code.length === 0 || fromData.card.length === 0) {
@@ -273,7 +291,7 @@ Page({
     data['idcard_img_a'] = fromData.image1
     data['idcard_img_b'] = fromData.image2
     data['worker_desc'] = fromData.introduction
-    data['worker_cate'] = cate
+    data['worker_cate'] = JSON.stringify(cate)
 
     updateBindTel(data).then((res) =>{
       if(res.code == 1){

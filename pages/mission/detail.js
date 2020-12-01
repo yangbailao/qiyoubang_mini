@@ -1,11 +1,16 @@
 // pages/mission/detail.js
-
+const app = getApp()
+import {
+  loginUser,
+  getUser
+} from '../../api/login'
 import {
   getMissionById,
   getTake,
   getCheckFinish,
   getConfirmMission
 } from '../../api/api'
+import { cache } from '../../utils/cache.js'
 Page({
 
   /**
@@ -30,6 +35,12 @@ Page({
     
     if(options.showAccpte){
       that.fetchTake()
+    }
+    // 获取用户信息
+    if (cache.get('userInfo')) {
+      getUser().then(() => {
+        this.setUserInfo()
+      })
     }
   },
 
@@ -94,7 +105,7 @@ Page({
     getMissionById({id:this.data.id}).then( res => {
       this.setData({
         detail : res.data.mission,
-        userInfo : res.data.user
+        user_info : res.data.user
       })
       wx.hideLoading({
         success: (res) => {},
@@ -102,20 +113,101 @@ Page({
     })
     
   },
+  getUserInfo: function(e) {
+    app.authAndLogin(e.detail.userInfo, loginUser).then(() => {
+      getUser().then(() => {
+        this.setUserInfo()
+      })
+    })
+  },
+  setUserInfo : function(){
+    let gUserInfo = app.globalData.userInfo
+    // console.log(gUserInfo, 789)
+    gUserInfo = gUserInfo ? gUserInfo : JSON.parse(cache.get('userInfo'))
+    let {
+      avatarUrl,
+      nickName
+    } = gUserInfo
+    this.setData({
+      avatarUrl,
+      nickName,
+      userInfo: gUserInfo,
+    })
+  },
   // 拨打电话
   touchToPhone:function(){
-    let t = this
-    wx.showModal({
-      title:'接单提示',
-      content:'确认要接此单?',
-      cancelText:'取消',
-      confirmText:'确定',
-      success:function(res){
-        if(res.confirm){
-          t.fetchTake()
+    if(this.data.userInfo)
+    {
+      wx.showModal({
+        title:'接单提示',
+        content:'确认要接此任务?',
+        cancelText:'取消',
+        confirmText:'确定',
+        success:res=>{
+          if(res.confirm){
+            getTake({'id':this.data.detail.id}).then((res) =>{
+              if(res.code == 1){
+                wx.makePhoneCall({
+                  phoneNumber: this.data.detail.tel,
+                  success:function(){
+                    wx.showModal({
+                      title:'提示',
+                      content:'电话联系后请反馈是否已接受此任务！',
+                      cancelText:'未接受',
+                      confirmText:'已接受',
+                      success:res=>{
+                        console.log('已确认')
+                        console.log(res)
+                        const status = res.confirm ? 1 : 0
+                        const id = this.data.detail.id
+                        getConfirmMission({status,id}).then((res) => {
+                          if(res.code == 1){
+                            wx.setStorageSync('need', res.data)
+                            wx.setStorageSync('takeId', this.data.id)
+                          }
+                        })
+                      }
+                    })
+                    // wx.setStorageSync('needShow', 'true')
+                    // that.fetchTake()
+                  },
+                  fail:res =>{
+                    console.log('不拨打')
+                    wx.showModal({
+                      title:'是否已接受此任务？',
+                      // content:'确认要接此任务?',
+                      cancelText:'未接受',
+                      confirmText:'已接受',
+                      success:res=>{
+                        console.log('已确认')
+                        console.log(res)
+                        const status = res.confirm ? 1 : 0
+                        const id = this.data.detail.id
+                        getConfirmMission({status,id}).then((res) => {
+                          if(res.code == 1){
+                            wx.setStorageSync('need', res.data)
+                            wx.setStorageSync('takeId', this.data.id)
+                          }
+                        })
+                      }
+                    })
+                  }
+                })
+              }
+            })
+          }
         }
-      }
-    })
+      })
+    }
+    else
+    {
+      wx.showToast({
+        title: '请先登录再发布骑友录',
+        duration : 2000,
+        icon : 'none'
+      })
+    }
+
     
   },
   fetchTake:function(){

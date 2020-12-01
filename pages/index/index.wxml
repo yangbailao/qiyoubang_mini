@@ -2,7 +2,7 @@
 
 <navBar title='骑行帮' background='rgba(0,0,0,0)' />
 
-<!-- <view class="user-info wrap">
+<view class="user-info wrap">
   <block wx:if="{{!userInfo}}">
     <view class="userinfo-avatar li un-login">
       <image src="/images/avatar.svg" mode="cover"></image>
@@ -33,35 +33,34 @@
       </navigator>
     </view>
   </block>
-</view> -->
+</view>
 
 <view class="navTab">
   <view class="item" bindtap="touchNext" data-url="/pages/repair/index?type=1">
-    <view class="imgView"><image src="/images/nav_t1.svg" mode="widthFix" alt=""></image></view>
+    <view class="imgView"><image src="/images/nav_t1.svg"></image></view>
     <view class="name">修车</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/rescue/index?type=2">
-    <view class="imgView"><image src="/images/nav_t2.svg" mode="widthFix" alt=""></image></view>
+    <view class="imgView"><image src="/images/nav_t2.svg" class="dayidian"></image></view>
     <view class="name">救援</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/mission/list">
-    <view class="imgView"><image src="/images/nav_t3.svg" mode="widthFix" alt=""></image></view>
+    <view class="imgView"><image src="/images/nav_t3.svg"></image></view>
     <view class="name">任务帮</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/help/index">
-    <view class="imgView"><image src="/images/nav_t4.svg" mode="widthFix" alt=""></image></view>
+    <view class="imgView"><image src="/images/nav_t4.svg" class="dayidian"></image></view>
     <view class="name">我来帮</view>
   </view>
 </view>
 <!-- 轮播图  -->
 <view class="bannerView">
   <view class="page-section page-section-spacing swiper">
-    <swiper class="banner-slide" bindchange="swiperChange" autoplay="true" duration="500" circular="true"
-      style="height:{{swiperHeight}}px">
+    <swiper class="banner-slide" bindchange="swiperChange" autoplay="true" duration="500" circular="true">
       <swiper-item wx:for="{{imagesList}}" wx:key="index">
         <view class='banner-item'>
           <navigator url="">
-            <image src="{{item.url}}" class="banner-img" width="636" height="375" mode="widthFix"></image>
+            <image src="{{item.url}}" class="banner-img" mode="widthFix"></image>
           </navigator>
         </view>
       </swiper-item>
@@ -90,6 +89,15 @@
   </view>
   </view>
 </view>
+
+<!-- 广告图2 -->
+<view class="banner2">
+  第二张广告图
+</view>
+<!-- 广告图2 -->
+
+
+
 <view class="container">
   
   <!-- <scroll-view class="list-1" scroll-x="true" >
@@ -112,7 +120,7 @@
     <view class="title">任务帮</view>
     <view class="more" bindtap="touchNext" data-url="/pages/mission/list">查看全部</view>
   </view>
-  <view class="list wrap">
+  <view class="list">
     <view class="item" wx:for="{{list}}" wx:key="index">
       <navigator url="/pages/mission/detail?id={{item.id}}">
         <view class="head sb">

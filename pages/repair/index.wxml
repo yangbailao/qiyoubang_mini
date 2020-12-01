@@ -1,20 +1,22 @@
 <!--pages/rescue/index.wxml-->
-<navBar title='修车'/>
+<navBar title='修车' back/>
 
 <map 
-id="map" 
-scale="14" 
-longitude='{{longitude}}' 
-latitude='{{latitude}}' 
-markers="{{markers}}" 
-bindmarkertap="markertap"  bindregionchange="regionchange" 
-show-location 
-show-scale
-style="width: 100%; height: {{contentHeight}}rpx;"
-subkey="GQZBZ-ABDHS-6ZPOH-6P2WY-RPQGZ-PPFV5" 
-layer-style="1"
+  id="map" 
+  scale="14" 
+  longitude='{{longitude}}' 
+  latitude='{{latitude}}' 
+  markers="{{markers}}" 
+  bindmarkertap="markertap"  bindregionchange="regionchange" 
+  show-location 
+  show-scale
+  style="width: 100%; height: {{contentHeight}}rpx;"
+  subkey="GQZBZ-ABDHS-6ZPOH-6P2WY-RPQGZ-PPFV5" 
+  layer-style="1"
 >
 </map>
+
+
 
 <!-- <view class="searchBar">
   <image src="/images/icon-localtion.svg"></image>
@@ -70,17 +72,3 @@ layer-style="1"
 
 </view>
 
-
-<!-- tabbar -->
-<import src="../../template/tabbar.wxml" />
-<template is="tabBar" data="{{tabBar}}" />
-<view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
-<import src="../../template/tabbar-index-menu.wxml" />
-<view wx:if="{{indexMenuFlag}}">
-  <template is="indexMenu" />
-</view>
-<import src="../../template/tabbar-main-menu.wxml" />
-<view wx:if="{{mainMenuFlag}}">
-  <template is="mainMenu" />
-</view>
-<!-- tabbar -->

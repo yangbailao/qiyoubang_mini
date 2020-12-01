@@ -35,6 +35,7 @@
     "pages/shop/detail",
     "pages/help/index",
     "pages/help/detail",
+    "pages/help/comment",
     "pages/certification/index"
 
   ],

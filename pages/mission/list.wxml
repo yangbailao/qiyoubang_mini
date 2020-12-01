@@ -1,5 +1,5 @@
 <!--pages/mission/list.wxml-->
-<navBar title='骑友帮' back/>
+<navBar title='任务帮' back/>
 
 <block wx:if="{{userInfo}}">
 <navigator open-type="navigate" url="/pages/mission/add">

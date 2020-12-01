@@ -2,9 +2,9 @@
 
 <view class="user-info wrap">
 
-  <image class="userinfo-avatar li" src="{{userInfo.avatar_url}}" mode="cover"></image>
+  <image class="userinfo-avatar li" src="{{user_info.avatar_url}}" mode="cover"></image>
   <view class="detail li">
-    <view class="username">{{userInfo.nickname}}</view>
+    <view class="username">{{user_info.nickname}}</view>
     <view class="info">
         <view>
           <image src="/images/icon-phone.svg"></image>已认证手机
@@ -21,19 +21,19 @@
 
 <view class="user-detail">
   <view class="item">
-    <view class="val"><text>{{userInfo.credit}}</text>分</view>
+    <view class="val"><text>{{user_info.credit}}</text>分</view>
     <view class="title">帮帮分</view>
   </view>
   <view class="item">
-    <view class="val"><text>{{userInfo.regDay}}</text>天</view>
+    <view class="val"><text>{{user_info.regDay}}</text>天</view>
     <view class="title">来骑友帮</view>
   </view>
   <view class="item">
-    <view class="val"><text>{{userInfo.info}}</text>条</view>
+    <view class="val"><text>{{user_info.info}}</text>条</view>
     <view class="title">发布信息</view>
   </view>
   <view class="item">
-    <view class="val"><text>{{userInfo.mission}}</text>次</view>
+    <view class="val"><text>{{user_info.mission}}</text>次</view>
     <view class="title">发布任务</view>
   </view>
 </view>
@@ -53,7 +53,8 @@
   </view>
 </view>
 
-<view class="call" bindtap="touchToPhone">
+<button wx:if="{{!userInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="login-btn" style="width:750rpx">请先登录后再联系</button>
+<view class="call" bindtap="touchToPhone" wx:else>
   <view class="title">
     <image src="/images/call.svg"></image>
     <text>电话联系</text> 

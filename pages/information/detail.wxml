@@ -57,7 +57,7 @@
   </view>
 </view>
 
-<view class="call">
+<view class="call" bindtap="call">
   <view class="title">
     <image src="/images/call.svg"></image>
     <text>电话联系</text> 

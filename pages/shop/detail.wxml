@@ -72,17 +72,17 @@
 <!-- 底部 -->
 <view class="footer">
   <view class="btns" bindtap="touchToCollection">
-    <image src="{{detail.favor == 1?'/images/icon-stars-yes.svg':'/images/icon-stars-no.svg'}}  "></image>收藏店铺
+    <image src="{{detail.favor == 1?'/images/zan-kongxin.svg':'/images/zan-shixin.svg'}}  "></image>收藏店铺
   </view>
-  <view class="btns">
-    <navigator url="/pages/shop/comment?id={{detail.id}}&title={{detail.shop_name}}&img={{detail.img}}&address={{detail.address}}&tel={{detail.shop_tel}}">
+  <view class="btns" bindtap="goTo" data-url="/pages/shop/comment?id={{detail.id}}&title={{detail.shop_name}}&img={{detail.img}}&address={{detail.address}}&tel={{detail.shop_tel}}">
+
       <image src="/images/icon-comment.svg"></image>评价店铺
-    </navigator>
+
   </view>
-  <view class="call">
-    <button open-type="contact">
+  <view class="call" bindtap="call">
+
       <image src="/images/call.svg"></image>
-    </button>
+
     
   </view>
 </view>

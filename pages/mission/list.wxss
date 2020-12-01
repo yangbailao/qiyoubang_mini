@@ -106,7 +106,7 @@
     margin: auto;
     height: 60rpx;
     border-radius: 30rpx;
-    background-color: #D2646C;
+    background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -122,11 +122,11 @@
     width: 180rpx;
   }
   .search_pc {
-    color: rgba(255, 255, 255,0.75)
+    color: #666
   }
   .searchView text {
     font-size: 26rpx;
-    color: rgba(255, 255, 255,0.75)
+    color:#666
   }
   .search_sv input {
     flex: 1;

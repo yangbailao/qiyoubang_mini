@@ -80,7 +80,9 @@
     </view>
   </view>
 
-  <view class="up-btn" style="padding-bottom: {{buBottom}}rpx">
+  <!-- <view class="up-btn" style="padding-bottom: {{buBottom}}rpx">
     <view class="tixian-btn" bindtap="save">确认提交</view>
-  </view>
+  </view> -->
 </view>
+
+<view class="submit" bindtap="save">确认提交</view>

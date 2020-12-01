@@ -135,5 +135,16 @@ Page({
         })
       }
     })
+  },
+  //拨打电话
+  call(){
+    wx.makePhoneCall({
+      phoneNumber: this.data.detail.shop_tel,
+    })
+  },
+  goTo(e){
+    wx.navigateTo({
+      url: e.currentTarget.dataset.url,
+    })
   }
 })

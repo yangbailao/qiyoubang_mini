@@ -40,7 +40,7 @@
 
 <view class="mission-detail">
 <view class="title">
-  {{detail.title}}<text class="status end" wx:if="{{detail.status == 0}}">已结束</text>
+  {{detail.title}}
 </view>
 <view class="info">
   <!-- <text>{{detail.cateName}}</text> -->
@@ -48,7 +48,7 @@
 </view>
 <!-- <view class="locale">任务地点：{{detail.locale}}</view> -->
 <view class="content">
-  <view class="content-title">任务描述</view>
+  <view class="content-title">个人简介</view>
   <view class="content-body">{{detail.worker_desc}}</view>
 </view>
 </view>
@@ -60,3 +60,22 @@
 </view>
 <view class="desc">联系时请说是在骑友帮看到的信息</view>
 </view> -->
+
+
+<!-- 底部 -->
+<view class="footer">
+  <view class="btns" bindtap="touchToCollection">
+    <image src="{{detail.favor == 1?'/images/zan-kongxin.svg':'/images/zan-shixin.svg'}}  "></image>收藏个人
+  </view>
+  <view class="btns" bindtap="goTo" data-url="/pages/help/comment?id={{detail.id}}&title={{detail.nickname}}&img={{detail.avatar_url}}&address={{detail.cate}}&tel={{detail.tel}}">
+
+      <image src="/images/icon-comment.svg"></image>评价个人
+
+  </view>
+  <view class="call" bindtap="call">
+
+      <image src="/images/call.svg"></image>
+
+    
+  </view>
+</view>
