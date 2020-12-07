@@ -26,7 +26,7 @@
 </view>
 <view class="item">
   <view class="val"><text>{{detail.regDay}}</text>天</view>
-  <view class="title">来骑友帮</view>
+  <view class="title">来骑行帮</view>
 </view>
 <view class="item">
   <view class="val"><text>{{detail.info}}</text>条</view>
@@ -43,7 +43,7 @@
   {{detail.title}}
 </view>
 <view class="info">
-  <!-- <text>{{detail.cateName}}</text> -->
+  <text>{{detail.cateTitle}}</text>
   <text>{{detail.worker_view}}人看过</text>
 </view>
 <!-- <view class="locale">任务地点：{{detail.locale}}</view> -->
@@ -53,21 +53,52 @@
 </view>
 </view>
 
+<!-- 评价 -->
+<view class="comment">
+  <view class="comment-title">评价</view>
+  <view wx:for="{{comments}}" wx:key="index" class="commentItem">
+    <view class="userInfo">
+      <view>
+        <image src="{{item.avatar_url}}"></image>
+      </view>
+      <view class="userInfo_R">
+        <view class="nickname">
+          <view>{{item.nickname}}</view>
+          <view class="time">{{filter.formatTime(item.create_at * 1000,'yyyy-mm-dd')}}</view>
+        </view>
+        <view class="cate">评价时间：{{item.create_at}}</view>
+      </view>
+    </view>
+    <view class="commentContent">
+      <view class="userMsg">
+        {{item.comment}}
+      </view>
+      <view class="images">
+        <block wx:for="{{item.images}}" wx:for-item="v" wx:key="index">
+          <image src="{{qiniuShowUrl + v}}" mode="center" bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="notData" wx:if="{{!comments.length}}">暂无人评价</view>
+
+</view>
+
 <!-- <view class="call" bindtap="touchToPhone">
 <view class="title">
   <image src="/images/call.svg"></image>
   <text>电话联系</text> 
 </view>
-<view class="desc">联系时请说是在骑友帮看到的信息</view>
+<view class="desc">联系时请说是在骑行帮看到的信息</view>
 </view> -->
 
 
 <!-- 底部 -->
 <view class="footer">
   <view class="btns" bindtap="touchToCollection">
-    <image src="{{detail.favor == 1?'/images/zan-kongxin.svg':'/images/zan-shixin.svg'}}  "></image>收藏个人
+    <image src="{{detail.favor == 1?'/images/zan-shixin.svg':'/images/zan-kongxin.svg'}}  "></image>收藏个人
   </view>
-  <view class="btns" bindtap="goTo" data-url="/pages/help/comment?id={{detail.id}}&title={{detail.nickname}}&img={{detail.avatar_url}}&address={{detail.cate}}&tel={{detail.tel}}">
+  <view class="btns" bindtap="goTo" data-url="/pages/help/comment?id={{detail.id}}&title={{detail.realname}}&img={{detail.avatar_url}}&cateTitle={{detail.cateTitle}}&tel={{detail.tel}}">
 
       <image src="/images/icon-comment.svg"></image>评价个人
 

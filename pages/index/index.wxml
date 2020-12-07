@@ -2,6 +2,7 @@
 
 <navBar title='骑行帮' background='rgba(0,0,0,0)' />
 
+<!-- <view class="head-text">骑行帮，能帮就帮</view> -->
 <view class="user-info wrap">
   <block wx:if="{{!userInfo}}">
     <view class="userinfo-avatar li un-login">
@@ -15,9 +16,13 @@
     </view>
   </block>
   <block wx:else>
-    <image class="userinfo-avatar li" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <view class="head-text">
+      <view>骑行帮，能帮就帮</view>
+      <view>每个人都是一个独立的IP</view>
+    </view>
+    <!-- <image class="userinfo-avatar li" src="{{userInfo.avatarUrl}}" mode="cover"></image>
     <view class="detail li">
-      <view class="username">{{userInfo.nickName}}</view>
+      <view class="username">骑行帮，能帮就帮</view>
       <view class="info">
         <view>
           <image src="/images/icon-phone.svg"></image>已认证手机
@@ -26,11 +31,10 @@
           <image src="/images/icon-bangbangfen.svg"></image>帮帮分：98分
         </view>
       </view>
-    </view>
+    </view> -->
     <view class="right-bar">
-      <navigator url="/pages/personal/index">
-        <view class="button">个人中心</view>
-      </navigator>
+      <view class="button" bindtap="touchNext" data-url="/pages/personal/index">个人中心</view>
+      <view class="credit">帮帮分:100分</view>
     </view>
   </block>
 </view>
@@ -38,19 +42,23 @@
 <view class="navTab">
   <view class="item" bindtap="touchNext" data-url="/pages/repair/index?type=1">
     <view class="imgView"><image src="/images/nav_t1.svg"></image></view>
-    <view class="name">修车</view>
+    <view class="name">修车帮</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/rescue/index?type=2">
     <view class="imgView"><image src="/images/nav_t2.svg" class="dayidian"></image></view>
-    <view class="name">救援</view>
+    <view class="name">救援帮</view>
+  </view>
+  <view class="item" bindtap="touchNext" data-url="/pages/help/index">
+    <view class="imgView"><image src="/images/nav_t4.svg" class="dayidian"></image></view>
+    <view class="name">专业帮</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/mission/list">
     <view class="imgView"><image src="/images/nav_t3.svg"></image></view>
     <view class="name">任务帮</view>
   </view>
-  <view class="item" bindtap="touchNext" data-url="/pages/help/index">
-    <view class="imgView"><image src="/images/nav_t4.svg" class="dayidian"></image></view>
-    <view class="name">我来帮</view>
+  <view class="item" bindtap="touchNext" data-url="/pages/mission/list">
+    <view class="imgView"><image src="/images/nav_t3.svg"></image></view>
+    <view class="name">义工帮</view>
   </view>
 </view>
 <!-- 轮播图  -->
@@ -66,7 +74,7 @@
       </swiper-item>
     </swiper>
     <view class="dots">
-      <block wx:for="{{imagesList}}" wx:key="*">
+      <block wx:for="{{imagesList}}" wx:key="index">
         <view class="dot {{index == current ? ' active' : ''}}"></view>
       </block>
     </view>
@@ -74,7 +82,7 @@
 </view>
 
 <!-- 文字广告 -->
-<view class="notice wrap">
+<view class="notice">
   <view class="notice_cv">
     <view class="icon"><image class="icon-notice" src="/images/icon-notice.svg"></image></view>
   <!-- <view class="detail fl">这里是公告</view> -->

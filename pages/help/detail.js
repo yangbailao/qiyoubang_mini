@@ -2,6 +2,7 @@
 import {
   fetchHelpDetail,
   getWorkerCate,
+  getQiniu,
   fetchWorkerCollection
 } from '../../api/api'
 Page({
@@ -26,7 +27,14 @@ Page({
       showAccpte:options.showAccpte?options.showAccpte:false
     })
     
-    this.getDetail()
+    
+
+    //获取7牛配置信息
+    getQiniu().then((res) => {
+      this.setData({
+        qiniuShowUrl : res.data.showUrl
+      })
+    })
     
     
   },
@@ -42,7 +50,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getDetail()
   },
 
   /**
@@ -102,7 +110,8 @@ Page({
     fetchHelpDetail({id:this.data.id}).then( res => {
       
       this.setData({
-        detail : res.data,
+        detail : res.data.worker,
+        comments : res.data.comments
       })
       wx.hideLoading({
         success: (res) => {},
@@ -145,7 +154,7 @@ Page({
   //拨打电话
   call(){
     wx.makePhoneCall({
-      phoneNumber: this.data.detail.shop_tel,
+      phoneNumber: this.data.detail.tel,
     })
   },
   goTo(e){

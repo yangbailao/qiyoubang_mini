@@ -1,27 +1,64 @@
-<!--pages/personal/collection.wxml-->
-<navBar back='true' title='会员收藏'> </navBar>
-<view class="container">
-  <view class="listView">
-    <view class="item" wx:for="{{list}}" wx:key="index">
-      <view class="infoView">
-        <view class="imgView">
-          <image src="{{item.img}}"></image>
-        </view>
-        <view class="info_rv">
-          <view class="title">
-            <view class="name">{{item.shop_name}}</view>
-            <image bindtap="touchCollection" data-id="{{item.id}}" src="/images/zan-shixin.svg"></image>
+<navBar back="true" title='我的收藏'/>
+
+<view class="cates wrap">
+  <view class="item {{typeActive == 1 ? 'cur' : ''}}" bindtap="changeStatus" data-type="1" >店铺</view>
+  <view class="item {{typeActive == 0 ? 'cur' : ''}}" bindtap="changeStatus" data-type="0" >个人</view>
+
+</view>
+
+<scroll-view 
+  class="list wrap" 
+  scroll-y 
+  style="height:{{listHeight}}rpx"
+  refresher-enabled="{{true}}"
+  refresher-threshold="{{100}}"
+  refresher-triggered="{{triggered}}"
+  bindrefresherabort="onAbort"
+  bindscrolltolower="onScrollTolower"
+>
+
+  <block class="shop" wx:if="{{typeActive == 1}}">
+    <view class="item" wx:for="{{list}}" wx:key="index" bindtap="goTo" data-url="/pages/shop/detail?id={{item.shop_id}}">
+
+        <image src="{{item.img || '/images/shop_img.jpg'}}"></image>
+
+      <view class="info">
+
+          <view class="title">{{item.shop_name}}</view>
+          <view class="rank">
+            <view>{{item.rate}}分,{{item.rate_times}}人次评价</view>
+            <!-- <view>{{filter.distance(item.latitude,item.longitude,lat,long)}}km</view> -->
           </view>
-          <view class="time">
-            <image src="/images/icon-open-time.svg"></image>
-            <view class="tt">营业时间：8:00-18:00</view>
-          </view>
-          <view class="address">
-            <image src="/images/icon-location-dark.svg"></image>
-            <view class="tt">{{item.address}}</view>
-          </view>
-        </view>
+          <view class="address">{{item.address}}</view>
+
+          <view class="tel"><text>{{item.shop_tel}}</text></view>
       </view>
     </view>
+  </block>
+
+  <view class="worker" wx:if="{{typeActive == 0}}">
+    <view class="item" wx:for="{{list}}" wx:key="index" bindtap="goTo" data-url="/pages/help/detail?id={{item.worker_id}}">
+      <view>
+      <view class="head sb">
+        <view class="title">{{item.title}}</view>
+        <view class="see">{{item.worker_view}}人看过</view>
+      </view>
+      <!-- <view class="info sb">
+        <view class="price">￥{{item.bouns}}</view>
+        <view class="btn">详情</view>
+      </view>
+      <view class="location">任务地点：{{item.locale}}</view> -->
+
+      <view class="user sb">
+        <view class="username">
+          <image src="{{item.avatar_url}}" mode="cover"></image>
+          {{item.nickname}}
+        </view>
+        <view class="fen">帮帮分:<text class="red">{{item.credit}}分</text></view>
+      </view>
+    </view>
+    </view>
   </view>
-</view>
+  
+
+</scroll-view>

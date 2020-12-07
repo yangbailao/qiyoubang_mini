@@ -72,7 +72,7 @@
 <!-- 底部 -->
 <view class="footer">
   <view class="btns" bindtap="touchToCollection">
-    <image src="{{detail.favor == 1?'/images/zan-kongxin.svg':'/images/zan-shixin.svg'}}  "></image>收藏店铺
+    <image src="{{detail.favor == 1?'/images/zan-shixin.svg':'/images/zan-kongxin.svg'}}  "></image>收藏店铺
   </view>
   <view class="btns" bindtap="goTo" data-url="/pages/shop/comment?id={{detail.id}}&title={{detail.shop_name}}&img={{detail.img}}&address={{detail.address}}&tel={{detail.shop_tel}}">
 

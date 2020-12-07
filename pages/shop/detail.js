@@ -113,11 +113,11 @@ Page({
   },
   // 收藏店铺
   touchToCollection:function(){
-    let that = this
-    let data = {'shop_id':that.data.id}
+
+    let data = {'shop_id':this.data.id}
     fetchCollection(data).then((res) => {
       if(res.code == 1) {
-        if(that.data.detail.favor == 0) {
+        if(this.data.detail.favor == 0) {
           wx.showToast({
             title: '收藏成功',
           })
@@ -127,7 +127,7 @@ Page({
             icon:'none'
           })
         }
-        that.getDetail()
+        this.getDetail()
       } else {
         wx.showToast({
           title: '收藏失败',

@@ -30,7 +30,7 @@
   </view>
   <view class="item">
     <view class="val"><text>{{userInfo.regDay}}</text>天</view>
-    <view class="title">来骑友帮</view>
+    <view class="title">来骑行帮</view>
   </view>
   <view class="item">
     <view class="val"><text>{{userInfo.info}}</text>条</view>
@@ -62,5 +62,5 @@
     <image src="/images/call.svg"></image>
     <text>电话联系</text> 
   </view>
-  <view class="desc">联系时请说是在骑友帮看到的信息</view>
+  <view class="desc">联系时请说是在骑行帮看到的信息</view>
 </view>

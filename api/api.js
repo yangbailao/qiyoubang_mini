@@ -71,6 +71,20 @@ export function shopCommentAdd(data) {
   })
 }
 
+// 添加个人评价
+export function workerCommentAdd(data) {
+  return new Promise((resolve, reject) => {
+    http({
+      url: '/mini_api/worker_comment/add',
+      data,
+      success: function (data) {
+        console.log('添加个人评价', data)
+        resolve(data)
+      }
+    })
+  })
+}
+
 // 店铺服务分类
 export function getShopServiceCate(data) {
   return new Promise((resolve, reject) => {
@@ -120,7 +134,7 @@ export function getUserInfo() {
 export function addMomentComment(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/MomentsComment/add',
+      url: '/mini_api/moments_comment/add',
       data,
       success: function (data) {
         console.log('发表朋友圈评论', data)
@@ -338,6 +352,37 @@ export function endMission(data) {
   })
 }
 
+// 店铺收藏
+export function getFavorShop(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/user_favor/getList',
+      data,
+      success: function (data) {
+        console.log('店铺收藏', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+// 工人收藏
+export function getFavorWorker(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/user_worker_favor/getList',
+      data,
+      success: function (data) {
+        console.log('工人收藏', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
 
 
 // 获取信息分类
@@ -505,7 +550,7 @@ export function goodDetail(data) {
 }
 
 // 全局数据（系统配置）
-export function globalInfo(data) {
+export function getSystemConfig(data) {
   return new Promise((resolve) => {
     http({
       url: '/mini_api/system_config/getConfig',

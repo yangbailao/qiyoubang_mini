@@ -195,3 +195,64 @@
   background-color: transparent;
 }
 .footer .call image{width: 100rpx;height: 100rpx;}
+
+
+/* 评价列表 */
+.comment {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 50rpx 50rpx 0;
+  padding-bottom: 130rpx;
+}
+.comment .notData {
+  padding: 40rpx 0;
+}
+.commentItem {
+  padding-bottom: 40rpx;
+}
+.userInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  justify-content: space-between;
+}
+.userInfo_R {
+  width: 550rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 12rpx;
+}
+.userInfo_R text {
+  line-height: 32rpx;
+}
+.userInfo_R .time {
+  color: #999;
+  font-size: 24rpx;
+}
+.userInfo_R .nickname {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40rpx;
+}
+.userInfo_R .cate {
+  height: 40rpx;
+  font-size: 24rpx;
+}
+.userMsg {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 30rpx;
+  border-top: dotted 2rpx #e4e4eb;
+  padding-top: 20rpx;
+}
+.userInfo image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 100%;
+}
+.images{clear: both;display: flex;flex-wrap:wrap;}
+.images image{border-radius: 5px;border:3px solid #fff;width: 210rpx;height: 210rpx;}
+
+.comment-title{height: 60rpx; border-bottom: solid 1px #f2f2f5;margin-bottom: 20rpx;padding-bottom: 20rpx;text-indent: 10rpx;font-size: 32rpx;font-weight: bold;}

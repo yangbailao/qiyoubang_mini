@@ -1,19 +1,28 @@
 // pages/personal/collection.js
 
 import {
-  fetchCollectionList,
-  fetchCollection
+  getFavorShop,
+  getFavorWorker
 } from '../../api/api';
 const app = getApp()
+import {scrollLoadList} from '../../utils/util'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    page:1,
-    pageSize:10,
-    list:[]
+    typeActive : 1,
+    list:[],
+    // listHeitht : app.globalSystemInfo.contentHeight - 100,
+    isRefresh: false,
+    isLoading:false,
+    isEnd: false,
+    page: 1,
+    pageSize: 10,
+    totalPage: 1,
+    total: 1,
+    triggered: false
   },
 
   /**
@@ -21,7 +30,7 @@ Page({
    */
   onLoad: function (options) {
     app.chengeNeed()
-    this.fetchList()
+    this.searchList()
   },
 
   /**
@@ -56,67 +65,103 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
+    // 刷新完成
     this.setData({
-      page:1
+      isRefresh: true
+    },()=> {
+      wx.stopPullDownRefresh()
+      this.reloadData()
     })
-    this.fetchList()
   },
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
+  // 拉到最底部
+  onScrollTolower(e){
+    console.log(e)
+    if(this.data.isEnd)
+    {
+      wx.showToast({
+        title: '所有数据已加载完成',
+        icon:'none'
+      })
+    }
+    else
+    {
+      wx.showLoading({
+        title: '数据加载中……',
+      })
+    }
+    this.searchList()
+  },
+  // 下拉刷新
+  onAbort(e) {
+    this.reloadData()
+  },
+  // 点击切换状态
+  changeStatus(e) {
+    const {type} = e.currentTarget.dataset
     this.setData({
-      page:this.data.page-0+1
+      page: 1,
+      list: [],
+      isEnd: false,
+      isLoading: false,
+      typeActive : type
+    },() => {
+      // app.globalData.myMissionType = type
+      this.reloadData()
     })
-    this.fetchList()
-  },
+  }, 
+  // 重新加载数据
+  reloadData() {
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+    this.setData({
+      isEnd: false,
+      page: 1,
+      list: [],
+    },() => {
+      this.searchList()
+    })
   },
-  fetchList:function () {
-    let that = this
-    let data = {}
-    data['page'] = that.data.page
-    data['pageSize'] = that.data.pageSize
-    // data['token'] = wx.
-    fetchCollectionList(data).then((res) => {
-      wx.stopPullDownRefresh({
-        success: (res) => {},
-      })
-      let list = res.data.list
-      if(that.data.page == 0) {
-        that.data.list = []
+  searchList() {
+    let {
+      page,
+      list,
+      isEnd,
+      isLoading,
+      pageSize
+    } = this.data;
+    
+    scrollLoadList({
+      isEnd,
+      isLoading,
+      list,
+      apiPost: this.data.typeActive == 1 ? getFavorShop : getFavorWorker,
+      data:{
+        page,
+        pageSize,
+      },
+      beforeLoad:() => {
+        this.setData({
+          isLoading: true,
+          isShowAllPop: false
+        })
+      },
+      afterLoad: ({lists,page,totalPage,total,isLoading,isEnd}) => {
+        this.setData({
+          isLoading,
+          page,
+          totalPage,
+          list: lists,
+          total,
+          isEnd
+        })
+        // wx.stopPullDownRefresh()
       }
-      that.data.list.concat(list)
-      that.setData({
-        list:that.data.list
-      })
     })
   },
-  touchCollection:function(e) {
-    let that = this
-    let id = e.currentTarget.dataset.id
-    let data = {'shop_id':id}
-    fetchCollection(data).then((res) => {
-      if(res.code == 1) {
-        wx.showToast({
-          title: '成功取消收藏',
-        })
-        that.setData({
-          page:1
-        })
-        that.fetchList()
-      } else {
-        wx.showToast({
-          title: '取消失败',
-        })
-      }
+  goTo(e){
+    console.log(e.currentTarget.dataset.url)
+    wx.navigateTo({
+      url: e.currentTarget.dataset.url,
     })
-
   }
 })

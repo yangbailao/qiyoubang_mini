@@ -23,6 +23,7 @@
     <text wx:else>根据关键词搜索</text>
   </view>
 </view>
+<view class="head-text">骑行帮，能帮就帮</view>
 <scroll-view scroll-x="true" class="cates wrap">
   <view wx:for="{{allCategory}}" class="item {{cateActive == item.id ? 'cur' : ''}}" bindtap="changeCate" data-title="{{item.title}}" data-cate="{{item.id}}" wx:key="index">{{item.title}}</view>
 

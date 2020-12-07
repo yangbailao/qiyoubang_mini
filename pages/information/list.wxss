@@ -132,3 +132,14 @@
   .search_sv input {
     flex: 1;
   }
+
+
+  /* 头部文字 */
+.head-text{
+  padding-bottom: 15rpx;
+  color: #fff;
+  height: 65rpx;
+  line-height: 50rpx;
+  text-align: center;
+  background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
+}

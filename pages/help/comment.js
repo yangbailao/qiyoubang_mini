@@ -222,14 +222,7 @@ Page({
   submit(){
     let {keys,form} = this.data
 
-    if(form.cate_id === 0){
-      wx.showToast({
-        title: '请选择服务内容',
-        icon : 'none',
-        mask: true
-      })
-      return
-    }
+
     if(form.rate === 0){
       wx.showToast({
         title: '请选择评分',
@@ -248,14 +241,6 @@ Page({
       return
     }
 
-    if(keys.length === 0){
-      wx.showToast({
-        title: '请拍摄照片',
-        icon : 'none',
-        mask: true
-      })
-      return
-    }
 
     wx.showLoading({
       title: '发表中...',
@@ -268,8 +253,6 @@ Page({
 
     workerCommentAdd({
       worker_id : this.data.worker.id,
-      cate_id : form.cate_id,
-      cate_title : form.cate_title,
       rate : form.rate,
       comment : form.content,
       images : images,

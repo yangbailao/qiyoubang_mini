@@ -149,7 +149,7 @@ Page({
               if(res.code == 1){
                 wx.makePhoneCall({
                   phoneNumber: this.data.detail.tel,
-                  success:function(){
+                  success:() =>{
                     wx.showModal({
                       title:'提示',
                       content:'电话联系后请反馈是否已接受此任务！',

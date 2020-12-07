@@ -5,7 +5,8 @@ import {scrollLoadList} from '../../utils/util';
 import {
   loginUser,
   getUser,
-  getIndex
+  getIndex,
+  getSystemConfig
 } from '../../api/login'
 import { cache } from '../../utils/cache.js'
 import {missionList} from '../../api/api'
@@ -74,6 +75,8 @@ Page({
     this.setData({
       scrollHeight
     });
+
+    getSystemConfig
 
     /**
      * 获取登录信息
