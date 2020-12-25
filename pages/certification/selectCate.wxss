@@ -1,0 +1,45 @@
+/* pages/certification/selectCate.wxss */
+
+.tree-select{
+  display: flex;
+}
+
+.tree-select-nav{
+  width: 300rpx;
+  background:#f7f8fa;
+}
+.tree-select-nav .item{
+  height: 100rpx;
+  line-height: 100rpx;
+  padding:0 40rpx;
+  position: relative;
+}
+.tree-select-nav .cur{
+  background: #fff;
+  color:#f00;
+}
+.tree-select-nav .selected{
+  position: absolute;
+  top: 37rpx;
+  left: 0rpx;
+  width: 8rpx;
+  height: 26rpx;
+  background: #f00;
+  z-index: 99;
+}
+
+
+.tree-select-content{
+  width: 400rpx;
+  background: #fff;
+  padding:0 30rpx;
+}
+
+.tree-select-content .item{
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.tree-select-content .cur{
+  color:#f00;
+}

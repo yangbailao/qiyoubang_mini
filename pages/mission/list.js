@@ -8,7 +8,8 @@ import {
 import {scrollLoadList} from '../../utils/util'
 import {
   missionList,
-  getMissionCate
+  getMissionCate,
+  getSystemConfig
 } from '../../api/api'
 import { cache } from '../../utils/cache.js'
 Page({
@@ -36,7 +37,10 @@ Page({
     focus: true,
     triggered: false,
     searchShow:false,
-    searchStr:''
+    searchStr:'',
+    headText:'',
+    longitude : 0,
+    latitude : 0
   },
 
   /**
@@ -71,7 +75,15 @@ Page({
       })
     }
 
+    // 头部描述文字
+    getSystemConfig({title:'mission_text'}).then((res) => {
+      this.setData({
+        headText : res.data
+      })
+    })
 
+    //获取当前的地理位置、速度
+    
 
     // 读取任务分类
     this.getCates()
@@ -95,7 +107,8 @@ Page({
     //   this.reloadData()
     // }
     // 读取任务列表
-    this.reloadData()
+    this.getLocation()
+    
   },
 
   /**
@@ -250,7 +263,9 @@ Page({
         pageSize,
         cate_id: cateActive || 0,
         status : 1,
-        title:searchStr
+        title:searchStr,
+        long : this.data.longitude,
+        lat : this.data.latitude
       },
       beforeLoad:() => {
         this.setData({
@@ -293,6 +308,27 @@ Page({
     },() => {
       app.globalData.category.id = cate
       this.searchList()
+    })
+  },
+
+  getLocation : function(e){
+    wx.showLoading({
+      title: '加载中……',
+      mask : true
+    })
+    wx.getLocation({
+      type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
+      success: res => {
+
+        console.log(res)
+        //赋值经纬度
+        this.setData({
+          latitude: res.latitude,
+          longitude: res.longitude,
+        })
+        this.reloadData()
+        wx.hideLoading()
+      }
     })
   },
 

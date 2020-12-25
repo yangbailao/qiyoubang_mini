@@ -3,13 +3,13 @@
 <view class="container">
   <view class="info">
     <view class="info-bar">
-      <view class="info-name">姓名</view>
+      <view class="info-name"><text class="red">*</text>姓名</view>
       <input placeholder="请输入姓名" bindblur="updateData" bindinput="changeInput" data-name="name" value="{{fromData.name}}"
         class="info-txt"></input>
     </view>
     <view class="line"></view>
     <view class="info-bar">
-      <view class="info-name">电话号码</view>
+      <view class="info-name"><text class="red">*</text>电话号码</view>
       <input type="number" placeholder="请输入电话号码" bindblur="updateData" bindinput="changeInput" data-name="phone" value="{{fromData.phone}}"
         class="info-txt"></input>
     </view>
@@ -28,17 +28,20 @@
     </view>
     <view class="line"></view>
     <view class="info-bar">
-      <view class="info-name">选择分类</view>
-      <view class="clear cateView">
-        <view class="item {{item.selected?'active':''}}" wx:for="{{allCategory}}" wx:key="index" bindtap="touchCate" data-index="{{index}}">
-          {{item.title}}
-        </view>
-      </view>
+      <view class="info-name"><text class="red">*</text>地点</view>
+      <input placeholder="点击选择位置" bindtap="chooseAddress"  value="{{shop.map_name}}"
+        class="info-txt"></input>
+    </view>
+    <view class="line"></view>
+    <view class="info-bar">
+      <view class="info-name"><text class="red">*</text>选择工种</view>
+      <input placeholder="点击选择工种分类" bindtap="selectCate" disabled value="{{fromData.cateText}}"
+        class="info-txt"></input>
     </view>
     <view class="line"></view>
 
     <view class="info-bar info-bar2">
-      <view class="info-name">简介简历</view>
+      <view class="info-name"><text class="red">*</text>简介简历</view>
       <textarea placeholder="请输入简介简历" bindblur="updateData" bindinput="changeInput" data-name="introduction"
         value="{{fromData.introduction}}"></textarea>
     </view>
@@ -46,7 +49,7 @@
 
   </view>
 
-  <view class="title">上传营业执照（点击下方上传图片）</view>
+  <view class="title">上传身份证照片（点击下方上传图片）</view>
   <view class="up-wrap">
     <view class="user_card" bindtap="takePhoto" data-index="1">
       <block wx:if="{{image1 == ''}}">

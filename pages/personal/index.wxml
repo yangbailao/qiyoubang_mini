@@ -46,7 +46,7 @@
 </view>
 <!-- bar1 end -->
 <!-- bar2 start -->
-<view class="bar2 wrap">
+<!-- <view class="bar2 wrap">
   <view class="btn blue">
     <view class="icon">
       <image src="/images/icon-btn-shop-reg.svg"></image>
@@ -65,7 +65,7 @@
       <view class="desc">免费修车大礼包</view>
     </view>
   </view>
-</view>
+</view> -->
 <!-- bar2 end -->
 
 <!-- list start -->

@@ -1,4 +1,5 @@
 // pages/certification/index.js
+const chooseLocation = requirePlugin('chooseLocation');
 const app = getApp()
 import {
   getUploadToken,
@@ -21,7 +22,9 @@ Page({
       card:'',
       image1:'',
       image2:'',
-      introduction:''
+      introduction:'',
+      cateText:'',
+      cate:''
     },
     image1:'',
     image2:'',
@@ -31,20 +34,27 @@ Page({
     keys:[],
     token:'',
     uploadUrl:'',
-    allCategory:[]
+    allCategory:[],
+    shop:{
+
+    }
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var arr = [1111,2,3];
+    console.log(arr.indexOf(1111))
+
+
     getUserInfo().then(res => {
       if(res.data.is_worker == 1)
       {
 
         // wx.showModal({
         //   confirmText: '好的',
-        //   content: '您已经通过实名认证，您的信息将会在我来帮中展示',
+        //   content: '您已经通过实名认证，您的信息将会在专业帮中展示',
         //   showCancel: false,
         //   title: '提示',
         //   success : res=>{
@@ -77,7 +87,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    const location = chooseLocation.getLocation();
+    if(location)
+    {
+      this.setData({
+        'shop.map_name' : location.name,
+        'shop.address' : location.address,
+        'shop.district' : location.district,
+        'shop.city' : location.city,
+        'shop.province' : location.city,
+        'shop.latitude' : location.latitude,
+        'shop.longitude' : location.longitude,
+      });
+    }
   },
 
   /**
@@ -240,17 +262,12 @@ Page({
   },
   save:function(){
     // let fromData = this.data.fromData
-    const {fromData,keys,allCategory} = this.data
-    let cate = []
-    allCategory.map((item,index) =>{
-      if(item.selected){
-        cate.push(item.id)
-      }
-    })
+    const {fromData,keys,cate} = this.data
+    let cateText = this.data.fromData.cateText
+    console.log(this.data.shop.map_name)
 
 
-
-    if(fromData.name.length === 0 || fromData.phone.length === 0 || fromData.code.length === 0 || fromData.card.length === 0) {
+    if(fromData.name.length === 0 || fromData.phone.length === 0 || fromData.code.length === 0) {
       wx.showToast({
         title: '请输入完内容在提交！',
         icon:'none',
@@ -258,24 +275,34 @@ Page({
       })
       return
     }
-    if(fromData.image1.length === 0) {
+    if(!this.data.shop.map_name)
+    {
       wx.showToast({
-        title: '请上传身份证正面!',
-        icon:'none',
-        mask: true
-      })
-      return
-    }
-    if(fromData.image2.length === 0) {
-      wx.showToast({
-        title: '请上传身份证反面!',
+        title: '请选择地点',
         icon:'none',
         mask: true
       })
       return
     }
 
-    if(cate.length === 0) {
+    // if(fromData.image1.length === 0) {
+    //   wx.showToast({
+    //     title: '请上传身份证正面!',
+    //     icon:'none',
+    //     mask: true
+    //   })
+    //   return
+    // }
+    // if(fromData.image2.length === 0) {
+    //   wx.showToast({
+    //     title: '请上传身份证反面!',
+    //     icon:'none',
+    //     mask: true
+    //   })
+    //   return
+    // }
+
+    if(cateText.length === 0) {
       wx.showToast({
         title: '请选择分类!',
         icon:'none',
@@ -284,6 +311,9 @@ Page({
       return
     }
     let data = {}
+
+
+
     data['realname'] = fromData.name
     data['tel'] = fromData.phone
     data['code'] = fromData.code
@@ -291,7 +321,16 @@ Page({
     data['idcard_img_a'] = fromData.image1
     data['idcard_img_b'] = fromData.image2
     data['worker_desc'] = fromData.introduction
-    data['worker_cate'] = JSON.stringify(cate)
+    data['worker_cate'] = JSON.stringify(fromData.cate)
+
+    let shop = this.data.shop
+    data['map_name'] = shop.map_name
+    data['address'] = shop.address
+    data['district'] = shop.district
+    data['city'] = shop.city
+    data['province'] = shop.province
+    data['latitude'] = shop.latitude
+    data['longitude'] = shop.longitude
 
     updateBindTel(data).then((res) =>{
       if(res.code == 1){
@@ -306,5 +345,40 @@ Page({
         },1500)
       }
     })
-  }
+  },
+  selectCate(){
+    // let t = [1,23]
+    // let t2 = JSON.stringify(t)
+    // let t3 = JSON.parse(t2)
+    // console.log(t2,t3)
+
+    // return
+    if(this.data.fromData.cate != '')
+    {
+      console.log(typeof this.data.fromData.cate)
+      const cates = JSON.stringify(this.data.fromData.cate) 
+      const cateText = JSON.stringify(this.data.fromData.cateText)
+      console.log(cates)
+      wx.navigateTo({
+        url: '/pages/certification/selectCate?cates='+cates+'&catesText='+cateText,
+      })
+    }
+    else
+    {
+      wx.navigateTo({
+        url: '/pages/certification/selectCate',
+      })
+    }
+    
+  },
+    /**
+   *  选择用户位置
+   */
+  chooseAddress : function(){
+    const key = 'GQZBZ-ABDHS-6ZPOH-6P2WY-RPQGZ-PPFV5'; //使用在腾讯位置服务申请的key
+    const referer = '骑行帮'; //调用插件的app的名称
+    wx.navigateTo({
+      url: `plugin://chooseLocation/index?key=${key}&referer=${referer}`
+    });
+  },
 })

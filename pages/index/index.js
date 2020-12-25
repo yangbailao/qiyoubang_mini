@@ -6,7 +6,7 @@ import {
   loginUser,
   getUser,
   getIndex,
-  getSystemConfig
+
 } from '../../api/login'
 import { cache } from '../../utils/cache.js'
 import {missionList} from '../../api/api'
@@ -76,7 +76,7 @@ Page({
       scrollHeight
     });
 
-    getSystemConfig
+    
 
     /**
      * 获取登录信息

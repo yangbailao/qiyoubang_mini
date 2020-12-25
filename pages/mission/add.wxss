@@ -39,9 +39,12 @@
     margin-bottom: 20rpx;
     line-height: 88rpx;
   }
+  .form .no-height{height: auto;}
   .form .form-item text{font-size: 30rpx;width: 174rpx;height: 88rpx;}
   .form .form-item input{border: 1px solid #f8f8fa;width: 516rpx;height: 88rpx;border-radius: 10rpx;padding: 0 20rpx;}
-  .form .form-item textarea{border: 1px solid #f8f8fa;width: 690rpx;border-radius: 10rpx;padding: 20rpx;}
+  .form .form-item .textarea{border: 1px solid #f8f8fa;width: 476rpx;border-radius: 10rpx;padding: 20rpx;}
+
+
 
 
 .plaClass {
@@ -49,6 +52,7 @@
   font-size: 28rpx;
 }
 
+/* 选择框 */
 .select_box {
   background: #fff;
   width: 516rpx;
@@ -114,4 +118,54 @@
   color: rgb(102, 102, 102);
 
 
+}
+
+/* 选择框 */
+
+
+.uploadList {
+  width: 516rpx;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15rpx;
+}
+
+.uploadItem {
+  width: 220rpx;
+  height: 220rpx;
+  /* margin-bottom: 15rpx; */
+  margin: 0 15rpx 15rpx 0;
+  position: relative;
+}
+
+.uploadItem image{
+  width: 220rpx;
+  height: 220rpx;
+  border-radius: 10rpx;
+}
+
+.icon-small {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #fff;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.uploadBtn {
+  width: 220rpx;
+  height: 220rpx;
+  border: 1px dashed #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #f3f3f3;
+  color: #333;
+  font-size: 24rpx;
+  border-radius: 10rpx;
+}
+.uploadBtn image{width: 80rpx;height: 80rpx;}
+.hide {
+  display: none;
 }

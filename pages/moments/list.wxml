@@ -71,7 +71,7 @@
       <view class="images">
 
         <block wx:if="{{js.length(item.video) > 0}}">
-          <video src="{{qiniuShowUrl + item.video}}"></video>
+          <video src="{{qiniuShowUrl + item.video}}" object-fit="fill" ></video>
         </block>
 
         <block wx:if="{{js.length(item.images) > 0}}">

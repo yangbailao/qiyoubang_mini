@@ -36,7 +36,8 @@
     "pages/help/index",
     "pages/help/detail",
     "pages/help/comment",
-    "pages/certification/index"
+    "pages/certification/index",
+    "pages/certification/selectCate"
 
   ],
   "window":{

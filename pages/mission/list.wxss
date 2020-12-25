@@ -141,3 +141,11 @@
   text-align: center;
   background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
 }
+
+.over{
+  color:#fff;
+  font-size: 24rpx;
+  background: #f59301;
+  padding: 0 6rpx;
+  margin-right: 10rpx;
+}

@@ -9,7 +9,16 @@
   </view>
   <view class="form-item wrap">
     <text>信息分类：</text>
-    <input type="text" bindtap="showCate" value="{{form.cate_title}}" placeholder-class="plaClass" placeholder="请选择所属分类"/>
+    <view class='select_box'>
+      <view class='select' catchtap='selectTap'>
+        <text class='select_text'>{{selectData[index]}}</text>
+        <!-- <image class='words_img' src='../../images/dv.png'></image>
+        <image class='select_img {{show&&"select_img_rotate"}}' src='/image/gobottom.png'></image> -->
+      </view>
+      <view class='option_box' style='height:{{show?(selectData.length>5?440:selectData.length*88):0}}rpx;'>
+        <view class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item}}</view>
+      </view>
+    </view>
   </view>
   <view class="form-item wrap">
     <text>联系方式：</text>
@@ -17,8 +26,10 @@
   </view>
   
   <view class="form-item wrap">
-    <textarea placeholder="填写信息详情" bindinput="changeContent" value="{{form.content}}" />
+    <textarea style="line-height:40rpx" placeholder="填写信息详情" bindinput="changeContent" value="{{form.content}}" />
   </view>
 </view>
 
 <view class="submit" bindtap="submit">提交</view>
+
+<view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>

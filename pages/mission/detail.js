@@ -8,7 +8,8 @@ import {
   getMissionById,
   getTake,
   getCheckFinish,
-  getConfirmMission
+  getConfirmMission,
+  getQiniu
 } from '../../api/api'
 import { cache } from '../../utils/cache.js'
 Page({
@@ -42,6 +43,12 @@ Page({
         this.setUserInfo()
       })
     }
+    //获取7牛配置信息
+    getQiniu().then((res) => {
+      this.setData({
+        qiniuShowUrl : res.data.showUrl
+      })
+    })
   },
 
   /**

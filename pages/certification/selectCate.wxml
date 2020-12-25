@@ -1,0 +1,18 @@
+<!--pages/certification/selectCate.wxml-->
+<navBar title='选择工种' back />
+<wxs src="../../utils/util.wxs" module="toolStr" />
+<view class="tree-select">
+  <view class="tree-select-nav">
+    <view wx:for="{{parentCate}}" wx:key="index" data-id="{{item.id}}" class="item {{cruPartenCate == item.id ? 'cur' : ''}}" bindtap="changeCate"><text class="selected" wx:if="{{cruPartenCate == item.id}}"></text> {{item.title}}</view>
+
+  </view>
+
+  <view class="tree-select-content" wx:for="{{sonCate}}" wx:if="{{cruPartenCate == index}}" wx:key="index" data-index="{{index}}" >
+    <view class="item {{toolStr.indexof(v.id,cates) != -1 ? 'cur' : ''}}" wx:for="{{item}}" wx:for-item="v" data-title="{{v.title}}" data-id="{{v.id}}" wx:key="index2" bindtap="chooseSon">{{v.title}}</view>
+  </view>
+
+  <!-- <view class="tree-select-content">
+    <view class="item">子分类</view>
+    <view class="item">子分类</view>
+  </view> -->
+</view>

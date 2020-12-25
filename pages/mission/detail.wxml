@@ -1,5 +1,5 @@
 <navBar back title='任务详情'/>
-
+<wxs src="../../utils/util.wxs" module="js" />
 <view class="user-info wrap">
 
   <image class="userinfo-avatar li" src="{{user_info.avatar_url}}" mode="cover"></image>
@@ -46,11 +46,21 @@
     <text>{{detail.cateName}}</text>
     <text>{{detail.view}}人看过</text>
   </view>
-  <view class="locale">任务地点：{{detail.locale}}</view>
+  <view class="locale">任务地点：{{detail.map_name}}{{detail.locale}}</view>
   <view class="content">
     <view class="content-title">任务描述</view>
     <view class="content-body">{{detail.content}}</view>
   </view>
+  <view class="content">
+    <view class="content-title">相关图片</view>
+    <view class="content-body">
+
+      <block wx:for="{{detail.images}}" wx:for-item="v" wx:key="index">
+        <image src="{{qiniuShowUrl + v}}" style="height:{{imgHeight}}rpx;width:{{imgHeight}}rpx;" mode="center" bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{detail.images}}"></image>
+      </block>
+    </view>
+  </view>
+
 </view>
 
 <button wx:if="{{!userInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="login-btn" style="width:750rpx">请先登录后再联系</button>

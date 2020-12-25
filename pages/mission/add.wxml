@@ -35,11 +35,33 @@
   </view>
   <view class="form-item wrap">
     <text>任务地点：</text>
-    <input type="text" bindinput="changeLocale" value="{{form.locale}}" placeholder-class="plaClass" placeholder="请输入相关地点" />
+    <input placeholder="点击选择位置" bindtap="chooseAddress"  value="{{shop.map_name}}"
+        class="info-txt"></input>
   </view>
   <view class="form-item wrap">
-    <textarea placeholder="填写任务的具体描述" bindinput="changeContent" value="{{form.content}}" />
+    <text>详细地址：</text>
+    <input type="text" bindinput="changeLocale" value="{{form.locale}}" placeholder-class="plaClass" placeholder="具体位置，如门牌号" />
   </view>
+  <view class="form-item wrap no-height">
+    <text>任务描述：</text>
+    <textarea style="line-height:40rpx" class="textarea" placeholder="填写任务的具体描述" bindinput="changeContent" value="{{form.content}}" />
+  </view>
+  
+  <view class="form-item wrap no-height">
+    <text>相关图片：</text>
+    <view class="uploadList">
+      <view wx:for="{{uploadImg}}" wx:key="index" class="uploadItem">
+        <image src="{{item}}" mode="aspectFill"></image>
+        <icon data-index="{{index}}" bindtap="del" class="icon-small" type="cancel" size="23"></icon>
+      </view>
+
+      <view class="uploadBtn {{uploadImg.length >= 9 || uploadVideo ? 'hide': ''}}" bindtap="takePhoto">
+        <image src="/images/icon-add.svg"></image>
+      </view>
+
+    </view>
+  </view>
+
 </view>
 
 <view class="submit" bindtap="submit">提交</view>

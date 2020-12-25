@@ -7,7 +7,8 @@ import {
 import {scrollLoadList} from '../../utils/util'
 import {
   workerList,
-  getWorkerCate
+  getWorkerCate,
+  getSystemConfig
 } from '../../api/api'
 import { cache } from '../../utils/cache.js'
 Page({
@@ -24,13 +25,18 @@ Page({
     isEnd: false,
     cateActive: 0,
     searchShow:false,
-    searchStr:''
+    searchStr:'',
+    latitude : 0,
+    longitude : 0,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //获取当前的地理位置、速度
+    this.getLocation();
+
     app.chengeNeed()
     const {
       contentHeight,
@@ -58,7 +64,12 @@ Page({
       })
     }
 
-
+    // 头部描述文字
+    getSystemConfig({title:'worker_text'}).then((res) => {
+      this.setData({
+        headText : res.data
+      })
+    })
 
     // 读取信息分类
     this.getCates()
@@ -191,7 +202,7 @@ Page({
       pageSize,
       searchStr
     } = this.data;
-    workerList({page:page,pageSize:pageSize,type:cateActive,title:searchStr}).then((res) =>{
+    workerList({page:page,pageSize:pageSize,type:cateActive,title:searchStr,lat:this.data.latitude,long:this.data.longitude}).then((res) =>{
       if(res.code == 1) {
         let list = res.data.list
         if(page == 1) {
@@ -255,7 +266,7 @@ Page({
   getCates(){
     getWorkerCate().then(res => {
       this.setData({
-        allCategory : res.data.allList
+        allCategory : res.data.topAllList
       })
     })
   },
@@ -272,6 +283,24 @@ Page({
     },() => {
       app.globalData.category.id = cate
       this.searchList()
+    })
+  },
+  getLocation : function(e){
+
+    wx.showLoading({
+      title: '加载中……',
+      mask : true
+    })
+    wx.getLocation({
+      type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
+      success: res => {
+        //赋值经纬度
+        this.setData({
+          latitude: res.latitude,
+          longitude: res.longitude,
+        })
+        wx.hideLoading()
+      }
     })
   },
 

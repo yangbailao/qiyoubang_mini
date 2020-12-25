@@ -184,7 +184,7 @@
         {
           "name": "任务详情页",
           "pathName": "pages/mission/detail",
-          "query": "id=27",
+          "query": "id=34",
           "scene": null
         },
         {
@@ -208,6 +208,12 @@
         {
           "name": "我来帮详情页",
           "pathName": "pages/help/detail",
+          "query": "id=41",
+          "scene": null
+        },
+        {
+          "name": "选择工种",
+          "pathName": "pages/certification/selectCate",
           "query": "id=41",
           "scene": null
         }

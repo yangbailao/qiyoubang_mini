@@ -142,3 +142,12 @@
   text-align: center;
   background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
 }
+
+.real{
+  font-size: 24rpx;
+  background: #f59301;
+  padding:0 12rpx;
+  margin-right: 12rpx;
+  border-radius: 6rpx;
+  color: #fff;
+}

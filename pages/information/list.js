@@ -8,7 +8,8 @@ import {
 import {scrollLoadList} from '../../utils/util'
 import {
   informationList,
-  getInformationCate
+  getInformationCate,
+  getSystemConfig
 } from '../../api/api'
 import { cache } from '../../utils/cache.js'
 Page({
@@ -36,7 +37,8 @@ Page({
     focus: true,
     triggered: false,
     searchShow:false,
-    searchStr:''
+    searchStr:'',
+    headText:''
   },
 
   /**
@@ -71,7 +73,12 @@ Page({
       })
     }
 
-
+    // 头部描述文字
+    getSystemConfig({title:'information_text'}).then((res) => {
+      this.setData({
+        headText : res.data
+      })
+    })
 
     // 读取信息分类
     this.getCates()

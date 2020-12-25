@@ -23,7 +23,7 @@
     <text wx:else>根据关键词搜索</text>
   </view>
 </view>
-<view class="head-text">骑行帮，能帮就帮</view>
+<view class="head-text">{{headText}}</view>
 <scroll-view scroll-x="true" class="cates wrap">
   <view wx:for="{{allCategory}}" class="item {{cateActive == item.id ? 'cur' : ''}}" bindtap="changeCate" data-title="{{item.title}}" data-cate="{{item.id}}" wx:key="index">{{item.title}}</view>
 
@@ -43,7 +43,7 @@
     <view class="item" wx:for="{{list}}" wx:key="index">
       <navigator url="/pages/mission/detail?id={{item.id}}">
       <view class="head sb">
-        <view class="title">{{item.title}}</view>
+        <view class="title"><text class="over" wx:if="{{item.show == 0}}">已完成</text>{{item.title}}</view>
         <view class="see">{{item.view}}人看过</view>
       </view>
       <view class="info sb">
@@ -57,7 +57,7 @@
           <image src="{{item.avatar_url}}" mode="cover"></image>
           {{item.nickname}}
         </view>
-        <view class="fen">帮帮分:<text class="red">{{item.credit}}分</text></view>
+        <view class="fen"><text class="red">{{item.juli}}</text>km</view>
       </view>
       </navigator>
     </view>
