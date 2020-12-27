@@ -21,21 +21,22 @@
     "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
-    "useMultiFrameRuntime": false,
+    "useMultiFrameRuntime": true,
     "useApiHook": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
+    "enableEngineNative": false,
+    "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "bundle": false
+    "useApiHostProcess": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.12.0",
@@ -215,6 +216,23 @@
           "name": "选择工种",
           "pathName": "pages/certification/selectCate",
           "query": "id=41",
+          "scene": null
+        },
+        {
+          "name": "联系我们",
+          "pathName": "pages/personal/contact",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的店铺",
+          "pathName": "pages/personal/myShop",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "专业帮",
+          "pathName": "pages/help/index",
           "scene": null
         }
       ]

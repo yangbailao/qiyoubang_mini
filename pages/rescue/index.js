@@ -17,6 +17,7 @@ Page({
     mainMenuFlag :false,
     latitude : 0,
     longitude : 0,
+	showMask:false,
     markers: [{
       iconPath: "/images/marker-rescue.svg",
       id: 0, 
@@ -26,7 +27,13 @@ Page({
       height: 50
     }],
     type:2,
-    priceList:[]
+    priceList:[],
+	currentMask:[],
+	currentM:{
+		id:0,
+		title:'',
+		phone:''
+	}
   },
 
 
@@ -63,7 +70,8 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    //创建 map 上下文 MapContext 对象。
+    this.mapCtx = wx.createMapContext('map')
   },
 
   /**
@@ -147,9 +155,26 @@ Page({
   },
   markertap(e) {
     console.log(e.detail.markerId)
+	console.log(this.data.currentMask);
+	let currentM = this.data.currentMask.filter(function(item){
+		if(e.detail.markerId == item.id){
+			return item;
+		}
+	})
+	console.log(currentM);
+	this.setData({
+		showMask:true,
+		currentM:currentM[0]
+	})
   },
   controltap(e) {
     console.log(e.detail.controlId)
+  },
+  labeltap(e) {
+    console.log(e.detail)
+  },
+  callouttap(e) {
+    console.log(e.detail)
   },
   unfold() {
     var unfold = this.data.unfold
@@ -185,7 +210,8 @@ Page({
   getShops(){
     getShopList({page:1,pageSize:8,lat:this.data.latitude,long:this.data.longitude}).then(
       res => {
-        var markers = []
+        var markers = [];
+		var currentMask = [];
         const list = res.data.list
         // console.log(res,typeof list,list)
         list.forEach(item =>{
@@ -197,9 +223,17 @@ Page({
             width: 50,
             height: 50
           }
-          markers.push(marker)
+          markers.push(marker);
+		  
+		  let maskItem = {
+			  id:item.id,
+			  title:item.shop_name,
+			  phone:item.shop_tel,
+		  }
+		  currentMask.push(maskItem);
           this.setData({
-            markers
+            markers,
+			currentMask
           })
         })
       }
@@ -213,6 +247,13 @@ Page({
         priceList:list
       })
     })
+  },
+  hideMask:function(){
+	  this.setData({showMask:false});
   }
-  
+  ,goTo:function(e){
+	  wx.navigateTo({
+	    url: e.currentTarget.dataset['url'],
+	  })
+  }
 })

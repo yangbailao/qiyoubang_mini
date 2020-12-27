@@ -85,7 +85,7 @@
     <text>我的服务站</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>
   </view>
-  <view class="item">
+  <view class="item" bindtap="goTo" data-url="/pages/personal/myShop">
     <image src="/images/icon-menu-my-shop.svg" class="menu"></image>
     <text>我的店铺</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>
@@ -104,6 +104,11 @@
       <text>联系客服</text>
       <image src="/images/icon-right-arrow.svg" class="arrow"></image>
     </button>
+  </view>
+  <view class="item" bindtap="goTo" data-url="/pages/personal/contact?id={{userInfo.id}}">
+      <image src="/images/icon-menu-contact.svg" class="menu"></image>
+      <text>联系我们</text>
+      <image src="/images/icon-right-arrow.svg" class="arrow"></image>
   </view>
   <view class="item" bindtap="goTo" data-url="/pages/personal/feedback?id={{userInfo.id}}">
     <image src="/images/icon-menu-message.svg" class="menu"></image>

@@ -1,0 +1,17 @@
+<!--pages/personal/contact.wxml-->
+<navBar title='联系我们' back />
+<view class="bg"><image src="../../images/contact.svg"></image></view>
+<view class="wrap form" style="height:{{scrollHeight}}rpx">
+  
+  <view class="form-item wrap">
+	<text>您可以拨打我们的电话或者邮箱</text>
+	<text>联系我们的客服</text>
+	<text>我们真诚为您服务</text>
+	<image src="../../images/email.svg" class="menu"></image>
+	<text class="red" >{{email}}</text>
+  </view>
+</view>
+
+
+
+<view class="submit" bindtap="callPhone">电话联系</view>

@@ -1,6 +1,18 @@
 import { http } from '../utils/http.js'
 // import { cache } from '../utils/cache.js'
-
+// 联系我们
+export function getContact(data) {
+  return new Promise((resolve, reject) => {
+    http({
+      url: '/mini_api/index/getContact',
+      data,
+      success: function (data) {
+        console.log('联系我们', data)
+        resolve(data)
+      }
+    })
+  })
+}
 // 店铺更新
 export function updateShop(data) {
   return new Promise((resolve, reject) => {
@@ -225,8 +237,52 @@ export function delMomentLike(data) {
     })
   })
 }
+//我的关注
+export function getFavorMoment(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/user_moment_favor/getList',
+      data,
+      success: function (data) {
+        console.log('我的关注', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+//朋友圈关注
+export function addMomentAttention(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/user_moment_favor/create',
+      data,
+      success: function (data) {
+        console.log('关注', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
 
-
+//朋友圈取消关注
+export function delMomentAttention(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/mini_api/user_moment_favor/del',
+      data,
+      success: function (data) {
+        console.log('取消关注', data)
+        if (data.code == '1') {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
 // 获取上传token、key
 export function getUploadToken() {
   return new Promise((resolve) => {

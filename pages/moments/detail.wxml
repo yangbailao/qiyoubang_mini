@@ -1,4 +1,4 @@
-<!--pages/moments/list.wxml-->
+<!--pages/moments/detail.wxml-->
 <navBar title='骑友录' />
 
 <scroll-view scroll-y="true" style="height:{{scrollHeight}}rpx" refresher-enabled="{{true}}" refresher-threshold="{{100}}"
@@ -43,16 +43,7 @@
 
 
 	<view class="list">
-		<!-- <view class="notice">
-    <image class="fl" src="https://wx.qlogo.cn/mmopen/vi_32/Q3auHgzwzM5C3BttKuwFENB8q8A1tCT90LK9ciaibKErcygkIn42aK4PUBrIEzibMgqMiaPoFJcJSaQEeXLd3JlVkQ/132"></image>
-    <view class="fl">5条新消息</view>
-  </view> -->
-
 		<wxs src="../../utils/util.wxs" module="js" />
-		<view class="search-box" >
-			<input type="text" :value="{{searchKey}}" bindinput="bindSearch" confirm-type="search" placeholder="请输入用户昵称" />
-			<view class="submit" bindtap="search">搜索</view>
-		</view>
 		<block wx:for="{{list}}" wx:key="id">
 			<view class="moments wrap">
 				<view bindtap="viewUser" data-id="{{item.user_id}}" class="author">
@@ -84,7 +75,7 @@
 						<text class="fr" wx:if="{{item.hasLike == 0}}" bindtap="like" data-index="{{index}}" data-id="{{item.id}}"
 						 data-likeIndex="{{item.likeIndex}}">点赞</text>
 						<text class="fr" wx:else bindtap="notLike" data-index="{{index}}" data-id="{{item.id}}" data-like_index="{{item.likeIndex}}">取消点赞</text>
-						<text class="fr" wx:if="{{item.haseAttention == 0}}" bindtap="attention" data-index="{{index}}" data-id="{{item.id}}">关注</text>
+						<text class="fr" wx:if="{{item.hasAttention == 0}}" bindtap="attention" data-index="{{index}}" data-id="{{item.id}}">关注</text>
 						<text class="fr" wx:else bindtap="notAttention" data-index="{{index}}" data-id="{{item.id}}">取消关注</text>
 					</view>
 					<view class="comment-content">

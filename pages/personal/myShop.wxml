@@ -1,2 +1,68 @@
-<!--pages/personal/myShop.wxml-->
-<text>pages/personal/myShop.wxml</text>
+<!--pages/personal/feedback.wxml-->
+<navBar title='我的店铺' back />
+<view class="bg"><image src="../../images/myShop.png"></image></view>
+<view class="wrap form" style="height:{{scrollHeight}}rpx">
+  <view class="form-item wrap">
+    <view class="title"><text>*</text>店铺名称：</view>
+    <input type="text" class="input" bindinput="changeTitle" placeholder="" value="{{form.shop_name}}" />
+  </view>
+  <view class="form-item wrap">
+    <view class="title"><text>*</text>联系方式：</view>
+    <input type="number" class="input" bindinput="changeTel" placeholder="" value="{{form.shop_tel}}" />
+  </view>
+  <view class="form-item form-item-time wrap">
+    <view class="title"><text>*</text>营业时间：</view>
+	  <picker class="picker" mode="time" value="{{form.open_time}}" start="09:00" end="18:00" bindchange="bindTimeChange">
+	    <view class="input" >{{form.open_time}}</view>
+	  </picker>
+    <!-- <input type="text" class="input" bindinput="changeTitle" placeholder="" value="{{form.title}}" /> -->
+    <text class="to" >至</text>
+	<picker class="picker" mode="time" value="{{form.close_time}}" start="09:00" end="18:00" bindchange="bindTimeChange">
+	  <view class="input" >{{form.close_time}}</view>
+	</picker>
+  </view>
+  <view class="form-item wrap">
+    <view class="title"><text>*</text>店铺地址：</view>
+    <input class="input" placeholder="点击选择位置" bindtap="chooseAddress"  value="{{shop.map_name}}" ></input>
+  </view>
+  <view class="form-item wrap">
+    <textarea placeholder="详细地址" bindinput="changeContent" value="{{form.content}}" />
+  </view>
+  <view class="shop-item" >
+	  <view bindtap="openMask" ></view>
+	  <view bindtap="openMask"></view>
+  </view>
+  <view class="photo">
+    <view class="head">请上传你的店铺形象照片! (<text class="red">{{uploadImg.length}}</text>/6)</view>
+	<view>
+      <view class="uploadList">
+        <view wx:for="{{uploadImg}}" wx:key="index" class="uploadItem">
+          <image src="{{item}}" mode="aspectFill"></image>
+          <icon data-index="{{index}}" bindtap="del" class="icon-small" type="cancel" size="23"></icon>
+        </view>
+        <view class="uploadBtn {{uploadImg.length >= 6 || uploadVideo ? 'hide': ''}}" bindtap="takePhoto">
+          <image src="/images/icon-add.svg"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<view wx:if="{{showMask}}" bindtap="closeMask" class="overMask" >
+	<view catchtap="returnFale" class="box" >
+		<!-- start -->
+		<view class="server-title" >添加修车项目(<text>{{itemNum.length}}</text>)</view>
+		<view  class="server-form" >
+			<view wx:for="{{itemNum}}" wx:key="*this" class="server-form-item" >
+				<input class="item-title" bindinput="changeTtile" data-index="{{index}}"  placeholder="请填写项目名称" type="text" />
+				<input class="item-price" bindinput="changePrice" data-index="{{index}}"  placeholder="输入价格" type="text" />
+				<view catchtap="reduceItem" data-index="{{index}}" class="server-form-item-add" >x</view>
+			</view>
+		</view>
+		<view catchtap="addItem" class="server-add" >+ 添加新项目</view>
+		<view catchtap="submitItem"  class="server-submit" >确认</view>
+		<!-- end -->
+	</view>
+</view>
+
+<view class="submit" bindtap="submit">提交</view>

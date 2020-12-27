@@ -16,6 +16,12 @@
 <scroll-view scroll-x="true" class="cates wrap">
   <view wx:for="{{allCategory}}" class="item {{cateActive == item.id ? 'cur' : ''}}" bindtap="changeCate" data-title="{{item.title}}" data-cate="{{item.id}}" wx:key="index">{{item.title}}</view>
 </scroll-view>
+<wxs src="../../utils/util.wxs" module="js" />
+<block wx:if="{{js.filterArr(moreCategory,'pid',cateActive)}}" >
+<scroll-view scroll-x="true" class="cates wrap">
+  <view wx:for="{{js.filterArr(moreCategory,'pid',cateActive)}}" class="item {{cateSonActive == item.id ? 'cur' : ''}}" bindtap="changeSonCate" data-title="{{item.title}}" data-soncate="{{item.id}}" data-cate="{{cateActive}}" wx:key="index">{{item.title}}</view>
+</scroll-view>
+</block>
 <scroll-view 
   class="list wrap" 
   scroll-y 

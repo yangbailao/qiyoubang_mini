@@ -21,9 +21,11 @@ Page({
     page: 1,
     pageSize: 10,
     allCategory: [], // 信息分类
+    moreCategory: [], // 分类
     isLoading:false,
     isEnd: false,
     cateActive: 0,
+    cateSonActive: 0,
     searchShow:false,
     searchStr:'',
     latitude : 0,
@@ -194,7 +196,7 @@ Page({
     })
   },
 
-  searchList() {
+  searchList(isSonCate = 0) {
     let that = this
     let {
       page,
@@ -202,6 +204,9 @@ Page({
       pageSize,
       searchStr
     } = this.data;
+	if(isSonCate> 0){
+		cateActive = isSonCate;
+	}
     workerList({page:page,pageSize:pageSize,type:cateActive,title:searchStr,lat:this.data.latitude,long:this.data.longitude}).then((res) =>{
       if(res.code == 1) {
         let list = res.data.list
@@ -217,56 +222,13 @@ Page({
         })
       }
     })
-
-
-
-
-    // let {
-    //   page,
-    //   list,
-    //   cateActive,
-    //   isEnd,
-    //   isLoading,
-    //   pageSize,
-    //   searchStr
-    // } = this.data;
-    // scrollLoadList({
-    //   isEnd,
-    //   isLoading,
-    //   list,
-    //   apiPost: informationList,
-    //   data:{
-    //     page,
-    //     pageSize,
-    //     cate_id: cateActive || 0,
-    //     status : 1,
-    //     title:searchStr
-    //   },
-    //   beforeLoad:() => {
-    //     this.setData({
-    //       isLoading: true,
-    //       isShowAllPop: false
-    //     })
-    //   },
-    //   afterLoad: ({lists,page,totalPage,total,isLoading,isEnd}) => {
-    //     this.setData({
-    //       isLoading,
-    //       page,
-    //       totalPage,
-    //       list: lists,
-    //       total,
-    //       isEnd
-    //     })
-
-    //     // wx.stopPullDownRefresh()
-    //   }
-    // })
   },
   // 读取信息分类
   getCates(){
     getWorkerCate().then(res => {
       this.setData({
-        allCategory : res.data.topAllList
+        allCategory : res.data.topAllList,
+        moreCategory : res.data.allList
       })
     })
   },
@@ -282,7 +244,24 @@ Page({
       cateActive: cate
     },() => {
       app.globalData.category.id = cate
-      this.searchList()
+      this.searchList(cate)
+    })
+  },
+  // 点击子分类
+  changeSonCate(e) {
+    const {title, cate,soncate} = e.currentTarget.dataset
+	console.log(soncate);
+    this.setData({
+      page: 1,
+      list: [],
+      isEnd: false,
+      isLoading: false,
+      title,
+      cateActive: cate,
+      cateSonActive: soncate
+    },() => {
+      app.globalData.category.id = cate
+      this.searchList(soncate)
     })
   },
   getLocation : function(e){

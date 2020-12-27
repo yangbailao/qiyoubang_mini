@@ -71,10 +71,20 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '自定义标题',
+      // path: 'pages/information/detail?id=123'
+    }
   },
-
+	/* 分享到朋友圈 */
+	onShareTimeline:function(res){
+		console.log(res)
+	},
   // 读取任务详情
   getInformationDetail(){
     wx.showLoading({

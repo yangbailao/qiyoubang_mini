@@ -2,10 +2,16 @@
 
 import {
   getFavorShop,
-  getFavorWorker
+  getFavorWorker,
+  getFavorMoment
 } from '../../api/api';
 const app = getApp()
 import {scrollLoadList} from '../../utils/util'
+import {
+  loginUser,
+  getUser
+} from '../../api/login'
+import { cache } from '../../utils/cache.js'
 Page({
 
   /**
@@ -30,7 +36,16 @@ Page({
    */
   onLoad: function (options) {
     app.chengeNeed()
-    this.searchList()
+	if (cache.get('userInfo')) {
+	  getUser().then(res => {
+		  console.log(res);
+	    this.setData({
+	      userInfo:res
+	    })
+		this.searchList()
+	  })
+	}
+    
   },
 
   /**
@@ -44,7 +59,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+	
   },
 
   /**
@@ -129,15 +144,27 @@ Page({
       isLoading,
       pageSize
     } = this.data;
-    
+
+	switch(Number(this.data.typeActive)){
+		case 1:
+		var apiMethod = getFavorShop;
+		break;
+		case 2:
+		var apiMethod = getFavorMoment;
+		break;
+		default:
+		var apiMethod = getFavorWorker;
+	}
+	
     scrollLoadList({
       isEnd,
       isLoading,
       list,
-      apiPost: this.data.typeActive == 1 ? getFavorShop : getFavorWorker,
+      apiPost:  apiMethod,
       data:{
         page,
         pageSize,
+		user_id:this.data.userInfo.id
       },
       beforeLoad:() => {
         this.setData({

@@ -1,17 +1,14 @@
 {
-  "pages":[
+  "pages": [
     "pages/index/index",
     "pages/logs/logs",
     "pages/rescue/index",
     "pages/repair/index",
-
-
     "pages/moments/list",
     "pages/moments/add",
     "pages/bike/index",
     "pages/bike/list",
     "pages/bike/detail",
-
     "pages/mission/list",
     "pages/mission/detail",
     "pages/mission/add",
@@ -23,13 +20,12 @@
     "pages/personal/collection",
     "pages/personal/myComment",
     "pages/personal/feedback",
+    "pages/personal/contact",
     "pages/admin/shop_location",
     "pages/admin/add",
-
     "pages/information/list",
     "pages/information/detail",
     "pages/information/add",
-
     "pages/shop/list",
     "pages/shop/comment",
     "pages/shop/detail",
@@ -37,19 +33,18 @@
     "pages/help/detail",
     "pages/help/comment",
     "pages/certification/index",
-    "pages/certification/selectCate"
-
+    "pages/certification/selectCate",
+    "pages/moments/detail"
   ],
-  "window":{
-    "backgroundTextStyle":"light",
-    "backgroundColor":"#fff",
-    "backgroundColorTop":"#fe2f57",
-    "backgroundColorBottom":"#ff0",
+  "window": {
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#fff",
+    "backgroundColorTop": "#fe2f57",
+    "backgroundColorBottom": "#ff0",
     "navigationBarBackgroundColor": "#fe2f57",
     "navigationBarTitleText": "骑友帮",
-    "navigationBarTextStyle":"white",
-    "navigationStyle":"custom"
-    
+    "navigationBarTextStyle": "white",
+    "navigationStyle": "custom"
   },
   "usingComponents": {
     "navBar": "/components/navBar/navBar"

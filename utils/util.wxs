@@ -10,10 +10,21 @@ function indexof(str,array)
   return array.indexOf(str)
 }
 
+function filterArr(arr,key,value){
+	var newArr = [];
+	if(value == 0) return false;
+	newArr = arr.filter(function(item,index,arr){
+		if(item.pid == value){
+			return item;
+		}
+	});
+	if(newArr.length == 0) return false;
+	return newArr;
+}
 
 module.exports = {
   split: split,
   length: length,
-  indexof:indexof
-
+  indexof:indexof,
+  filterArr:filterArr
 }

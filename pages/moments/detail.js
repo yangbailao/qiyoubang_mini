@@ -295,7 +295,7 @@ Page({
         page,
         pageSize,
 		nickname:searchKey,
-		user_id:search_user
+		// user_id:search_user
       },
       beforeLoad:() => {
         wx.stopPullDownRefresh()
@@ -346,7 +346,6 @@ Page({
 	  this.setData({
 		  search_user:e.currentTarget.dataset.id
 	  })
-	  this.reloadData();
   },
   /* 到详情页 */
   goView(e){
@@ -432,13 +431,19 @@ Page({
       })
       const id = e.currentTarget.dataset.id
       const index = e.currentTarget.dataset.index
+      // const user = this.data.userInfo
+      // console.log(user)
+      // const attention = {id:user.id,nickname:user.nickname}
+
       const list = this.data.list
       console.log(index)
       addMomentAttention({user_id:id}).then(res=>{
-        list[index].haseAttention = 1
-        this.setData({
-          list
-        })
+        list[index].hasAttention = 1
+        // list[index].attention.unshift(attention)
+        // console.log(list[index].attention)
+        // this.setData({
+        //   list
+        // })
         wx.hideLoading({
           success: (res) => {},
         })
@@ -463,14 +468,17 @@ Page({
     })
     const id = e.currentTarget.dataset.id
     const index = e.currentTarget.dataset.index
-
+    // const likeIndex = e.currentTarget.dataset.like_index
+    
     const list = this.data.list
-
+    // console.log(likeIndex,list[index].like[likeIndex])
+    
     addMomentAttention({user_id:id}).then(res=>{
-      list[index].haseAttention = 0
-      this.setData({
-        list
-      })
+      list[index].hasAttention = 0
+      // list[index].like.splice(likeIndex,1)
+      // this.setData({
+      //   list
+      // })
       wx.hideLoading({
         success: (res) => {},
       })
