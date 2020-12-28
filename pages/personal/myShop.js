@@ -20,12 +20,14 @@ Page({
       img:'',
 	  open_time:'09:00',
 	  close_time:'18:00',
-	  server_item:[]
+	  server_item:[],
+	  help_item:[]
     },
 	shop:{},
 	itemNum:[
-		{title:'',price:0}
+		{id:1,title:'',price:0}
 	],
+	type:1,
 	// 弹窗
 	showMask:false,
   },
@@ -281,7 +283,8 @@ Page({
 	  let itemNum = this.data.itemNum;
 	  let newItem = {
 		  title:'',
-		  price:0
+		  price:0,
+		  id:itemNum.length
 	  }
 	  itemNum.push(newItem);
 	  this.setData({
@@ -289,8 +292,16 @@ Page({
 	  })
   }, 
   reduceItem:function(e){
+	  
 	  let index = e.currentTarget.dataset.index;
 	  let itemNum = this.data.itemNum;
+	  if(itemNum.length <= 1){
+		  wx.showToast({
+		    title: '修车项目至少为一项',
+		  	icon:'none'
+		  })
+		  return;
+	  }
 	  console.log(itemNum);
 	 itemNum.splice(index,1)
 	  this.setData({
@@ -313,6 +324,7 @@ Page({
   },
   submitItem:function(){
 	  let itemNum = this.data.itemNum;
+	  
 	  var itemArr = [];
 	  console.log(itemNum);
 	  itemNum.forEach(function(item,index,arr){
@@ -320,20 +332,39 @@ Page({
 			  itemArr.push(item)
 		  }
 	  })
-	  this.setData({
-		  'form.server_item':itemArr,
-		  showMask:false
-	  })
+	  
+	  if(itemArr.length <= 0){
+	  		  wx.showToast({
+	  		    title: '有效修车项目至少为一项',
+	  				icon:'none'
+	  		  })
+	  		  return;
+	  }
+	  if(type == 1){
+		  this.setData({
+		  		  'form.server_item':itemArr,
+		  		  showMask:false
+		  })
+	  }else{
+		 this.setData({
+		 		  'form.help_item':itemArr,
+		 		  showMask:false
+		 }) 
+	  }
+	  
   },
   /* 弹窗 */
   openMask:function(e){
   	  this.setData({
-  		  showMask:true
+  		  showMask:true,
+  		  type:e.currentTarget.dataset.value
   	  })
   },
   closeMask:function(e){
+	  let itemNum=[{id:1,title:'',price:0}];
 	  this.setData({
-		  showMask:false
+		  showMask:false,
+		  itemNum
 	  })
   },
   returnFale(){
