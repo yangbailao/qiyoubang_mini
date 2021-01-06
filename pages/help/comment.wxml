@@ -10,7 +10,7 @@
       联系电话：{{worker.tel}}
     </view>
     <view class="address">
-        <image src="/images/icon-location-dark.svg" class="title-icon"></image>{{worker.cateTitle}}
+        服务项目：{{worker.cateTitle}}
     </view>
   </view>
 </view>

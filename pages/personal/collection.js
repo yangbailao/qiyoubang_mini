@@ -144,16 +144,17 @@ Page({
       isLoading,
       pageSize
     } = this.data;
-
+    var apiMethod
 	switch(Number(this.data.typeActive)){
 		case 1:
-		var apiMethod = getFavorShop;
+		apiMethod = getFavorShop;
 		break;
 		case 2:
-		var apiMethod = getFavorMoment;
+		apiMethod = getFavorMoment;
 		break;
-		default:
-		var apiMethod = getFavorWorker;
+		case 3:
+    apiMethod = getFavorWorker;
+    break;
 	}
 	
     scrollLoadList({

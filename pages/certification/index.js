@@ -6,7 +6,8 @@ import {
   updateBindTel,
   getWorkerCate,
   sendCode,
-  getUserInfo
+  getUserInfo,
+  fileUpload
 } from '../../api/api'
 import {md5} from '../../utils/md5'
 Page({
@@ -176,8 +177,11 @@ Page({
     }
     // console.log(this.data.fromData.phone)
     // return
-    sendCode({tel:this.data.fromData.phone}).then((res) =>{
-      if(res.code == 1) {
+    sendCode({mobile:this.data.fromData.phone}).then((res) =>{
+      if(res.status== 200) {
+        this.setData({
+          'fromData.verify_id':res.key
+        })
         wx.showToast({
           title: '验证码已发送',
           mask:true
@@ -316,6 +320,9 @@ Page({
 
     data['realname'] = fromData.name
     data['tel'] = fromData.phone
+    data['mobile'] = fromData.phone
+    data['verify_id'] = fromData.verify_id
+    data['verify'] = fromData.code
     data['code'] = fromData.code
     data['idcard'] = fromData.card
     data['idcard_img_a'] = fromData.image1
@@ -331,9 +338,9 @@ Page({
     data['province'] = shop.province
     data['latitude'] = shop.latitude
     data['longitude'] = shop.longitude
-
+    // console.log(data);return;
     updateBindTel(data).then((res) =>{
-      if(res.code == 1){
+      if(res.status== 200){
         wx.showToast({
           title: '提交成功!',
           mask:true

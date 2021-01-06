@@ -108,10 +108,15 @@ Page({
       title: '加载中',
     })
     fetchHelpDetail({id:this.data.id}).then( res => {
-      
+      let cateTitle = [];
+      res.data.cateArr.forEach(element => {
+        cateTitle.push(element['title']);
+      });
+      cateTitle = cateTitle.join(',');
       this.setData({
-        detail : res.data.worker,
-        comments : res.data.comments
+        detail : res.data,
+        cateTitle,
+        comments : res.data.workerComment
       })
       wx.hideLoading({
         success: (res) => {},
@@ -121,35 +126,46 @@ Page({
   },
   // 收藏店铺
   touchToCollection:function(){
-    let data = {'worker_id':this.data.id}
-    fetchWorkerCollection(data).then((res) => {
-      if(res.code == 1) {
-        if(this.data.detail.favor == 0) {
-          wx.showToast({
-            title: '收藏成功',
-          })
-          this.setData({
-            'detail.favor':0
-          })
-          console.log(this.data.detail.favor)
+    if(this.data.userInfo)
+    {
+      let data = {'worker_id':this.data.id}
+      fetchWorkerCollection(data).then((res) => {
+        if(res.status== 200) {
+          if(this.data.detail.favor == 0) {
+            wx.showToast({
+              title: '收藏成功',
+            })
+            this.setData({
+              'detail.favor':0
+            })
+            console.log(this.data.detail.favor)
+          } else {
+            wx.showToast({
+              title: '取消收藏成功',
+              icon:'none'
+            })
+            this.setData({
+              'detail.favor':1
+            })
+            console.log(this.data.detail.favor)
+          }
+          this.getDetail()
         } else {
           wx.showToast({
-            title: '取消收藏成功',
+            title: '收藏失败',
             icon:'none'
           })
-          this.setData({
-            'detail.favor':1
-          })
-          console.log(this.data.detail.favor)
         }
-        this.getDetail()
-      } else {
-        wx.showToast({
-          title: '收藏失败',
-          icon:'none'
-        })
-      }
-    })
+      })
+    }
+    else
+    {
+      wx.showToast({
+        title: '请先登录再收藏',
+        duration : 2000,
+        icon : 'none'
+      })
+    }
   },
   //拨打电话
   call(){

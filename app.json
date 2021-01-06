@@ -34,7 +34,8 @@
     "pages/help/comment",
     "pages/certification/index",
     "pages/certification/selectCate",
-    "pages/moments/detail"
+    "pages/moments/detail",
+    "pages/quesion/list"
   ],
   "window": {
     "backgroundTextStyle": "light",

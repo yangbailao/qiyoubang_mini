@@ -2,11 +2,11 @@ import { cache } from './cache.js'
 import { getSign } from './util'
 import { md5 } from './md5.js'
 var BaseURL = 'https://api.lyhxxkj.com'
-// BaseURL = 'http://www.qiyouapi.com'
+// var BaseURL = 'http://api.qiyoubang.com'
 
 export function http(opt) {
   const token = cache.get('token')
-  console.log('token', token)
+  // console.log('token', token)
   opt = opt || {}
   opt.url = opt.url || ''
   opt.data = opt.data || {}
@@ -17,7 +17,8 @@ export function http(opt) {
   // opt.header['appId'] = '1165818486098890752'
   // 请求头携带token
   if (token) {
-    opt.header['TOKEN'] = token
+    opt.header['Authorization'] = token
+    // opt.header['TOKEN'] = token
   }
   // 每个接口添加时间戳、签名
   if (opt.data) {

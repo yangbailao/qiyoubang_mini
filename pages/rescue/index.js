@@ -211,7 +211,7 @@ Page({
     getShopList({page:1,pageSize:8,lat:this.data.latitude,long:this.data.longitude}).then(
       res => {
         var markers = [];
-		var currentMask = [];
+		    var currentMask = [];
         const list = res.data.list
         // console.log(res,typeof list,list)
         list.forEach(item =>{
@@ -224,16 +224,25 @@ Page({
             height: 50
           }
           markers.push(marker);
-		  
+      
+          
+let map_address = {
+  address:item.address,
+  latitude:item.latitude,
+  longitude:item.longitude,
+  name:item.map_name,
+}
+
 		  let maskItem = {
 			  id:item.id,
 			  title:item.shop_name,
-			  phone:item.shop_tel,
+        phone:item.shop_tel,
+        map_address:JSON.stringify(map_address)
 		  }
 		  currentMask.push(maskItem);
           this.setData({
             markers,
-			currentMask
+			      currentMask
           })
         })
       }
@@ -252,8 +261,16 @@ Page({
 	  this.setData({showMask:false});
   }
   ,goTo:function(e){
-	  wx.navigateTo({
-	    url: e.currentTarget.dataset['url'],
-	  })
+    
+    let {address,latitude,longitude,name} = JSON.parse(e.currentTarget.dataset.map);
+            wx.openLocation({
+      //​使用微信内置地图查看位置。
+            latitude:Number(latitude),//要去的纬度-地址
+            longitude: Number(longitude),//要去的经度-地址
+             name: name,
+       scale: 18,
+            address:address
+           })
+    this.hideMask();
   }
 })

@@ -9,7 +9,7 @@
   </view>
   <view class="open-time">
     <image src="/images/icon-open-time.svg" class="title-icon"></image>
-    营业时间：08:00 - 12:00
+    营业时间：{{detail.open_time}} - {{detail.close_time}}
   </view>
   <view class="tel">
     <image src="/images/icon-tel.svg" class="title-icon"></image>
@@ -21,21 +21,19 @@
     </view>
     <view>
       <!-- <image src="/images/icon-juli2.svg" class="title-icon"></image> -->
-      8km
+      {{filter.distance(detail.latitude,detail.longitude,lat,long)}}km
     </view>
   </view>
 </view>
 
 <!-- 项目价格 -->
 <view class="price-list">
-  <view class="item">
-    <text class="title">补胎</text>
-    <text class="price">20元起</text>
-  </view>
-  <view class="item">
-    <text class="title">补胎</text>
-    <text class="price">20元起</text>
-  </view>
+  <block wx:for="{{serviceItem}}" wx:key="id" >
+    <view class="item">
+      <text class="title">{{item.title}}</text>
+      <text class="price">{{item.price}}元起</text>
+    </view>
+  </block>
 </view>
 
 <!-- 评价 -->
@@ -44,11 +42,11 @@
     <view wx:for="{{comments}}" wx:key="index" class="commentItem">
       <view class="userInfo">
         <view>
-          <image src="{{item.avatar_url}}"></image>
+          <image src="{{item.userinfo.avatar_url}}"></image>
         </view>
         <view class="userInfo_R">
           <view class="nickname">
-            <view>{{item.nickname}}</view>
+            <view>{{item.userinfo.nickname}}</view>
             <view class="time">{{filter.formatTime(item.create_at * 1000,'yyyy-mm-dd')}}</view>
           </view>
           <view class="cate">服务项目：{{item.service_cate_title}}</view>
@@ -60,7 +58,7 @@
         </view>
         <view class="images">
           <block wx:for="{{item.images}}" wx:for-item="v" wx:key="index">
-            <image src="{{qiniuShowUrl + v}}" mode="center" bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
+            <image src="{{qiniuShowUrl + v}}" bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
           </block>
         </view>
       </view>
@@ -72,7 +70,7 @@
 <!-- 底部 -->
 <view class="footer">
   <view class="btns" bindtap="touchToCollection">
-    <image src="{{detail.favor == 1?'/images/zan-shixin.svg':'/images/zan-kongxin.svg'}}  "></image>收藏店铺
+    <image src="{{detail.favor > 0?'/images/zan-shixin.svg':'/images/zan-kongxin.svg'}}  "></image>收藏店铺
   </view>
   <view class="btns" bindtap="goTo" data-url="/pages/shop/comment?id={{detail.id}}&title={{detail.shop_name}}&img={{detail.img}}&address={{detail.address}}&tel={{detail.shop_tel}}">
 

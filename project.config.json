@@ -23,6 +23,7 @@
     "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
+    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -33,10 +34,10 @@
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
+    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
-    "minifyWXSS": true,
-    "useApiHostProcess": true
+    "minifyWXSS": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.12.0",
@@ -118,10 +119,9 @@
           "scene": null
         },
         {
-          "id": -1,
           "name": "店铺列表",
           "pathName": "pages/shop/list",
-          "query": "",
+          "query": "act=service_shop&lat=22.75619&long=108.32082",
           "scene": null
         },
         {
@@ -146,7 +146,6 @@
           "scene": null
         },
         {
-          "id": -1,
           "name": "我的服务站",
           "pathName": "pages/personal/myServiceShop",
           "query": "",
@@ -233,6 +232,31 @@
         {
           "name": "专业帮",
           "pathName": "pages/help/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "任务详情",
+          "pathName": "pages/help/detail",
+          "query": "id=41",
+          "scene": null
+        },
+        {
+          "name": "评论个人",
+          "pathName": "pages/help/comment",
+          "query": "id=41&title=小程序app网站系统开发&img=https://thirdwx.qlogo.cn/mmopen/vi_32/Q3auHgzwzM774YheKLBUovSKM0q7SgUJnJ0CnjLXI3o9P9uGXtyVHBa3nf6zzlgycn67eKa6Hkic31yNNoIWggg/132&cateTitle=子分类2&tel=2",
+          "scene": null
+        },
+        {
+          "name": "任务帮详情",
+          "pathName": "pages/mission/detail",
+          "query": "id=34",
+          "scene": null
+        },
+        {
+          "name": "骑行帮详情",
+          "pathName": "pages/moments/detail",
+          "query": "id=13",
           "scene": null
         }
       ]

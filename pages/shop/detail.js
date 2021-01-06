@@ -11,7 +11,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    serviceItem:[],
+    comments:[],
+    lat:0,
+    long:0
   },
 
   /**
@@ -22,8 +25,19 @@ Page({
     this.setData({
       id : options.id
     })
-
-    this.getDetail()
+    wx.getLocation({
+      type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
+      success: res => {
+        console.log(res)
+        wx.hideLoading()
+       
+        this.setData({
+          lat:res.latitude,
+          long:res.longitude
+        })
+      }
+    })
+   
 
     //获取7牛配置信息
     getQiniu().then((res) => {
@@ -44,7 +58,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getDetail()
   },
 
   /**
@@ -90,8 +104,9 @@ Page({
     getShopById({id:this.data.id}).then(
       res=>{
         this.setData({
-          detail : res.data.shop,
-          comments : res.data.comments
+          detail : res.data,
+          comments : res.data.serviceItem?res.data.comments:[],
+          serviceItem : res.data.serviceItem?res.data.serviceItem:[]
         })
         wx.hideLoading()
       }
@@ -113,10 +128,10 @@ Page({
   },
   // 收藏店铺
   touchToCollection:function(){
-
-    let data = {'shop_id':this.data.id}
+    let method = this.data.detail.favor > 0?'delete':'add';
+    let data = {'shop_id':this.data.id,method:method,ids:this.data.detail.favor}
     fetchCollection(data).then((res) => {
-      if(res.code == 1) {
+      if(res.status== 200) {
         if(this.data.detail.favor == 0) {
           wx.showToast({
             title: '收藏成功',

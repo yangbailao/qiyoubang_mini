@@ -6,6 +6,11 @@ import {
   delMission,
   endMission
 } from '../../api/api'
+import {
+  loginUser,
+  getUser
+} from '../../api/login'
+import { cache } from '../../utils/cache.js'
 Page({
 
   /**
@@ -22,7 +27,8 @@ Page({
     pageSize: 10,
     totalPage: 1,
     total: 1,
-    triggered: false
+    triggered: false,
+    userInfo:null
   },
 
   /**
@@ -49,7 +55,15 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.reloadData()
+    if (cache.get('userInfo')) {
+      getUser().then(res => {
+        this.reloadData()
+        this.setData({
+          userInfo:res
+        })
+      })
+    }
+
   },
 
   /**
@@ -158,7 +172,7 @@ Page({
         page,
         pageSize,
         status: typeActive || 0,
-        user_id : 1,
+        user_id : this.data.userInfo.id,
         cate_id : 0
       },
       beforeLoad:() => {
@@ -191,7 +205,7 @@ Page({
         if(res.cancel){
           console.log('quxiao')
         }else if(res.confirm){
-          delMission({id:item.id}).then(res=>{
+          delMission({ids:item.id}).then(res=>{
             wx.showToast({
               title: '删除成功'
             })
@@ -212,7 +226,7 @@ Page({
         if(res.cancel){
           console.log('quxiao')
         }else if(res.confirm){
-          endMission({id:item.id}).then(res=>{
+          endMission({id:item.id,status:0}).then(res=>{
             wx.showToast({
               title: '操作成功'
             })

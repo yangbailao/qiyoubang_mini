@@ -8,8 +8,8 @@ const app = getApp()
 export function getUser(){
   return new Promise((resolve) => {
     getUserInfo().then(res => {
-      // console.log(res);
-      if (res.code == '1') {
+      console.log(res);
+      if (res.status == 200) {
         cache.set('userInfo', JSON.stringify({
           avatarUrl: res.data.avatar_url,
           nickName: res.data.nickname,
@@ -62,7 +62,7 @@ export function getIndex(){
   return new Promise((resolve) => {
     fetchIndex().then(res => {
       // console.log(res);
-      if (res.code == '1') {
+      if (res.status == 200) {
         resolve(res.data)
       }
     })

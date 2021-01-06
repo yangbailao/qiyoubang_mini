@@ -74,9 +74,14 @@ Page({
     }
 
     // 头部描述文字
-    getSystemConfig({title:'information_text'}).then((res) => {
+    getSystemConfig().then((res) => {
+      let title = res.data.list.filter(function(item){
+        if(item['title'] == 'Information_text'){
+          return item;
+        }
+      })
       this.setData({
-        headText : res.data
+        headText : title[0]['note']
       })
     })
 
@@ -254,7 +259,7 @@ Page({
       data:{
         page,
         pageSize,
-        cate_id: cateActive || 0,
+        cate_id: cateActive || '',
         status : 1,
         title:searchStr
       },
@@ -282,19 +287,21 @@ Page({
   getCates(){
     getInformationCate().then(res => {
       this.setData({
-        allCategory : res.data.allList
+        allCategory : res.data.list
       })
     })
   },
   // 点击分类
   changeCate(e) {
     const {title, cate} = e.currentTarget.dataset
+    console.log(title);
+    console.log(cate);
     this.setData({
       page: 1,
       list: [],
       isEnd: false,
       isLoading: false,
-      title,
+      title:title,
       cateActive: cate
     },() => {
       app.globalData.category.id = cate

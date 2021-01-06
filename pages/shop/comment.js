@@ -115,10 +115,17 @@ Page({
   // 读取任务分类
   getCates(){
     getShopServiceCate().then(res => {
+      console.log(res);
+      let cates = [];
+      let listId = [];
+      res.data.list.forEach((item)=>{
+        listId.push(item.id)
+        cates.push(item.title)
+      })
       this.setData({
-        cateList : res.data.cates, // 用做选择的数组
+        cateList : cates, // 用做选择的数组
         cateData : res.data.list, // 用做选中的选项内容的数组
-        cateDataId : res.data.listId // 数组下标与分类id匹配的数组 
+        cateDataId : listId // 数组下标与分类id匹配的数组 
       })
     })
   },
@@ -268,13 +275,13 @@ Page({
 
     shopCommentAdd({
       shop_id : this.data.shop.id,
-      cate_id : form.cate_id,
-      cate_title : form.cate_title,
+      service_cate_id : form.cate_id,
+      service_cate_title : form.cate_title,
       rate : form.rate,
       comment : form.content,
       images : images,
     }).then(res => {
-      if (res.code == '1'){
+      if (res.status== 200){
         wx.showToast({
           title: '评价发布成功'
         })

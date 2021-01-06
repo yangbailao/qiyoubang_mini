@@ -1,127 +1,101 @@
 <!--pages/moments/detail.wxml-->
-<navBar title='骑友录' />
-
-<scroll-view scroll-y="true" style="height:{{scrollHeight}}rpx" refresher-enabled="{{true}}" refresher-threshold="{{100}}"
- refresher-triggered="{{triggered}}" bindrefresherabort="onAbort" bindscrolltolower="onScrollTolower">
-	<view class="user-info wrap">
-		<block wx:if="{{!userInfo}}">
-			<view class="userinfo-avatar li un-login">
-				<image src="/images/avatar.svg" mode="cover"></image>
-			</view>
-
-			<view class="detail li">
-				<view class="login">
-					HI，等您很久了！ <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
-				</view>
-			</view>
-		</block>
-		<block wx:else>
-			<image class="userinfo-avatar li" src="{{userInfo.avatar_url}}" mode="cover"></image>
-			<view class="detail li">
-				<view class="username">{{userInfo.nickname}}</view>
-				<view class="info">
-					<view>
-						<image src="/images/icon-phone.svg"></image>已认证手机
-					</view>
-					<view>
-						<image src="/images/icon-bangbangfen.svg"></image>帮帮分：98分
-					</view>
-				</view>
-			</view>
-		</block>
-
-
-	</view>
-
-
-
-	<view bindtap="goToAdd" class="add" style="top:{{addTop}}rpx">
-		<!-- <image src="/images/moments-add.svg"></image> -->
-		发布
-	</view>
-
-
-
-	<view class="list">
-		<wxs src="../../utils/util.wxs" module="js" />
-		<block wx:for="{{list}}" wx:key="id">
-			<view class="moments wrap">
-				<view bindtap="viewUser" data-id="{{item.user_id}}" class="author">
-					<image src="{{item.avatar_url}}"></image>
-					<view class="nickname">{{item.nickname}}</view>
-					<view class="created_at">{{item.created_at}}</view>
-				</view>
-				<view class="content">
-					<view bindtap="goView" data-id="{{item.id}}" class="text">
-						{{item.content}}
-					</view>
-					<view class="images">
-
-						<block wx:if="{{js.length(item.video) > 0}}">
-							<video src="{{qiniuShowUrl + item.video}}" object-fit="fill"></video>
-						</block>
-
-						<block wx:if="{{js.length(item.images) > 0}}">
-							<block wx:for="{{item.images}}" wx:for-item="v" wx:key="index">
-								<image src="{{qiniuShowUrl + v}}" style="height:{{imgHeight}}rpx;width:{{imgHeight}}rpx;" mode="center" bindtap='previewImg'
-								 data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
-							</block>
-						</block>
-
-					</view>
-					<view class="comment-bar">
-						<text class="fl" wx:if="{{item.user_id == userInfo.id}}" bindtap="delMoments" data-id="{{item.id}}">删除</text>
-						<text class="fr" bindtap="comment" data-momentsid="{{item.id}}" data-commentid="0" data-index="{{index}}">评论</text>
-						<text class="fr" wx:if="{{item.hasLike == 0}}" bindtap="like" data-index="{{index}}" data-id="{{item.id}}"
-						 data-likeIndex="{{item.likeIndex}}">点赞</text>
-						<text class="fr" wx:else bindtap="notLike" data-index="{{index}}" data-id="{{item.id}}" data-like_index="{{item.likeIndex}}">取消点赞</text>
-						<text class="fr" wx:if="{{item.hasAttention == 0}}" bindtap="attention" data-index="{{index}}" data-id="{{item.id}}">关注</text>
-						<text class="fr" wx:else bindtap="notAttention" data-index="{{index}}" data-id="{{item.id}}">取消关注</text>
-					</view>
-					<view class="comment-content">
-						<view class="good" wx:if="{{js.length(item.like)}}">
-							<image src="/images/zan-kongxin.svg"></image>
-							<text wx:for="{{item.like}}" wx:for-item="l" wx:key="index">
-
-								<block wx:if="{{js.length(item.like) - 1 !== index}}">{{l.nickname}},</block>
-								<block wx:else>{{l.nickname}}</block>
-							</text>
-						</view>
-						<view class="comments" wx:if="{{js.length(item.comment)}}">
-							<block wx:for="{{item.comment}}" wx:key="index" wx:for-item="c">
-								<view class="comment" bindtap="comment" data-commentid="{{c.id}}" data-momentsid="{{c.moments_id}}">
-									<text class="nickname">{{c.nickname}}</text>：{{c.comment}}
-								</view>
-								<view class="comment" wx:for="{{c.child}}" wx:for-item="cc" wx:key="i" bindtap="comment" data-commentid="{{c.id}}"
-								 data-momentsid="{{c.moments_id}}">
-									<text class="nickname">{{cc.nickname}}</text>回复<text class="nickname">{{c.nickname}}</text>：{{cc.comment}}
-								</view>
-							</block>
-						</view>
-					</view>
-				</view>
-				<view class="empty-box"></view>
-			</view>
-		</block>
-
-	</view>
-</scroll-view>
-
-<!-- tabbar -->
-<import src="../../template/tabbar.wxml" />
-<template is="tabBar" data="{{tabBar}}" />
-<view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
-<!-- <import src="../../template/tabbar-index-menu.wxml" />
-<view wx:if="{{indexMenuFlag}}">
-  <template is="indexMenu" />
-</view> -->
-<import src="../../template/tabbar-main-menu.wxml" />
-<view wx:if="{{mainMenuFlag}}">
-	<template is="mainMenu" />
+<navBar title='任务详情' back />
+<view class="user-info wrap">
+  <wxs src="../../filter/filter.wxs" module="filter"></wxs>
+<image class="userinfo-avatar li" src="{{detail.userinfo.avatar_url}}" mode="cover"></image>
+<view class="detail li">
+  <view class="username">{{detail.userinfo.nickname}}</view>
+  <view class="info">
+      <view>
+        <image src="/images/icon-phone.svg"></image>已认证手机
+      </view>
+      <view>
+        <image src="/images/icon-bangbangfen.svg"></image>帮帮分：{{detail.credit}}分
+      </view>
+    </view>
 </view>
-<!-- tabbar -->
 
-// 评论框
+<view class="line"></view>
+
+</view>
+
+<view class="user-detail">
+<view class="item">
+  <view class="val"><text>{{detail.userinfo.credit}}</text>分</view>
+  <view class="title">帮帮分</view>
+</view>
+<view class="item">
+  <view class="val"><text>{{detail.userinfo.regDay}}</text>天</view>
+  <view class="title">来骑行帮</view>
+</view>
+<view class="item">
+  <view class="val"><text>{{detail.userinfo.info}}</text>条</view>
+  <view class="title">发布信息</view>
+</view>
+<view class="item">
+  <view class="val"><text>{{detail.userinfo.mission}}</text>次</view>
+  <view class="title">发布任务</view>
+</view>
+</view>
+
+<view class="mission-detail">
+<view class="title">
+  {{detail.title}}
+</view>
+<!-- <view class="locale">任务地点：{{detail.locale}}</view> -->
+<view class="content">
+  <view class="content-title">内容</view>
+  <view class="content-body">{{detail.content}}</view>
+  <view wx:if="filter.length(detail.images) > 0" class="images">
+        <block  wx:for="{{detail.images}}" wx:for-item="v" wx:key="index">
+          <image src="{{qiniuShowUrl + v}}" mode="scaleToFill" bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
+        </block>
+  </view>
+  <block wx:if="{{js.length(detail.video) > 0}}">
+			<video src="{{qiniuShowUrl + item.video}}" object-fit="fill"></video>
+	</block>
+</view>
+</view>
+
+<!-- 评价 -->
+<view class="comment">
+  <view class="comment-title">评价</view>
+  <view wx:for="{{comments}}" wx:key="index" class="commentItem">
+    <view class="userInfo">
+      <view>
+        <image src="{{item.userinfo.avatar_url}}"></image>
+      </view>
+      <view class="userInfo_R">
+        <view class="nickname">
+          <view>{{item.userinfo.nickname}}</view>
+          <view class="time"></view>
+        </view>
+        <view class="cate">评价时间：{{filter.formatTime(item.create_at * 1000,'yyyy-mm-dd')}}</view>
+      </view>
+    </view>
+    <view class="commentContent">
+      <view class="userMsg">
+        {{item.comment}}
+      </view>
+      <view wx:if="filter.length(item.images) > 0" class="images">
+        <block  wx:for="{{item.images}}" wx:for-item="v" wx:key="index">
+          <image src="{{qiniuShowUrl + v}}" mode="scaleToFill" bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
+        </block>
+      </view>
+    </view>
+  </view>
+  <view class="notData" wx:if="{{!comments.length}}">暂无人评价</view>
+
+</view>
+
+<!-- <view class="call" bindtap="touchToPhone">
+<view class="title">
+  <image src="/images/call.svg"></image>
+  <text>电话联系</text> 
+</view>
+<view class="desc">联系时请说是在骑行帮看到的信息</view>
+</view> -->
+
 <view class='commentInputView' hidden="{{!isInput}}">
 
 	<view class='commentInput'>
@@ -129,4 +103,23 @@
 		 bindinput="inputText"></input>
 	</view>
 	<view class="send" bindtap="submitComment">发送</view>
+</view>
+
+<!-- 底部 -->
+<view class="footer">
+  <view wx:if="{{detail.haseAttention == 0}}" class="btns" bindtap="attention">
+    <image src="/images/zan-kongxin.svg"></image>立即关注
+  </view>
+  <view  wx:else class="btns" bindtap="notAttention">
+    <image src="/images/zan-shixin.svg "></image>取消关注
+  </view>
+  <view class="btns" bindtap="comment" data-momentsid="{{detail.id}}" data-commentid="0" data-index="0" >
+      <image src="/images/icon-comment.svg"></image>评价动态
+  </view>
+  <view wx:if="{{detail.hasLike == 0}}" class="btns" bindtap="like" >
+    <image src="/images/zan-kongxin.svg"></image><text>{{detail.likeNum}}点赞</text>
+  </view>
+  <view wx:else class="btns" bindtap="notLike" >
+    <image src="/images/zan-shixin.svg"></image><text>{{detail.likeNum}}已点赞</text>
+  </view>
 </view>

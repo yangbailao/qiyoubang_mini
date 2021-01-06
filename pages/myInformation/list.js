@@ -3,9 +3,14 @@ const app = getApp()
 import {scrollLoadList} from '../../utils/util'
 import {
   informationList,
-  delMission,
+  delInformation,
   endMission
 } from '../../api/api'
+import {
+  loginUser,
+  getUser
+} from '../../api/login'
+import { cache } from '../../utils/cache.js'
 Page({
 
   /**
@@ -22,7 +27,8 @@ Page({
     pageSize: 10,
     totalPage: 1,
     total: 1,
-    triggered: false
+    triggered: false,
+    userInfo:null
   },
 
   /**
@@ -42,14 +48,22 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    this.reloadData()
+    if (cache.get('userInfo')) {
+      getUser().then(res => {
+        this.reloadData()
+        this.setData({
+          userInfo:res
+        })
+      })
+    }
+    
   },
 
   /**
@@ -147,7 +161,7 @@ Page({
       isLoading,
       pageSize
     } = this.data;
-    
+
     scrollLoadList({
       isEnd,
       isLoading,
@@ -156,7 +170,7 @@ Page({
       data:{
         page,
         pageSize,
-        user_id : 1,
+        user_id : this.data.userInfo.id,
         cate_id : 0
       },
       beforeLoad:() => {
@@ -189,7 +203,7 @@ Page({
         if(res.cancel){
           console.log('quxiao')
         }else if(res.confirm){
-          delMission({id:item.id}).then(res=>{
+          delInformation({ids:item.id}).then(res=>{
             wx.showToast({
               title: '删除成功'
             })

@@ -285,7 +285,7 @@ Page({
       images: images,
       video : video
     }).then(res => {
-      if (res.code == '1'){
+      if (res.status== 200){
         wx.showToast({
           title: '骑友圈发布成功'
         })

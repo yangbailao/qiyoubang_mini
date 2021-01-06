@@ -1,5 +1,20 @@
 /* pages/moments/list.wxss */
+.cates{
+  height: 80rpx;
+  background-color: #ffffff;
+	box-shadow: 0px 1px 2px 0px 
+    rgba(96, 97, 112, 0.16);
 
+  white-space: nowrap;
+}
+.cates .item{margin-right: 30rpx;height: 80rpx;line-height: 80rpx;display: inline-block;}
+.cates .cur{border-bottom: solid 3px #ff5c5c;}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
 .user-info {
   color: #fff;
   height: 200rpx;

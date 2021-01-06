@@ -1,5 +1,5 @@
 <navBar back="true" title='我的服务站'/>
-
+<wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <view class="info wrap" wx:if="{{detail}}">
   <view class="title">{{detail.shop_name}}</view>
   <view class="rank">
@@ -7,7 +7,7 @@
   </view>
   <view class="open-time">
     <image src="/images/icon-open-time.svg" class="title-icon"></image>
-    营业时间：08:00 - 12:00
+    营业时间：{{detail.open_time}} - {{detail.close_time}}
   </view>
   <view class="tel">
     <image src="/images/icon-tel.svg" class="title-icon"></image>
@@ -19,7 +19,7 @@
     </view>
     <view>
       <!-- <image src="/images/icon-juli2.svg" class="title-icon"></image> -->
-      8km
+      {{filter.distance(detail.latitude,detail.longitude,lat,long)}}km
     </view>
   </view>
 </view>

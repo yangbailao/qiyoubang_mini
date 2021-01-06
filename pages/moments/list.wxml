@@ -53,6 +53,9 @@
 			<input type="text" :value="{{searchKey}}" bindinput="bindSearch" confirm-type="search" placeholder="请输入用户昵称" />
 			<view class="submit" bindtap="search">搜索</view>
 		</view>
+		<scroll-view scroll-x="true" class="cates wrap">
+  <view wx:for="{{allCategory}}" class="item {{cateActive == item.id ? 'cur' : ''}}" bindtap="changeCate" data-title="{{item.title}}" data-cate="{{item.id}}" wx:key="index">{{item.title}}</view>
+</scroll-view>
 		<block wx:for="{{list}}" wx:key="id">
 			<view class="moments wrap">
 				<view bindtap="viewUser" data-id="{{item.user_id}}" class="author">
@@ -72,7 +75,7 @@
 
 						<block wx:if="{{js.length(item.images) > 0}}">
 							<block wx:for="{{item.images}}" wx:for-item="v" wx:key="index">
-								<image src="{{qiniuShowUrl + v}}" style="height:{{imgHeight}}rpx;width:{{imgHeight}}rpx;" mode="center" bindtap='previewImg'
+								<image src="{{qiniuShowUrl + v}}" style="height:{{imgHeight}}rpx;width:{{imgHeight}}rpx;" bindtap='previewImg'
 								 data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
 							</block>
 						</block>
@@ -84,7 +87,7 @@
 						<text class="fr" wx:if="{{item.hasLike == 0}}" bindtap="like" data-index="{{index}}" data-id="{{item.id}}"
 						 data-likeIndex="{{item.likeIndex}}">点赞</text>
 						<text class="fr" wx:else bindtap="notLike" data-index="{{index}}" data-id="{{item.id}}" data-like_index="{{item.likeIndex}}">取消点赞</text>
-						<text class="fr" wx:if="{{item.haseAttention == 0}}" bindtap="attention" data-index="{{index}}" data-id="{{item.id}}">关注</text>
+						<text class="fr" wx:if="{{item.haseAttention == 0}}" bindtap="attention" data-index="{{index}}" data-userid="{{item.user_id}}" data-id="{{item.id}}">关注</text>
 						<text class="fr" wx:else bindtap="notAttention" data-index="{{index}}" data-id="{{item.id}}">取消关注</text>
 					</view>
 					<view class="comment-content">
@@ -97,14 +100,16 @@
 							</text>
 						</view>
 						<view class="comments" wx:if="{{js.length(item.comment)}}">
-							<block wx:for="{{item.comment}}" wx:key="index" wx:for-item="c">
+							<block wx:for="{{item.comment}}" wx:key="id" wx:for-item="c">
 								<view class="comment" bindtap="comment" data-commentid="{{c.id}}" data-momentsid="{{c.moments_id}}">
 									<text class="nickname">{{c.nickname}}</text>：{{c.comment}}
 								</view>
-								<view class="comment" wx:for="{{c.child}}" wx:for-item="cc" wx:key="i" bindtap="comment" data-commentid="{{c.id}}"
+							  <block wx:if="{{js.length(c.child)}}" >
+									<view class="comment" wx:for="{{c.child}}" wx:for-item="cc" wx:key="i" bindtap="comment" data-commentid="{{c.id}}"
 								 data-momentsid="{{c.moments_id}}">
 									<text class="nickname">{{cc.nickname}}</text>回复<text class="nickname">{{c.nickname}}</text>：{{cc.comment}}
 								</view>
+								</block>
 							</block>
 						</view>
 					</view>
@@ -129,8 +134,6 @@
 	<template is="mainMenu" />
 </view>
 <!-- tabbar -->
-
-// 评论框
 <view class='commentInputView' hidden="{{!isInput}}">
 
 	<view class='commentInput'>

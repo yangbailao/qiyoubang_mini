@@ -25,6 +25,7 @@ Page({
       width: 50,
       height: 50
     }],
+    currentMask:[],
     type:1
   },
 
@@ -140,7 +141,15 @@ Page({
     console.log(e.type)
   },
   markertap(e) {
-    console.log(e.detail.markerId)
+	let currentM = this.data.currentMask.filter(function(item){
+		if(e.detail.markerId == item.id){
+			return item;
+		}
+	})
+	this.setData({
+		showMask:true,
+		currentM:currentM[0]
+	})
   },
   controltap(e) {
     console.log(e.detail.controlId)
@@ -181,6 +190,7 @@ Page({
       res => {
         var markers = []
         const list = res.data.list
+        var currentMask = [];
         // console.log(res,typeof list,list)
         list.forEach(item =>{
           let marker = {
@@ -191,9 +201,26 @@ Page({
             width: 50,
             height: 50
           }
+
+          
+          let map_address = {
+            address:item.address,
+            latitude:item.latitude,
+            longitude:item.longitude,
+            name:item.map_name,
+          }
+          
+                let maskItem = {
+                  id:item.id,
+                  title:item.shop_name,
+                  phone:item.shop_tel,
+                  map_address:JSON.stringify(map_address)
+                }
+                currentMask.push(maskItem);
           markers.push(marker)
           this.setData({
-            markers
+            markers,
+            currentMask
           })
         })
       }
@@ -207,6 +234,17 @@ Page({
         priceList:list
       })
     })
+  },
+  goTo:function(e){
+    let {address,latitude,longitude,name} = JSON.parse(e.currentTarget.dataset.map);
+            wx.openLocation({
+      //​使用微信内置地图查看位置。
+            latitude:Number(latitude),//要去的纬度-地址
+            longitude: Number(longitude),//要去的经度-地址
+             name: name,
+       scale: 18,
+            address:address
+           })
+this.hideMask();
   }
-  
 })
