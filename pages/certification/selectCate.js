@@ -114,7 +114,7 @@ Page({
 
     // 选中工种保存id
     var ids = this.data.cates
-    const id = e.currentTarget.dataset.id
+    const id = Number(e.currentTarget.dataset.id);
     const index = ids.indexOf(id)
     if( index != -1 ){
       // 已选，去掉

@@ -56,9 +56,9 @@
     <view class="imgView"><image src="/images/nav_t3.svg"></image></view>
     <view class="name">任务帮</view>
   </view>
-  <view class="item" bindtap="touchNext" data-url="/pages/mission/list">
+  <view class="item" bindtap="touchNext" data-url="/pages/quesion/list">
     <view class="imgView"><image src="/images/nav_t3.svg"></image></view>
-    <view class="name">义工帮</view>
+    <view class="name">知问答</view>
   </view>
 </view>
 <!-- 轮播图  -->
@@ -143,10 +143,10 @@
 
         <view class="user sb">
           <view class="username">
-            <image src="{{item.avatar_url}}" mode="cover"></image>
-            {{item.nickname}}
+            <image src="{{item.userinfo.avatar_url}}" mode="cover"></image>
+            {{item.userinfo.nickname}}
           </view>
-          <view class="fen">帮帮分:<text class="red">{{item.credit}}分</text></view>
+          <view class="fen">帮帮分:<text class="red">{{item.userinfo.credit}}分</text></view>
         </view>
       </navigator>
     </view>

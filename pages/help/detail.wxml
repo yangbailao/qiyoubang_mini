@@ -1,7 +1,7 @@
 <!--pages/help/detail.wxml-->
 <navBar title='任务详情' back />
 <view class="user-info wrap">
-
+  <wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <image class="userinfo-avatar li" src="{{detail.avatar_url}}" mode="cover"></image>
 <view class="detail li">
   <view class="username">{{detail.nickname}}</view>
@@ -43,7 +43,9 @@
   {{detail.title}}
 </view>
 <view class="info">
-  <text>{{detail.cateTitle}}</text>
+  <block wx:for="{{detail.cateArr}}" wx:for-item="vv" wx:key="index">
+    <text>{{vv.title}}</text>
+  </block>
   <text>{{detail.worker_view}}人看过</text>
 </view>
 <!-- <view class="locale">任务地点：{{detail.locale}}</view> -->
@@ -59,23 +61,23 @@
   <view wx:for="{{comments}}" wx:key="index" class="commentItem">
     <view class="userInfo">
       <view>
-        <image src="{{item.avatar_url}}"></image>
+        <image src="{{item.userinfo.avatar_url}}"></image>
       </view>
       <view class="userInfo_R">
         <view class="nickname">
-          <view>{{item.nickname}}</view>
-          <view class="time">{{filter.formatTime(item.create_at * 1000,'yyyy-mm-dd')}}</view>
+          <view>{{item.userinfo.nickname}}</view>
+          <view class="time"></view>
         </view>
-        <view class="cate">评价时间：{{item.create_at}}</view>
+        <view class="cate">评价时间：{{filter.formatTime(item.create_at * 1000,'yyyy-mm-dd')}}</view>
       </view>
     </view>
     <view class="commentContent">
       <view class="userMsg">
         {{item.comment}}
       </view>
-      <view class="images">
-        <block wx:for="{{item.images}}" wx:for-item="v" wx:key="index">
-          <image src="{{qiniuShowUrl + v}}" mode="center" bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
+      <view wx:if="filter.length(item.images) > 0" class="images">
+        <block  wx:for="{{item.images}}" wx:for-item="v" wx:key="index">
+          <image src="{{qiniuShowUrl + v}}" mode="scaleToFill" bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
         </block>
       </view>
     </view>
@@ -98,15 +100,10 @@
   <view class="btns" bindtap="touchToCollection">
     <image src="{{detail.favor == 1?'/images/zan-shixin.svg':'/images/zan-kongxin.svg'}}  "></image>收藏个人
   </view>
-  <view class="btns" bindtap="goTo" data-url="/pages/help/comment?id={{detail.id}}&title={{detail.realname}}&img={{detail.avatar_url}}&cateTitle={{detail.cateTitle}}&tel={{detail.tel}}">
-
+  <view class="btns" bindtap="goTo" data-url="/pages/help/comment?id={{detail.id}}&title={{detail.nickname}}&img={{detail.avatar_url}}&cateTitle={{cateTitle}}&tel={{detail.tel}}">
       <image src="/images/icon-comment.svg"></image>评价个人
-
   </view>
   <view class="call" bindtap="call">
-
       <image src="/images/call.svg"></image>
-
-    
   </view>
 </view>

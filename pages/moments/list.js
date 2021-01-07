@@ -36,6 +36,9 @@ Page({
     totalPage: 1,
     total: 1,
     triggered: false,
+
+    allCategory: [{title:'全部',id:0},{title:'热榜排序',id:1},{title:'关注筛选',id:2}], // 任务分类
+    cateActive:0,
     
     isShow: false,//控制emoji表情是否显示
     isLoad: true,//解决初试加载时emoji动画执行一次
@@ -368,15 +371,15 @@ Page({
       const id = e.currentTarget.dataset.id
       const index = e.currentTarget.dataset.index
       const user = this.data.userInfo
-      console.log(user)
+      // console.log(user)
       const like = {id:user.id,nickname:user.nickname}
 
       const list = this.data.list
-      console.log(index)
-      addMomentLike({id}).then(res=>{
+      // console.log(index)
+      addMomentLike({moments_id:id}).then(res=>{
         list[index].hasLike = 1
         list[index].like.unshift(like)
-        console.log(list[index].like)
+        // console.log(list[index].like)
         this.setData({
           list
         })
@@ -409,7 +412,7 @@ Page({
     const list = this.data.list
     console.log(likeIndex,list[index].like[likeIndex])
     
-    delMomentLike({id}).then(res=>{
+    delMomentLike({ids:id}).then(res=>{
       list[index].hasLike = 0
       list[index].like.splice(likeIndex,1)
       this.setData({
@@ -426,13 +429,24 @@ Page({
   attention(e){
     if(this.data.userInfo)
     {
+      const id = e.currentTarget.dataset.id
+      const index = e.currentTarget.dataset.index
+      const list = this.data.list
+      console.log(this.data.userInfo);
+      if(this.data.userInfo.id == e.currentTarget.dataset.userid){
+        wx.showToast({
+          title: '不能关注自己!',
+          duration : 2000,
+          icon : 'none'
+        })
+        return;
+      }
+
       wx.showLoading({
         title: '处理中……',
         mask:true
       })
-      const id = e.currentTarget.dataset.id
-      const index = e.currentTarget.dataset.index
-      const list = this.data.list
+      
       console.log(index)
       addMomentAttention({user_id:id}).then(res=>{
         list[index].haseAttention = 1
@@ -562,7 +576,7 @@ Page({
       content: '确定要删除这条骑友录吗？',
       success: res => {
         if (res.confirm) {
-          delMoments({id:e.currentTarget.dataset.id}).then(res=>{
+          delMoments({ids:e.currentTarget.dataset.id}).then(res=>{
             this.reloadData()
           })
         } else if (res.cancel) {
@@ -571,4 +585,21 @@ Page({
       }
     })
   }
+
+  // 点击分类
+  ,changeCate(e) {
+    const {title, cate} = e.currentTarget.dataset
+    this.setData({
+      page: 1,
+      list: [],
+      isEnd: false,
+      isLoading: false,
+      title,
+      cateActive: cate
+    },() => {
+      app.globalData.category.id = cate
+      this.searchList()
+    })
+  },
+
 })

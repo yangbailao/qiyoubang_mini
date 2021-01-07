@@ -35,7 +35,7 @@ Page({
    */
   onShow: function () {
 	getContact({}).then(res => {
-	  if (res.code == '1'){
+	  if (res.status== 200){
 	    _self.setData({
 	      email:res.data.email,
 	      phone:res.data.tel

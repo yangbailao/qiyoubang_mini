@@ -164,7 +164,10 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAsQAAACxCAY
 	margin-bottom: 25rpx;
 }
 .server-submit {
-	position: fixed;bottom: 40rpx;left: 50rpx;width: 650rpx;
+	/* position: fixed;
+	bottom: 40rpx;
+	left: 50rpx; */
+	width: 650rpx;
 		height: 110rpx;
 		background-image: linear-gradient(313deg, 
 	  #fe6959 0%, 
@@ -242,7 +245,7 @@ background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAsQAAACxCAY
 	padding: 0 25rpx;
 	box-sizing: border-box;
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	top:0;
 	left:0;
 	right:0;

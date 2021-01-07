@@ -35,9 +35,9 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  async onLoad(options) {
     //获取当前的地理位置、速度
-    this.getLocation();
+    await this.getLocation();
 
     app.chengeNeed()
     const {
@@ -68,8 +68,13 @@ Page({
 
     // 头部描述文字
     getSystemConfig({title:'worker_text'}).then((res) => {
+      let title = res.data.list.filter(function(item){
+        if(item['title'] == 'worker_text'){
+          return item;
+        }
+      })
       this.setData({
-        headText : res.data
+        headText : title[0]['note']
       })
     })
 
@@ -88,8 +93,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-      // 读取信息列表
-      this.reloadData()
+      
   },
 
   /**
@@ -204,12 +208,19 @@ Page({
       pageSize,
       searchStr
     } = this.data;
+    console.log(isSonCate);
 	if(isSonCate> 0){
 		cateActive = isSonCate;
-	}
+  }
+  console.log(this.data.latitude);
     workerList({page:page,pageSize:pageSize,type:cateActive,title:searchStr,lat:this.data.latitude,long:this.data.longitude}).then((res) =>{
-      if(res.code == 1) {
+      if(res.status== 200) {
         let list = res.data.list
+        if(list.length < res.data.total ){
+          that.setData({
+            isEnd:true
+          })
+        }
         if(page == 1) {
           that.data.list = []
         }
@@ -273,11 +284,14 @@ Page({
     wx.getLocation({
       type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
       success: res => {
+        console.log(res);
         //赋值经纬度
         this.setData({
           latitude: res.latitude,
           longitude: res.longitude,
         })
+        // 读取信息列表
+      this.reloadData()
         wx.hideLoading()
       }
     })

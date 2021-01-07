@@ -3,7 +3,7 @@
 <view class="cates wrap">
   <view class="item {{typeActive == 1 ? 'cur' : ''}}" bindtap="changeStatus" data-type="1" >店铺</view>
   <view class="item {{typeActive == 2 ? 'cur' : ''}}" bindtap="changeStatus" data-type="2" >专业帮</view>
-  <view class="item {{typeActive == 0 ? 'cur' : ''}}" bindtap="changeStatus" data-type="0" >用户</view>
+  <view class="item {{typeActive == 3 ? 'cur' : ''}}" bindtap="changeStatus" data-type="3" >用户</view>
 </view>
 
 <scroll-view 
@@ -24,37 +24,47 @@
 
       <view class="info">
 
-          <view class="title">{{item.shop_name}}</view>
+          <view class="title">{{item.shopinfo.shop_name}}</view>
           <view class="rank">
-            <view>{{item.rate}}分,{{item.rate_times}}人次评价</view>
+            <view>{{item.shopinfo.rate}}分,{{item.shopinfo.rate_times}}人次评价</view>
             <!-- <view>{{filter.distance(item.latitude,item.longitude,lat,long)}}km</view> -->
           </view>
-          <view class="address">{{item.address}}</view>
+          <view class="address">{{item.shopinfo.address}}</view>
 
-          <view class="tel"><text>{{item.shop_tel}}</text></view>
+          <view class="tel"><text>联系方式：{{item.shopinfo.shop_tel}}</text></view>
       </view>
     </view>
   </block>
-
-  <view class="worker" wx:if="{{typeActive == 0}}">
+  <view class="worker" wx:if="{{typeActive == 2}}">
+    <view class="item" wx:for="{{list}}" wx:key="index" bindtap="goTo" data-url="/pages/help/detail?id={{item.moments_user_id}}">
+      <view>
+      <view class="head sb">
+        <view class="title">{{item.momentsuserinfo.nickname}}</view>
+        <view class="see">{{item.momentsuserinfo.info}}个任务</view>
+      </view>
+      <view class="user sb">
+        <view class="username">
+          <image src="{{item.momentsuserinfo.avatar_url}}" mode="cover"></image>
+          {{itemm.momentsuserinfo.nickname}}
+        </view>
+        <view class="fen">帮帮分:<text class="red">{{item.momentsuserinfo.credit}}分</text></view>
+      </view>
+    </view>
+    </view>
+  </view>
+  <view class="worker" wx:if="{{typeActive == 3}}">
     <view class="item" wx:for="{{list}}" wx:key="index" bindtap="goTo" data-url="/pages/help/detail?id={{item.worker_id}}">
       <view>
       <view class="head sb">
-        <view class="title">{{item.title}}</view>
-        <view class="see">{{item.worker_view}}人看过</view>
+        <view class="title">{{item.workerinfo.nickname}}</view>
+        <view class="see">{{item.workerinfo.info}}个任务</view>
       </view>
-      <!-- <view class="info sb">
-        <view class="price">￥{{item.bouns}}</view>
-        <view class="btn">详情</view>
-      </view>
-      <view class="location">任务地点：{{item.locale}}</view> -->
-
       <view class="user sb">
         <view class="username">
-          <image src="{{item.avatar_url}}" mode="cover"></image>
-          {{item.nickname}}
+          <image src="{{item.workerinfo.avatar_url}}" mode="cover"></image>
+          {{itemm.workerinfo.nickname}}
         </view>
-        <view class="fen">帮帮分:<text class="red">{{item.credit}}分</text></view>
+        <view class="fen">帮帮分:<text class="red">{{item.workerinfo.credit}}分</text></view>
       </view>
     </view>
     </view>

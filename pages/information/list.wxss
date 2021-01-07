@@ -119,7 +119,7 @@
   }
   .searchView input {
     font-size: 26rpx;
-    color: #fff;
+    color: #000;
     width: 180rpx;
   }
   .search_pc {

@@ -4,7 +4,7 @@ import { http } from '../utils/http.js'
 export function getContact(data) {
   return new Promise((resolve, reject) => {
     http({
-      url: '/mini_api/index/getContact',
+      url: '/index/getContact',
       data,
       success: function (data) {
         console.log('联系我们', data)
@@ -17,7 +17,8 @@ export function getContact(data) {
 export function updateShop(data) {
   return new Promise((resolve, reject) => {
     http({
-      url: '/mini_api/shop/update',
+      url: '/shop/add',
+      // url: '/mini_api/shop/update',
       data,
       success: function (data) {
         console.log('店铺添加', data)
@@ -45,7 +46,8 @@ export function delShop(data) {
 export function getShopList(data) {
   return new Promise((resolve, reject) => {
     http({
-      url: '/mini_api/shop/getList',
+      url: '/shop/index',
+      // url: '/mini_api/shop/getList',
       data,
       success: function (data) {
         console.log('店铺列表', data)
@@ -59,8 +61,10 @@ export function getShopList(data) {
 export function getShopById(data) {
   return new Promise((resolve, reject) => {
     http({
-      url: '/mini_api/shop/getById',
+      url: '/shop/view',
+      // url: '/mini_api/shop/getById',
       data,
+      // method:'get',
       success: function (data) {
         console.log('店铺详情', data)
         resolve(data)
@@ -73,7 +77,8 @@ export function getShopById(data) {
 export function shopCommentAdd(data) {
   return new Promise((resolve, reject) => {
     http({
-      url: '/mini_api/shop_comment/add',
+      url: '/shopcomment/add',
+      // url: '/mini_api/shop_comment/add',
       data,
       success: function (data) {
         console.log('添加店铺评价', data)
@@ -87,7 +92,8 @@ export function shopCommentAdd(data) {
 export function workerCommentAdd(data) {
   return new Promise((resolve, reject) => {
     http({
-      url: '/mini_api/worker_comment/add',
+      url: '/workercomment/add',
+      // url: '/mini_api/worker_comment/add',
       data,
       success: function (data) {
         console.log('添加个人评价', data)
@@ -101,7 +107,8 @@ export function workerCommentAdd(data) {
 export function getShopServiceCate(data) {
   return new Promise((resolve, reject) => {
     http({
-      url: '/mini_api/shop_service_cate/getList',
+      // url: '/mini_api/shop_service_cate/getList',
+      url: '/shopservicecate/index',
       data,
       success: function (data) {
         console.log('店铺服务分类', data)
@@ -115,11 +122,12 @@ export function getShopServiceCate(data) {
 export function login(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/login/index',
+      //url: '/mini_api/login/index',
+      url: '/login/loginMini',
       data,
       success: function (data) {
         console.log('登录回调', data)
-        if (data.code == '1') {
+        if (data.status == '200') {
           resolve(data)
         }
       }
@@ -131,10 +139,11 @@ export function login(data) {
 export function getUserInfo() {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/User/getUserInfo',
+      // url: '/mini_api/User/getUserInfo',
+      url: '/member/view',
       success: function (data) {
         console.log('用户信息', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -146,11 +155,11 @@ export function getUserInfo() {
 export function addMomentComment(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/moments_comment/add',
+      url: '/momentscomment/add',
       data,
       success: function (data) {
         console.log('发表朋友圈评论', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -162,11 +171,12 @@ export function addMomentComment(data) {
 export function momentAdd(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/Moments/add',
+      url: '/Moments/add',
+      // url: '/mini_api/Moments/add',
       data,
       success: function (data) {
         console.log('发表朋友圈', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -178,11 +188,11 @@ export function momentAdd(data) {
 export function delMoments(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/Moments/del',
+      url: '/Moments/delete',
       data,
       success: function (data) {
         console.log('删除朋友圈', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -194,11 +204,12 @@ export function delMoments(data) {
 export function getMomentsList(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/Moments/getList',
+      url: '/Moments/index',
+      // url: '/mini_api/Moments/getList',
       data,
       success: function (data) {
         console.log('朋友圈列表', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -210,11 +221,12 @@ export function getMomentsList(data) {
 export function addMomentLike(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/moments_like/add',
+      // url: '/mini_api/moments_like/add',
+      url: '/momentslike/add',
       data,
       success: function (data) {
         console.log('点赞', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -226,11 +238,26 @@ export function addMomentLike(data) {
 export function delMomentLike(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/moments_like/del',
+      url: '/momentslike/delete',
+      // url: '/mini_api/moments_like/del',
       data,
       success: function (data) {
         console.log('取消点赞', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+//删除评论
+export function delComment(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/shopcomment/delete',
+      data,
+      success: function (data) {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -241,11 +268,11 @@ export function delMomentLike(data) {
 export function getFavorMoment(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/user_moment_favor/getList',
+      url: '/usermomentfavor/index',
       data,
       success: function (data) {
         console.log('我的关注', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -256,12 +283,13 @@ export function getFavorMoment(data) {
 export function addMomentAttention(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/user_moment_favor/create',
+      // url: '/mini_api/user_moment_favor/create',
+      url: '/usermomentfavor/momentfavor',
       data,
       success: function (data) {
         console.log('关注', data)
-        if (data.code == '1') {
-          resolve(data)
+        if (data.status== 200) {
+          resolve()
         }
       }
     })
@@ -276,7 +304,7 @@ export function delMomentAttention(data) {
       data,
       success: function (data) {
         console.log('取消关注', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -287,10 +315,11 @@ export function delMomentAttention(data) {
 export function getUploadToken() {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/qiniu/getToken',
+      // url: '/mini_api/qiniu/getToken',
+      url: '/base/getToken',
       success: function (data) {
         console.log('获取上传token、key', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -302,10 +331,10 @@ export function getUploadToken() {
 export function getQiniu() {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/qiniu/getQiniu',
+      url: '/base/getQiniu',
       success: function (data) {
         console.log('获取上传token、key', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -317,10 +346,11 @@ export function getQiniu() {
 export function getMissionCate() {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/mission_cate/getList',
+      // url: '/mini_api/mission_cate/getList',
+      url: '/missioncate/index',
       success: function (data) {
         console.log('任务分类', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -332,11 +362,11 @@ export function getMissionCate() {
 export function missionList(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/mission/getList',
+      url: '/mission/index',
       data,
       success: function (data) {
         console.log('任务列表', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -348,11 +378,12 @@ export function missionList(data) {
 export function missionUpdate(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/mission/update',
+      url: '/mission/add',
+      // url: '/mini_api/mission/update',
       data,
       success: function (data) {
         console.log('发布任务', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -364,11 +395,12 @@ export function missionUpdate(data) {
 export function getMissionById(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/mission/getById',
+      url: '/mission/view',
+      // url: '/mini_api/mission/getById',
       data,
       success: function (data) {
         console.log('任务详情', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -376,31 +408,31 @@ export function getMissionById(data) {
   })
 }
 
-// 删除任务
+
 export function delMission(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/mission/del',
+      url: '/mission/delete',
+      // url: '/mini_api/mission/del',
       data,
       success: function (data) {
         console.log('删除任务', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
     })
   })
 }
-
 // 结束任务
 export function endMission(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/mission/updateStatus',
+      url: '/mission/update',
       data,
       success: function (data) {
         console.log('结束任务', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -412,11 +444,12 @@ export function endMission(data) {
 export function getFavorShop(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/user_favor/getList',
+      // url: '/mini_api/user_favor/getList',
+      url: '/userfavor/index',
       data,
       success: function (data) {
         console.log('店铺收藏', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -427,11 +460,12 @@ export function getFavorShop(data) {
 export function getFavorWorker(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/user_worker_favor/getList',
+      url: '/userworkerfavor/index',
+      // url: '/mini_api/user_worker_favor/getList',
       data,
       success: function (data) {
         console.log('工人收藏', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -445,10 +479,10 @@ export function getFavorWorker(data) {
 export function getInformationCate() {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/information_cate/getList',
+      url: '/informationcate/index',
       success: function (data) {
         console.log('任务分类', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -460,11 +494,11 @@ export function getInformationCate() {
 export function informationList(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/information/getList',
+      url: '/information/index',
       data,
       success: function (data) {
         console.log('信息列表', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -476,11 +510,11 @@ export function informationList(data) {
 export function informationUpdate(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/information/update',
+      url: '/information/add',
       data,
       success: function (data) {
         console.log('发布便民信息', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -492,11 +526,11 @@ export function informationUpdate(data) {
 export function getInformationById(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/information/getById',
+      url: '/information/view',
       data,
       success: function (data) {
         console.log('信息详情', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -508,11 +542,11 @@ export function getInformationById(data) {
 export function delInformation(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/information/del',
+      url: '/information/delete',
       data,
       success: function (data) {
         console.log('删除任务', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -524,11 +558,12 @@ export function delInformation(data) {
 export function updateUser(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/user/update',
+      url: '/member/update',
+      // url: '/mini_api/user/update',
       data,
       success: function (data) {
         console.log('更新用户信息', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -543,18 +578,33 @@ export function updateUser(data) {
 export function sendCode(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/user_tel_code/sendCode',
+      // url: '/mini_api/user_tel_code/sendCode',
+      url: '/member/sendCode',
       data,
       success: function (data) {
         console.log('验证码回调', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
     })
   })
 }
-
+// 图片上传
+export function fileUpload(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/base/upload',
+      data,
+      success: function (data) {
+        console.log('文件上传回调', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
 // 绑定手机号
 export function bindPhone(data) {
   return new Promise((resolve, reject) => {
@@ -563,7 +613,7 @@ export function bindPhone(data) {
       data,
       success: function (data) {
         console.log('绑定手机号', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         } else {
           reject(data)
@@ -581,7 +631,7 @@ export function goodList(data) {
       data,
       success: function (data) {
         console.log('商品列表', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -597,7 +647,7 @@ export function goodDetail(data) {
       data,
       success: function (data) {
         console.log('商品详情', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -609,11 +659,11 @@ export function goodDetail(data) {
 export function getSystemConfig(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/system_config/getConfig',
+      url: '/systemconfig/index',
       data,
       success: function (data) {
         console.log('全局数据（系统配置）', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -629,7 +679,7 @@ export function getAuctionStatus(data) {
       data,
       success: function (data) {
         console.log('报名状态', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -645,7 +695,7 @@ export function signUpPost(data) {
       data,
       success: function (data) {
         console.log('点击报名操作', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -661,7 +711,7 @@ export function bidPost(data) {
       data,
       success: function (data) {
         console.log('出价', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -677,7 +727,7 @@ export function createOrder(data) {
       data,
       success: function (data) {
         console.log('创建订单', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -692,7 +742,7 @@ export function getCategory() {
       url: '/mini_api/goods_cate/getList',
       success: function (data) {
         console.log('商品分类', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -708,7 +758,7 @@ export function myAuction(data) {
       data,
       success: function (data) {
         console.log('我的活动', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -724,7 +774,7 @@ export function orderList(data) {
       data,
       success: function (data) {
         console.log('我的订单（含已中标数据）', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -740,7 +790,7 @@ export function getCoupon(data) {
       data,
       success: function (data) {
         console.log('优惠券', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -755,7 +805,7 @@ export function getAddress() {
       url: '/mini_api/user_Address/getList',
       success: function (data) {
         console.log('收货地址列表', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -771,7 +821,7 @@ export function createAddress(data) {
       data,
       success: function (data) {
         console.log('新增收货地址', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -787,7 +837,7 @@ export function updateAddress(data) {
       data,
       success: function (data) {
         console.log('修改收货地址', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -803,7 +853,7 @@ export function delAddress(data) {
       data,
       success: function (data) {
         console.log('删除收货地址', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -819,7 +869,7 @@ export function payWithBalance(data) {
       data,
       success: function (data) {
         console.log('支付报名费', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -835,7 +885,7 @@ export function payment(data) {
       data,
       success: function (data) {
         console.log('支付', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -851,7 +901,7 @@ export function paymentWeChat(data) {
       data,
       success: function (data) {
         console.log('微信支付', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -867,7 +917,7 @@ export function checkReceipt(data) {
       data,
       success: function (data) {
         console.log('确认收货', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -884,7 +934,7 @@ export function comment(data) {
       data,
       success: function (data) {
         console.log('评论', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -900,7 +950,7 @@ export function favorList(data) {
       data,
       success: function (data) {
         console.log('我的收藏', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -912,11 +962,12 @@ export function favorList(data) {
 export function favorEvent(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/user_favor/create',
+      url: '/userfavor/add',
+      // url: '/mini_api/user_favor/create',
       data,
       success: function (data) {
         console.log('添加收藏产品', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -932,7 +983,7 @@ export function historyRecord(data) {
       data,
       success: function (data) {
         console.log('我的足迹', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -948,7 +999,7 @@ export function addHistoryRecord(data) {
       data,
       success: function (data) {
         console.log('添加足迹', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -964,7 +1015,7 @@ export function getGoodId(data) {
       data,
       success: function (data) {
         console.log('获取商品id跳转', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -980,7 +1031,7 @@ export function getBadge(data) {
       data,
       success: function (data) {
         console.log('个人中心订单数字标签', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -996,7 +1047,7 @@ export function getHelpList(data) {
       data,
       success: function (data) {
         console.log('帮助中心列表', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -1012,7 +1063,7 @@ export function helpDetail(data) {
       data,
       success: function (data) {
         console.log('帮助详情', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -1028,7 +1079,7 @@ export function bargainPost(data) {
       data,
       success: function (data) {
         console.log('砍价', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -1061,9 +1112,9 @@ export function queryKd() {
 export function fetchIndex(){
   return new Promise((resolve) => {
     http({
-      url:'/mini_api/index/index',
+      url:'/index/index',
       success:function(data){
-        if(data.code == '1'){
+        if(data.status== 200){
           resolve(data)
         }
       }
@@ -1075,7 +1126,8 @@ export function fetchIndex(){
 export function getPriceList(data) {
   return new Promise((resolve, reject) => {
     http({
-      url: '/mini_api/shop_base_price/getList',
+      url: '/shopbaseprice/index',
+      // url: '/mini_api/shop_base_price/getList',
       data,
       success: function (data) {
         console.log('价格列表', data)
@@ -1101,7 +1153,8 @@ export function fetchCollectionList(data){
 export function fetchCollection(data){
   return new Promise((resolve) => {
     http({
-      url:'/mini_api/user_favor/create',
+      // url:'/mini_api/user_favor/create',
+      url:  '/userfavor/'+data.method,
       data,
       success:function(res) {
         console.log("收藏",res)
@@ -1127,7 +1180,8 @@ export function fetchWorkerCollectionList(data){
 export function fetchWorkerCollection(data){
   return new Promise((resolve) => {
     http({
-      url:'/mini_api/user_worker_favor/create',
+      url:'/userworkerfavor/create',
+      // url:'/mini_api/user_worker_favor/create',
       data,
       success:function(res) {
         console.log("收藏",res)
@@ -1141,7 +1195,8 @@ export function fetchWorkerCollection(data){
 export function fetchCommentList(data){
   return new Promise((resolve) => {
     http({
-      url:'/mini_api/shop_comment/myComment',
+      url:'/shopcomment/myComment',
+      // url:'/mini_api/shop_comment/myComment',
       data,
       success:function(res) {
         console.log("我的评论",res)
@@ -1155,7 +1210,8 @@ export function fetchCommentList(data){
 export function upDateFeedback(data){
   return new Promise((resolve) => {
     http({
-      url:'/mini_api/message/add',
+      url:'/message/add',
+      // url:'/mini_api/message/add',
       data,
       success:function(res) {
         console.log("意见反馈",res)
@@ -1210,10 +1266,10 @@ export function getConfirmMission(data){
 export function getWorkerCate() {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/worker_cate/getList',
+      url: '/workercate/getList',
       success: function (data) {
         console.log('我来帮任务分类', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -1225,11 +1281,12 @@ export function getWorkerCate() {
 export function workerList(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/user/getWorkerList',
+      // url: '/mini_api/user/getWorkerList',
+      url: '/member/Distance',
       data,
       success: function (data) {
         console.log('我来帮信息列表', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -1241,11 +1298,28 @@ export function workerList(data) {
 export function fetchHelpDetail(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/user/getById',
+      url: '/member/getById',
+      // url: '/mini_api/user/getById',
       data,
       success: function (data) {
         console.log('我来帮信息详情', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+// 骑行帮信息详情
+export function momentsDetail(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/moments/view',
+      // url: '/mini_api/user/getById',
+      data,
+      success: function (data) {
+        console.log('我来帮信息详情', data)
+        if (data.status== 200) {
           resolve(data)
         }
       }
@@ -1253,16 +1327,16 @@ export function fetchHelpDetail(data) {
   })
 }
 
-
 // 信息列表
 export function updateBindTel(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/user/bindTel',
+      url: '/member/bindTel',
+      // url: '/mini_api/user/bindTel',
       data,
       success: function (data) {
         console.log('提交认证', data)
-        if (data.code == '1') {
+        if (data.status== 200) {
           resolve(data)
         }
       }

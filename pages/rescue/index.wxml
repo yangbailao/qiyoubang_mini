@@ -58,7 +58,7 @@ layer-style="1"
 </view>
 
 <view wx:if="{{showMask}}" bindtap="hideMask" class="overWrap" >
-	<view bindtap="goTo" data-url="/pages/shop/detail?id={{currentM.id}}" class="box" >
+	<view bindtap="goTo" data-map="{{currentM.map_address}}" class="box" >
 		<text>{{currentM.title}}</text>
 		<text style="font-size: 38rpx;" >{{currentM.phone}}</text>
 	</view>

@@ -4,32 +4,38 @@ const app = getApp()
 import {
   updateShop
 } from '../../api/api'
-import {md5} from '../../utils/md5'
+import {
+  md5
+} from '../../utils/md5'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    uploadImg:[],
-    keys:[],
-    getId:0,
-    form:{
-      shop_name:'',
-      shop_tel:'',
-      img:'',
-	  open_time:'09:00',
-	  close_time:'18:00',
-	  server_item:[],
-	  help_item:[]
+    uploadImg: [],
+    keys: [],
+    getId: 0,
+    form: {
+      shop_name: '',
+      shop_tel: '',
+      img: '',
+      map_address:'',
+      open_time: '09:00',
+      close_time: '18:00',
+      server_item: [],
+      help_item: [],
+      address:'',
     },
-	shop:{},
-	itemNum:[
-		{id:1,title:'',price:0}
-	],
-	type:1,
-	// 弹窗
-	showMask:false,
+    shop: [],
+    itemNum: [{
+      id: 1,
+      title: '',
+      price: ''
+    }],
+    type: 1,
+    // 弹窗
+    showMask: false,
   },
 
   /**
@@ -38,7 +44,7 @@ Page({
   onLoad: function (options) {
     app.chengeNeed()
     this.setData({
-      getId:options.id
+      getId: options.id
     })
   },
 
@@ -54,17 +60,17 @@ Page({
    */
   onShow: function () {
     const location = chooseLocation.getLocation();
-	console.log(location);
-    if(location)
-    {
+    console.log(location);
+    if (location) {
       this.setData({
-        'shop.map_name' : location.name,
-        'shop.address' : location.address,
-        'shop.district' : location.district,
-        'shop.city' : location.city,
-        'shop.province' : location.city,
-        'shop.latitude' : location.latitude,
-        'shop.longitude' : location.longitude,
+        'form.map_name': location.name,
+        'form.address': location.address,
+        'form.district': location.district,
+        'form.city': location.city,
+        'form.province': location.province,
+        'form.latitude': location.latitude,
+        'form.longitude': location.longitude,
+        'form.map_address':JSON.stringify(location)
       });
     }
   },
@@ -103,30 +109,38 @@ Page({
   onShareAppMessage: function () {
 
   },
-  changeTitle:function(e){
+  changeTitle: function (e) {
     this.data.form.shop_name = e.detail.value
     this.setData({
-      form:this.data.form
+      form: this.data.form
     })
   },
-  changeContent:function(e){
+  changeBoss: function (e) {
+    this.data.form.shop_boss= e.detail.value
+    this.setData({
+      form: this.data.form
+    })
+  },
+  changeContent: function (e) {
     this.data.form.content = e.detail.value
     this.setData({
-      form:this.data.form
+      form: this.data.form
     })
   },
-  changeTel:function(e){
+  changeTel: function (e) {
     this.data.form.shop_tel = e.detail.value
     this.setData({
-      form:this.data.form
+      form: this.data.form
     })
   },
   /**
    * 选择照片
    */
   takePhoto() {
-    
-    let {uploadImg} = this.data
+
+    let {
+      uploadImg
+    } = this.data
     if (this.data.uploadImg.length >= 6) {
       wx.showToast({
         title: '最多选6张图片',
@@ -142,9 +156,12 @@ Page({
         // tempFilePath可以作为img标签的src属性显示图片
         const tempFilePaths = res.tempFilePaths
         let uploadList = this.data.uploadImg
-        tempFilePaths.forEach((item,index) => {
+        tempFilePaths.forEach((item, index) => {
           uploadList.push(item)
-          this.upload({item,index})
+          this.upload({
+            item,
+            index
+          })
         })
         this.setData({
           uploadImg: uploadList
@@ -157,8 +174,10 @@ Page({
   /**
    * 上传照片或者视频
    */
-  upload : function(data){
-    let {token} = this.data
+  upload: function (data) {
+    let {
+      token
+    } = this.data
     const key = md5(new Date().getTime() + data.index + '')
     let keys = this.data.keys
     keys.push(key)
@@ -174,9 +193,9 @@ Page({
         token,
         key
       },
-      success: (res)=>{
+      success: (res) => {
         const data = JSON.parse(res.data)
-        
+
       }
     })
   },
@@ -191,11 +210,11 @@ Page({
       title: '确认删除此图片吗？',
       success: (res) => {
         if (res.confirm) {
-          list.splice(index,1)
-          keys.splice(index,1)
+          list.splice(index, 1)
+          keys.splice(index, 1)
           this.setData({
             uploadImg: list,
-            keys:keys
+            keys: keys
           })
         } else if (res.cancel) {
           console.log('用户点击取消')
@@ -206,7 +225,7 @@ Page({
   /**
    *  选择用户位置
    */
-  chooseAddress : function(){
+  chooseAddress: function () {
     const key = 'GQZBZ-ABDHS-6ZPOH-6P2WY-RPQGZ-PPFV5'; //使用在腾讯位置服务申请的key
     const referer = '骑行帮'; //调用插件的app的名称
     wx.navigateTo({
@@ -216,40 +235,67 @@ Page({
   /**
    * 表单提交
    */
-  submit(){
-    let {keys,form} = this.data
-	console.log(form);
-    if(form.shop_name === ''){
+  submit() {
+    let {
+      keys,
+      form
+    } = this.data
+    console.log(form);
+    if (form.shop_name === '') {
       wx.showToast({
-        title: '请填写标题',
-        icon : 'none',
+        title: '请填店铺名称',
+        icon: 'none',
         mask: true
       })
       return
     }
-
-    if(form.shop_tel === ''){
+    if (form.shop_boss === '') {
+      wx.showToast({
+        title: '请填老板名称',
+        icon: 'none',
+        mask: true
+      })
+      return
+    }
+    if (form.shop_tel === '') {
       wx.showToast({
         title: '请填联系方式',
-        icon : 'none',
+        icon: 'none',
         mask: true
       })
       return
     }
-	var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
+    var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
     if (!myreg.test(form.shop_tel)) {
       wx.showToast({
         title: '手机号码不正确',
-        icon : 'none',
+        icon: 'none',
+        mask: true
+      })
+      return
+    }
+    if (form.map_address === '') {
+      wx.showToast({
+        title: '请选择店铺地址',
+        icon: 'none',
         mask: true
       })
       return
     }
 
-    if(keys.length === 0){
+    if (form.server_item.length == 0 && form.help_item.length == 0) {
+      wx.showToast({
+        title: '请至少填写一个服务项目',
+        icon: 'none',
+        mask: true
+      })
+      return
+    }
+
+    if (keys.length === 0) {
       wx.showToast({
         title: '请拍摄照片',
-        icon : 'none',
+        icon: 'none',
         mask: true
       })
       return
@@ -261,14 +307,20 @@ Page({
     })
     var video = '';
     var images = '';
- 
+
     images = keys.join(',')
-   
-	form.img = images;
-	form.address = this.data.shop;
-	 console.log("显示内容____",form)
+
+    form.img = images;
+
+    if(form.help_item.length > 0){
+      form.help_item = JSON.stringify(form.help_item);
+    }
+    if(form.server_item.length > 0){
+      form.server_item = JSON.stringify(form.server_item);
+    }
+    console.log("显示内容____", form)
     updateShop(form).then(res => {
-      if (res.code == '1'){
+      if (res.status == 200) {
         wx.showToast({
           title: '我的店铺更新成功'
         })
@@ -277,97 +329,114 @@ Page({
         })
       }
     })
-    
+
   },
-  addItem:function(){
-	  let itemNum = this.data.itemNum;
-	  let newItem = {
-		  title:'',
-		  price:0,
-		  id:itemNum.length
-	  }
-	  itemNum.push(newItem);
-	  this.setData({
-		  itemNum
-	  })
-  }, 
-  reduceItem:function(e){
-	  
-	  let index = e.currentTarget.dataset.index;
-	  let itemNum = this.data.itemNum;
-	  if(itemNum.length <= 1){
-		  wx.showToast({
-		    title: '修车项目至少为一项',
-		  	icon:'none'
-		  })
-		  return;
-	  }
-	  console.log(itemNum);
-	 itemNum.splice(index,1)
-	  this.setData({
-		  itemNum
-	  })
+  addItem: function () {
+    let itemNum = this.data.itemNum;
+    let newItem = {
+      title: '',
+      price: '',
+      id: itemNum.length
+    }
+    itemNum.push(newItem);
+    this.setData({
+      itemNum
+    })
   },
-  changeTtile:function(e){
-	  let index = e.currentTarget.dataset.index;
-	  let value = e.detail.value;
-	  let itemNum = this.data.itemNum;
-	  itemNum[index].title = value;
-	   this.setData({itemNum:itemNum})
+  reduceItem: function (e) {
+
+    let index = e.currentTarget.dataset.index;
+    let itemNum = this.data.itemNum;
+    if (itemNum.length <= 1) {
+      wx.showToast({
+        title: '服务项目至少为一项',
+        icon: 'none'
+      })
+      return;
+    }
+    itemNum.splice(index, 1)
+    console.log(itemNum);
+    this.setData({
+      itemNum
+    })
   },
-  changePrice:function(e){
-  	  let index = e.currentTarget.dataset.index;
-  	  let value = e.detail.value;
-  	  let itemNum = this.data.itemNum;
-  	  itemNum[index].price = value;
-  	  this.setData({itemNum:itemNum})
+  changeTtile: function (e) {
+    let index = e.currentTarget.dataset.index;
+    let value = e.detail.value;
+    let itemNum = this.data.itemNum;
+    itemNum[index].title = value;
+    this.setData({
+      itemNum: itemNum
+    })
   },
-  submitItem:function(){
-	  let itemNum = this.data.itemNum;
-	  
-	  var itemArr = [];
-	  console.log(itemNum);
-	  itemNum.forEach(function(item,index,arr){
-		  if(item.title != '' && item.price != ''){
-			  itemArr.push(item)
-		  }
-	  })
-	  
-	  if(itemArr.length <= 0){
-	  		  wx.showToast({
-	  		    title: '有效修车项目至少为一项',
-	  				icon:'none'
-	  		  })
-	  		  return;
-	  }
-	  if(type == 1){
-		  this.setData({
-		  		  'form.server_item':itemArr,
-		  		  showMask:false
-		  })
-	  }else{
-		 this.setData({
-		 		  'form.help_item':itemArr,
-		 		  showMask:false
-		 }) 
-	  }
-	  
+  changePrice: function (e) {
+    let index = e.currentTarget.dataset.index;
+    let value = e.detail.value;
+    let itemNum = this.data.itemNum;
+    itemNum[index].price = value;
+    this.setData({
+      itemNum: itemNum
+    })
+  },
+  submitItem: function () {
+    let itemNum = this.data.itemNum;
+    var itemArr = [];
+    itemNum.forEach(function (item, index, arr) {
+      if (item.title != '' && item.price != '') {
+        itemArr.push(item)
+      }
+    })
+    if (itemArr.length <= 0) {
+      wx.showToast({
+        title: '有效修车项目至少为一项',
+        icon: 'none'
+      })
+      return;
+    }
+    console.log(itemNum);
+    if (this.data.type == 1) {
+      this.setData({
+        'form.help_item': itemArr,
+        showMask: false
+      })
+    } else {
+      this.setData({
+        'form.server_item': itemArr,
+        showMask: false
+      })
+    }
+
   },
   /* 弹窗 */
-  openMask:function(e){
-  	  this.setData({
-  		  showMask:true,
-  		  type:e.currentTarget.dataset.value
-  	  })
+  openMask: function (e) {
+    let itemNum = this.data.itemNum;
+    let type = e.currentTarget.dataset.value;
+    console.log(type);
+    if(type == 1){
+      console.log(type);
+      itemNum=this.data.form.help_item
+    }else if( type == 2){
+      console.log(type);
+      itemNum=this.data.form.server_item
+    }
+    this.setData({
+      showMask: true,
+      itemNum,
+      type
+    })
   },
-  closeMask:function(e){
-	  let itemNum=[{id:1,title:'',price:0}];
-	  this.setData({
-		  showMask:false,
-		  itemNum
-	  })
+  closeMask: function (e) {
+    let itemNum = [{
+      id: 1,
+      title: '',
+      price: ''
+    }];
+    this.setData({
+      showMask: false,
+      itemNum
+    })
   },
-  returnFale(){
-	  return;
+  returnFale() {
+    return;
   }
 })

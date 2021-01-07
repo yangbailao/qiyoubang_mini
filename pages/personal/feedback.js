@@ -221,7 +221,7 @@ Page({
       content : form.content,
       images : images,
     }).then(res => {
-      if (res.code == '1'){
+      if (res.status== 200){
         wx.showToast({
           title: '意见反馈发布成功'
         })

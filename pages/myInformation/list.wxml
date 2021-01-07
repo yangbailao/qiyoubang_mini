@@ -29,9 +29,9 @@
 
       <view class="btns">
         <!-- <view wx:if="{{item.status == 1}}" bindtap="handleEnd" data-id="{{item.id}}" data-title="{{item.title}}">结束任务</view> -->
-        <navigator url="/pages/information/add?id={{item.id}}">
+        <!-- <navigator url="/pages/information/add?id={{item.id}}">
           <view wx:if="{{item.status == 1}}" data-id="{{item.id}}">编辑</view>
-        </navigator> 
+        </navigator>  -->
         <view bindtap="handleDel" data-id="{{item.id}}" data-title="{{item.title}}">删除</view>
       </view>
       

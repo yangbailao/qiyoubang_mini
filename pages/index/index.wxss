@@ -93,6 +93,9 @@
   /* background: rgba(255, 10, 70, 1); */
   font-size: 24rpx;
   color: #fff;
+  padding:0 26rpx;
+  width: 100%;
+  box-sizing: border-box;
 }
 .notice_cv {
   box-shadow: 0rpx 1rpx 4rpx 0rpx 
@@ -295,8 +298,12 @@
 }
 
 /* 列表 */
-.list {margin-bottom: 50px;}
-.list{padding-bottom: 26rpx;}
+.list {margin-bottom: 50px;
+  padding:26rpx 30rpx;
+
+  width:100%;
+  box-sizing: border-box;
+}
 .list .item{
   margin-top: 26rpx;
   /* width: 690rpx; */
@@ -343,6 +350,7 @@
   text-align: center;
   font-size: 28rpx;
   color: #000;
+
 }
 .navTab .item .imgView {
   width: 100rpx;

@@ -13,7 +13,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    lat:0,
+    long:0
   },
 
   /**
@@ -21,6 +22,18 @@ Page({
    */
   onLoad: function () {
     app.chengeNeed()
+    wx.getLocation({
+      type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
+      success: res => {
+        console.log(res)
+        wx.hideLoading()
+       
+        this.setData({
+          lat:res.latitude,
+          long:res.longitude
+        })
+      }
+    })
   },
 
   /**
@@ -90,8 +103,7 @@ Page({
     getShopById({id:this.data.userInfo.service_shop_id}).then(
       res=>{
         this.setData({
-          detail : res.data.shop,
-          comments : res.data.comments
+          detail : res.data
         })
         wx.hideLoading()
       }
@@ -103,17 +115,9 @@ Page({
       title: '加载中……',
       mask : true
     })
-    wx.getLocation({
-      type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
-      success: res => {
-        console.log(res)
-        wx.hideLoading()
-        wx.navigateTo({
-          url: '/pages/shop/list?act=service_shop&lat='+res.latitude+'&long='+res.longitude,
-        })
-      }
+    wx.navigateTo({
+      url: '/pages/shop/list?act=service_shop&lat='+this.data.lat+'&long='+this.data.long,
     })
-    
   },
 
 })

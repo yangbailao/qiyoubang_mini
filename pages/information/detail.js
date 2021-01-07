@@ -92,8 +92,7 @@ Page({
     })
     getInformationById({id:this.data.id}).then( res => {
       this.setData({
-        detail : res.data.info,
-        userInfo : res.data.user
+        detail : res.data,
       })
       wx.hideLoading({
         success: (res) => {},

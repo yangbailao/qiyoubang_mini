@@ -1,8 +1,7 @@
-/* pages/moments/list.wxss */
-
+/* pages/moments/detail.wxss */
 .user-info {
   color: #fff;
-  height: 200rpx;
+  height: 140rpx;
   background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
 }
 
@@ -64,308 +63,199 @@
   text-align: center;
 }
 
-.add{
-  width: 100rpx;
-  height: 100rpx;
-  position: fixed;
-  /* top: 154rpx; */
-  right: 60rpx;
-  z-index: 666;
-  background-image: linear-gradient(322deg, 
-		#f59301 0%, 
-		#fddd09 100%);
-	box-shadow: 0px 6px 12px 0px 
-    rgba(246, 152, 2, 0.6);
-  border-radius: 50%;
-  /* padding: 30rpx 0 0 30rpx; */
-  text-align: center;
-  line-height: 100rpx;
+.line{
+  height: 1px;
+  width: 650rpx;
+  margin: 0 auto;
+  /* background-image: linear-gradient(285deg, #fff 0%,#ff4571 100%); */
+  background:rgba(255, 255, 255, 0.25);
+  clear: both;
+}
+
+.user-detail{
+  background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
+  height: 160rpx;
+  padding: 10rpx 30rpx;
+  display: flex;
   color: #fff;
 }
-
-.add image{
-  width: 40rpx;
-  height: 40rpx;
-}
-
-.notice{
-  width: 300rpx;
-  height: 80rpx;
-  line-height: 80rpx;
-  background: rgb(28, 28, 40);
-  border-radius: 15rpx;
-  margin: 0 auto 25rpx auto;
-}
-.notice image{
-  margin: 12rpx 0 0 15rpx;
-  width: 60rpx;
-  height: 60rpx;
-  border-radius: 50%;
-}
-.notice view{
-  width: 220rpx;
+.user-detail .item{
+  width: 172rpx;
   text-align: center;
-  color: #fff;
 }
+.user-detail .item .title{font-size: 24rpx;}
+.user-detail .item .val{font-size: 24rpx;line-height: 50rpx;}
+.user-detail .item .val text{font-size: 40rpx; font-weight: bold; }
 
-.moments{height: auto; border-bottom: 10rpx solid rgb(242, 242, 245);}
-.moments .author{height: 133rpx;padding: 40rpx 0 20rpx 0;border-bottom: dotted 1px #e4e4eb;margin-bottom: 20rpx;}
-.moments .author image{width: 72rpx; height: 72rpx; border-radius: 50%;float: left;margin-right: 20rpx;}
-.moments .author .nickname{font-size: 28rpx;height: 40rpx;line-height: 32rpx;color: #1c1c28;}
-.moments .author .created_at{font-size: 24rpx;height: 32rpx;line-height: 32rpx;color: #8f90a6;}
-
-.moments .content{padding-left: 92rpx;}
-.moments .content .text{line-height: 48rpx;margin-bottom: 10rpx;}
-.moments .content .images{clear: both;display: flex;flex-wrap:wrap;}
-.moments .content .images image{border-radius: 5px;border:2px solid #fff}
-.moments .content .images view{width: 33%;float: left;}
-
-.moments .content .comment-bar{clear: both; height: 38rpx;line-height: 38rpx;font-size: 28rpx;color: #8f90a6;margin: 12rpx 0;}
-.moments .content .comment-bar text{margin-left: 10rpx;}
-.moments .content .comment-content{background: #fafafc;margin-top: 16rpx;}
-.moments .content .comment-content .good{border-bottom: solid 1px #e4e4eb;padding: 20rpx;color: #555770;}
-.moments .content .comment-content .good image{width: 28rpx;height: 28rpx;position: relative;top: 4rpx;margin-right: 10rpx;}
-.moments .content .comment-content .comments{padding: 20rpx;}
-.moments .content .comment-content .comment .nickname{font-weight: bold;}
-.empty-box{height: 40rpx;}
-
-
-
-.list{
-  background: #fff;
-  border-top-left-radius: 40rpx;
-  border-top-right-radius: 40rpx;
+.mission-detail{
   position: relative;
-  top: -50rpx;
-  padding-top: 40rpx;
-  min-height: 600rpx;
+  top: -40rpx;
+  padding: 40rpx;
+  border-radius: 40rpx;
+  background: #fff;
 }
-.user-info .login{
-  display: flex;
-  align-items: center;
-  height: 120rpx;
-}
-.user-info .login .btn{height: 52rpx;line-height: 52rpx;padding: 0 15rpx;margin-left: 10rpx;
-  background-color: #ffca05;
-  box-shadow: 0px 3px 6px 0px 
-   rgba(255, 202, 5, 0.46);
-    text-align: center;
-    border-radius: 10rpx;
-  }
-.user-info .login button{color: #fff;font-size: 28rpx;font-weight: normal;width: 140rpx;}
-.user-info .un-login{background-color: #fff;display: flex;align-items: center;justify-content: center;}
-.user-info .un-login image{width: 50rpx;height: 50rpx;}
 
-/* 搜索 */
-.search-box {
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	height: 60rpx;
-	padding: 0 25rpx;
-	box-sizing: border-box;
-	margin-bottom: 15rpx;
-}
-.search-box input {
-	display: inline-block;
-	flex: 1;
-	height: 100%;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	border: 1px solid #cecece;
-	padding: 0 15rpx;
-	border-radius: 12rpx;
-	margin-right: 12rpx;
-	
-}
-.submit{
-	width: 100rpx;
-	height: 100%;
-	background-image: linear-gradient(313deg, 
-  #fe6959 0%, 
-  #ff1656 100%);
-	box-shadow: 0px 3px 6px 0px 
-		rgba(255, 59, 59, 0.26);
-  border-radius: 5px;
-  margin:0 auto;
-  color: #fff;
+.mission-detail .title{
   font-size: 36rpx;
-  font-weight: 500;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  color: #000;
+}
+.mission-detail .title .status{
+  color: #fff;
+  padding: 2rpx 10rpx;
+  border-radius: 7rpx;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+}
+.mission-detail .title .end{
+  background: #fe6959;
 }
 
-.container {
-  padding-bottom: 45px;
+.mission-detail .info{
+  line-height: 80rpx;
+  font-size: 24rpx;
+  height: 80rpx;
 }
-.content {
-  word-break: break-all;
-  font-size: 14px;
+.mission-detail .info text{margin-right: 15rpx;}
+
+.mission-detail .locale{
+  background: #fafafc;
+  padding: 15rpx 10rpx;
+  border-radius: 6rpx;
 }
 
-.comment-fixed {
+.mission-detail .content{
+  margin-top: 20rpx;
+}
+.mission-detail .content .content-title{
+  font-size: 32rpx;
+  color: #000;
+  font-weight: bold;
+  border-bottom: 3px solid #ff5c5c;
+  width: 145rpx;
+  height: 60rpx;
+  text-align: center;
+}
+.mission-detail .content .content-body{
+  padding: 20rpx 10rpx 100rpx 10rpx;
+}
+/* 
+.call{
+  background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
+  height: 120rpx;
   position: fixed;
   bottom: 0;
   left: 0;
-  right: 0;
-  background-color: #fff;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
-  z-index: 100;
+  width: 100%;
+  color: #fff;
+  padding-top: 20rpx;
 }
 
-.cf-box {
-  padding: 8px 5px;
+.call .title{
   display: flex;
   justify-content: center;
+  font-size: 35rpx;
+  align-items: center;
 }
-
-.t-info textarea {
-  background: red;
-  padding: 8px 5px;
-  height: 30px;
-  box-sizing: border-box;
-  width: 100%;
-  display: block;
+.call .title text{
+  height: 60rpx;
+  line-height: 60rpx;
 }
-
-.cf-content {
-  background-color: #f2f2f2;
-  padding: 8px 5px;
-  font-size: 12px;
-  height: 30px;
-  max-height: 40px;
-  width: 100%;
+.call .title image{
+  width: 60rpx;
+  height: 60rpx;
 }
+.call .desc{
+  font-size: 24rpx;
+  text-align: center;
+} */
 
-.cf-send {
-  width: 50px;
-  display: flex !important;
+
+/* 底部 */
+.footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  height: 120rpx;
+  width: 750rpx;
+  background: #fff;
+}
+.footer .btns{display: flex;align-items: center;justify-content: center;width: 250rpx;}
+.footer .btns image{width: 32rpx;height: 32rpx;margin-right: 10rpx;}
+.footer .call{
+  width: 250rpx;
+  background-image: linear-gradient(312deg, 
+		#ff1656 0%, 
+    #fe6959 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer .call button {
+  background-color: transparent;
+}
+.footer .call image{width: 100rpx;height: 100rpx;}
+
+
+/* 评价列表 */
+.comment {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 50rpx 50rpx 0;
+  padding-bottom: 130rpx;
+}
+.comment .notData {
+  padding: 40rpx 0;
+}
+.commentItem {
+  padding-bottom: 40rpx;
+}
+.userInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  justify-content: space-between;
+}
+.userInfo_R {
+  width: 550rpx;
+  display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-left: 5px;
-  border-radius: 2px;
-  text-align: center;
-  padding: 0 2px !important;
-  font-size: 12px;
-  background-color: #000;
-  color: #fff;
+  margin-left: 12rpx;
 }
-
-.cf-send.touch-active:active {
-  background-color: #b03f3e;
+.userInfo_R text {
+  line-height: 32rpx;
 }
-
-.emoji {
-  background-color: #fff;
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding-top: 2px;
-  box-sizing: border-box;
-  font-size: 20px;
+.userInfo_R .time {
+  color: #999;
+  font-size: 24rpx;
 }
-
-.emoji-box {
-  position: relative;
-  height: 200px;
-  padding: 5px 0;
-  box-sizing: border-box;
-  margin-bottom: -200px;
+.userInfo_R .nickname {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40rpx;
 }
-
-.emoji-cell {
-  width: 9.09%;
-  height: 33px;
-  display: inline-block;
+.userInfo_R .cate {
+  height: 40rpx;
+  font-size: 24rpx;
 }
-
-.emoji-cell image {
-  width: 23px;
-  height: 23px;
-  padding: 5px;
-  border-radius: 3px;
+.userMsg {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 30rpx;
+  border-top: dotted 2rpx #e4e4eb;
+  padding-top: 20rpx;
 }
-
-.emoji-move-in {
-  -webkit-animation: emoji-move-in 0.3s forwards;
-  animation: emoji-move-in 0.3s forwards;
+.userInfo image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 100%;
 }
+.images{clear: both;display: flex;flex-wrap:wrap;}
+.images image{border-radius: 5px;border:3px solid #fff;width: 210rpx;height: 210rpx;}
 
-.emoji-move-out {
-  -webkit-animation: emoji-move-out 0.3s forwards;
-  animation: emoji-move-out 0.3s forwards;
-}
-
-.no-emoji-move {
-  -webkit-animation: none;
-  animation: none;
-}
-
-@-webkit-keyframes emoji-move-in {
-  0% {
-    margin-bottom: -200px;
-  }
-
-  100% {
-    margin-bottom: 0;
-  }
-}
-
-@keyframes emoji-move-in {
-  0% {
-    margin-bottom: -200px;
-  }
-
-  100% {
-    margin-bottom: 0;
-  }
-}
-
-@-webkit-keyframes emoji-move-out {
-  0% {
-    margin-bottom: 0;
-  }
-
-  100% {
-    margin-bottom: -200px;
-  }
-}
-
-@keyframes emoji-move-out {
-  0% {
-    margin-bottom: 0;
-  }
-
-  100% {
-    margin-bottom: -200px;
-  }
-}
-
-@-webkit-keyframes pd-left-move {
-  0% {
-    padding-left: 5px;
-  }
-
-  100% {
-    padding-left: 15px;
-  }
-}
-
-@keyframes pd-left-move {
-  0% {
-    padding-left: 5px;
-  }
-
-  100% {
-    padding-left: 15px;
-  }
-}
-
-
-
-
+.comment-title{height: 60rpx; border-bottom: solid 1px #f2f2f5;margin-bottom: 20rpx;padding-bottom: 20rpx;text-indent: 10rpx;font-size: 32rpx;font-weight: bold;}
 
 /* 评论框 */
 

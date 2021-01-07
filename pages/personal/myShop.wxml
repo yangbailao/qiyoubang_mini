@@ -7,6 +7,10 @@
     <input type="text" class="input" bindinput="changeTitle" placeholder="" value="{{form.shop_name}}" />
   </view>
   <view class="form-item wrap">
+    <view class="title"><text>*</text>老板名称：</view>
+    <input type="text" class="input" bindinput="changeBoss" placeholder="" value="{{form.shop_boss}}" />
+  </view>
+  <view class="form-item wrap">
     <view class="title"><text>*</text>联系方式：</view>
     <input type="number" class="input" bindinput="changeTel" placeholder="" value="{{form.shop_tel}}" />
   </view>
@@ -23,7 +27,8 @@
   </view>
   <view class="form-item wrap">
     <view class="title"><text>*</text>店铺地址：</view>
-    <input class="input" placeholder="点击选择位置" bindtap="chooseAddress"  value="{{shop.map_name}}" ></input>
+    <textarea class="input" style="height:150rpx" placeholder="点击选择位置" bindtap="chooseAddress" value="{{form.address}}{{form.map_name}}" />
+    <!-- <input class="input" placeholder="点击选择位置" bindtap="chooseAddress"  value="{{shop.map_name}}" ></input> -->
   </view>
   <view class="form-item wrap">
     <textarea placeholder="详细地址" bindinput="changeContent" value="{{form.content}}" />
@@ -31,6 +36,14 @@
   <view class="shop-item" >
 	  <view bindtap="openMask" data-value="1" ></view>
 	  <view bindtap="openMask" data-value="2"></view>
+  </view>
+  <view wx:if="{{form.server_item.length > 0}}" >
+    <view>修车</view>
+      <view wx:for="{{form.server_item}}" wx:key="index" ><text>项目：</text><text>{{item.title}}</text>--<text>价格：</text><text>{{item.price}}</text></view>
+  </view>
+  <view wx:if="{{form.help_item.length > 0}}" >
+    <view>救援</view>
+      <view wx:for="{{form.help_item}}" wx:key="index" ><text>项目：</text><text>{{item.title}}</text>--<text>价格：</text><text>{{item.price}}</text></view>
   </view>
   <view class="photo">
     <view class="head">请上传你的店铺形象照片! (<text class="red">{{uploadImg.length}}</text>/6)</view>
@@ -47,15 +60,15 @@
     </view>
   </view>
 </view>
-
+<view style="height:200rpx" ></view>
 <view wx:if="{{showMask}}" bindtap="closeMask" class="overMask" >
 	<view catchtap="returnFale" class="box" >
 		<!-- start -->
 		<view class="server-title" >添加{{type==1?'救援':'修车'}}项目(<text>{{itemNum.length}}</text>)</view>
 		<view  class="server-form" >
 			<view wx:for="{{itemNum}}" wx:key="id" class="server-form-item" >
-				<input class="item-title" bindinput="changeTtile" data-index="{{index}}"  placeholder="请填写项目名称" type="text" />
-				<input class="item-price" bindinput="changePrice" data-index="{{index}}"  placeholder="输入价格" type="text" />
+				<input class="item-title" bindinput="changeTtile" data-index="{{index}}" value="{{item.title}}"  placeholder="请填写项目名称" type="text" />
+				<input class="item-price" bindinput="changePrice" data-index="{{index}}" value="{{item.price}}"  placeholder="输入价格" type="text" />
 				<view catchtap="reduceItem" data-index="{{index}}" class="server-form-item-add" >x</view>
 			</view>
 		</view>

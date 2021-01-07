@@ -1,6 +1,7 @@
 // pages/personal/myComment.js
 import {
   fetchCommentList,
+  delComment,
   getQiniu
 } from '../../api/api';
 const app = getApp()
@@ -93,15 +94,12 @@ Page({
       wx.stopPullDownRefresh({
         success: (res) => {},
       })
-      if(res.code == 1) {
+      if(res.status== 200) {
         let list = res.data.list
         if(that.data.page == 1) {
           that.data.list = []
         }
-        for(var i=0;i<list.length;i++){
-          let images = list[i].images.split(',')
-          list[i].images = images
-        }
+
         let showMore = (list.length > 0)
         
         if(showMore) {
@@ -115,5 +113,10 @@ Page({
       }
     })
   }
-
+  ,del:function(e){
+    console.log(e);
+    delComment({ids:e.currentTarget.dataset.ids}).then(res => {
+      this.onPullDownRefresh()
+    })
+  }
 })

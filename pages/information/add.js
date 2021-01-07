@@ -5,6 +5,9 @@ import {
   informationUpdate,
   getInformationById
 } from '../../api/api'
+import {
+  checkPhone
+} from '../../utils/util.js'
 const app = getApp()
 Page({
 
@@ -26,7 +29,7 @@ Page({
     cateData:[],
     cateDataId :[],
     show: false, //控制下拉列表的显示隐藏，false隐藏、true显示
-    selectData: ['消费账户', '平台返利账户', '微信钱包'], //下拉列表的数据
+    selectData: [], //下拉列表的数据
     index: 0, //选择的下拉列 表下标,
     maskFlag : false,
   },
@@ -118,10 +121,16 @@ Page({
   // 读取任务分类
   getCates(){
     getInformationCate().then(res => {
+      let cates=[],cateData=[],cateDataId=[];
+      res.data.list.map(function(item,k,arr){
+        cateDataId.push(item.id)
+        cateData.push(item.title)
+      })
       this.setData({
-        selectData : res.data.cates, // 用做选择的数组
+        selectData : cateData, // 用做选择的数组
         cateData : res.data.list, // 用做选中的选项内容的数组
-        cateDataId : res.data.listId // 数组下标与分类id匹配的数组 
+        cateDataId : cateDataId, // 数组下标与分类id匹配的数组
+        'form.cate_id':cateDataId[0]
       })
     })
   },
@@ -185,7 +194,7 @@ Page({
     console.log(this.data.form)
     let {id,title,tel,cate_id,content} = this.data.form
 
-    if(title === '' || tel === '' || cate_id === '' || content === ''){
+    if(title === '' || tel === '' || cate_id === '' || content === '' || !checkPhone(tel)){
       // console.log(title === '' , tel === '' , cate_id === '' , bouns === '' , content === '',content)
       wx.showToast({
         title: '请填写完整的信息',
@@ -208,7 +217,7 @@ Page({
       title : title,
       id : id
     }).then(res => {
-      if (res.code == '1'){
+      if (res.status== 200){
         wx.showToast({
           title: '发布成功'
         })

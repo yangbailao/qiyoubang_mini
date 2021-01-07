@@ -1,33 +1,34 @@
 <!--pages/personal/myComment.wxml-->
 <navBar back='true' title='我的评价'> </navBar>
 <wxs src="../../filter/filter.wxs" module="filter"></wxs>
+<wxs src="../../utils/util.wxs" module="js" />
 <view class="container">
   <view class="listView">
     <view class="item" wx:for="{{list}}" wx:key="index">
       <view class="shopInfo">
         <view class="shop_li">
-          <image src="{{item.img}}"></image>
+          <image wx:if="{{item.shopinfo.img}}" style="width:100rpx;height:100rpx" src="{{qiniuShowUrl + item.shopinfo.img}}"></image>
           <view class="shop_rv">
-            <view class="name">{{item.shop_name}}</view>
+            <view class="name">{{item.shopinfo.shop_name}}</view>
             <view class="tt">{{item.service_cate_title}}</view>
           </view>
         </view>
-        <view class="tiem">{{item.create_at}}</view>
+        <view class="tiem">{{item.create_time}}</view>
       </view>
       <view class="conte_tt">{{item.comment}}</view>
       <view class="clear img_views" wx:if="{{item.images.length > 0}}">
         <view class="img-item" wx:for="{{item.images}}" wx:for-index="imgIndex" wx:key="imgIndex" wx:for-item="v">
           <!-- <image src="{{imgItem}}"></image> -->
-          <image src="{{qiniuShowUrl + v}}" mode="center" bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
+          <image src="{{qiniuShowUrl + v}}"  bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
         </view>
       </view>
       <view class="shop_bv">
         <view class="clear bv_l">
-          <image wx:for="{{item.rate}}" wx:for-index="startIndex" wx:key="startIndex" src="/images/icon-stars-yes.svg"></image>
-          <image wx:for="{{5-(item.rate)}}" wx:for-index="noStartIndex" wx:key="noStartIndex" src="/images/icon-stars-no.svg"></image>
+          <image wx:for="{{item.rate-0}}" wx:for-index="startIndex" wx:key="startIndex" src="/images/icon-stars-yes.svg"></image>
+          <image wx:for="{{5-(item.rate - 0)}}" wx:for-index="noStartIndex" wx:key="noStartIndex" src="/images/icon-stars-no.svg"></image>
         </view>
         <view class="bv-r">
-          <view class="btn">删除</view>
+          <view bindtap="del" data-ids="{{item.id}}" class="btn">删除</view>
         </view>
       </view>
     </view>
