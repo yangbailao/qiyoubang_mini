@@ -1,4 +1,4 @@
-<navBar back title='任务详情'/>
+<navBar back title='问答详情'/>
 <wxs src="../../utils/util.wxs" module="js" />
 <view class="user-info wrap">
 
@@ -40,34 +40,65 @@
 
 <view class="mission-detail">
   <view class="title">
-    {{detail.title}}<text class="status end" wx:if="{{detail.status == 0}}">已结束</text>
+    {{detail.title}}<text class="status end" wx:if="{{detail.status == 1}}">已结束</text>
   </view>
   <view class="info">
     <text>{{detail.cateName}}</text>
     <text>{{detail.view}}人看过</text>
   </view>
-  <view class="locale">任务地点：{{detail.map_name}}{{detail.locale}}</view>
+  <view class="locale">标题{{detail.name}}</view>
   <view class="content">
     <view class="content-title">任务描述</view>
-    <view class="content-body">{{detail.content}}</view>
+    <view class="content-body">{{detail.description}}</view>
   </view>
   <view class="content">
     <view class="content-title">相关图片</view>
     <view class="content-body">
 
-      <block wx:for="{{detail.images}}" wx:for-item="v" wx:key="index">
-        <image src="{{qiniuShowUrl + v}}" style="height:{{imgHeight}}rpx;width:{{imgHeight}}rpx;"  bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{detail.images}}"></image>
+      <block wx:for="{{detail.img}}" wx:for-item="v" wx:key="index">
+        <image src="{{qiniuShowUrl + v}}" style="height:{{imgHeight}}rpx;width:{{imgHeight}}rpx;"  bindtap='previewImg' data-img="{{qiniuShowUrl + v}}" data-imgs="{{detail.img}}"></image>
       </block>
     </view>
   </view>
+<!-- 评价 -->
+<view class="comment">
+  <view class="comment-title">回答</view>
+  <view wx:for="{{detail.comments}}" wx:key="index" class="commentItem">
+    <view class="userInfo">
+      <view>
+        <image src="{{item.userinfo.avatar_url}}"></image>
+      </view>
+      <view class="userInfo_R">
+        <view class="nickname">
+          <view>{{item.userinfo.nickname}}</view>
+          <view bindtap="addReply" data-id="{{item.question_comment_id}}" class="time">追问</view>
+        </view>
+        <view class="cate">回答时间：{{item.create_at}}</view>
+      </view>
+    </view>
+    <view class="commentContent">
+      <view class="userMsg">
+        {{item.content}}
+      </view>
+    </view>
+  </view>
+  <view class="notData" wx:if="{{!detail.comments.length}}">暂无人评价</view>
 
 </view>
+</view>
 
-<button wx:if="{{!userInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="login-btn" style="width:750rpx">请先登录后再联系</button>
-<view class="call" bindtap="touchToPhone" wx:else>
+<button wx:if="{{!userInfo}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="login-btn" style="width:750rpx">请先登录后再回答</button>
+<view class="call" bindtap="showReply" wx:else>
   <view class="title">
-    <image src="/images/call.svg"></image>
-    <text>电话联系</text> 
+    <!-- <image src="/images/call.svg"></image> -->
+    <text>立即回答</text> 
   </view>
-  <view class="desc">联系时请说是在骑行帮看到的信息</view>
+  <!-- <view class="desc">联系时请说是在骑行帮看到的信息</view> -->
+</view>
+<view wx:if="{{showReply}}" class="reply" >
+  <textarea class='text' placeholder="请输入你的回答" bindinput="content" fixed="{{true}}" auto-height="{{false}}" auto-focus />
+  <view class="btnBox" >
+    <view catchtap="submitItem"  class="submitBtn" >确认</view>
+    <view catchtap="showReply"  class="submitBtn-off" >取消</view>
+  </view>
 </view>

@@ -36,7 +36,7 @@
     </view>
   </block>
   <view class="worker" wx:if="{{typeActive == 2}}">
-    <view class="item" wx:for="{{list}}" wx:key="index" bindtap="goTo" data-url="/pages/help/detail?id={{item.moments_user_id}}">
+    <view class="item" wx:for="{{list}}" wx:key="index" bindtap="goTo" data-url="/pages/moments/list?nickname={{item.momentsuserinfo.nickname}}">
       <view>
       <view class="head sb">
         <view class="title">{{item.momentsuserinfo.nickname}}</view>

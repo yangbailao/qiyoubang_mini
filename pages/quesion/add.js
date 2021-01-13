@@ -1,9 +1,10 @@
 // pages/mission/add.js
 
 import {
-  getMissionCate,
-  missionUpdate,
-  getMissionById,
+  getQuestionCate,
+  questionUpdate,
+  questionAdd,
+  getQuestionById,
   getUploadToken
 } from '../../api/api'
 import {md5} from '../../utils/md5'
@@ -17,13 +18,13 @@ Page({
   data: {
     form:{
       id:0,
-      title:'',
-      tel:'',
-      cate_id:'',
-      cate_title:'',
-      locale:'',
-      bouns:'',
-      content:''
+      name:'',
+      // tel:'',
+      // cate_id:'',
+      // cate_title:'',
+      // locale:'',
+      // bouns:'',
+      description:''
     },
     uploadImg: [],
     keys:[],
@@ -60,7 +61,7 @@ Page({
 
     this.getCates()
 
-    if(options.id > 0) this.getMission(options.id)
+    if(options.id > 0) this.getQuestion(options.id)
 
     getUploadToken().then(res => {
       this.setData({
@@ -82,19 +83,19 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    const location = chooseLocation.getLocation();
-    if(location)
-    {
-      this.setData({
-        'shop.map_name' : location.name,
-        'shop.address' : location.address,
-        'shop.district' : location.district,
-        'shop.city' : location.city,
-        'shop.province' : location.city,
-        'shop.latitude' : location.latitude,
-        'shop.longitude' : location.longitude,
-      });
-    }
+    // const location = chooseLocation.getLocation();
+    // if(location)
+    // {
+    //   this.setData({
+    //     'shop.map_name' : location.name,
+    //     'shop.address' : location.address,
+    //     'shop.district' : location.district,
+    //     'shop.city' : location.city,
+    //     'shop.province' : location.city,
+    //     'shop.latitude' : location.latitude,
+    //     'shop.longitude' : location.longitude,
+    //   });
+    // }
   },
 
   /**
@@ -125,28 +126,28 @@ Page({
 
   },
   // 读取任务详情 - 编辑
-  getMission(id){
-    getMissionById({id:id}).then(
+  getQuestion(id){
+    getQuestionById({id:id}).then(
       res => {
         const d = res.data.mission
         this.setData({
-          'form.content':d.content,
-          'form.tel': d.tel,
-          'form.cate_id': d.cate_id,
-          'form.tel': d.tel,
-          'form.bouns': d.bouns,
-          'form.locale':d.locale,
-          'form.title' : d.title,
+          'form.description':d.description,
+          // 'form.tel': d.tel,
+          // 'form.cate_id': d.cate_id,
+          // 'form.tel': d.tel,
+          // 'form.bouns': d.bouns,
+          // 'form.locale':d.locale,
+          'form.name' : d.name,
           'form.id' : d.id,
-          'form.cate_title' : this.data.cateDataId[d.cate_id].title,
+          // 'form.cate_title' : this.data.cateDataId[d.cate_id].title,
           'form.images' : d.images,
-          'shop.map_name' : d.map_name,
-          'shop.address' : d.address,
-          'shop.district' : d.district,
-          'shop.city' : d.city,
-          'shop.province' : d.city,
-          'shop.latitude' : d.latitude,
-          'shop.longitude' : d.longitude,
+          // 'shop.map_name' : d.map_name,
+          // 'shop.address' : d.address,
+          // 'shop.district' : d.district,
+          // 'shop.city' : d.city,
+          // 'shop.province' : d.city,
+          // 'shop.latitude' : d.latitude,
+          // 'shop.longitude' : d.longitude,
         })
       }
     )
@@ -154,7 +155,7 @@ Page({
 
   // 读取任务分类
   getCates(){
-    getMissionCate().then(res => {
+    getQuestionCate().then(res => {
       let cates = [];
       let listId = [];
       res.data.list.forEach((item)=>{
@@ -190,7 +191,7 @@ Page({
   // 任务名称
   changeTitle(e){
     this.setData({
-      'form.title': e.detail.value
+      'form.name': e.detail.value
     })
   },
 
@@ -218,7 +219,7 @@ Page({
   // 任务描述
   changeContent(e){
     this.setData({
-      'form.content': e.detail.value
+      'form.description': e.detail.value
     })
   },
 
@@ -227,10 +228,10 @@ Page({
    */
   submit(){
     console.log(this.data.form)
-    let {id,title,tel,cate_id,bouns,content,locale} = this.data.form
+    let {id,name,description} = this.data.form
 
-    if(title === '' || tel === '' || cate_id === '' || bouns === '' || content === '' || locale === ''){
-      console.log(title === '' , tel === '' , cate_id === '' , bouns === '' , content === '',content)
+    if(name === '' || description === ''){
+      // console.log(title === '' , tel === '' , cate_id === '' , bouns === '' , content === '',content)
       wx.showToast({
         title: '请填写完整的信息',
         icon:'none',
@@ -248,34 +249,65 @@ Page({
 
     let shop = this.data.shop
     
+if(this.data.form.id > 0){
+  questionUpdate({
+    description:description,
+    // tel: tel,
+    // cate_id: cate_id,
+    // tel: tel,
+    // bouns: bouns,
+    // locale:locale,
+    name : name,
+    id : id,
+    img : images,
+    // map_name : shop.map_name,
+    // address : shop.address,
+    // district : shop.district,
+    // city : shop.city,
+    // province : shop.province,
+    // latitude : shop.latitude,
+    // longitude : shop.longitude
+  }).then(res => {
+    if (res.status== 200){
+      wx.showToast({
+        title: '发布成功'
+      })
+      wx.navigateBack({
+        delta: 1,
+      })
+    }
+  })
+}else{
+  questionAdd({
+    description:description,
+    // tel: tel,
+    // cate_id: cate_id,
+    // tel: tel,
+    // bouns: bouns,
+    // locale:locale,
+    name : name,
+    // id : id,
+    img : images,
+    // map_name : shop.map_name,
+    // address : shop.address,
+    // district : shop.district,
+    // city : shop.city,
+    // province : shop.province,
+    // latitude : shop.latitude,
+    // longitude : shop.longitude
+  }).then(res => {
+    if (res.status== 200){
+      wx.showToast({
+        title: '发布成功'
+      })
+      wx.navigateBack({
+        delta: 1,
+      })
+    }
+  })
+}
 
-    missionUpdate({
-      content:content,
-      tel: tel,
-      cate_id: cate_id,
-      tel: tel,
-      bouns: bouns,
-      locale:locale,
-      title : title,
-      id : id,
-      images : images,
-      map_name : shop.map_name,
-      address : shop.address,
-      district : shop.district,
-      city : shop.city,
-      province : shop.province,
-      latitude : shop.latitude,
-      longitude : shop.longitude
-    }).then(res => {
-      if (res.status== 200){
-        wx.showToast({
-          title: '发布成功'
-        })
-        wx.navigateBack({
-          delta: 1,
-        })
-      }
-    })
+
     
   },
   // 点击下拉显示框

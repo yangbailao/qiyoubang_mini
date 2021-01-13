@@ -63,7 +63,6 @@
     "miniprogram": {
       "list": [
         {
-          "id": -1,
           "name": "骑友录",
           "pathName": "pages/moments/list",
           "query": "",
@@ -257,6 +256,24 @@
           "name": "骑行帮详情",
           "pathName": "pages/moments/detail",
           "query": "id=13",
+          "scene": null
+        },
+        {
+          "name": "提问问题",
+          "pathName": "pages/quesion/add",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "问答列表",
+          "pathName": "pages/quesion/list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "问答详情",
+          "pathName": "pages/quesion/detail",
+          "query": "id=1",
           "scene": null
         }
       ]

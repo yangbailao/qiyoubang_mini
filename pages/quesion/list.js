@@ -7,8 +7,8 @@ import {
 } from '../../api/login'
 import {scrollLoadList} from '../../utils/util'
 import {
-  missionList,
-  getMissionCate,
+  questionList,
+  getQuestionCate,
   getSystemConfig
 } from '../../api/api'
 import { cache } from '../../utils/cache.js'
@@ -78,7 +78,7 @@ Page({
     // 头部描述文字
     getSystemConfig({title:'mission_text'}).then((res) => {
       let title = res.data.list.filter(function(item){
-        if(item['title'] == 'worker_text'){
+        if(item['title'] == 'question_text'){
           return item;
         }
       })
@@ -262,15 +262,15 @@ Page({
       isEnd,
       isLoading,
       list,
-      apiPost: missionList,
+      apiPost: questionList,
       data:{
         page,
         pageSize,
         cate_id: cateActive || 0,
         status : 1,
-        title:searchStr,
-        long : this.data.longitude,
-        lat : this.data.latitude
+        name:searchStr,
+        // long : this.data.longitude,
+        // lat : this.data.latitude
       },
       beforeLoad:() => {
         this.setData({
@@ -294,7 +294,7 @@ Page({
   },
   // 读取任务分类
   getCates(){
-    getMissionCate().then(res => {
+    getQuestionCate().then(res => {
       let list = [{id:0,pid:0,'title':'全部'}];
       list = list.concat(res.data.list);
       this.setData({

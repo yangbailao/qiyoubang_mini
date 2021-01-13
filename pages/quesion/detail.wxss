@@ -182,3 +182,119 @@
   color: #fff;
   border-radius: 0;
 }
+
+/* 评价列表 */
+.comment {
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 50rpx 50rpx 0;
+  padding-bottom: 130rpx;
+}
+.comment .notData {
+  padding: 40rpx 0;
+}
+.commentItem {
+  padding-bottom: 40rpx;
+}
+.userInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  justify-content: space-between;
+}
+.userInfo_R {
+  width: 550rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 12rpx;
+}
+.userInfo_R text {
+  line-height: 32rpx;
+}
+.userInfo_R .time {
+  color: #999;
+  font-size: 24rpx;
+}
+.userInfo_R .nickname {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 40rpx;
+}
+.userInfo_R .cate {
+  height: 40rpx;
+  font-size: 24rpx;
+}
+.userMsg {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 30rpx;
+  border-top: dotted 2rpx #e4e4eb;
+  padding-top: 20rpx;
+}
+.userInfo image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 100%;
+}
+.images{clear: both;display: flex;flex-wrap:wrap;}
+.images image{border-radius: 5px;border:3px solid #fff;width: 210rpx;height: 210rpx;}
+
+.comment-title{height: 60rpx; border-bottom: solid 1px #f2f2f5;margin-bottom: 20rpx;padding-bottom: 20rpx;text-indent: 10rpx;font-size: 32rpx;font-weight: bold;}
+
+/* 回答框 */
+.text {
+  height: 500rpx;
+  width: 100%;
+}
+.reply {
+  background-color: white;
+  padding: 45rpx;
+  width: 100%;
+  min-height: 600rpx;
+  border-top: 3rpx solid #cecece;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
+  border-top-left-radius: 45rpx;
+  border-top-right-radius: 45rpx;
+}
+.btnBox {
+  display: flex;
+  justify-content: space-between;
+}
+.submitBtn {
+	width: 45%;
+		height: 90rpx;
+		background-image: linear-gradient(313deg, 
+	  #fe6959 0%, 
+	  #ff1656 100%);
+		box-shadow: 0px 3px 6px 0px 
+			rgba(255, 59, 59, 0.26);
+	  border-radius: 8px;
+	  margin:0 auto;
+	  color: #fff;
+	  text-align: center;
+	  line-height: 90rpx;
+	  font-size: 36rpx;
+	  font-weight: 500;
+}
+.submitBtn-off {
+	width: 45%;
+		height: 90rpx;
+		background-image: linear-gradient(313deg,
+	  #ff1656 0%,	  #fe6959 100%, );
+		box-shadow: 0px 3px 6px 0px 
+			rgba(255, 59, 59, 0.26);
+	  border-radius: 8px;
+	  margin:0 auto;
+	  color: #000;
+	  text-align: center;
+	  line-height: 90rpx;
+	  font-size: 36rpx;
+	  font-weight: 500;
+}

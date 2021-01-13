@@ -440,6 +440,136 @@ export function endMission(data) {
   })
 }
 
+
+// 获取问答分类
+export function getQuestionCate() {
+  return new Promise((resolve) => {
+    http({
+      // url: '/mini_api/mission_cate/getList',
+      url: '/question_cate/index',
+      success: function (data) {
+        console.log('任务分类', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+// 问答列表
+export function questionList(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/question/index',
+      data,
+      success: function (data) {
+        console.log('任务列表', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+// 发布问答
+export function questionUpdate(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/question/update',
+      data,
+      success: function (data) {
+        console.log('发布任务', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+export function addQuestionComment(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/QuestionComment/add',
+      data,
+      success: function (data) {
+        console.log('回答', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+
+// 发布问答
+export function questionAdd(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/question/add',
+      data,
+      success: function (data) {
+        console.log('发布任务', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+// 问答详情
+export function getQuestionById(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/question/view',
+      // url: '/mini_api/mission/getById',
+      data,
+      success: function (data) {
+        console.log('任务详情', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+//删除问答
+export function delQuestion(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/question/delete',
+      // url: '/mini_api/mission/del',
+      data,
+      success: function (data) {
+        console.log('删除任务', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+// 结束问答
+export function endQuestion(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/question/update',
+      data,
+      success: function (data) {
+        console.log('结束任务', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+
 // 店铺收藏
 export function getFavorShop(data) {
   return new Promise((resolve) => {

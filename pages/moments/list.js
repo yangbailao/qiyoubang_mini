@@ -105,7 +105,11 @@ Page({
         })
       })
     }
-
+    if(options.nickname){
+      this.setData({
+        searchKey:options.nickname
+      })
+    }
     //获取7牛配置信息
     getQiniu().then((res) => {
       this.setData({
@@ -127,7 +131,7 @@ Page({
    */
   onShow: function () {
     //读取骑友录数据
-    this.reloadData()
+    this.reloadData(this.data.searchKey)
     console.log(this.data.userInfo)
   },
 
@@ -154,7 +158,7 @@ Page({
       isRefresh: true
     },()=> {
       wx.stopPullDownRefresh()
-      this.reloadData()
+      this.reloadData(this.data.searchKey)
     })
   },
 
@@ -262,11 +266,11 @@ Page({
         title: '数据加载中……',
       })
     }
-    this.searchList()
+    this.searchList(this.data.searchKey)
   },
   // 下拉刷新
   onAbort(e) {
-    this.reloadData()
+    this.reloadData(this.data.searchKey)
   },
 
   // 重新加载数据
@@ -286,7 +290,8 @@ Page({
       isEnd,
       isLoading,
       pageSize,
-	  search_user
+    search_user,
+    cateActive
     } = this.data;
     console.log(searchKey);
     scrollLoadList({
@@ -297,8 +302,9 @@ Page({
       data:{
         page,
         pageSize,
-		nickname:searchKey,
-		user_id:search_user
+		    nickname:searchKey,
+        user_id:search_user,
+        cateActive:cateActive,
       },
       beforeLoad:() => {
         wx.stopPullDownRefresh()

@@ -5,10 +5,12 @@ import {
   getUser
 } from '../../api/login'
 import {
-  getMissionById,
+  getQuestionById,
   getTake,
   getCheckFinish,
   getConfirmMission,
+  getConfirmQuestion,
+  addQuestionComment,
   getQiniu
 } from '../../api/api'
 import { cache } from '../../utils/cache.js'
@@ -21,7 +23,10 @@ Page({
     id : 0,
     detail : null,
     userInfo : null,
-    showAccpte:false
+    showAccpte:false,
+    showReply:false,
+    content:'',
+    pid:0
   },
 
   /**
@@ -109,7 +114,7 @@ Page({
     wx.showLoading({
       title: '加载中',
     })
-    getMissionById({id:this.data.id}).then( res => {
+    getQuestionById({question_id:this.data.id}).then( res => {
       this.setData({
         detail : res.data,
         user_info : res.data.userinfo
@@ -271,5 +276,55 @@ Page({
         
       }
     })
+  }
+  ,content(e){
+    this.setData({
+      content:e.detail.value
+    })
+  }
+  ,addReply(e){
+
+    this.showReply();
+    this.setData({
+      pid:e.currentTarget.dataset.id
+    })
+    console.log(this.data.pid);
+  }
+
+  ,submitItem(){
+    let content = this.data.content;
+      if(content == ''){
+        wx.showToast({
+          title: '答案不能为空！',
+          duration : 2000,
+          icon : 'none'
+        })
+        return;
+      }
+      let data = {};
+      data.content = content;
+      data.question_id = this.data.detail.question_id
+      data.pid = this.data.pid
+      addQuestionComment(data).then((res) => {
+        if(res.status== 200){
+          wx.showToast({
+            title: '回答成功',
+            duration : 2000,
+            icon : 'none'
+          })
+        }
+        this.showReply()
+      })
+  }
+  ,showReply(){
+    let thisShow = this.data.showReply;
+    this.setData({
+      showReply:!thisShow
+    })
+    if(thisShow == false){
+      this.setData({
+        pid:0
+      })
+    }
   }
 })

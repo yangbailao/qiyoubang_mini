@@ -1,31 +1,31 @@
 <!--pages/moments/add.wxml-->
-<navBar wx:if="{{form.id == 0}}" title='发布信息任务' back />
+<navBar wx:if="{{form.id == 0}}" title='提问问题' back />
 <navBar wx:else title='编辑信息任务' back />
 <view class="bg"><image src="/images/mission-add-bg.png"></image></view>
 <view class="wrap form" style="height:{{scrollHeight}}rpx">
   <view class="form-item wrap">
-    <text>任务名称：</text>
-    <input type="text" bindinput="changeTitle" value="{{form.title}}" placeholder-class="plaClass" placeholder="请输入任务名称" />
+    <text>标题：</text>
+    <input type="text" bindinput="changeTitle" value="{{form.name}}" placeholder-class="plaClass" placeholder="请输入提交问题标题" />
   </view>
   <!-- <view class="form-item wrap">
     <text>信息分类：</text>
     <input type="text" bindtap="showCate" value="{{form.cate_title}}" placeholder-class="plaClass" placeholder="请选择所属分类"/>
   </view> -->
-  <view class="form-item wrap">
+  <!-- <view class="form-item wrap">
     <text>信息分类：</text>
     <view class='select_box'>
       <view class='select' catchtap='selectTap'>
         <text class='select_text'>{{selectData[index]}}</text>
-        <!-- <image class='words_img' src='../../images/dv.png'></image>
-        <image class='select_img {{show&&"select_img_rotate"}}' src='/image/gobottom.png'></image> -->
+        <image class='words_img' src='../../images/dv.png'></image>
+        <image class='select_img {{show&&"select_img_rotate"}}' src='/image/gobottom.png'></image>
       </view>
       <view class='option_box' style='height:{{show?(selectData.length>5?440:selectData.length*88):0}}rpx;'>
         <view class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item}}</view>
       </view>
     </view>
-  </view>
+  </view> -->
 
-  <view class="form-item wrap">
+  <!-- <view class="form-item wrap">
     <text>联系方式：</text>
     <input type="text" bindinput="changeTel" value="{{form.tel}}" placeholder-class="plaClass" placeholder="手机号（系统自动加密保护）" />
   </view>
@@ -41,10 +41,10 @@
   <view class="form-item wrap">
     <text>详细地址：</text>
     <input type="text" bindinput="changeLocale" value="{{form.locale}}" placeholder-class="plaClass" placeholder="具体位置，如门牌号" />
-  </view>
+  </view> -->
   <view class="form-item wrap no-height">
-    <text>任务描述：</text>
-    <textarea style="line-height:40rpx" class="textarea" placeholder="填写任务的具体描述" bindinput="changeContent" value="{{form.content}}" />
+    <text>问题描述：</text>
+    <textarea style="line-height:40rpx" class="textarea" placeholder="填写任务的具体描述" bindinput="changeContent" value="{{form.description}}" />
   </view>
   
   <view class="form-item wrap no-height">

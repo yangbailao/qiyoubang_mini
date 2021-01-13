@@ -3,14 +3,12 @@
 
 <wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <!-- 搜索框部分 -->
-<view class="headSearch l1">
+<!-- <view class="headSearch l1">
   <view class="searchView {{searchShow?'search_sv':''}}" bindtap="touchSearch">
-    <image class="icon" src="/images/icon-search.png" mode="widthFix"></image>
-    <!--  -->
-    <input type="search" placeholder="根据关键词搜索" placeholder-class="search_pc" bindblur="loutInput" bindinput="touchToSearch" value="{{searchStr}}" focus="{{focus}}" wx:if="{{searchShow}}"></input>
+    <image class="icon" src="/images/icon-search.png" mode="widthFix"></image>    <input type="search" placeholder="根据关键词搜索" placeholder-class="search_pc" bindblur="loutInput" bindinput="touchToSearch" value="{{searchStr}}" focus="{{focus}}" wx:if="{{searchShow}}"></input>
     <text wx:else>根据关键词搜索</text>
   </view>
-</view>
+</view> -->
 <view class="head-text">{{headText}}</view>
 
 <scroll-view scroll-x="true" class="cates wrap">
