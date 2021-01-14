@@ -1,13 +1,17 @@
 /* pages/moments/list.wxss */
 .cates{
-  height: 80rpx;
+  height: 60rpx;
   background-color: #ffffff;
-	box-shadow: 0px 1px 2px 0px 
-    rgba(96, 97, 112, 0.16);
-
+	/* box-shadow: 0px 1px 2px 0px 
+    rgba(96, 97, 112, 0.16); */
+  padding: 0 25rpx;
   white-space: nowrap;
+  display:flex;
+  justify-content: space-around;
+  align-content: center;
+  margin-bottom: 25rpx;
 }
-.cates .item{margin-right: 30rpx;height: 80rpx;line-height: 80rpx;display: inline-block;}
+.cates .item{height: 100%; font-weight: bold; font-size: 32rpx; color:#000 }
 .cates .cur{border-bottom: solid 3px #ff5c5c;}
 
 ::-webkit-scrollbar {
@@ -17,7 +21,7 @@
 }
 .user-info {
   color: #fff;
-  height: 200rpx;
+  height: 310rpx;
   background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
 }
 
@@ -96,6 +100,9 @@
   text-align: center;
   line-height: 100rpx;
   color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .add image{
@@ -124,26 +131,53 @@
 }
 
 .moments{height: auto; border-bottom: 10rpx solid rgb(242, 242, 245);}
-.moments .author{height: 133rpx;padding: 40rpx 0 20rpx 0;border-bottom: dotted 1px #e4e4eb;margin-bottom: 20rpx;}
-.moments .author image{width: 72rpx; height: 72rpx; border-radius: 50%;float: left;margin-right: 20rpx;}
+.moments-title {
+  display: flex;
+  height: 100%;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+.moments .author{height: 160rpx;padding: 40rpx 0 20rpx 0;border-bottom: dotted 1px #e4e4eb;margin-bottom: 20rpx;}
+.moments .author image{width: 100rpx; height: 100rpx; border-radius: 50%;float: left;margin-right: 30rpx;}
 .moments .author .nickname{font-size: 28rpx;height: 40rpx;line-height: 32rpx;color: #1c1c28;}
 .moments .author .created_at{font-size: 24rpx;height: 32rpx;line-height: 32rpx;color: #8f90a6;}
 
-.moments .content{padding-left: 92rpx;}
-.moments .content .text{line-height: 48rpx;margin-bottom: 10rpx;}
+.moments .content{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+.moments .content .text{line-height: 48rpx;margin-bottom: 10rpx; width: 100%;}
+
 .moments .content .images{clear: both;display: flex;flex-wrap:wrap;}
-.moments .content .images image{border-radius: 5px;border:2px solid #fff}
+.moments .content .images image{border-radius: 8px;border:2px solid #fff}
 .moments .content .images view{width: 33%;float: left;}
 
-.moments .content .comment-bar{clear: both; height: 38rpx;line-height: 38rpx;font-size: 28rpx;color: #8f90a6;margin: 12rpx 0;}
+.moments .content .comment-bar{height: 38rpx;line-height: 38rpx;font-size: 28rpx;color: #8f90a6;margin: 25rpx 0;
+display: flex;
+justify-content: flex-end;
+align-items: center;
+width: 100%;
+}
 .moments .content .comment-bar text{margin-left: 10rpx;}
-.moments .content .comment-content{background: #fafafc;margin-top: 16rpx;}
+.moments-del {
+  /* justify-self: flex-end; */
+  margin-right:auto;
+}
+.moments .content .comment-content{background: #fafafc;margin-top: 16rpx; width: 100%;}
 .moments .content .comment-content .good{border-bottom: solid 1px #e4e4eb;padding: 20rpx;color: #555770;}
 .moments .content .comment-content .good image{width: 28rpx;height: 28rpx;position: relative;top: 4rpx;margin-right: 10rpx;}
 .moments .content .comment-content .comments{padding: 20rpx;}
 .moments .content .comment-content .comment .nickname{font-weight: bold;}
 .empty-box{height: 40rpx;}
 
+.moments-ioc {
+  width: 45rpx;
+  height: 45rpx;
+  margin: 0 12rpx;
+}
 
 
 .list{
@@ -176,36 +210,40 @@
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
-	height: 60rpx;
-	padding: 0 25rpx;
+	height: 110rpx;
+	padding: 25rpx;
 	box-sizing: border-box;
-	margin-bottom: 15rpx;
+  position: relative;
 }
 .search-box input {
 	display: inline-block;
-	flex: 1;
+  /* flex: 1; */
+  width: 100%;
 	height: 100%;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
 	border: 1px solid #cecece;
 	padding: 0 15rpx;
-	border-radius: 12rpx;
-	margin-right: 12rpx;
-	
+	border-radius: 25rpx;
+	/* margin-right: 12rpx; */
+  background-color: white;
+  overflow:hidden;
 }
 .submit{
-	width: 100rpx;
-	height: 100%;
+  position: absolute;
+  right: 32rpx;
+	width: 80rpx;
+	height: 50rpx;
 	background-image: linear-gradient(313deg, 
   #fe6959 0%, 
   #ff1656 100%);
-	box-shadow: 0px 3px 6px 0px 
-		rgba(255, 59, 59, 0.26);
+	/* box-shadow: 0px 3px 6px 0px 
+		rgba(255, 59, 59, 0.26); */
   border-radius: 5px;
   margin:0 auto;
   color: #fff;
-  font-size: 36rpx;
+  font-size: 28rpx;
   font-weight: 500;
   display: flex;
   justify-content: center;

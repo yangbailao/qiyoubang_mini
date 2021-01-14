@@ -213,7 +213,7 @@ App({
           selectedIconPath: "/images/tabbar-user-on.svg",
           iconPath: "/images/tabbar-user.svg",
           pagePath: "/pages/personal/index",
-          text: "嗨动全城",
+          text: "个人中心",
           clas: "menu-item",
           selected: false,
           nav: true,
