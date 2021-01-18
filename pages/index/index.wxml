@@ -1,9 +1,33 @@
 <!--index.wxml-->
 
-<navBar title='骑行帮' background='rgba(0,0,0,0)' />
+<navBar title='' background='rgba(0,0,0,0)' >
+  <view slot="left" >
+    <view class="nav-left" >
+      <block wx:if="{{!userInfo}}">
+        <view class="user-box">
+          <image class="user-pic" src="/images/tabbar-user-on.svg" ></image>
+        </view>
+        <button class="user_info" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
+      </block>
+      <block wx:else>
+        <view class="user-box">
+          <image class="user-pic" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        </view>
+        <view class="user_info" style="margin-left:22rpx;" >
+          <text>{{nickName}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</navBar>
 
 <!-- <view class="head-text">骑行帮，能帮就帮</view> -->
-<view class="user-info wrap">
+<view class="user-info user-info-box wrap" >
+  <image class="logo_bg" src="/images/logo_bg.svg" ></image>
+  <image class="logo1" src="/images/logo.svg" ></image>
+  <image  class="logo2" src="/images/logo2.svg" ></image>
+</view>
+<!-- <view class="user-info wrap">
   <block wx:if="{{!userInfo}}">
     <view class="userinfo-avatar li un-login">
       <image src="/images/avatar.svg" mode="cover"></image>
@@ -20,7 +44,7 @@
       <view>骑行帮，能帮就帮</view>
       <view>每个人都是一个独立的IP</view>
     </view>
-    <!-- <image class="userinfo-avatar li" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+    <image class="userinfo-avatar li" src="{{userInfo.avatarUrl}}" mode="cover"></image>
     <view class="detail li">
       <view class="username">骑行帮，能帮就帮</view>
       <view class="info">
@@ -31,55 +55,41 @@
           <image src="/images/icon-bangbangfen.svg"></image>帮帮分：98分
         </view>
       </view>
-    </view> -->
+    </view>
     <view class="right-bar">
       <view class="button" bindtap="touchNext" data-url="/pages/personal/index">个人中心</view>
       <view class="credit">帮帮分:100分</view>
     </view>
   </block>
-</view>
+</view> -->
 
-<view class="navTab">
+<view class="navTab theme-bg">
   <view class="item" bindtap="touchNext" data-url="/pages/repair/index?type=1">
-    <view class="imgView"><image src="/images/nav_t1.svg"></image></view>
+    <view class="imgView"><image src="/images/icon1.svg"></image></view>
     <view class="name">修车帮</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/rescue/index?type=2">
-    <view class="imgView"><image src="/images/nav_t2.svg" class="dayidian"></image></view>
+    <view class="imgView"><image src="/images/icon2.svg" class="dayidian"></image></view>
     <view class="name">救援帮</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/help/index">
-    <view class="imgView"><image src="/images/nav_t4.svg" class="dayidian"></image></view>
+    <view class="imgView"><image src="/images/icon3.svg" class="dayidian"></image></view>
     <view class="name">专业帮</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/mission/list">
-    <view class="imgView"><image src="/images/nav_t3.svg"></image></view>
+    <view class="imgView"><image src="/images/icon4.svg"></image></view>
     <view class="name">任务帮</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/quesion/list">
-    <view class="imgView"><image src="/images/nav_t3.svg"></image></view>
+    <view class="imgView"><image src="/images/question.svg"></image></view>
     <view class="name">知问帮</view>
   </view>
 </view>
 <!-- 轮播图  -->
-<view class="bannerView">
-  <view class="page-section page-section-spacing swiper">
-    <swiper class="banner-slide" bindchange="swiperChange" autoplay="true" duration="500" circular="true">
-      <swiper-item wx:for="{{imagesList}}" wx:key="index">
-        <view class='banner-item'>
-          <navigator url="">
-            <image src="{{item.url}}" class="banner-img" mode="widthFix"></image>
-          </navigator>
-        </view>
-      </swiper-item>
-    </swiper>
-    <view class="dots">
-      <block wx:for="{{imagesList}}" wx:key="index">
-        <view class="dot {{index == current ? ' active' : ''}}"></view>
-      </block>
-    </view>
+  <view class="banner-top">
+    <image src="{{banner1[0]}}" >
+    </image>
   </view>
-</view>
 
 <!-- 文字广告 -->
 <view class="notice">
@@ -99,8 +109,23 @@
 </view>
 
 <!-- 广告图2 -->
-<view class="banner2">
-  第二张广告图
+<view class="bannerView">
+  <view class="page-section page-section-spacing swiper">
+    <swiper class="banner-slide" bindchange="swiperChange" autoplay="true" duration="500" circular="true">
+      <swiper-item wx:for="{{imagesList}}" wx:key="index">
+        <view class='banner-item'>
+          <navigator url="">
+            <image src="{{item.url}}" class="banner-img" mode="widthFix"></image>
+          </navigator>
+        </view>
+      </swiper-item>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{imagesList}}" wx:key="index">
+        <view class="dot {{index == current ? ' active' : ''}}"></view>
+      </block>
+    </view>
+  </view>
 </view>
 <!-- 广告图2 -->
 
@@ -119,13 +144,10 @@
   <view class="detail detail-2"></view>
   <view class="detail detail-3"></view>
 </scroll-view> -->
-  <!-- <view class="bannerImg">
-    <image src="http://static.tx520.cn/ling/huajian/image/202010/57d192b08dcda6ae83873b4ac0ddecf5.jpg" mode="widthFix">
-    </image>
-  </view> -->
+
 
   <view class="title-box wrap">
-    <view class="title">任务帮</view>
+    <view class="title">活动中心</view>
     <view class="more" bindtap="touchNext" data-url="/pages/mission/list">查看全部</view>
   </view>
   <view class="list">

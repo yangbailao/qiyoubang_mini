@@ -88,7 +88,7 @@ Page({
     //九宫格图片宽高
     let imgHeight = imageWidth / 3;
     //发布按钮位置
-    let addTop = navBarExtendHeight * rpxR + navBarHeight * rpxR;
+    let addTop = navBarExtendHeight * rpxR + navBarHeight * rpxR + 80;
 
    
     this.setData({
@@ -377,8 +377,8 @@ Page({
       const id = e.currentTarget.dataset.id
       const index = e.currentTarget.dataset.index
       const user = this.data.userInfo
-      // console.log(user)
-      const like = {id:user.id,nickname:user.nickname}
+      console.log(user)
+      const like = {userinfo:{id:user.id,nickname:user.nickname}}
 
       const list = this.data.list
       // console.log(index)
@@ -436,10 +436,11 @@ Page({
     if(this.data.userInfo)
     {
       const id = e.currentTarget.dataset.id
+      console.log(id);
       const index = e.currentTarget.dataset.index
       const list = this.data.list
       console.log(this.data.userInfo);
-      if(this.data.userInfo.id == e.currentTarget.dataset.userid){
+      if(this.data.userInfo.id ==Number( e.currentTarget.dataset.userid)){
         wx.showToast({
           title: '不能关注自己!',
           duration : 2000,

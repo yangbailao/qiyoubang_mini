@@ -71,11 +71,11 @@
 					</view>
 					<view class="images">
 
-						<block wx:if="{{js.length(item.video) > 0}}">
+						<block wx:if="{{item.video && (js.length(item.video) > 0)}}">
 							<video src="{{qiniuShowUrl + item.video}}" object-fit="fill"></video>
 						</block>
 
-						<block wx:if="{{js.length(item.images) > 0}}">
+						<block wx:if="{{ item.images && (js.length(item.images) > 0)}}">
 							<block wx:for="{{item.images}}" wx:for-item="v" wx:key="index">
 								<image src="{{qiniuShowUrl + v}}" style="height:{{imgHeight}}rpx;width:{{imgHeight}}rpx;" bindtap='previewImg'
 								 data-img="{{qiniuShowUrl + v}}" data-imgs="{{item.images}}"></image>
@@ -85,35 +85,31 @@
 					</view>
 					<view class="comment-bar">
 						<text class="moments-del"  wx:if="{{item.user_id == userInfo.id}}" bindtap="delMoments" data-id="{{item.id}}">删除</text>
-						<!-- <text bindtap="comment" data-momentsid="{{item.id}}" data-commentid="0" data-index="{{index}}">评论</text> -->
 						<image  class="moments-ioc" bindtap="comment" data-momentsid="{{item.id}}" data-commentid="0" data-index="{{index}}" src="/images/tabbar-bike-cur.svg"></image>
-						<!-- <text wx:if="{{item.hasLike == 0}}" bindtap="like" data-index="{{index}}" data-id="{{item.id}}"
-						 data-likeIndex="{{item.likeIndex}}">点赞</text> -->
 						 <image class="moments-ioc" wx:if="{{item.hasLike == 0}}" bindtap="like" data-index="{{index}}" data-id="{{item.id}}"
 						 data-likeIndex="{{item.likeIndex}}" src="/images/zan-kongxin.svg"></image>
 						 <image  class="moments-ioc" wx:else bindtap="notLike" data-index="{{index}}" data-id="{{item.id}}" data-like_index="{{item.likeIndex}}" src="/images/zan-shixin.svg"></image>
-						<!-- <text wx:else bindtap="notLike" data-index="{{index}}" data-id="{{item.id}}" data-like_index="{{item.likeIndex}}">取消点赞</text> -->
 						<text wx:if="{{item.haseAttention == 0}}" bindtap="attention" data-index="{{index}}" data-userid="{{item.user_id}}" data-id="{{item.id}}">关注</text>
 						<text wx:else bindtap="notAttention" data-index="{{index}}" data-id="{{item.id}}">取消关注</text>
 					</view>
 					<view class="comment-content">
-						<view class="good" wx:if="{{js.length(item.like)}}">
+						<view class="good" wx:if="{{item.like && (js.length(item.like) > 0)}}">
 							<image src="/images/zan-shixin.svg"></image>
 							<text wx:for="{{item.like}}" wx:for-item="l" wx:key="index">
 
-								<block wx:if="{{js.length(item.like) - 1 !== index}}">{{l.nickname}},</block>
-								<block wx:else>{{l.nickname}}</block>
+								<block wx:if="{{item.like && (js.length(item.like) - 1 !== index)}}">{{l.userinfo.nickname}},</block>
+								<block wx:else>{{l.userinfo.nickname}}</block>
 							</text>
 						</view>
-						<view class="comments" wx:if="{{js.length(item.comment)}}">
+						<view class="comments" wx:if="{{item.comment && ( js.length(item.comment) > 0)}}">
 							<block wx:for="{{item.comment}}" wx:key="id" wx:for-item="c">
 								<view class="comment" bindtap="comment" data-commentid="{{c.id}}" data-momentsid="{{c.moments_id}}">
-									<text class="nickname">{{c.nickname}}</text>：{{c.comment}}
+									<text class="nickname">{{c.userinfo.nickname}}</text>：{{c.comment}}
 								</view>
-							  <block wx:if="{{js.length(c.child)}}" >
+							  <block wx:if="{{item.child && (js.length(c.child) > 0)}}" >
 									<view class="comment" wx:for="{{c.child}}" wx:for-item="cc" wx:key="i" bindtap="comment" data-commentid="{{c.id}}"
 								 data-momentsid="{{c.moments_id}}">
-									<text class="nickname">{{cc.nickname}}</text>回复<text class="nickname">{{c.nickname}}</text>：{{cc.comment}}
+									<text class="nickname">{{cc.userinfo.nickname}}</text>回复<text class="nickname">{{c.userinfo.nickname}}</text>：{{cc.comment}}
 								</view>
 								</block>
 							</block>

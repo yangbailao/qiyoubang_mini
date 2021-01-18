@@ -1,3 +1,69 @@
+/* 公共 */
+page{
+  background-color: #FAFAFC;
+}
+.theme-bg{
+  background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
+}
+
+.nav-left {
+  padding-left: 30rpx;
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.nav-left .user-box {
+  width: 50rpx;
+  height: 50rpx;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  padding: 8rpx;
+  border-radius: 100%;
+}
+
+.nav-left .user-box .user-pic{
+  width: 100%;
+  height: 100%;
+}
+
+
+.nav-left .user_info {
+  color: #fff;
+  font-size:26rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: unset;
+  width: auto;
+  height: 100%;
+}
+
+.user-info-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.user-info-box .logo_bg {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  position: absolute;
+  top:0;
+  left:0;
+  right:0;
+  bottom: 0;
+}
+.logo1 {
+  width: 60%;
+  height: 30%;
+  z-index: 2;
+}
+.logo2 {
+  width: 60%;
+  height: 30%;
+  z-index: 2;
+}
 /**index.wxss**/
 .user-info {
   color: #fff;
@@ -96,6 +162,7 @@
   padding:0 26rpx;
   width: 100%;
   box-sizing: border-box;
+
 }
 .notice_cv {
   box-shadow: 0rpx 1rpx 4rpx 0rpx 
@@ -106,6 +173,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-radius: 11rpx;
+  overflow: hidden;
 }
 .notice_cv .icon {
   padding: 10rpx 0;
@@ -182,7 +251,7 @@
   height: 44rpx;
   line-height: 44rpx;
   color: #555770;
-  margin-bottom: 18rpx;
+  /* margin-bottom: 18rpx; */
   margin-top: 18rpx;
 }
 
@@ -235,17 +304,37 @@
   border: solid 1px #707070;
 }
 
+.banner-top {
+  padding: 20rpx;
+  height: 340rpx;
+  box-sizing:border-box;
+  background-color: #fff;
+  border-radius: 22rpx;
+  box-shadow: rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+.banner-top image {
+  width: 100%;
+  height: 100%;
+  border-radius: 22rpx;
+}
 /* 轮播图 */
 .bannerView {
-  padding: 0;
-
-  z-index: 50;
+  padding: 20rpx;
   height: 300rpx;
+  z-index: 50;
+  height: 340rpx;
   margin-bottom: 30rpx;
+  box-sizing: border-box;
 }
 .swiper {
   position: relative;
   overflow: hidden;
+  padding: 14rpx;
+  box-sizing:border-box;
+  background-color: #fff;
+  border-radius: 22rpx;
+  box-shadow: rgba(0, 0, 0, 0.16);
 }
 .swiper swiper{
   height: 300rpx;
@@ -254,7 +343,7 @@
 .swiper swiper-item {
   /* padding: 0 7rpx; */
   box-sizing: border-box;
-  width: 636rpx;
+  width: 100%;
 }
 .banner-item {
   width: 100%;
@@ -267,6 +356,8 @@
 .banner-item image {
   width: 100%;
   display: block;
+  height: 100%;
+  border-radius: 22rpx;
 }
 
 .dots{
@@ -298,14 +389,15 @@
 }
 
 /* 列表 */
-.list {margin-bottom: 50px;
+.list { 
+  margin-bottom: 50px;
   padding:26rpx 30rpx;
-
+  
   width:100%;
   box-sizing: border-box;
 }
 .list .item{
-  margin-top: 26rpx;
+  margin-bottom: 26rpx;
   /* width: 690rpx; */
 	height: 276rpx;
 	background-color: #ffffff;
@@ -313,14 +405,16 @@
 		rgba(96, 97, 112, 0.16);
   /* border-radius: 5px; */
   padding: 20rpx 40rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
 }
 
 .sb{display: flex;align-items: center;justify-content: space-between;}
 
 
-.list .item .head {height: 42rpx;}
-  .list .item .head .title{width: 520rpx; height: 42rpx;line-height: 42rpx;font-size: 32rpx;color: #1c1c28;overflow: hidden;}
-  .list .item .head .see{height: 32rpx;line-height: 32rpx;font-size: 24rpx;}
+.list .item .head {height: 42rpx; display: flex;}
+  .list .item .head .title{flex:1; height: 42rpx;line-height: 42rpx;font-size: 32rpx;color: #1c1c28;overflow: hidden;}
+  .list .item .head .see{ flex-basis: 130rpx; text-align: right; height: 32rpx;line-height: 32rpx;font-size: 24rpx;}
 
 .list .item .info{height: 86rpx;}
   .list .item .info .price{height: 86rpx;display: flex;align-items: center; font-size: 44rpx;color: #ff5c5c;}
@@ -344,12 +438,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  border-top: 2rpx solid #FE6183;
   /* background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%); */
 }
 .navTab .item {
   text-align: center;
   font-size: 28rpx;
-  color: #000;
+  color: #fff;
 
 }
 .navTab .item .imgView {
@@ -362,15 +457,15 @@
   justify-content: center;
 }
 .navTab .item image {
-  width: 40rpx;
-  height: 40rpx;
+  width: 100%;
+  height: 100%;
   display: block;
 }
-.navTab .item .dayidian
+/* .navTab .item .dayidian
 {
   width: 54rpx;
   height: 54rpx;
-}
+} */
 
 .banner2{
   height: 200rpx;

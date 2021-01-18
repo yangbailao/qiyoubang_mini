@@ -36,6 +36,7 @@ Page({
     page: 1,
     pageSize: 10,
     cateActive: 0,
+    banner1:[]
   },
   // 拉到最底部
   onScrollTolower(e) {
@@ -92,7 +93,8 @@ Page({
     getIndex().then((res) => {
       this.setData({
         imagesList: res.images,
-        newsList: res.notice
+        newsList: res.notice,
+        banner1:res.banner1
       })
     })
     let title = '送文件'
