@@ -88,7 +88,7 @@ Page({
     //九宫格图片宽高
     let imgHeight = imageWidth / 3;
     //发布按钮位置
-    let addTop = navBarExtendHeight * rpxR + navBarHeight * rpxR + 80;
+    let addTop = navBarExtendHeight * rpxR + navBarHeight * rpxR + 100;
 
    
     this.setData({

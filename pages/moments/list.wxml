@@ -8,7 +8,8 @@
 	<view class="user-info wrap">
 		<view class="search-box" >
 			<input type="text" :value="{{searchKey}}" bindinput="bindSearch" confirm-type="search" placeholder="请输入用户昵称" />
-			<view class="submit" bindtap="search">搜索</view>
+			<!-- <view class="submit" bindtap="search">搜索</view> -->
+			<image class="submit" bindtap="search" src="/images/search_1.svg" mode="cover"></image>
 		</view>
 		<block wx:if="{{!userInfo}}">
 			<view class="userinfo-avatar li un-login">
