@@ -33,8 +33,8 @@ page {
 /* 自定义底部菜单 开始*/
  
 .menu-item {
-  width: 25%;
-  /* width: 20%; */
+  /* width: 25%; */
+  width: 20%;
   float: left;
   /* border-right: 1px solid rgb(200, 200, 200); */
   text-align: center;
