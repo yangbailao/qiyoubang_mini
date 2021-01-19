@@ -210,8 +210,8 @@ App({
         // }
         {
  
-          selectedIconPath: "/images/icon-btn-shop-reg.svg",
-          iconPath: "/images/tabbar-bike.svg",
+          selectedIconPath: "/images/tabbar-mission-cur.svg",
+          iconPath: "/images/tabbar-mission.svg",
           pagePath: "/pages/buy/list",
           text: "嗨购全城",
           clas: "menu-item",

@@ -1,2 +1,82 @@
-<!--pages/buy/list.wxml-->
-<text>pages/buy/list.wxml</text>
+<!--pages/mission/list.wxml-->
+<navBar title='便民信息'/>
+<block wx:if="{{userInfo}}">
+<navigator open-type="navigate" url="/pages/information/add">
+  <view class="add" style="bottom:160rpx">
+    <!-- <image src="/images/moments-add.svg"></image> -->
+    发布
+  </view>
+</navigator>
+</block>
+<block wx:else>
+  <!-- <view class="add" style="bottom:160rpx"><image src="/images/moments-add.svg"></image><button style="width:100rpx" class="login-btn" bindtap="goToAdd">登录</button></view> -->
+  <button style="width:100rpx" class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">发布</button>
+</block>
+
+<!-- 搜索框部分 -->
+<view class="headSearch l1">
+  <view class="searchView {{searchShow?'search_sv':''}}" bindtap="touchSearch">
+    <image class="icon" src="/images/icon-search.png" mode="widthFix"></image>
+    <!--  -->
+    <input type="search" placeholder="根据关键词搜索" placeholder-class="search_pc" bindblur="loutInput" bindinput="touchToSearch" value="{{searchStr}}" focus="{{focus}}" wx:if="{{searchShow}}"></input>
+    <text wx:else>根据关键词搜索</text>
+  </view>
+</view>
+<view class="head-text">{{headText}}</view>
+<!-- 分类 -->
+<scroll-view scroll-x="true" class="cates wrap">
+  <view wx:for="{{allCategory}}" class="item {{cateActive == item.id ? 'cur' : ''}}" bindtap="changeCate" data-title="{{item.title}}" data-cate="{{item.id}}" wx:key="index">{{item.title}}</view>
+
+</scroll-view>
+
+<scroll-view 
+  class="list wrap" 
+  scroll-y 
+  style="height:{{listHeight}}rpx"
+  refresher-enabled="{{true}}"
+  refresher-threshold="{{100}}"
+  bindrefresherabort="onAbort"
+  bindscrolltolower="onScrollTolower"
+>
+
+    <!-- <list list='{{list}}' isEnd="{{isEnd}}" page="{{page}}"></list> -->
+    <view class="item" wx:for="{{list}}" wx:key="index">
+      <navigator url="/pages/information/detail?id={{item.id}}">
+      <view class="head sb">
+        <view class="title">{{item.title}}</view>
+        <view class="see">{{item.view}}人看过</view>
+      </view>
+      <!-- <view class="info sb">
+        <view class="price">￥{{item.bouns}}</view>
+        <view class="btn">详情</view>
+      </view>
+      <view class="location">任务地点：{{item.locale}}</view> -->
+
+      <view class="user sb">
+        <view class="username">
+          <image src="{{item.avatar_url}}" mode="cover"></image>
+          {{item.nickname}}
+        </view>
+        <view class="fen">帮帮分:<text class="red">{{item.credit}}分</text></view>
+      </view>
+      </navigator>
+    </view>
+  
+
+</scroll-view>
+
+
+
+<!-- tabbar -->
+<import src="../../template/tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
+<view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
+<!-- <import src="../../template/tabbar-index-menu.wxml" />
+<view wx:if="{{indexMenuFlag}}">
+  <template is="indexMenu" />
+</view> -->
+<import src="../../template/tabbar-main-menu.wxml" />
+<view wx:if="{{mainMenuFlag}}">
+  <template is="mainMenu" />
+</view>
+<!-- tabbar -->
