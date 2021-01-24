@@ -357,6 +357,35 @@ export function getMissionCate() {
     })
   })
 }
+// 活动列表
+export function activitesList(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/Goods.Activities/index',
+      method:'get',
+      data,
+      success: function (data) {
+        console.log('活动列表', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+// 活动购买
+export function buyGoods(data) {
+  return new Promise((resolve, reject) => {
+    http({
+      url: '/Goods.Orders/add',
+      data,
+      success: function (data) {
+        console.log('订单创建', data)
+        resolve(data)
+      }
+    })
+  })
+};
 
 // 任务列表
 export function missionList(data) {
@@ -635,7 +664,21 @@ export function informationList(data) {
     })
   })
 }
-
+// 订单列表
+export function ordersList(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/Goods.Orders/index',
+      data,
+      success: function (data) {
+        console.log('订单列表', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
 // 发布便民信息
 export function informationUpdate(data) {
   return new Promise((resolve) => {
@@ -853,7 +896,7 @@ export function bidPost(data) {
 export function createOrder(data) {
   return new Promise((resolve) => {
     http({
-      url: '/mini_api/trade/create',
+      url: '/wxpay/recharge',
       data,
       success: function (data) {
         console.log('创建订单', data)
@@ -1423,7 +1466,22 @@ export function workerList(data) {
     })
   })
 }
-
+// 活动详情
+export function activitesDetail(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/Goods.Activities/view',
+      method:'get',
+      data,
+      success: function (data) {
+        console.log('活动详情', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
 // 我来帮信息详情
 export function fetchHelpDetail(data) {
   return new Promise((resolve) => {

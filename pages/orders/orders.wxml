@@ -1,0 +1,64 @@
+<!--pages/mission/list.wxml-->
+<navBar title='我的订单'/>
+
+<!-- 搜索框部分 -->
+<view class="headSearch l1">
+  <view class="searchView {{searchShow?'search_sv':''}}" bindtap="touchSearch">
+    <image class="icon" src="/images/icon-search.png" mode="widthFix"></image>
+    <!--  -->
+    <input type="search" placeholder="根据关键词搜索" placeholder-class="search_pc" bindblur="loutInput" bindinput="touchToSearch" value="{{searchStr}}" focus="{{focus}}" wx:if="{{searchShow}}"></input>
+    <text wx:else>根据关键词搜索</text>
+  </view>
+</view>
+<!-- <view class="head-text">{{headText}}</view> -->
+<!-- 分类 -->
+<scroll-view scroll-x="true" class="cates wrap">
+  <view wx:for="{{allCategory}}" class="item {{cateActive == item.id ? 'cur' : ''}}" bindtap="changeCate" data-title="{{item.title}}" data-cate="{{item.id}}" wx:key="index">{{item.title}}</view>
+
+</scroll-view>
+
+<scroll-view 
+  class="list wrap" 
+  scroll-y 
+  style="height:{{listHeight}}rpx"
+  refresher-enabled="{{true}}"
+  refresher-threshold="{{100}}"
+  bindrefresherabort="onAbort"
+  bindscrolltolower="onScrollTolower"
+>
+    <view class="item" wx:for="{{list}}" wx:key="index">
+
+      <view class="head sb">
+        <view class="title"> {{item.goodsInfo.goods_title}}</view>
+        <view class="see5" >{{item.create_time}}</view>
+        
+      </view>
+      <view class="user sb">
+        <view class="username">
+          {{item.order_id}}
+        </view>
+        <view wx:if="{{item.status == 1}}" class="fen see1">待使用--<text catchtap="goToUrl" data-url="/pages/orders/detail?goods_id={{item.goods_id}}" class="red">出示二维码</text></view>
+        <view wx:elif="{{item.status == 2}}" class="fen see2">已过期</view>
+        <view wx:else class="fen see">待支付--<text class="red">立即支付</text></view>
+      </view>
+
+    </view>
+  
+
+</scroll-view>
+
+
+
+<!-- tabbar -->
+<import src="../../template/tabbar.wxml" />
+<template is="tabBar" data="{{tabBar}}" />
+<view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
+<!-- <import src="../../template/tabbar-index-menu.wxml" />
+<view wx:if="{{indexMenuFlag}}">
+  <template is="indexMenu" />
+</view> -->
+<import src="../../template/tabbar-main-menu.wxml" />
+<view wx:if="{{mainMenuFlag}}">
+  <template is="mainMenu" />
+</view>
+<!-- tabbar -->

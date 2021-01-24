@@ -1,0 +1,177 @@
+/* pages/information/detail.wxss *//* pages/mission/detail.wxss */
+
+
+.user-info {
+  color: #fff;
+  height: 140rpx;
+  background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
+}
+
+.user-info .li{
+  float: left;
+}
+
+.user-info .userinfo-avatar {
+  width: 90rpx;
+  height: 90rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+  border:1px solid #fff;
+  background-image: linear-gradient(90deg, 
+		);
+	box-shadow: 0px 3px 6px 0px 
+		rgba(0, 0, 0, 0.16);
+}
+
+.user-info .detail{
+  width: 380rpx;
+}
+
+.user-info .detail .username{
+  font-size: 32rpx;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+}
+
+.user-info .detail .info{
+  font-size: 24rpx;
+  height: 34rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-info .detail .info image{
+  margin-right: 5rpx;
+  width: 30rpx;
+  height: 30rpx;
+}
+.user-info .detail .info view{
+  display: flex;
+  align-items: center;
+}
+
+
+.user-info .right-bar .button{
+  margin-top: 36rpx;
+  width: 148rpx;
+	height: 52rpx;
+	background-color: #ffffff;
+	box-shadow: 0px 3px 6px 0px 
+		rgba(0, 0, 0, 0.16);
+  border-radius: 60rpx;
+  color: #e63535;
+  line-height: 52rpx;
+  text-align: center;
+}
+
+.line{
+  height: 1px;
+  width: 650rpx;
+  margin: 0 auto;
+  /* background-image: linear-gradient(285deg, #fff 0%,#ff4571 100%); */
+  background:rgba(255, 255, 255, 0.25);
+  clear: both;
+}
+
+.user-detail{
+  background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
+  height: 160rpx;
+  padding: 10rpx 30rpx;
+  display: flex;
+  color: #fff;
+}
+.user-detail .item{
+  width: 172rpx;
+  text-align: center;
+}
+.user-detail .item .title{font-size: 24rpx;}
+.user-detail .item .val{font-size: 24rpx;line-height: 50rpx;}
+.user-detail .item .val text{font-size: 40rpx; font-weight: bold; }
+
+.mission-detail{
+  position: relative;
+  top: -40rpx;
+  padding: 40rpx;
+  border-radius: 40rpx;
+  background: #fff;
+}
+
+.mission-detail .title{
+  font-size: 36rpx;
+  color: #000;
+}
+.mission-detail .title .status{
+  color: #fff;
+  padding: 2rpx 10rpx;
+  border-radius: 7rpx;
+  margin-left: 10rpx;
+  font-size: 24rpx;
+}
+.mission-detail .title .end{
+  background: #fe6959;
+}
+
+.mission-detail .info{
+  line-height: 80rpx;
+  font-size: 24rpx;
+  height: 80rpx;
+}
+.mission-detail .info text{margin-right: 15rpx;}
+
+.mission-detail .locale{
+  background: #fafafc;
+  padding: 15rpx 10rpx;
+  border-radius: 6rpx;
+}
+
+.mission-detail .content{
+  margin-top: 20rpx;
+}
+.mission-detail .content .content-title{
+  font-size: 32rpx;
+  color: #000;
+  font-weight: bold;
+  border-bottom: 3px solid #ff5c5c;
+  width: 145rpx;
+  height: 60rpx;
+  text-align: center;
+}
+.mission-detail .content .content-body{
+  padding: 20rpx 10rpx 100rpx 10rpx;
+}
+
+.call{
+  background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
+  height: 120rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  padding-top: 20rpx;
+}
+
+.call .title{
+  display: flex;
+  justify-content: center;
+  font-size: 35rpx;
+  align-items: center;
+}
+.call .title text{
+  height: 60rpx;
+  line-height: 55rpx;
+}
+.call .title image{
+  width: 50rpx;
+  height: 50rpx;
+}
+.call .desc{
+  font-size: 24rpx;
+  text-align: center;
+}
+.qrcode {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}

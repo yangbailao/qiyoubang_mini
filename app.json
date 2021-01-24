@@ -36,7 +36,10 @@
     "pages/certification/selectCate",
     "pages/moments/detail",
     "pages/quesion/list",
-    "pages/buy/list"
+    "pages/buy/list",
+    "pages/buy/detail",
+    "pages/orders/orders",
+    "pages/orders/detail"
   ],
   "window": {
     "backgroundTextStyle": "light",

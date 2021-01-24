@@ -1,0 +1,16 @@
+<navBar back title='出示二维码'/>
+<view class="user-detail">
+
+</view>
+
+<view class="mission-detail">0
+  <view class="qrcode">
+    <image style="width: 200px; height: 200px; background-color: #eeeeee;"  src="{{qrcodeURL}}"></image>
+
+</view>
+
+  <view class="content">
+    <view class="content-title">使用说明</view>
+    <view class="content-body"></view>
+  </view>
+</view>

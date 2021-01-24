@@ -1,66 +1,58 @@
-<navBar back title='信息详情'/>
-
-<view class="user-info wrap">
-
-  <image class="userinfo-avatar li" src="{{detail.avatar_url}}" mode="cover"></image>
-  <view class="detail li">
-    <view class="username">{{detail.nickname}}</view>
-    <view class="info">
-        <view>
-          <image src="/images/icon-phone.svg"></image>已认证手机
+<!--pages/help/detail.wxml-->
+<navBar title='活动详情' back />
+<!-- 广告图2 -->
+<view class="bannerView">
+  <view class="page-section page-section-spacing swiper">
+    <swiper class="banner-slide" bindchange="swiperChange" autoplay="true" duration="500" circular="true">
+      <swiper-item wx:for="{{detail.goodsInfo.images}}" wx:key="index">
+        <view class='banner-item'>
+            <image src="{{item.url}}" class="banner-img" mode="widthFix"></image>
         </view>
-        <view>
-          <image src="/images/icon-bangbangfen.svg"></image>帮帮分：{{detail.credit}}分
-        </view>
-      </view>
-  </view>
-
-  <view class="line"></view>
-
-</view>
-
-
-  
-
-
-<view class="user-detail">
-  <view class="item">
-    <view class="val"><text>{{detail.credit}}</text>分</view>
-    <view class="title">帮帮分</view>
-  </view>
-  <view class="item">
-    <view class="val"><text>{{detail.regDay}}</text>天</view>
-    <view class="title">来骑行帮</view>
-  </view>
-  <view class="item">
-    <view class="val"><text>{{detail.info}}</text>条</view>
-    <view class="title">发布信息</view>
-  </view>
-  <view class="item">
-    <view class="val"><text>{{detail.mission}}</text>次</view>
-    <view class="title">发布任务</view>
+      </swiper-item>
+    </swiper>
+    <view class="dots">
+      <block wx:for="{{imagesList}}" wx:key="index">
+        <view class="dot {{index == current ? ' active' : ''}}"></view>
+      </block>
+    </view>
   </view>
 </view>
-
+<!-- 广告图2 -->
 <view class="mission-detail">
-  <view class="title">
-    {{detail.title}}<text class="status end" wx:if="{{detail.status == 0}}">已结束</text>
+<view class="title">
+  {{detail.title}}
+</view>
+
+<view class="content">
+  <view class="content-title">{{detail.a_title}}</view>
+  <view class="price" >
+    <view class="price_info" >价格：<text class="price_i" >￥{{detail.goodsInfo.price}}</text></view>
+    <view class="price_info" >库存：<text class="price_i" >{{detail.goodsInfo.kc}}件</text></view>
   </view>
-  <view class="info">
-    <text>{{detail.cateName}}</text>
-    <text>{{detail.view}}人看过</text>
+  <view class="content-body">
+    {{detail.action_time}}
   </view>
-  <!-- <view class="locale">任务地点：{{detail.locale}}</view> -->
-  <view class="content">
-    <view class="content-title">任务描述</view>
-    <view class="content-body">{{detail.content}}</view>
+</view>
+</view>
+
+<!-- 评价 -->
+<view class="comment">
+  <view class="comment-title">详情</view>
+  <view  class="commentItem">
+    <rich-text nodes="{{detail.goodsInfo.detail}}"></rich-text>
   </view>
 </view>
 
-<view class="call" bindtap="call">
-  <view class="title">
-    <image src="/images/call.svg"></image>
-    <text>电话联系</text> 
+<!-- 底部 -->
+<view class="footer">
+  <!-- <view class="btns" bindtap="touchToCollection">
+    <image src="{{detail.favor == 1?'/images/zan-shixin.svg':'/images/zan-kongxin.svg'}}  "></image>收藏个人
   </view>
-  <view class="desc">联系时请说是在骑行帮看到的信息</view>
+  <view class="btns" bindtap="goTo" data-url="/pages/help/comment?id={{detail.id}}&title={{detail.nickname}}&img={{detail.avatar_url}}&cateTitle={{cateTitle}}&tel={{detail.tel}}">
+      <image src="/images/icon-comment.svg"></image>评价个人
+  </view> -->
+  <view class="call" bindtap="buy">
+      <!-- <image src="/images/call.svg"></image> -->
+      <text class="buy-btn" >立即抢购</text>
+  </view>
 </view>

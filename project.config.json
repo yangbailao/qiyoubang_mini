@@ -6,7 +6,7 @@
   "setting": {
     "urlCheck": false,
     "es6": true,
-    "enhance": false,
+    "enhance": true,
     "postcss": true,
     "preloadBackgroundData": false,
     "minified": true,
@@ -274,6 +274,30 @@
           "name": "问答详情",
           "pathName": "pages/quesion/detail",
           "query": "id=1",
+          "scene": null
+        },
+        {
+          "name": "嗨购全城",
+          "pathName": "pages/buy/list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "活动详情",
+          "pathName": "pages/buy/detail",
+          "query": "id=2",
+          "scene": null
+        },
+        {
+          "name": "我的订单",
+          "pathName": "pages/orders/orders",
+          "query": "id=2",
+          "scene": null
+        },
+        {
+          "name": "出示二维码",
+          "pathName": "pages/orders/detail",
+          "query": "",
           "scene": null
         }
       ]
