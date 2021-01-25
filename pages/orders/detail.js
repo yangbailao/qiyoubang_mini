@@ -16,7 +16,7 @@ Page({
     userInfo : null,
     qrcodeURL: '',
     content: '11111',
-    width: '',
+    width: 600,
   },
 
   /**
@@ -24,7 +24,8 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      id : options.id
+      id : options.order_id,
+      content:options.order_id
     })
     // this.getInformationDetail()
     // app.chengeNeed()

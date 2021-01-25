@@ -30,7 +30,7 @@
     <view class="price_info" >库存：<text class="price_i" >{{detail.goodsInfo.kc}}件</text></view>
   </view>
   <view class="content-body">
-    {{detail.action_time}}
+    {{detail.start_time}} ~ {{detail.end_time}}
   </view>
 </view>
 </view>

@@ -145,3 +145,8 @@
   text-align: center;
   background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
 }
+.order_btn {
+  padding: 8rpx 12rpx;
+  color:white;
+  background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
+}

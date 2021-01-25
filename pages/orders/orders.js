@@ -10,7 +10,8 @@ import {
   informationList,
   ordersList,
   getInformationCate,
-  getSystemConfig
+  getSystemConfig,
+  createOrder
 } from '../../api/api'
 import { cache } from '../../utils/cache.js'
 Page({
@@ -33,12 +34,13 @@ Page({
     totalPage: 1,
     total: 1,
     allCategory: [
-      {id:1,pid:0,title:'全部'},
-      {id:2,pid:0,title:'待支付'},
-      {id:3,pid:0,title:'待使用'},
+      {id:-1,pid:0,title:'全部'},
+      {id:0,pid:0,title:'待支付'},
+      {id:1,pid:0,title:'待使用'},
+      {id:2,pid:0,title:'已使用'}
     ], // 信息分类
     isOnload: false,  // 是否曾经加载过
-    cateActive: 1,
+    cateActive: -1,
     focus: true,
     triggered: false,
     searchShow:false,
@@ -106,11 +108,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    // const {isOnload, cateActive} = this.data
-    // const {id} = app.globalData.category
-    // if (isOnload && cateActive != id) {
-    //   this.reloadData()
-    // }
     // 读取信息列表
     this.reloadData()
   },
@@ -264,8 +261,8 @@ Page({
       data:{
         page,
         pageSize,
-        cate_id: cateActive || '',
-        status : 1,
+        status: cateActive || -1,
+        // status : 1,
         title:searchStr
       },
       beforeLoad:() => {
@@ -328,6 +325,35 @@ Page({
       })
     }
 
+  },
+  orderPay:function(e){
+    let _self = this;
+    let data = {'activities_id':e.currentTarget.dataset.aid}
+    createOrder(data).then((resPay) => {
+      console.log(resPay);
+      if(resPay.status== 200) {
+        let data = resPay.data;
+          wx.requestPayment({
+            timeStamp: data.timeStamp,
+            nonceStr: data.nonceStr,
+            package: data.package,
+            signType: 'MD5',
+            paySign: data.paySign,
+            success (payRes) {
+              _self.reloadData();
+              console.log(payRes);
+             },
+            fail (payRes) {
+              console.log(payRes);
+             }
+          })
+      } else {
+        wx.showToast({
+          title: '支付失败',
+          icon:'none'
+        })
+      }
+    })
   }
 
 })

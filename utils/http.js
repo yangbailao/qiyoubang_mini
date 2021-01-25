@@ -36,6 +36,7 @@ export function http(opt) {
     header: opt.header,
     dataType: 'json',
     success: function (res) {
+      console.log(res);
       if (res.statusCode !== 200) {
         wx.showToast({
           title: '服务器错误！',
@@ -43,10 +44,10 @@ export function http(opt) {
         })
       } else {
         opt.success(res.data);
-        if (res.data.code != '1') {
+        if (res.data.status != 200) {
           wx.showToast({
             icon: 'none',
-            title: res.data.data
+            title: res.data.msg
           });
         }
       }

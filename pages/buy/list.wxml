@@ -67,7 +67,7 @@
         </block>
         </view>
       </view>
-      <view class="desc">活动时间：<text class="time_" >{{item.action_time}}</text></view>
+      <view class="desc">活动时间：<text class="time_" >{{item.start_time}}~{{item.end_time}}</text></view>
     </view>
   </view>
 </view>

@@ -3,14 +3,16 @@
 
 </view>
 
-<view class="mission-detail">0
+<view class="mission-detail">
   <view class="qrcode">
-    <image style="width: 200px; height: 200px; background-color: #eeeeee;"  src="{{qrcodeURL}}"></image>
+    <image class="qrcode_img"  src="{{qrcodeURL}}"></image>
 
 </view>
 
   <view class="content">
     <view class="content-title">使用说明</view>
-    <view class="content-body"></view>
+    <view class="content-body">
+      仅在某某商店使用
+    </view>
   </view>
 </view>
