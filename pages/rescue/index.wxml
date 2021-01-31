@@ -58,8 +58,14 @@ layer-style="1"
 </view>
 
 <view wx:if="{{showMask}}" bindtap="hideMask" class="overWrap" >
-	<view bindtap="goTo" data-map="{{currentM.map_address}}" class="box" >
-		<text>{{currentM.title}}</text>
-		<text style="font-size: 38rpx;" >{{currentM.phone}}</text>
-	</view>
+  <view bindtap="goTo" data-map="{{currentM.map_address}}" class="box" >
+	<view style="display:flex;padding:0 20rpx;" >
+      <view style="flex:1;" >
+        <text>{{currentM.title}}</text>
+        <view style="height:15rpx;" ></view>
+         <text style="font-size: 38rpx;" >{{currentM.phone}}</text>
+      </view>
+    <image style="width:115rpx;height:115rpx;margin-left:12rpx;" src="../../images/guid.svg" ></image>
+  </view>
+</view>
 </view>

@@ -8,6 +8,7 @@ import {
 import {
   checkPhone
 } from '../../utils/util.js'
+import { cache } from '../../utils/cache.js'
 const app = getApp()
 Page({
 
@@ -221,6 +222,8 @@ Page({
         wx.showToast({
           title: '发布成功'
         })
+
+
         wx.navigateBack({
           delta: 1,
         })

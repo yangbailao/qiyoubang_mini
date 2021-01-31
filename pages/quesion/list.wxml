@@ -47,7 +47,7 @@
         <view class="see">{{item.view}}人看过</view>
       </view>
       <view class="info sb">
-        <!-- <view class="price">{{item.description}}</view> -->
+        <view class="price"></view>
         <view class="btn">详情</view>
       </view>
  

@@ -146,7 +146,7 @@ padding: 8rpx 0; box-sizing: border-box;
 	right: 0;
 	z-index: 500;
 }
-.overWrap > .box {
+.overWrap  .box {
 	background-color: white;
 	width: 60%;
 	height: 250rpx;
