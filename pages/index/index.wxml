@@ -5,7 +5,7 @@
     <view class="nav-left" >
       <block wx:if="{{!userInfo}}">
         <view class="user-box">
-          <image class="user-pic" src="/images/tabbar-user-on.svg" ></image>
+          <image class="user-pic" src="/images/avatar.svg" ></image>
         </view>
         <button class="user_info" open-type="getUserInfo" bindgetuserinfo="getUserInfo">登录</button>
       </block>

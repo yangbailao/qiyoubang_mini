@@ -133,6 +133,23 @@ padding: 8rpx 0; box-sizing: border-box;
 }
 .list .item .price{color: #ff5c5c;}
 
+.guid_img {
+  width: 115rpx;
+  height: 115rpx;
+}
+.guid_title{
+  color:balck;
+}
+.guid_phone{
+  color:balck;
+}
+
+.guid_box {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content:space-evenly;
+}
 
 .overWrap{
 	background-color: rgba(0,0,0,.6);
@@ -146,19 +163,36 @@ padding: 8rpx 0; box-sizing: border-box;
 	right: 0;
 	z-index: 500;
 }
+
 .overWrap  .box {
 	background-color: white;
 	width: 60%;
 	height: 250rpx;
 	z-index: 501;
 	border-radius: 25rpx;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	align-items: center;
-	padding: 0 12rpx;
-	box-sizing: border-box;
+
+	padding: 0 25rpx;
+  box-sizing: border-box;
+  
+  display: flex;
+  flex-direction: column;
+	justify-content: space-between;
+}
+.overWrap  .box .box1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80%;
 }
 .box text {
 	font-size: 32rpx;
+}
+.guid_info {
+  font-size: 22rpx;
+  color:#cecece;
+  height: 20%;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }

@@ -216,7 +216,7 @@ Page({
         // console.log(res,typeof list,list)
         list.forEach(item =>{
           let marker = {
-            iconPath: "/images/marker-rescue.svg",
+            iconPath: "/images/test_1.png",
             id: item.id, 
             latitude: item.latitude,
             longitude: item.longitude,

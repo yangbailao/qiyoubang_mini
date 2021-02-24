@@ -17,6 +17,20 @@ style="width: 100%; height: {{contentHeight}}rpx;"
 subkey="GQZBZ-ABDHS-6ZPOH-6P2WY-RPQGZ-PPFV5" 
 layer-style="1"
 >
+
+<cover-view wx:if="{{showMask}}" bindtap="hideMask" class="overWrap">
+          <cover-view class="box">
+            <cover-view class="box1" >
+              <cover-view class="guid_box">
+              <cover-view class="guid_title" >{{currentM.title}}</cover-view>
+              <cover-view class="guid_phone" >{{currentM.phone}}</cover-view>
+            </cover-view>
+            <cover-image bindtap="goTo" data-map="{{currentM.map_address}}"  class="guid_img" src="/images/guid.png" ></cover-image>
+            </cover-view>
+            <cover-view class="guid_info" >点击图标可导航到店里面</cover-view>
+          </cover-view>
+</cover-view>
+
 </map>
 
 <!-- <view class="searchBar">
@@ -55,17 +69,4 @@ layer-style="1"
 
   
 
-</view>
-
-<view wx:if="{{showMask}}" bindtap="hideMask" class="overWrap" >
-  <view bindtap="goTo" data-map="{{currentM.map_address}}" class="box" >
-	<view style="display:flex;padding:0 20rpx;" >
-      <view style="flex:1;" >
-        <text>{{currentM.title}}</text>
-        <view style="height:15rpx;" ></view>
-         <text style="font-size: 38rpx;" >{{currentM.phone}}</text>
-      </view>
-    <image style="width:115rpx;height:115rpx;margin-left:12rpx;" src="../../images/guid.svg" ></image>
-  </view>
-</view>
 </view>

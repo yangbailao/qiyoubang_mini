@@ -13,12 +13,13 @@ page{
   align-items: center;
 }
 .nav-left .user-box {
-  width: 50rpx;
-  height: 50rpx;
+  width: 60rpx;
+  height: 60rpx;
   background-color: #ffffff;
   box-sizing: border-box;
-  padding: 8rpx;
-  border-radius: 100%;
+  padding: 4rpx;
+  border-radius: 60rpx;
+  overflow: hidden;
 }
 
 .nav-left .user-box .user-pic{

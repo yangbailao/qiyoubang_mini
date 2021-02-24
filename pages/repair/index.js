@@ -18,7 +18,7 @@ Page({
     latitude : 0,
     longitude : 0,
     markers: [{
-      iconPath: "/images/marker-rescue.svg",
+      iconPath: "/images/test_1.png",
       id: 0, 
       latitude: 23.11306,
       longitude: 109.59364,
@@ -112,12 +112,8 @@ Page({
     })
     app.showMenu(e.currentTarget.dataset.index);
   },
-  hideMask : function(e){
-    this.setData({
-      maskFlag : false,
-      indexMenuFlag : false,
-      mainMenuFlag :false
-    })
+  hideMask:function(){
+	  this.setData({showMask:false});
   },
   /******* tabbar *******/ 
   getLocation : function(e){
@@ -194,7 +190,7 @@ Page({
         // console.log(res,typeof list,list)
         list.forEach(item =>{
           let marker = {
-            iconPath: "/images/marker-repair.svg",
+            iconPath: "/images/test_1.png",
             id: item.id, 
             latitude: item.latitude,
             longitude: item.longitude,
