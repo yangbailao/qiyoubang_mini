@@ -82,7 +82,7 @@
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/quesion/list">
     <view class="imgView"><image src="/images/question.svg"></image></view>
-    <view class="name">知问帮</view>
+    <view class="name">知问答</view>
   </view>
 </view>
 <!-- 轮播图  -->

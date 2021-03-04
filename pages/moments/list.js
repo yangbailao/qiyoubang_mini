@@ -353,9 +353,10 @@ Page({
   viewUser(e){
 	  console.log(e.currentTarget.dataset.id);
 	  this.setData({
-		  search_user:e.currentTarget.dataset.id
+      search_user:e.currentTarget.dataset.id,
+      searchKey:e.currentTarget.dataset.nickname
 	  })
-	  this.reloadData();
+	  this.reloadData(e.currentTarget.dataset.nickname);
   },
   /* 到详情页 */
   goView(e){

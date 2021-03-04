@@ -21,7 +21,7 @@ layer-style="1"
 <cover-view wx:if="{{showMask}}" bindtap="hideMask" class="overWrap">
           <cover-view class="box">
             <cover-view class="box1" >
-              <cover-view class="guid_box">
+              <cover-view catchtap="goToStore" class="guid_box">
               <cover-view class="guid_title" >{{currentM.title}}</cover-view>
               <cover-view class="guid_phone" >{{currentM.phone}}</cover-view>
             </cover-view>
@@ -60,8 +60,8 @@ layer-style="1"
     <view class="item" wx:for="{{priceList}}" wx:key="index">
       <view class="name">{{item.title}}</view>
 	  <view class="price-info" >
-		  <view class="info">{{item.price}}元起</view>
-		  <view class="price">{{item.price}}元起</view>
+		  <!-- <view class="info">{{item.price}}元起</view> -->
+		  <view class="price">{{item.price}}</view>
 	  </view>
     </view>
   </view>

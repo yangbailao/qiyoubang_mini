@@ -31,7 +31,7 @@
 						<image src="/images/icon-phone.svg"></image>已认证手机
 					</view>
 					<view>
-						<image src="/images/icon-bangbangfen.svg"></image>帮帮分：98分
+						<image src="/images/icon-bangbangfen.svg"></image>帮帮分：{{userInfo.credit}}分
 					</view>
 				</view>
 			</view>
@@ -41,7 +41,8 @@
 	</view>
 
 	<view bindtap="goToAdd" class="add" style="top:{{addTop}}rpx">
-		<image src="/images/moments-add.svg"></image>
+		<!-- <image src="/images/moments-add.svg"></image> -->
+		发布
 	</view>
 
 
@@ -59,10 +60,13 @@
 </view>
 		<block wx:for="{{list}}" wx:key="id">
 			<view class="moments wrap">
-				<view bindtap="viewUser" data-id="{{item.user_id}}" class="author">
+				<view bindtap="viewUser" data-id="{{item.user_id}}" data-nickname="{{item.nickname}}" class="author">
 					<image src="{{item.avatar_url}}"></image>
 					<view class="moments-title" >
-						<view class="nickname">{{item.nickname}}</view>
+						<view class="nickname">
+							<view>{{item.nickname}}</view>
+							<view class="likeNum" >关注人数：{{item.like.length}}</view>
+						</view>
 						<view class="created_at">{{item.created_at}}</view>
 					</view>
 				</view>

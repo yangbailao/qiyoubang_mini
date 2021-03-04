@@ -75,7 +75,7 @@
     width: 100rpx;
     height: 100rpx;
     position: fixed;
-    /* top: 154rpx; */
+    top: 154rpx;
     right: 60rpx;
     z-index: 666;
     background-image: linear-gradient(322deg, 

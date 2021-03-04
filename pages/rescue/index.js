@@ -260,6 +260,12 @@ let map_address = {
   hideMask:function(){
 	  this.setData({showMask:false});
   }
+  ,goToStore:function(){
+    let id = this.data.currentM.id;
+    wx.navigateTo({
+      url: `/pages/shop/detail?id=${id}`
+    });
+  }
   ,goTo:function(e){
     
     let {address,latitude,longitude,name} = JSON.parse(e.currentTarget.dataset.map);

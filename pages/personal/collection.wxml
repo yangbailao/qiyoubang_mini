@@ -2,8 +2,8 @@
 
 <view class="cates wrap">
   <view class="item {{typeActive == 1 ? 'cur' : ''}}" bindtap="changeStatus" data-type="1" >店铺</view>
-  <view class="item {{typeActive == 2 ? 'cur' : ''}}" bindtap="changeStatus" data-type="2" >专业帮</view>
-  <view class="item {{typeActive == 3 ? 'cur' : ''}}" bindtap="changeStatus" data-type="3" >用户</view>
+  <view class="item {{typeActive == 2 ? 'cur' : ''}}" bindtap="changeStatus" data-type="2" >骑行用户</view>
+  <view class="item {{typeActive == 3 ? 'cur' : ''}}" bindtap="changeStatus" data-type="3" >专业帮</view>
 </view>
 
 <scroll-view 

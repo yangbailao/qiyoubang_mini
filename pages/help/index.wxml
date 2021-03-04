@@ -11,6 +11,22 @@
 </view> -->
 <view class="head-text">{{headText}}</view>
 
+<block wx:if="{{userInfo}}">
+<navigator open-type="navigate"  url="/pages/mission/add">
+  <view class="add" style="bottom:160rpx">
+    <!-- <image src="/images/moments-add.svg"></image> -->
+    发布
+  </view>
+</navigator>
+</block>
+<block wx:else >
+  <navigator open-type="navigate"  url="/pages/certification/index">
+  <view class="add" style="bottom:160rpx">
+    <!-- <image src="/images/moments-add.svg"></image> -->
+    去认证
+  </view>
+</navigator>
+</block>
 <scroll-view scroll-x="true" class="cates wrap">
   <view wx:for="{{allCategory}}" class="item {{cateActive == item.id ? 'cur' : ''}}" bindtap="changeCate" data-title="{{item.title}}" data-cate="{{item.id}}" wx:key="index">{{item.title}}</view>
 </scroll-view>
