@@ -36,7 +36,8 @@ Page({
     page: 1,
     pageSize: 10,
     cateActive: 0,
-    banner1:[]
+    banner1:[],
+    status:1
   },
   // 拉到最底部
   onScrollTolower(e) {
@@ -167,6 +168,15 @@ Page({
   test: function () {
     console.log(this.data)
   },
+
+  changeStatus:function(e){
+    console.log(e.currentTarget.dataset.status);
+    this.setData({
+      status:e.currentTarget.dataset.status
+    })
+    this.searchList();
+  },
+
   searchList() {
     let that = this
     let {
@@ -179,11 +189,15 @@ Page({
     wx.showLoading({
       title: '加载中...',
     })
+
+
+
+
     activitesList({
       page: page,
       pageSize: pageSize,
       cate_id: cateActive || 0,
-      status: 1
+      status: this.data.status
     }).then((res) => {
       wx.hideLoading()
       wx.stopPullDownRefresh()

@@ -208,17 +208,17 @@ App({
         //   nav: true,
         //   index:5
         // }
-        // {
+        {
  
-        //   selectedIconPath: "/images/tabbar-mission-cur.svg",
-        //   iconPath: "/images/tabbar-mission.svg",
-        //   pagePath: "/pages/buy/list",
-        //   text: "嗨购全城",
-        //   clas: "menu-item",
-        //   selected: false,
-        //   nav: true,
-        //   index:5
-        // },
+          selectedIconPath: "/images/tabbar-mission-cur.svg",
+          iconPath: "/images/tabbar-mission.svg",
+          pagePath: "/pages/buy/list",
+          text: "嗨购全城",
+          clas: "menu-item",
+          selected: false,
+          nav: true,
+          index:5
+        },
         {
           selectedIconPath: "/images/tabbar-user-on.svg",
           iconPath: "/images/tabbar-user.svg",

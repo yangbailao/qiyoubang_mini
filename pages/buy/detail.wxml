@@ -6,7 +6,7 @@
     <swiper class="banner-slide" bindchange="swiperChange" autoplay="true" duration="500" circular="true">
       <swiper-item wx:for="{{detail.goodsInfo.images}}" wx:key="index">
         <view class='banner-item'>
-            <image src="{{item.url}}" class="banner-img" mode="widthFix"></image>
+          <image src="{{item.url}}" class="banner-img" mode="widthFix"></image>
         </view>
       </swiper-item>
     </swiper>
@@ -19,26 +19,28 @@
 </view>
 <!-- 广告图2 -->
 <view class="mission-detail">
-<view class="title">
-  {{detail.title}}
-</view>
+  <view class="title">
+    {{detail.title}}
+  </view>
 
-<view class="content">
-  <view class="content-title">{{detail.a_title}}</view>
-  <view class="price" >
-    <view class="price_info" >价格：<text class="price_i" >￥{{detail.goodsInfo.price}}</text></view>
-    <view class="price_info" >库存：<text class="price_i" >{{detail.goodsInfo.kc}}件</text></view>
+  <view class="content">
+    <view class="content-title">
+      <text>{{detail.a_title}}</text>
+    </view>
+    <view class="price">
+      <view class="price_info">价格：<text class="price_i">￥{{detail.goodsInfo.price}}</text></view>
+      <view class="price_info">库存：<text class="price_i">{{detail.goodsInfo.kc}}件</text></view>
+    </view>
+    <view class="content-body">
+
+    </view>
   </view>
-  <view class="content-body">
-    {{detail.start_time}} ~ {{detail.end_time}}
-  </view>
-</view>
 </view>
 
 <!-- 评价 -->
 <view class="comment">
   <view class="comment-title">详情</view>
-  <view  class="commentItem">
+  <view class="commentItem">
     <rich-text nodes="{{detail.goodsInfo.detail}}"></rich-text>
   </view>
 </view>
@@ -51,8 +53,25 @@
   <view class="btns" bindtap="goTo" data-url="/pages/help/comment?id={{detail.id}}&title={{detail.nickname}}&img={{detail.avatar_url}}&cateTitle={{cateTitle}}&tel={{detail.tel}}">
       <image src="/images/icon-comment.svg"></image>评价个人
   </view> -->
-  <view class="call" bindtap="buy">
-      <!-- <image src="/images/call.svg"></image> -->
-      <text class="buy-btn" >立即抢购</text>
+  <view class="call">
+    <!-- <image src="/images/call.svg"></image> -->
+    <view wx:if="{{e_time == false && s_time == true}}" class="buy-btn">
+      <text>将在：</text>
+      <text class='text1'>{{qgdjs_jo.day}}</text>
+      <text class='time1'>天</text>
+      <text class='text1'>{{qgdjs_jo.hour}}</text>
+      <text class='time1'>时</text>
+      <text class='text1'>{{qgdjs_jo.min}}</text>
+      <text class='time1'>分</text>
+      <text class='text1'>{{qgdjs_jo.sec}}</text>
+      <text class='time1'>秒</text>
+      <text>开启</text>
+    </view>
+    <view wx:if="{{e_time == false && s_time == false}}" bindtap="buy" class="buy-btn">
+      立即抢购
+    </view>
+    <view wx:if="{{e_time == true && s_time == false }}" class="buy-btn">
+      活动已经结束 
+    </view>
   </view>
 </view>

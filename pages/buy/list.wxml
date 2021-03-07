@@ -36,9 +36,10 @@
 
 <view class="container">
   <view class="title-box wrap">
-    <view class="title">活动中心</view>
-    <!-- <view class="more" bindtap="touchNext" data-url="/pages/mission/list">查看全部</view> -->
+    <view class="title first {{status==1?'ativitied':''}}" bindtap="changeStatus" data-status="1" >进行中</view>
+    <view class="title {{status==2?'ativitied':''}}" bindtap="changeStatus" data-status="2">已结束</view>
   </view>
+  
   <!-- <view class="list">
     <view class="item" wx:for="{{list}}" wx:key="index">
       <navigator url="/pages/mission/detail?id={{item.id}}">
@@ -54,16 +55,17 @@
   <view class="activity-list wrap">
     <view catchtap="isLogin" wx:for="{{list}}" wx:key="index" class="activity-box" data-url="/pages/buy/detail?id={{item.activities_id}}">
       <view class="a_info" >
-        <image class="img1" src="{{item.pic}}" ></image>
+        <image class="img1" src="{{item.pic?item.pic:item.goodsInfo.pic}}" mode="widthFix" ></image>
         <view class="a_info_r" >
           <view class="title">{{item.a_title}}</view>
-          <rich-text nodes="{{item.detail}}"></rich-text>
+          <!-- <rich-text nodes="{{item.detail}}"></rich-text> -->
+          <text>价格：</text><text style="color:red;" >￥{{item.goodsInfo.price}}</text>
           <block wx:if="{{!userInfo}}">
             <view catchtap="isLogin" class="a_user_info">授权登录后可抢购</view>
             <!-- <button class="user_info a_user_info" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录后可抢购</button> -->
           </block>
         <block wx:else>
-          <view class="a_user_info">立即抢购</view>
+          <view class="a_user_info">查看详情</view>
         </block>
         </view>
       </view>

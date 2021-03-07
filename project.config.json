@@ -285,7 +285,7 @@
         {
           "name": "活动详情",
           "pathName": "pages/buy/detail",
-          "query": "id=2",
+          "query": "id=4",
           "scene": null
         },
         {
