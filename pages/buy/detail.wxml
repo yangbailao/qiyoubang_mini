@@ -55,7 +55,7 @@
   </view> -->
   <view class="call">
     <!-- <image src="/images/call.svg"></image> -->
-    <view wx:if="{{e_time == false && s_time == true}}" class="buy-btn">
+    <view wx:if="{{s_time == false && e_time == true}}" class="buy-btn">
       <text>将在：</text>
       <text class='text1'>{{qgdjs_jo.day}}</text>
       <text class='time1'>天</text>
@@ -67,10 +67,10 @@
       <text class='time1'>秒</text>
       <text>开启</text>
     </view>
-    <view wx:if="{{e_time == false && s_time == false}}" bindtap="buy" class="buy-btn">
+    <view wx:if="{{e_time == true && s_time == true}}" bindtap="buy" class="buy-btn">
       立即抢购
     </view>
-    <view wx:if="{{e_time == true && s_time == false }}" class="buy-btn">
+    <view wx:if="{{e_time == false && s_time == true }}" class="buy-btn">
       活动已经结束 
     </view>
   </view>

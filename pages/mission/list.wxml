@@ -3,14 +3,13 @@
 
 <block wx:if="{{userInfo}}">
 <navigator open-type="navigate" url="/pages/mission/add">
-  <view class="add" style="bottom:160rpx">
+  <view class="add" >
     <!-- <image src="/images/moments-add.svg"></image> -->
     发布
   </view>
 </navigator>
 </block>
 <block wx:else>
-  <!-- <view class="add" style="bottom:160rpx"><image src="/images/moments-add.svg"></image><button style="width:100rpx" class="login-btn" bindtap="goToAdd">登录</button></view> -->
   <button style="width:100rpx" class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">发布</button>
 </block>
 

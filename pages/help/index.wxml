@@ -13,7 +13,7 @@
 
 <block wx:if="{{userInfo}}">
 <navigator open-type="navigate"  url="/pages/mission/add">
-  <view class="add" style="bottom:160rpx">
+  <view class="add" >
     <!-- <image src="/images/moments-add.svg"></image> -->
     发布
   </view>
@@ -21,9 +21,9 @@
 </block>
 <block wx:else >
   <navigator open-type="navigate"  url="/pages/certification/index">
-  <view class="add" style="bottom:160rpx">
+  <view class="add" >
     <!-- <image src="/images/moments-add.svg"></image> -->
-    去认证
+    认证
   </view>
 </navigator>
 </block>
