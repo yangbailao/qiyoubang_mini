@@ -175,8 +175,8 @@ let s_time = new Date(res.data.start_time).getTime();
 let e_time = new Date(res.data.end_time).getTime();
 
        let NowTime = new Date();
-       s_time =( s_time - NowTime.getTime() ) > 0?true:false;
-       e_time =( e_time - NowTime.getTime() ) > 0?false:true;
+       s_time =NowTime.getTime() >= s_time ?true:false;
+       e_time =e_time > NowTime.getTime()?true:false;
       this.setData({
         detail : res.data,
         jssj:res.data.start_time,

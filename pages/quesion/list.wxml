@@ -3,7 +3,7 @@
 
 <block wx:if="{{userInfo}}">
 <navigator open-type="navigate" url="/pages/quesion/add">
-  <view class="add" style="bottom:160rpx">
+  <view class="add" >
     <!-- <image src="/images/moments-add.svg"></image> -->
     发布
   </view>
