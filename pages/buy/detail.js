@@ -237,8 +237,12 @@ let e_time = new Date(res.data.end_time).getTime();
 
       if(this.data.userInfo)
       {
+        wx.showLoading({
+          title: '加载中',
+          mask:true
+        })
        let detail = this.data.detail;
-        let data = {'goods_id':detail.goodsInfo.goods_id,'activities_id':detail.activities_id}
+        let data = {'goods_id':detail.goodsInfo.goods_id,'activities_id':detail.activities_id,'service_id':this.data.userInfo.service_shop_id}
         buyGoods(data).then((res) => {
           console.log(res);
           if(res.status== 200) {
@@ -247,6 +251,7 @@ let e_time = new Date(res.data.end_time).getTime();
               console.log(resPay);
               if(resPay.status== 200) {
                 let data = resPay.data;
+                wx.hideLoading()
                   wx.requestPayment({
                     timeStamp: data.timeStamp,
                     nonceStr: data.nonceStr,
@@ -255,6 +260,10 @@ let e_time = new Date(res.data.end_time).getTime();
                     paySign: data.paySign,
                     success (payRes) {
                       console.log(payRes);
+                      wx.showToast({
+                        title: '支付成功',
+                        icon:'none'
+                      })
                      },
                     fail (payRes) {
                       console.log(payRes);

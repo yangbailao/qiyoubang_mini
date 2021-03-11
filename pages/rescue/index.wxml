@@ -22,12 +22,12 @@ layer-style="1"
           <cover-view class="box">
             <cover-view class="box1" >
               <cover-view catchtap="goToStore" class="guid_box">
-              <cover-view class="guid_title" >{{currentM.title}}</cover-view>
-              <cover-view class="guid_phone" >{{currentM.phone}}</cover-view>
+                <cover-view class="guid_title" >{{currentM.title}}</cover-view>
+                <cover-view class="guid_phone" >{{currentM.phone}}</cover-view>
+            </cover-view>
             </cover-view>
             <cover-image bindtap="goTo" data-map="{{currentM.map_address}}"  class="guid_img" src="/images/guid.png" ></cover-image>
-            </cover-view>
-            <cover-view class="guid_info" >点击图标可导航到店里面</cover-view>
+            <!-- <cover-view class="guid_info" >点击图标可导航到店里面</cover-view> -->
           </cover-view>
 </cover-view>
 
@@ -48,7 +48,10 @@ layer-style="1"
       <image src="{{unfold === 1 || unfold === null? '/images/icon-open.svg' : '/images/icon-close.svg'}}"></image>
       
     </view>
-    <view class="title">
+    <view>
+      {{priceList[0].title}}
+    </view>
+    <!-- <view class="title">
       <view class="text">项目价格</view>
       <navigator url="/pages/shop/list?lat={{latitude}}&long={{longitude}}">
         <view class="more">查看更多店铺列表</view>
@@ -60,10 +63,10 @@ layer-style="1"
     <view class="item" wx:for="{{priceList}}" wx:key="index">
       <view class="name">{{item.title}}</view>
 	  <view class="price-info" >
-		  <!-- <view class="info">{{item.price}}元起</view> -->
+		<view class="info">{{item.price}}元起</view>
 		  <view class="price">{{item.price}}</view>
 	  </view>
-    </view>
+    </view> -->
   </view>
 
 

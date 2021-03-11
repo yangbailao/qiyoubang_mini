@@ -75,21 +75,21 @@
     <text>我要认证</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>
   </view>
-  <!-- <view class="item" bindtap="goTo" data-url="/pages/orders/orders">
+  <view class="item" bindtap="goTo" data-url="/pages/orders/orders">
     <image src="/images/icon-menu-teade.svg" class="menu"></image>
     <text>我的订单</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>
-  </view> -->
+  </view>
   <view class="item" bindtap="goTo" data-url="/pages/personal/myServiceShop">
     <image src="/images/icon-menu-my-service-shop.svg" class="menu"></image>
     <text>我的服务站</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>
   </view>
-  <!-- <view class="item" bindtap="goTo" data-url="/pages/personal/myShop">
+  <view class="item" bindtap="goTo" data-url="/pages/personal/myShop">
     <image src="/images/icon-menu-my-shop.svg" class="menu"></image>
     <text>我的店铺</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>
-  </view> -->
+  </view>
   <view class="item" bindtap="goTo" data-url="/pages/personal/myComment">
     <image src="/images/icon-menu-my-comment.svg" class="menu"></image>
     <text>我的评价</text>

@@ -67,10 +67,10 @@
       <text class='time1'>秒</text>
       <text>开启</text>
     </view>
-    <view wx:if="{{e_time == false && s_time == false}}" bindtap="buy" class="buy-btn">
+    <view wx:elif="{{e_time == false && s_time == false}}" bindtap="buy" class="buy-btn">
       立即抢购
     </view>
-    <view wx:if="{{e_time == true && s_time == false }}" class="buy-btn">
+    <view wx:else="{{e_time == true && s_time == false }}" class="buy-btn">
       活动已经结束 
     </view>
   </view>

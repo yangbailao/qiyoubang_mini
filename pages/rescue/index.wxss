@@ -135,7 +135,7 @@ padding: 8rpx 0; box-sizing: border-box;
 
 .guid_img {
   width: 115rpx;
-  height: 115rpx;
+  height: 100%;
 }
 .guid_title{
   color:balck;
@@ -167,22 +167,22 @@ padding: 8rpx 0; box-sizing: border-box;
 .overWrap  .box {
 	background-color: white;
 	width: 60%;
-	height: 250rpx;
+	height: 140rpx;
 	z-index: 501;
 	border-radius: 25rpx;
-
-	padding: 0 25rpx;
+  overflow: hidden;
   box-sizing: border-box;
   
   display: flex;
-  flex-direction: column;
-	justify-content: space-between;
+  justify-content: space-between;
+  align-items: center;
 }
 .overWrap  .box .box1 {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 80%;
+  padding-left: 25rpx;
 }
 .box text {
 	font-size: 32rpx;
