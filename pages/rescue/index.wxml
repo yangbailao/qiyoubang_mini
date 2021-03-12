@@ -49,24 +49,8 @@ layer-style="1"
       
     </view>
     <view>
-      {{priceList[0].title}}
+      {{headText}}
     </view>
-    <!-- <view class="title">
-      <view class="text">项目价格</view>
-      <navigator url="/pages/shop/list?lat={{latitude}}&long={{longitude}}">
-        <view class="more">查看更多店铺列表</view>
-      </navigator>
-      
-      
-    </view>
-
-    <view class="item" wx:for="{{priceList}}" wx:key="index">
-      <view class="name">{{item.title}}</view>
-	  <view class="price-info" >
-		<view class="info">{{item.price}}元起</view>
-		  <view class="price">{{item.price}}</view>
-	  </view>
-    </view> -->
   </view>
 
 

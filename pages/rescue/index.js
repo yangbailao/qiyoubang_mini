@@ -3,7 +3,8 @@
 const app = getApp()
 import {
   getShopList,
-  getPriceList
+  getPriceList,
+  getSystemConfig
 } from '../../api/api'
 Page({
 
@@ -64,6 +65,20 @@ Page({
     //读取身边的店铺列表并标记
     this.getShops()
     this.getPrice()
+
+    // 头部描述文字
+    getSystemConfig({title:'rescue_text'}).then((res) => {
+      let title = res.data.list.filter(function(item){
+        if(item['title'] == 'rescue_text'){
+          return item;
+        }
+      })
+      this.setData({
+        headText : title[0]['info']
+      })
+    })
+
+
   },
 
   /**
