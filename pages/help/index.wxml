@@ -15,7 +15,7 @@
 <navigator open-type="navigate"  url="/pages/mission/add">
   <view class="add" >
     <!-- <image src="/images/moments-add.svg"></image> -->
-    发布
+    去认证
   </view>
 </navigator>
 </block>
@@ -23,7 +23,7 @@
   <navigator open-type="navigate"  url="/pages/certification/index">
   <view class="add" >
     <!-- <image src="/images/moments-add.svg"></image> -->
-    认证
+    去认证
   </view>
 </navigator>
 </block>

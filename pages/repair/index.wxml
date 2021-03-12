@@ -46,7 +46,10 @@
       <image src="{{unfold === 1 || unfold === null? '/images/icon-open.svg' : '/images/icon-close.svg'}}"></image>
       
     </view>
-    <view class="title">
+    <view>
+      {{priceList[0].title}}
+    </view>
+    <!-- <view class="title">
       <view class="text">项目价格</view>
       <navigator url="/pages/shop/list?lat={{latitude}}&long={{longitude}}">
         <view class="more">查看更多店铺列表</view>
@@ -61,7 +64,7 @@
 		  <view class="info">{{item.price}}元起</view>
 		  <view class="price">{{item.price}}元起</view>
 	  </view>
-    </view>
+    </view> -->
 
     <!-- <view class="item">
       <view class="name">修车</view>
