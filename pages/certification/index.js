@@ -55,7 +55,7 @@ Page({
 
         // wx.showModal({
         //   confirmText: '好的',
-        //   content: '您已经通过实名认证，您的信息将会在专业帮中展示',
+        //   content: '您已经通过实名认证，您的信息将会在我来帮中展示',
         //   showCancel: false,
         //   title: '提示',
         //   success : res=>{

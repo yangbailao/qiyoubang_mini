@@ -1,17 +1,13 @@
 <!--pages/mission/list.wxml-->
-<navBar title='知问答' back/>
+<navBar title='知问帮' back/>
 
 <block wx:if="{{userInfo}}">
 <navigator open-type="navigate" url="/pages/quesion/add">
-  <view class="add" >
-    <!-- <image src="/images/moments-add.svg"></image> -->
-    发布
-  </view>
+  <view class="add" >求帮</view>
 </navigator>
 </block>
 <block wx:else>
-  <!-- <view class="add" style="bottom:160rpx"><image src="/images/moments-add.svg"></image><button style="width:100rpx" class="login-btn" bindtap="goToAdd">登录</button></view> -->
-  <button style="width:100rpx" class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">发布</button>
+  <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">求帮</button>
 </block>
 
 <!-- 搜索框部分 -->

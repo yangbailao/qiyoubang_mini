@@ -174,14 +174,14 @@ Page({
 let s_time = new Date(res.data.start_time).getTime();
 let e_time = new Date(res.data.end_time).getTime();
 
-       let NowTime = new Date();
-       s_time =NowTime.getTime() >= s_time ?true:false;
-       e_time =e_time > NowTime.getTime()?true:false;
+       let NowTime = new Date().getTime();
+      let is_start = NowTime >= s_time ?true:false;
+      let is_end = NowTime >= e_time ?true:false;
       this.setData({
         detail : res.data,
         jssj:res.data.start_time,
-        s_time,
-        e_time
+        is_start:is_start,
+        is_end:is_end
       })
       wx.hideLoading({
         success: (res) => {},
@@ -242,7 +242,7 @@ let e_time = new Date(res.data.end_time).getTime();
           mask:true
         })
        let detail = this.data.detail;
-        let data = {'goods_id':detail.goodsInfo.goods_id,'activities_id':detail.activities_id,'service_id':this.data.userInfo.service_shop_id}
+        let data = {'goods_id':detail.goodsInfo.goods_id,'price':detail.goodsInfo.price,'activities_id':detail.activities_id,'service_id':this.data.userInfo.service_shop_id}
         buyGoods(data).then((res) => {
           console.log(res);
           if(res.status== 200) {
@@ -264,6 +264,9 @@ let e_time = new Date(res.data.end_time).getTime();
                         title: '支付成功',
                         icon:'none'
                       })
+                       wx.reLaunch({
+                         url: '/pages/orders/orders',
+                       })
                      },
                     fail (payRes) {
                       console.log(payRes);

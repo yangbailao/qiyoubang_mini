@@ -1,5 +1,5 @@
 <!--pages/help/index.wxml-->
-<navBar title='专业帮' back />
+<navBar title='我来帮' back />
 
 <wxs src="../../filter/filter.wxs" module="filter"></wxs>
 <!-- 搜索框部分 -->
@@ -10,22 +10,13 @@
   </view>
 </view> -->
 <view class="head-text">{{headText}}</view>
-
 <block wx:if="{{userInfo}}">
-<navigator open-type="navigate"  url="/pages/mission/add">
-  <view class="add" >
-    <!-- <image src="/images/moments-add.svg"></image> -->
-    去认证
-  </view>
-</navigator>
+  <block wx:if="{{userInfo.is_worker == 0}}" ><navigator open-type="navigate"  url="/pages/certification/index">
+    <view class="add" >去认证</view>
+  </navigator></block>
 </block>
 <block wx:else >
-  <navigator open-type="navigate"  url="/pages/certification/index">
-  <view class="add" >
-    <!-- <image src="/images/moments-add.svg"></image> -->
-    去认证
-  </view>
-</navigator>
+  <button style="width:100rpx" class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">去认证</button>
 </block>
 <scroll-view scroll-x="true" class="cates wrap">
   <view wx:for="{{allCategory}}" class="item {{cateActive == item.id ? 'cur' : ''}}" bindtap="changeCate" data-title="{{item.title}}" data-cate="{{item.id}}" wx:key="index">{{item.title}}</view>

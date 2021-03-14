@@ -1,14 +1,25 @@
 /* pages/mission/list.wxss */
 
 .cates{
-  height: 80rpx;
   background-color: #ffffff;
-	box-shadow: 0px 1px 2px 0px 
-    rgba(96, 97, 112, 0.16);
-
   white-space: nowrap;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 25rpx 0;
 }
-.cates .item{margin-right: 30rpx;height: 80rpx;line-height: 80rpx;display: inline-block;}
+.cates .item{
+  height: 180rpx;
+  display: inline-block;
+  width: 200rpx;
+  display: flex;
+  padding: 14rpx 0;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border:1px solid #666;
+}
 .cates .cur{border-bottom: solid 3px #ff5c5c;}
 
 ::-webkit-scrollbar {
@@ -18,9 +29,19 @@
 }
 .list{padding-bottom: 26rpx;}
 .list .item{
-  margin-top: 26rpx;
+  margin-top: 16rpx;
   width: 690rpx;
-	height: 276rpx;
+	height: 166rpx;
+	background-color: #ffffff;
+	box-shadow: 0px 1px 2px 0px 
+		rgba(96, 97, 112, 0.16);
+  border-radius: 5px;
+  padding: 20rpx;
+}
+.list .userBox{
+  margin-top: 16rpx;
+  width: 690rpx;
+	height: 166rpx;
 	background-color: #ffffff;
 	box-shadow: 0px 1px 2px 0px 
 		rgba(96, 97, 112, 0.16);
@@ -31,10 +52,12 @@
 .sb{display: flex;align-items: center;justify-content: space-between;}
 
 
-.list .item .head {height: 42rpx;}
-  .list .item .head .title{width: 520rpx; height: 42rpx;line-height: 42rpx;font-size: 32rpx;color: #1c1c28;overflow: hidden;}
-  .list .item .head .see{height: 32rpx;line-height: 32rpx;font-size: 24rpx;}
-
+.list .item .head {height: 72rpx;}
+  .list .item .head .title{width: 500rpx; height: 42rpx;line-height: 42rpx;font-size: 32rpx;color: #1c1c28;overflow: hidden;padding-bottom: 30rpx;}
+  .list .item .see5{height: 32rpx;line-height: 32rpx;font-size: 24rpx;}
+  .list .item .see{height: 32rpx;line-height: 32rpx;font-size: 24rpx;color:red;}
+  .list .item .see1{height: 32rpx;line-height: 32rpx;font-size: 24rpx;color:green;}
+  .list .item .see2{height: 32rpx;line-height: 32rpx;font-size: 24rpx;color:blue;}
 .list .item .info{height: 86rpx;}
   .list .item .info .price{height: 86rpx;display: flex;align-items: center; font-size: 44rpx;color: #ff5c5c;}
   .list .item .info .btn{
@@ -45,18 +68,27 @@
     color: #fff;text-align: center;
     line-height: 52rpx;
   }
+
+
+  .list .userBox .location{margin-bottom: 10rpx;height: 46rpx;line-height: 47rpx;}
+  .list .userBox .user{display:flex;justify-content:flex-start; align-items: center; font-size: 20rpx; height: 100%; }
+    .list .userBox .user .username{display: flex;align-items: center; font-size: 28rpx; }
+    .list .userBox .user .username image{width: 90rpx;height: 90rpx;border-radius: 50%;margin-right: 25rpx;}
+  
+
+
 .list .item .location{margin-bottom: 10rpx;height: 46rpx;line-height: 47rpx;}
 .list .item .user{align-items: flex-end;font-size: 20rpx;border-top: solid 1px #f2f2f5;height: 52rpx;}
   .list .item .user .username{display: flex;align-items: center;}
   .list .item .user .username image{width: 32rpx;height: 32rpx;border-radius: 50%;margin-right: 10rpx;}
 
 .login-btn{
-  width: 100rpx !important;
+  width: 100rpx;
   height: 100rpx;
   position: fixed;
-  bottom: 60rpx;
-  right: 50%;
-  margin-right: -50rpx;
+  /* top: 154rpx; */
+  right: 60rpx;
+  bottom: 160rpx;
   z-index: 666;
   padding: 0;
   border-radius: 50%;
@@ -75,9 +107,8 @@
     width: 100rpx;
     height: 100rpx;
     position: fixed;
-    bottom: 60rpx;
-    right: 50%;
-    margin-right: -50rpx;
+    /* top: 154rpx; */
+    right: 60rpx;
     z-index: 666;
     background-image: linear-gradient(322deg, 
       #f59301 0%, 
@@ -112,6 +143,7 @@
     justify-content: center;
     align-items: center;
     padding: 0 16rpx;
+    
   }
   .searchView .icon {
     width: 30rpx;
@@ -127,13 +159,14 @@
   }
   .searchView text {
     font-size: 26rpx;
-    color:#666
+    color: #666;
   }
   .search_sv input {
     flex: 1;
   }
 
-    /* 头部文字 */
+
+  /* 头部文字 */
 .head-text{
   padding-bottom: 15rpx;
   color: #fff;
@@ -142,11 +175,8 @@
   text-align: center;
   background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
 }
-
-.over{
-  color:#fff;
-  font-size: 24rpx;
-  background: #f59301;
-  padding: 0 6rpx;
-  margin-right: 10rpx;
+.order_btn {
+  padding: 8rpx 12rpx;
+  color:white;
+  background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);
 }

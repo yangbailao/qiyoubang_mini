@@ -1,7 +1,7 @@
 <!--index.wxml-->
 
 <navBar title='' background='rgba(0,0,0,0)' >
-  <view slot="left" >
+  <!-- <view slot="left" >
     <view class="nav-left" >
       <block wx:if="{{!userInfo}}">
         <view class="user-box">
@@ -18,7 +18,7 @@
         </view>
       </block>
     </view>
-  </view>
+  </view> -->
 </navBar>
 
 <!-- <view class="head-text">骑行帮，能帮就帮</view> -->
@@ -27,41 +27,6 @@
   <image class="logo1" src="/images/logo.svg" ></image>
   <image  class="logo2" src="/images/logo2.svg" ></image>
 </view>
-<!-- <view class="user-info wrap">
-  <block wx:if="{{!userInfo}}">
-    <view class="userinfo-avatar li un-login">
-      <image src="/images/avatar.svg" mode="cover"></image>
-    </view>
-
-    <view class="detail li">
-      <view class="login">
-        骑行帮，能帮就帮<button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权登录</button>
-      </view>
-    </view>
-  </block>
-  <block wx:else>
-    <view class="head-text">
-      <view>骑行帮，能帮就帮</view>
-      <view>每个人都是一个独立的IP</view>
-    </view>
-    <image class="userinfo-avatar li" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-    <view class="detail li">
-      <view class="username">骑行帮，能帮就帮</view>
-      <view class="info">
-        <view>
-          <image src="/images/icon-phone.svg"></image>已认证手机
-        </view>
-        <view>
-          <image src="/images/icon-bangbangfen.svg"></image>帮帮分：98分
-        </view>
-      </view>
-    </view>
-    <view class="right-bar">
-      <view class="button" bindtap="touchNext" data-url="/pages/personal/index">个人中心</view>
-      <view class="credit">帮帮分:100分</view>
-    </view>
-  </block>
-</view> -->
 
 <view class="navTab theme-bg">
   <view class="item" bindtap="touchNext" data-url="/pages/repair/index?type=1">
@@ -74,7 +39,7 @@
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/help/index">
     <view class="imgView"><image src="/images/icon3.svg" class="dayidian"></image></view>
-    <view class="name">专业帮</view>
+    <view class="name">我来帮</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/mission/list">
     <view class="imgView"><image src="/images/icon4.svg"></image></view>
@@ -112,7 +77,7 @@
 <view class="bannerView">
   <view class="page-section page-section-spacing swiper">
     <swiper class="banner-slide" bindchange="swiperChange" autoplay="true" duration="500" circular="true">
-      <swiper-item wx:for="{{imagesList}}" wx:key="index">
+      <swiper-item class="swiperBox" wx:for="{{imagesList}}" wx:key="index">
         <view class='banner-item'>
           <navigator url="">
             <image src="{{item.url}}" class="banner-img" mode="widthFix"></image>
@@ -132,22 +97,9 @@
 
 
 <view class="container">
-  
-  <!-- <scroll-view class="list-1" scroll-x="true" >
-  <view class="detail detail-1" bindtap="test">
-    <view><image class="img" src="/images/index-btn-share.svg"></image></view>
-    <view class="text">
-      <view class="title">分享有礼</view>
-      <view class="desc">免费修车大礼包</view>
-    </view>
-  </view>
-  <view class="detail detail-2"></view>
-  <view class="detail detail-3"></view>
-</scroll-view> -->
-
 
   <view class="title-box wrap">
-    <view class="title">活动中心</view>
+    <view class="title">任务帮</view>
     <view class="more" bindtap="touchNext" data-url="/pages/mission/list">查看全部</view>
   </view>
   <view class="list">
@@ -157,11 +109,16 @@
           <view class="title">{{item.title}}</view>
           <view class="see">{{item.view}}人看过</view>
         </view>
-        <view class="info sb">
-          <view class="price">￥{{item.bouns}}</view>
-          <view class="btn">详情</view>
+        <view class="mission_box" >
+          <image class="mission_pic" src="{{item.image?item.image:'/images/no_pic.jpg'}}" ></image>
+          <view class="mission_title" >
+            <view class="info sb">
+              <view class="price">￥{{item.bouns}}</view>
+              <view class="btn">详情</view>
+            </view>
+            <view class="location">任务地点：{{item.locale}}</view>
+          </view>
         </view>
-        <view class="location">任务地点：{{item.locale}}</view>
 
         <view class="user sb">
           <view class="username">
@@ -173,69 +130,12 @@
       </navigator>
     </view>
   </view>
-
-
-  <!-- <scroll-view class="activity-list wrap" scroll-y="true" style="height:{{scrollHeight}}rpx">
-  <view class="activity-box">
-    <view class="img">活动图</view>
-    <view class="title">推荐有礼</view>
-    <view class="desc">靠谱省心 限时福利</view>
-    <view class="btn">了解更多</view>
-  </view>
-  <view class="activity-box">
-    <view class="img">活动图</view>
-    <view class="title">推荐有礼</view>
-    <view class="desc">靠谱省心 限时福利</view>
-    <view class="btn">了解更多</view>
-  </view>
-  <view class="activity-box">
-    <view class="img">活动图</view>
-    <view class="title">推荐有礼</view>
-    <view class="desc">靠谱省心 限时福利</view>
-    <view class="btn">了解更多</view>
-  </view>
-  <view class="activity-box">
-    <view class="img">活动图</view>
-    <view class="title">推荐有礼</view>
-    <view class="desc">靠谱省心 限时福利</view>
-    <view class="btn">了解更多</view>
-  </view>
-  <view class="activity-box">
-    <view class="img">活动图</view>
-    <view class="title">推荐有礼</view>
-    <view class="desc">靠谱省心 限时福利</view>
-    <view class="btn">了解更多</view>
-  </view>
-  <view class="activity-box">
-    <view class="img">活动图</view>
-    <view class="title">推荐有礼</view>
-    <view class="desc">靠谱省心 限时福利</view>
-    <view class="btn">了解更多</view>
-  </view>
-  <view class="activity-box">
-    <view class="img">活动图</view>
-    <view class="title">推荐有礼</view>
-    <view class="desc">靠谱省心 限时福利</view>
-    <view class="btn">了解更多</view>
-  </view>
-  <view class="activity-box">
-    <view class="img">活动图</view>
-    <view class="title">推荐有礼</view>
-    <view class="desc">靠谱省心 限时福利</view>
-    <view class="btn">了解更多</view>
-  </view>
-  
-  </scroll-view> -->
 </view>
 
 
 <import src="../../template/tabbar.wxml" />
 <template is="tabBar" data="{{tabBar}}" />
 <view class="mask" wx:if="{{maskFlag}}" bindtap="hideMask"></view>
-<!-- <import src="../../template/tabbar-index-menu.wxml" />
-<view wx:if="{{indexMenuFlag}}">
-  <template is="indexMenu" />
-</view> -->
 <import src="../../template/tabbar-main-menu.wxml" />
 <view wx:if="{{mainMenuFlag}}">
   <template is="mainMenu" />

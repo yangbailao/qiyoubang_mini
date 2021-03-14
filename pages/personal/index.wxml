@@ -45,28 +45,7 @@
   </view>
 </view>
 <!-- bar1 end -->
-<!-- bar2 start -->
-<!-- <view class="bar2 wrap">
-  <view class="btn blue">
-    <view class="icon">
-      <image src="/images/icon-btn-shop-reg.svg"></image>
-    </view>
-    <view class="text">
-      <view class="title">商家加盟</view>
-      <view class="desc">优质客户自动上门</view>
-    </view>
-  </view>
-  <view class="btn purple">
-    <view class="icon">
-      <image src="/images/icon-btn-share.svg"></image>
-    </view>
-    <view class="text">
-      <view class="title">分享有礼</view>
-      <view class="desc">免费修车大礼包</view>
-    </view>
-  </view>
-</view> -->
-<!-- bar2 end -->
+
 
 <!-- list start -->
 <view class="list">
@@ -83,6 +62,16 @@
   <view class="item" bindtap="goTo" data-url="/pages/personal/myServiceShop">
     <image src="/images/icon-menu-my-service-shop.svg" class="menu"></image>
     <text>我的服务站</text>
+    <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+  </view>
+  <view class="item" bindtap="goTo" data-url="/pages/personal/myteam">
+    <image src="/images/icon-menu-my-service-shop.svg" class="menu"></image>
+    <text>我的团队</text>
+    <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+  </view>
+  <view class="item" bindtap="goTo" data-url="/pages/personal/goCheck">
+    <image src="/images/icon-menu-my-service-shop.svg" class="menu"></image>
+    <text>前去核销</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>
   </view>
   <view class="item" bindtap="goTo" data-url="/pages/personal/myShop">

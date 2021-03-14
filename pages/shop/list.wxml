@@ -22,7 +22,8 @@
         <view class="title">{{item.shop_name}}</view>
         <view class="rank">
           <view>{{item.rate}}分,{{item.rate_times}}人次评价</view>
-          <view>{{filter.distance(item.latitude,item.longitude,lat,long)}}km</view>
+          <view>{{item.juli}}km</view>
+          <!-- <view>{{filter.distance(item.latitude,item.longitude,lat,long)}}km</view> -->
         </view>
         <view class="address">{{item.address}}</view>
       </navigator>

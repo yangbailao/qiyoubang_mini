@@ -43,7 +43,7 @@ Page({
           size: parseInt(rpx2px * this.data.width)
         })
         // 返回输出base64编码imgData赋值到image标签的src中
-        console.log(imgData);
+        // console.log(imgData);
         this.setData({
           qrcodeURL: imgData
         })

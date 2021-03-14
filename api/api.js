@@ -664,6 +664,83 @@ export function informationList(data) {
     })
   })
 }
+//累积提成-我的团队-可提金额
+export function getNum(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/Goods.Orders/getNum',
+      data,
+      success: function (data) {
+        console.log('累积提成-我的团队-可提金额', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+//获取订单商品详情
+export function getOrderCheck(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/Goods.Orders/checkOrder',
+      data,
+      success: function (data) {
+        console.log('获取订单商品详情', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+//获取订单商品详情
+export function getGoodInfo(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/Goods.Orders/getInfo',
+      data,
+      success: function (data) {
+        console.log('获取订单商品详情', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+
+//累积提成
+export function shopMemberList(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/Goods.Orders/shopMember',
+      data,
+      success: function (data) {
+        console.log('累积提成', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+//我的团队
+export function memberShopList(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/Member/shopMember',
+      data,
+      success: function (data) {
+        console.log('我的团队', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
 // 订单列表
 export function ordersList(data) {
   return new Promise((resolve) => {
@@ -1398,7 +1475,8 @@ export function upDateFeedback(data){
 export function getTake(data){
   return new Promise((resolve) => {
     http({
-      url:'/mini_api/mission/take',
+      // url:'/mini_api/mission/take',
+      url:'/mission/missionTask',
       data,
       success:function(res) {
         console.log("接单",res)
@@ -1412,7 +1490,8 @@ export function getTake(data){
 export function getCheckFinish(data){
   return new Promise((resolve) => {
     http({
-      url:'/mini_api/mission/checkFinish',
+      // url:'/mini_api/mission/checkFinish',
+      url:'/mission/checkFinish',
       data,
       success:function(res) {
         console.log("是否有未完成",res)
@@ -1425,7 +1504,8 @@ export function getCheckFinish(data){
 export function getConfirmMission(data){
   return new Promise((resolve) => {
     http({
-      url:'/mini_api/mission/confirmMission',
+      url:'/mission/changeStatus',
+      // url:'/mini_api/mission/confirmMission',
       data,
       success:function(res) {
         console.log("是否接任务",res)

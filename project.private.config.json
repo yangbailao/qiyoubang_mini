@@ -1,55 +1,5 @@
 {
-  "description": "项目配置文件",
-  "packOptions": {
-    "ignore": []
-  },
-  "setting": {
-    "urlCheck": false,
-    "es6": true,
-    "enhance": true,
-    "postcss": true,
-    "preloadBackgroundData": false,
-    "minified": true,
-    "newFeature": false,
-    "coverView": true,
-    "nodeModules": false,
-    "autoAudits": false,
-    "showShadowRootInWxmlPanel": true,
-    "scopeDataCheck": false,
-    "uglifyFileName": false,
-    "checkInvalidKey": true,
-    "checkSiteMap": true,
-    "uploadWithSourceMap": true,
-    "compileHotReLoad": false,
-    "useMultiFrameRuntime": true,
-    "useApiHook": true,
-    "useApiHostProcess": true,
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
-    },
-    "enableEngineNative": false,
-    "bundle": false,
-    "useIsolateContext": true,
-    "useCompilerModule": true,
-    "userConfirmedUseCompilerModuleSwitch": false,
-    "userConfirmedBundleSwitch": false,
-    "packNpmManually": false,
-    "packNpmRelationList": [],
-    "minifyWXSS": true
-  },
-  "compileType": "miniprogram",
-  "libVersion": "2.12.0",
-  "appid": "wxffb5a2a0766d14e9",
-  "projectname": "%E9%AA%91%E5%8F%8B%E5%B8%AE",
-  "debugOptions": {
-    "hidedInDevtools": []
-  },
-  "scripts": {},
-  "isGameTourist": false,
-  "simulatorType": "wechat",
-  "simulatorPluginLibVersion": {},
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -298,6 +248,17 @@
           "name": "出示二维码",
           "pathName": "pages/orders/detail",
           "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的团队",
+          "pathName": "pages/personal/myteam",
+          "query": "id=4",
+          "scene": null
+        },
+        {
+          "name": "核销",
+          "pathName": "pages/personal/goCheck",
           "scene": null
         }
       ]

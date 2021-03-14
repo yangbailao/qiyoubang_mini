@@ -1,0 +1,22 @@
+<navBar back title='核销'/>
+<view class="user-detail">
+
+</view>
+
+<view class="mission-detail">
+  <view class="qrcode">
+    <button class="goQr" bindtap="scanQr" >立即扫码</button>
+</view>
+
+  <view class="content">
+    <view class="content-title">商品详情</view>
+    <view wx:if="{{detail}}" class="content-body">
+      <view class="label" ><text class="label-text">所属活动:</text>{{detail.activitiesInfo.a_title}}</view>
+      <view class="label"><text class="label-text">商品名称:</text>{{detail.goodsInfo.goods_title}}</view>
+      <view class="label"><text class="label-text">实付价格:</text>￥{{detail.price}}</view>
+      <view class="label"><text class="label-text">购买昵称:</text>{{detail.memberInfo.nickname}}</view>
+      <view class="label"><text class="label-text">当前状态:</text>{{detail.is_check == 1 || is_check == 1?'已核销':'待核销'}}</view>
+      <button wx:if="{{detail.is_check == 0 && is_check == 0}}" class="goQr1" bindtap="goCheck" >确认核销</button>
+    </view>
+  </view>
+</view>

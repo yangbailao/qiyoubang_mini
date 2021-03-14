@@ -2,12 +2,7 @@
 <navBar title='认证' back />
 <view class="container">
   <view class="info">
-    <view class="info-bar">
-      <view class="info-name"><text class="red">*</text>姓名</view>
-      <input placeholder="请输入姓名" bindblur="updateData" bindinput="changeInput" data-name="name" value="{{fromData.name}}"
-        class="info-txt"></input>
-    </view>
-    <view class="line"></view>
+
     <view class="info-bar">
       <view class="info-name"><text class="red">*</text>电话号码</view>
       <input type="number" placeholder="请输入电话号码" bindblur="updateData" bindinput="changeInput" data-name="phone" value="{{fromData.phone}}"
@@ -22,8 +17,14 @@
     </view>
     <view class="line"></view>
     <view class="info-bar">
+      <view class="info-name">姓名</view>
+      <input placeholder="（选填）请输入姓名" bindblur="updateData" bindinput="changeInput" data-name="name" value="{{fromData.name}}"
+        class="info-txt"></input>
+    </view>
+    <view class="line"></view>
+    <view class="info-bar">
       <view class="info-name">身份证号码</view>
-      <input placeholder="请输入身份证号码" bindblur="updateData" bindinput="changeInput" data-name="card" value="{{fromData.card}}"
+      <input placeholder="（选填）请输入身份证号码" bindblur="updateData" bindinput="changeInput" data-name="card" value="{{fromData.card}}"
         class="info-txt"></input>
     </view>
     <view class="line"></view>
@@ -49,7 +50,7 @@
 
   </view>
 
-  <view class="title">上传身份证照片（点击下方上传图片）</view>
+  <view class="title">（选填）上传身份证照片（点击下方上传图片）</view>
   <view class="up-wrap">
     <view class="user_card" bindtap="takePhoto" data-index="1">
       <block wx:if="{{image1 == ''}}">

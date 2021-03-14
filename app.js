@@ -1,5 +1,6 @@
 //app.js
 import page from './utils/page';
+const app = getApp()
 App({
   onLaunch: function () {
     Page = page;
@@ -158,7 +159,7 @@ App({
           selectedIconPath: "/images/tabbar-index-cur.svg",
           iconPath: "/images/tabbar-index.svg",
           pagePath: "/pages/index/index",
-          text: "骑行首页",
+          text: "首页",
           clas: "menu-item",
           selected: false,
           nav: true,
@@ -169,7 +170,7 @@ App({
           selectedIconPath: "/images/tabbar-moments-cur.svg",
           iconPath: "/images/tabbar-moments.svg",
           pagePath: "/pages/moments/list",
-          text: "骑行日记",
+          text: "帮友录",
           clas: "menu-item",
           selected: false,
           nav: true,
@@ -213,7 +214,7 @@ App({
           selectedIconPath: "/images/tabbar-mission-cur.svg",
           iconPath: "/images/tabbar-mission.svg",
           pagePath: "/pages/buy/list",
-          text: "嗨购全城",
+          text: "嗨活动",
           clas: "menu-item",
           selected: false,
           nav: true,

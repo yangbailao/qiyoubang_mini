@@ -54,9 +54,8 @@
   width: 100rpx;
   height: 100rpx;
   position: fixed;
-  /* top: 154rpx; */
-  right: 60rpx;
-  bottom: 160rpx;
+  top: 240rpx;
+  right: 40rpx;
   z-index: 666;
   padding: 0;
   border-radius: 50%;

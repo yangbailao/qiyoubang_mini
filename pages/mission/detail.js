@@ -153,7 +153,8 @@ Page({
         success:res=>{
           if(res.confirm){
             getTake({'id':this.data.detail.id}).then((res) =>{
-              if(res.status== 200){
+              if(res.status== 200 && res.data.mission_confirm == 0){
+
                 wx.makePhoneCall({
                   phoneNumber: this.data.detail.tel,
                   success:() =>{
@@ -200,6 +201,10 @@ Page({
                     })
                   }
                 })
+              }else{
+                  wx.showToast({
+                    title: '任务结束',
+                  })
               }
             })
           }

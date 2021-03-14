@@ -56,7 +56,7 @@ Page({
       windowWidth
     } = app.globalSystemInfo;
     const rpxR =750 / windowWidth;
-    let listHeight = contentHeight - 80;
+    let listHeight = contentHeight - 130;
     this.setData({
       listHeight
     })
@@ -297,6 +297,7 @@ Page({
     getQuestionCate().then(res => {
       let list = [{id:0,pid:0,'title':'全部'}];
       list = list.concat(res.data.list);
+      console.log(list);
       this.setData({
         allCategory : list
       })
@@ -305,6 +306,7 @@ Page({
   // 点击分类
   changeCate(e) {
     const {title, cate} = e.currentTarget.dataset
+    console.log(cate);
     this.setData({
       page: 1,
       list: [],

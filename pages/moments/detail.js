@@ -141,7 +141,7 @@ Page({
     momentsDetail({id:this.data.id}).then( res => {
       this.setData({
         detail : res.data,
-        comments : res.data.comments
+        comments : res.data.comment
       })
       wx.hideLoading({
         success: (res) => {},

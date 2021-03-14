@@ -39,7 +39,9 @@
     "pages/buy/list",
     "pages/buy/detail",
     "pages/orders/orders",
-    "pages/orders/detail"
+    "pages/orders/detail",
+    "pages/personal/myteam",
+    "pages/personal/goCheck"
   ],
   "window": {
     "backgroundTextStyle": "light",

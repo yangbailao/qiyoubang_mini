@@ -56,7 +56,7 @@ Page({
       windowWidth
     } = app.globalSystemInfo;
     const rpxR =750 / windowWidth;
-    let listHeight = contentHeight - 80;
+    let listHeight = contentHeight - 130;
     this.setData({
       listHeight
     })

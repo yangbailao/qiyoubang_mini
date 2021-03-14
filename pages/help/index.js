@@ -47,7 +47,7 @@ Page({
       windowWidth
     } = app.globalSystemInfo;
     const rpxR =750 / windowWidth;
-    let listHeight = contentHeight - 80;
+    let listHeight = contentHeight - 100;
     this.setData({
       listHeight
     })
@@ -64,6 +64,8 @@ Page({
       getUser().then(() => {
         this.setUserInfo()
       })
+    }else{
+      this.getUserInfo()
     }
 
     // 头部描述文字
@@ -172,12 +174,12 @@ Page({
   },
   setUserInfo : function(){
     let gUserInfo = app.globalData.userInfo
-    // console.log(gUserInfo, 789)
     gUserInfo = gUserInfo ? gUserInfo : JSON.parse(cache.get('userInfo'))
     let {
       avatarUrl,
       nickName
     } = gUserInfo
+    console.log(gUserInfo,888888)
     this.setData({
       avatarUrl,
       nickName,
