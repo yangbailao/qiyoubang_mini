@@ -1,5 +1,6 @@
 // pages/mission/detail.js
 const app = getApp()
+var that;
 import {
   loginUser,
   getUser
@@ -28,6 +29,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    that = this;
     this.setData({
       id : options.id,
       showAccpte:options.showAccpte?options.showAccpte:false
@@ -153,7 +155,7 @@ Page({
         success:res=>{
           if(res.confirm){
             getTake({'id':this.data.detail.id}).then((res) =>{
-              if(res.status== 200 && res.data.mission_confirm == 0){
+              if(res.status== 200){
 
                 wx.makePhoneCall({
                   phoneNumber: this.data.detail.tel,

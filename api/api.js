@@ -1504,7 +1504,7 @@ export function getCheckFinish(data){
 export function getConfirmMission(data){
   return new Promise((resolve) => {
     http({
-      url:'/mission/changeStatus',
+      url:'/mission/checkFinish',
       // url:'/mini_api/mission/confirmMission',
       data,
       success:function(res) {

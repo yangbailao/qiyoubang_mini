@@ -74,7 +74,8 @@ App({
   },
   chengeNeed:function(){
     let need = wx.getStorageSync('need')
-    if(need && need > 0) {
+    console.log(need);
+    if(need) {
       let takeId = wx.getStorageSync('takeId')
       wx.showModal({
         title:'提示',
