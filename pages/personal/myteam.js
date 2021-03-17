@@ -320,7 +320,9 @@ Page({
     const {title, cate} = e.currentTarget.dataset
 
     if(cate == 2){
-
+      wx.navigateTo({
+        url: '/pages/personal/withdrawal?num'+this.data.allCategory[2].num,
+      })
       return;
     }
 

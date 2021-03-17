@@ -1,0 +1,40 @@
+<!--pages/certification/index.wxml-->
+<navBar title='我的银行卡' back />
+<view class="container">
+  <view class="info">
+    <view class="info-bar">
+      <view class="info-name"><text class="red">*</text>开户银行</view>
+      <input type="number" placeholder="请输入开户银行" bindblur="updateData" bindinput="changeInput" data-name="bank_name" value="{{fromData.bank_name}}"
+        class="info-txt"></input>
+    </view>
+    <view class="line"></view>
+    <view class="info-bar">
+      <view class="info-name"><text class="red">*</text>银行卡号</view>
+      <input type="number" placeholder="请输入银行卡号" bindblur="updateData" bindinput="changeInput" data-name="bank_card" value="{{fromData.bank_card}}"
+        class="info-txt"></input>
+    </view>
+    <view class="line"></view>
+    <view class="info-bar">
+      <view class="info-name"><text class="red">*</text>开户名称</view>
+      <input type="number" placeholder="请输入开户名称" bindblur="updateData" bindinput="changeInput" data-name="bank_user" value="{{fromData.bank_user}}"
+        class="info-txt"></input>
+    </view>
+    <view class="line"></view>
+    <view class="info-bar">
+      <view class="info-name"><text class="red">*</text>电话号码</view>
+      <input type="number" placeholder="请输入电话号码" bindblur="updateData" bindinput="changeInput" data-name="mobile" value="{{fromData.mobile}}"
+        class="info-txt"></input>
+    </view>
+    <view class="line"></view>
+    <view class="info-bar">
+      <view class="info-name">验证码</view>
+      <input placeholder="请输入验证码" bindblur="updateData" bindinput="changeInput" data-name="code" value="{{fromData.code}}"
+        class="info-txt"></input>
+        <button class="getcodenow" bindtap="getVerifyCode" disabled="{{countDown != 0}}">{{verifyText}}</button>
+    </view>
+  </view>
+
+
+</view>
+
+<view class="submit" bindtap="save">确认提交</view>

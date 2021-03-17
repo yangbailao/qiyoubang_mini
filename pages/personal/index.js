@@ -22,13 +22,7 @@ Page({
   onLoad: function (options) {
     app.editTabBar();
     app.chengeNeed()
-    if (cache.get('userInfo')) {
-      getUser().then(res => {
-        this.setData({
-          userInfo:res
-        })
-      })
-    }
+
   },
 
   /**
@@ -41,8 +35,15 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
+  onShow:async function () {
+    if (cache.get('userInfo')) {
+    await  getUser().then(res => {
+        this.setData({
+          userInfo:res
+        })
+      })
+    }
+    console.log(this.data.userInfo);
   },
 
   /**

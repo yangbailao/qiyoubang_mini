@@ -804,6 +804,36 @@ export function delInformation(data) {
   })
 }
 
+// 更新绑定银行卡
+export function bindBank(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/member/bindBank',
+      data,
+      success: function (data) {
+        console.log('绑定银行卡', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
+// 更新用户信息
+export function goWithdrawal(data) {
+  return new Promise((resolve) => {
+    http({
+      url: '/Goods.Withdrawal/add',
+      data,
+      success: function (data) {
+        console.log('提现', data)
+        if (data.status== 200) {
+          resolve(data)
+        }
+      }
+    })
+  })
+}
 // 更新用户信息
 export function updateUser(data) {
   return new Promise((resolve) => {

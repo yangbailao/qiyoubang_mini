@@ -259,6 +259,19 @@
         {
           "name": "核销",
           "pathName": "pages/personal/goCheck",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "提现页面",
+          "pathName": "pages/personal/withdrawal",
+          "query": "num=￥0.0045",
+          "scene": null
+        },
+        {
+          "name": "银行卡",
+          "pathName": "pages/personal/bank",
+          "query": "",
           "scene": null
         }
       ]

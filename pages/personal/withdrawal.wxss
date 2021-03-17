@@ -1,0 +1,158 @@
+/* pages/certification/index.wxss */
+.hr {
+  height: 20rpx;
+}
+
+.title {
+  padding: 20rpx;
+  font-size: 12px;
+  color: #999;
+}
+
+.info {
+  background: #fff;
+}
+
+.info-bar {
+  padding: 30rpx;
+  padding-left: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.info-name {
+  margin-right: 20rpx;
+  font-size: 14px;
+  color: #333;
+}
+
+.up-image {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.red {
+  color: #f00;
+}
+
+.info-txt {
+  flex: 1;
+  font-size: 14px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background: #e6e6e6;
+}
+
+.up-wrap {
+  padding: 40rpx 0;
+  margin-bottom: 60rpx;
+  background: #fff;
+  text-align: center;
+}
+
+.up-license {
+  width: 650rpx;
+  height: 675rpx;
+}
+
+.up-btn {
+  padding: 20rpx 30rpx;
+  box-sizing: content-box;
+  background: #fff;
+}
+
+.tixian-btn {
+  width: 100%;
+  height: 80rpx;
+  border-radius: 50rpx;
+  background: #1dab43;
+  text-align: center;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  color: #fff;
+}
+
+
+.location-wrap {
+  padding: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100rpx;
+  background-repeat: repeat-x;
+  background-position: left top;
+  background-size: 60rpx 8rpx;
+  background-color: #fff;
+}
+
+.address-icon {
+  width: 30rpx;
+  height: 38rpx;
+}
+
+.location-right {
+  width: 630rpx;
+  padding-right: 40rpx;
+  position: relative;
+}
+
+.location-name {
+  font-size: 14px;
+  color: #333;
+}
+
+.location-p {
+  font-size: 12px;
+  color: #999;
+}
+
+.location-ra {
+  width: 15rpx;
+  height: 25rpx;
+  position: absolute;
+  top: 50%;
+  right: 0;
+  margin-top: -12rpx;
+}
+.info-bar2 {
+  display: block;
+}
+.info-bar textarea {
+  display: block;
+  width: 100%;
+  height: 200rpx;
+  margin-top: 20rpx;
+}
+
+.user_card{ width: 600rpx; height: 330rpx; margin: 0 auto 60rpx; position: relative;}
+.user_card image.cardimg{width: 600rpx; height: 330rpx; }
+.user_cardupbox{width: 600rpx; height: 330rpx; position: absolute; left: 0; top: 0; display: flex; flex-direction: column; justify-content: center; align-items: center;}
+.user_cardup_ico{ width: 110rpx; height: 110rpx; border-radius: 50%; background: rgba(0,0,0,0.5); display: flex; justify-content: center; align-items: center;}
+.user_cardup_ico image{ width: 56rpx; height: 56rpx;}
+.user_cardupbox text{font-size: 28rpx; margin-top: 10rpx;}
+.info-bar .getcodenow{ width: 200rpx; height: 70rpx; position: absolute; top: 50%;transform: translateY(-50%); right: 20rpx; background: #ee8232; display: flex; justify-content: center; align-items: center; font-size: 28rpx; color: #fff; padding: 0; z-index: 99;}
+.cateView {flex: 1;}
+.cateView .item {padding: 0 10rpx; line-height: 50rpx; font-size: 24rpx; border-radius: 8rpx; float: left; border:1rpx solid #ddd; margin-right: 20rpx;}
+.cateView .item.active {background-color: #fd4257; border-color: #fd4257;color: #fff;}
+
+.submit{position: fixed;bottom: 40rpx;left: 50rpx;width: 650rpx;
+	height: 110rpx;
+	background-image: linear-gradient(313deg, 
+  #fe6959 0%, 
+  #ff1656 100%);
+	box-shadow: 0px 3px 6px 0px 
+		rgba(255, 59, 59, 0.26);
+  border-radius: 5px;
+  margin:0 auto;
+  color: #fff;
+  text-align: center;
+  line-height: 110rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+  z-index: 9999;
+}

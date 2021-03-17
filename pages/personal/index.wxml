@@ -64,16 +64,24 @@
     <text>我的服务站</text>
     <image src="/images/icon-right-arrow.svg" class="arrow"></image>
   </view>
-  <view class="item" bindtap="goTo" data-url="/pages/personal/myteam">
-    <image src="/images/icon-menu-my-service-shop.svg" class="menu"></image>
-    <text>我的团队</text>
-    <image src="/images/icon-right-arrow.svg" class="arrow"></image>
-  </view>
-  <view class="item" bindtap="goTo" data-url="/pages/personal/goCheck">
-    <image src="/images/icon-menu-my-service-shop.svg" class="menu"></image>
-    <text>前去核销</text>
-    <image src="/images/icon-right-arrow.svg" class="arrow"></image>
-  </view>
+  <block wx:if="{{userInfo.manage_shop_id > 0}}" >
+      <view class="item" bindtap="goTo" data-url="/pages/personal/myteam">
+      <image src="/images/icon-menu-my-service-shop.svg" class="menu"></image>
+      <text>我的团队</text>
+      <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+    </view>
+    <view class="item" bindtap="goTo" data-url="/pages/personal/bank">
+      <image src="/images/icon-menu-my-service-shop.svg" class="menu"></image>
+      <text>我的银行卡</text>
+      <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+    </view>
+    <view class="item" bindtap="goTo" data-url="/pages/personal/goCheck">
+      <image src="/images/icon-menu-my-service-shop.svg" class="menu"></image>
+      <text>前去核销</text>
+      <image src="/images/icon-right-arrow.svg" class="arrow"></image>
+    </view>
+  </block>
+
   <view class="item" bindtap="goTo" data-url="/pages/personal/myShop">
     <image src="/images/icon-menu-my-shop.svg" class="menu"></image>
     <text>我的店铺</text>

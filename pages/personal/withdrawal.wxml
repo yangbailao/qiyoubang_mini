@@ -1,0 +1,33 @@
+<!--pages/certification/index.wxml-->
+<navBar title='提现' back />
+<view class="container">
+  <view class="info">
+
+    <view class="info-bar">
+      <view class="info-name"><text class="red">*</text>电话号码</view>
+      <input type="number" placeholder="请输入电话号码" bindblur="updateData" bindinput="changeInput" data-name="phone" value="{{fromData.phone}}"
+        class="info-txt"></input>
+    </view>
+    <view class="line"></view>
+    <view class="info-bar">
+      <view class="info-name">验证码</view>
+      <input placeholder="请输入验证码" bindblur="updateData" bindinput="changeInput" data-name="code" value="{{fromData.code}}"
+        class="info-txt"></input>
+        <button class="getcodenow" bindtap="getVerifyCode" disabled="{{countDown != 0}}">{{verifyText}}</button>
+    </view>
+    <view class="line"></view>
+    <view class="info-bar">
+      <view class="info-name"><text class="red">*</text>金额</view>
+      <input placeholder="请输入金额" bindblur="updateData" bindinput="changeInput" data-name="money" value="{{fromData.money}}" class="info-txt"></input>
+    </view>
+    <view class="info-bar">
+    <view class="info-name">最大可提现金额为：<text class="red">{{max_money}}</text></view></view>
+ 
+
+
+  </view>
+
+
+</view>
+
+<view class="submit" bindtap="save">确认提交</view>

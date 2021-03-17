@@ -41,7 +41,9 @@
     "pages/orders/orders",
     "pages/orders/detail",
     "pages/personal/myteam",
-    "pages/personal/goCheck"
+    "pages/personal/goCheck",
+    "pages/personal/withdrawal",
+    "pages/personal/bank"
   ],
   "window": {
     "backgroundTextStyle": "light",
