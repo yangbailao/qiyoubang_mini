@@ -149,6 +149,10 @@ App({
     category:{
       id :0
     },
+    category_order:{
+      id:-1,
+      name:''
+    },
     myMissionType : 1,
  
     tabBar: {

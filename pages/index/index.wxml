@@ -110,7 +110,7 @@
           <view class="see">{{item.view}}人看过</view>
         </view>
         <view class="mission_box" >
-          <image class="mission_pic" src="{{item.image?item.image:'/images/no_pic.jpg'}}" ></image>
+          <image class="mission_pic" src="{{item.images?qiniuShowUrl + item.images[0]:'/images/no_pic.jpg'}}" mode="aspectFill" ></image>
           <view class="mission_title" >
             <view class="info sb">
               <view class="price">￥{{item.bouns}}</view>

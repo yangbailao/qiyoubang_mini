@@ -64,7 +64,7 @@ Page({
       windowWidth
     } = app.globalSystemInfo;
     const rpxR =750 / windowWidth;
-    let listHeight = contentHeight - 80;
+    let listHeight = contentHeight - 120;
     this.setData({
       listHeight
     })
@@ -321,7 +321,7 @@ Page({
 
     if(cate == 2){
       wx.navigateTo({
-        url: '/pages/personal/withdrawal?num'+this.data.allCategory[2].num,
+        url: '/pages/personal/withdrawal?num='+this.data.allCategory[2].num,
       })
       return;
     }

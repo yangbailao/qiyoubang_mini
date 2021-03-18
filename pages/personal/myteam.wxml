@@ -1,5 +1,5 @@
 <!--pages/mission/list.wxml-->
-<navBar title='我的团队' />
+<navBar title='我的团队' back="{{true}}" />
 
 <!-- 搜索框部分 -->
 <!-- <view class="headSearch l1">

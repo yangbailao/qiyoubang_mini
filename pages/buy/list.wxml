@@ -11,10 +11,10 @@
       </block>
       <block wx:else>
         <view class="user-box">
-          <image class="user-pic" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+          <image class="user-pic" src="{{userInfo.avatar_url}}" mode="cover"></image>
         </view>
         <view class="user_info" style="margin-left:22rpx;" >
-          <text>{{nickName}}</text>
+          <text>{{userInfo.nickname}}</text>
         </view>
       </block>
     </view>

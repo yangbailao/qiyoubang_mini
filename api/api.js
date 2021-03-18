@@ -1564,7 +1564,7 @@ export function getWorkerCate() {
 export function workerList(data) {
   return new Promise((resolve) => {
     http({
-      // url: '/mini_api/user/getWorkerList',
+      // url: '/member/getWorkerList',
       url: '/member/Distance',
       data,
       success: function (data) {

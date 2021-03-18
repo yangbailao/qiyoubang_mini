@@ -231,7 +231,9 @@ Page({
   // 重新加载数据
   reloadData() {
     console.log('f')
-    const {id, name} = app.globalData.category
+      const {id, name} = app.globalData.category_order;
+    
+    
     this.setData({
       isEnd: false,
       page: 1,
@@ -261,7 +263,7 @@ Page({
       data:{
         page,
         pageSize,
-        status: cateActive || -1,
+        status: cateActive,
         // status : 1,
         title:searchStr
       },
@@ -296,7 +298,6 @@ Page({
   // 点击分类
   changeCate(e) {
     const {title, cate} = e.currentTarget.dataset
-    console.log(title);
     console.log(cate);
     this.setData({
       page: 1,
@@ -306,7 +307,8 @@ Page({
       title:title,
       cateActive: cate
     },() => {
-      app.globalData.category.id = cate
+      app.globalData.category_order.id = cate
+      app.globalData.category_order.name = title
       this.searchList()
     })
   },

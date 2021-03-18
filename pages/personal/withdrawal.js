@@ -49,6 +49,7 @@ Page({
    */
   onLoad: function (options) {
     var arr = options.num;
+    console.log(options)
     let money = arr.slice(1);
     this.setData({
       'fromData.money':money,

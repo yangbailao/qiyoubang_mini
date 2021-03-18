@@ -14,7 +14,8 @@ import {
   cache
 } from '../../utils/cache.js'
 import {
-  missionList
+  missionList,
+  getQiniu
 } from '../../api/api'
 Page({
   data: {
@@ -80,7 +81,12 @@ Page({
       scrollHeight
     });
 
-
+    //获取7牛配置信息
+    getQiniu().then((res) => {
+      this.setData({
+        qiniuShowUrl : res.data.showUrl
+      })
+    })
 
     /**
      * 获取登录信息
