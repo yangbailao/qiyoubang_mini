@@ -1608,7 +1608,7 @@ export function fetchHelpDetail(data) {
     })
   })
 }
-// 骑行帮信息详情
+// 我来帮信息详情
 export function momentsDetail(data) {
   return new Promise((resolve) => {
     http({

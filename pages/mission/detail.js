@@ -228,7 +228,7 @@ Page({
     else
     {
       wx.showToast({
-        title: '请先登录再发布骑友录',
+        title: '请先登录再发布帮友录',
         duration : 2000,
         icon : 'none'
       })

@@ -26,7 +26,7 @@
   </view>
   <view class="item">
     <view class="val"><text>{{user_info.regDay}}</text>天</view>
-    <view class="title">来骑行帮</view>
+    <view class="title">来我来帮</view>
   </view>
   <view class="item">
     <view class="val"><text>{{user_info.info}}</text>条</view>
@@ -93,7 +93,7 @@
     <!-- <image src="/images/call.svg"></image> -->
     <text>立即回答</text> 
   </view>
-  <!-- <view class="desc">联系时请说是在骑行帮看到的信息</view> -->
+  <!-- <view class="desc">联系时请说是在我来帮看到的信息</view> -->
 </view>
 <view wx:if="{{showReply}}" class="reply" >
   <textarea class='text' placeholder="请输入你的回答" bindinput="content" fixed="{{true}}" auto-height="{{false}}" auto-focus />

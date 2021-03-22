@@ -1,7 +1,7 @@
 <!--index.wxml-->
 
 <navBar title='' background='rgba(0,0,0,0)' >
-  <view slot="left" >
+  <!-- <view slot="left" >
     <view class="nav-left" >
       <block wx:if="{{!userInfo}}">
         <view class="user-box">
@@ -18,10 +18,10 @@
         </view>
       </block>
     </view>
-  </view>
+  </view> -->
 </navBar>
 
-<!-- <view class="head-text">骑行帮，能帮就帮</view> -->
+<!-- <view class="head-text"我来帮，能帮就帮</view> -->
 <view class="user-info user-info-box wrap" >
   <image class="logo_bg" src="/images/logo_bg.svg" ></image>
   <image class="logo1" src="/images/logo.svg" ></image>

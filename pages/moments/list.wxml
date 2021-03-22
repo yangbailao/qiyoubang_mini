@@ -1,5 +1,5 @@
 <!--pages/moments/list.wxml-->
-<navBar title='骑友录' />
+<navBar title='帮友录' />
 <wxs src="../../utils/util.wxs" module="js" />
 <scroll-view scroll-y="true" style="height:{{scrollHeight}}rpx" refresher-enabled="{{true}}" refresher-threshold="{{100}}"
  refresher-triggered="{{triggered}}" bindrefresherabort="onAbort" bindscrolltolower="onScrollTolower">
@@ -40,7 +40,7 @@
 
 	</view>
 
-	<view bindtap="goToAdd" class="add" style="top:{{addTop}}rpx">
+	<view bindtap="goToAdd" class="all_add">
 		<!-- <image src="/images/moments-add.svg"></image> -->
 		发布
 	</view>

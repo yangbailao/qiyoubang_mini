@@ -13,7 +13,7 @@
     "miniprogram": {
       "list": [
         {
-          "name": "骑友录",
+          "name": "帮友录",
           "pathName": "pages/moments/list",
           "query": "",
           "scene": null
@@ -203,7 +203,7 @@
           "scene": null
         },
         {
-          "name": "骑行帮详情",
+          "name": "我来帮详情",
           "pathName": "pages/moments/detail",
           "query": "id=13",
           "scene": null

@@ -369,7 +369,7 @@ if(fromData.money > this.data.max_money){
    */
   chooseAddress : function(){
     const key = 'GQZBZ-ABDHS-6ZPOH-6P2WY-RPQGZ-PPFV5'; //使用在腾讯位置服务申请的key
-    const referer = '骑行帮'; //调用插件的app的名称
+    const referer = '我来帮'; //调用插件的app的名称
     wx.navigateTo({
       url: `plugin://chooseLocation/index?key=${key}&referer=${referer}`
     });

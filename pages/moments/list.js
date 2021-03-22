@@ -130,7 +130,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //读取骑友录数据
+    //读取帮友录数据
     this.reloadData(this.data.searchKey)
     console.log(this.data.userInfo)
   },
@@ -337,7 +337,7 @@ Page({
     else
     {
       wx.showToast({
-        title: '请先登录再发布骑友录',
+        title: '请先登录再发布帮友录',
         duration : 2000,
         icon : 'none'
       })
@@ -581,7 +581,7 @@ Page({
   delMoments(e){
     wx.showModal({
       title: '提示',
-      content: '确定要删除这条骑友录吗？',
+      content: '确定要删除这条帮友录吗？',
       success: res => {
         if (res.confirm) {
           delMoments({ids:e.currentTarget.dataset.id}).then(res=>{
