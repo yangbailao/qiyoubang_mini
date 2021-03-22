@@ -2,7 +2,7 @@
 
 <view class="cates wrap">
   <view class="item {{typeActive == 1 ? 'cur' : ''}}" bindtap="changeStatus" data-type="1" >进行中</view>
-  <view class="item {{typeActive == 0 ? 'cur' : ''}}" bindtap="changeStatus" data-type="0" >已结束</view>
+  <view class="item {{typeActive == 2 ? 'cur' : ''}}" bindtap="changeStatus" data-type="2" >已结束</view>
 
 </view>
 
@@ -16,8 +16,6 @@
   bindrefresherabort="onAbort"
   bindscrolltolower="onScrollTolower"
 >
-
-    <!-- <list list='{{list}}' isEnd="{{isEnd}}" page="{{page}}"></list> -->
     <view class="item" wx:for="{{list}}" wx:key="index">
       <navigator url="/pages/mission/detail?id={{item.id}}">
       <view class="head sb">
@@ -28,7 +26,7 @@
       <view class="time">发布时间：{{item.create_at}}</view>
 
       <view class="btns">
-        <view wx:if="{{item.status == 1}}" bindtap="handleEnd" data-id="{{item.id}}" data-title="{{item.title}}">结束任务</view>
+        <view wx:if="{{item.status == 1 && typeActive == 1}}" bindtap="handleEnd" data-id="{{item.id}}" data-title="{{item.title}}">结束任务</view>
         <!-- <navigator url="/pages/mission/add?id={{item.id}}">
           <view wx:if="{{item.status == 1}}" data-id="{{item.id}}">编辑</view>
         </navigator>  -->

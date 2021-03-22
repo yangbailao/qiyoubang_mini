@@ -171,7 +171,7 @@ Page({
       data:{
         page,
         pageSize,
-        status: typeActive || 0,
+        status: typeActive || 1,
         user_id : this.data.userInfo.id,
         cate_id : 0
       },
@@ -226,7 +226,7 @@ Page({
         if(res.cancel){
           console.log('quxiao')
         }else if(res.confirm){
-          endMission({id:item.id,status:0}).then(res=>{
+          endMission({id:item.id,status:2}).then(res=>{
             wx.showToast({
               title: '操作成功'
             })
