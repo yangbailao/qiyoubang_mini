@@ -37,7 +37,9 @@ Page({
     page: 1,
     pageSize: 10,
     cateActive: 0,
-    banner1:[]
+    banner1:[],
+    latitude: 0,
+    longitude: 0,
   },
   // 拉到最底部
   onScrollTolower(e) {
@@ -103,22 +105,43 @@ Page({
         banner1:res.banner1
       })
     })
-    let title = '送文件'
-    this.setData({
-      page: 1,
-      list: [],
-      isEnd: false,
-      isLoading: false,
-      title,
-      cateActive: '0'
-    }, () => {
-      this.searchList()
-    })
+
   },
-  onShow: function () {
+  onShow:async function () {
     let getHeight = (wx.getSystemInfoSync().windowWidth - 30) * 9 / 16
     this.setData({
       swiperHeight: getHeight
+    })
+   await this.getLocation();
+  },
+  getLocation : function(e){
+    wx.showLoading({
+      title: '加载中……',
+      mask : true
+    })
+    wx.getLocation({
+      type: 'wgs84', // 默认为 wgs84 返回 gps 坐标，gcj02 返回可用于 wx.openLocation 的坐标
+      success: res => {
+
+        console.log(res)
+        //赋值经纬度
+        this.setData({
+          latitude: res.latitude,
+          longitude: res.longitude,
+        })
+        let title = '送文件'
+        this.setData({
+          page: 1,
+          list: [],
+          isEnd: false,
+          isLoading: false,
+          title,
+          cateActive: '0'
+        }, () => {
+          this.searchList()
+        })
+        wx.hideLoading()
+      }
     })
   },
   /**
@@ -180,8 +203,11 @@ Page({
       list,
       cateActive,
       isEnd,
-      pageSize
+      pageSize,
+      latitude,
+      longitude,
     } = this.data;
+
     wx.showLoading({
       title: '加载中...',
     })
@@ -189,7 +215,9 @@ Page({
       page: page,
       pageSize: pageSize,
       cate_id: cateActive || 0,
-      status: 1
+      status: 1,
+      lat:latitude,
+      long:longitude
     }).then((res) => {
       wx.hideLoading()
       wx.stopPullDownRefresh()

@@ -132,7 +132,7 @@
                   <view class="btn">详情</view>
                 </view>
                 <view class="location">
-                  <text>地点：{{item.locale}}</text>
+                  <text  >地点：{{item.locale}}</text>
                   <text class="list_time">{{item.create_at}}</text>
                 </view>
               </view>
@@ -144,7 +144,7 @@
             <image src="{{item.userinfo.avatar_url}}" mode="cover"></image>
             {{item.userinfo.nickname}}
           </view>
-          <view class="fen">帮帮分:<text class="red">{{item.userinfo.credit}}分</text></view>
+          <view class="fen">距离:<text class="red">{{item.juli}}km</text></view>
         </view>
       </navigator>
     </view>

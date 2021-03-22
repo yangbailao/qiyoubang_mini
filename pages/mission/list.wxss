@@ -32,7 +32,7 @@
 
 
 .list .item .head {height: 42rpx;}
-  .list .item .head .title{width: 60%; height: 42rpx;line-height: 42rpx;font-size: 32rpx;color: #1c1c28;overflow: hidden;}
+  .list .item .head .title{width: 70%; height: 42rpx;line-height: 42rpx;font-size: 32rpx;color: #1c1c28;overflow: hidden;}
   .list .item .head .see{height: 32rpx;line-height: 32rpx;font-size: 24rpx;}
 
 .list .item .info{height: 86rpx;}

@@ -40,7 +40,7 @@
 
 	</view>
 
-	<view bindtap="goToAdd" class="all_add">
+	<view bindtap="goToAdd" class="all_add" style="bottom:120rpx" >
 		<!-- <image src="/images/moments-add.svg"></image> -->
 		发布
 	</view>
