@@ -9,7 +9,8 @@ import {scrollLoadList} from '../../utils/util'
 import {
   missionList,
   getMissionCate,
-  getSystemConfig
+  getSystemConfig,
+  getQiniu
 } from '../../api/api'
 import { cache } from '../../utils/cache.js'
 Page({
@@ -40,7 +41,8 @@ Page({
     searchStr:'',
     headText:'',
     longitude : 0,
-    latitude : 0
+    latitude : 0,
+    qiniuShowUrl:''
   },
 
   /**
@@ -59,6 +61,14 @@ Page({
     let listHeight = contentHeight - 130;
     this.setData({
       listHeight
+    })
+
+    //获取7牛配置信息
+    getQiniu().then((res) => {
+      console.log(res.data);
+      this.setData({
+        qiniuShowUrl : res.data.showUrl
+      })
     })
 
     //发布按钮位置
@@ -113,6 +123,9 @@ Page({
     // }
     // 读取任务列表
     this.getLocation()
+    
+
+
     
   },
 

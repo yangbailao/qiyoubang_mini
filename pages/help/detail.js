@@ -108,19 +108,23 @@ Page({
       title: '加载中',
     })
     fetchHelpDetail({id:this.data.id}).then( res => {
+      wx.hideLoading({
+        success: (res) => {},
+      })
+
       let cateTitle = [];
-      res.data.cateArr.forEach(element => {
-        cateTitle.push(element['title']);
-      });
-      cateTitle = cateTitle.join(',');
+      if(res.data.cateArr){
+        res.data.cateArr.forEach(element => {
+          cateTitle.push(element['title']);
+        });
+        cateTitle = cateTitle.join(',');
+      }
       this.setData({
         detail : res.data,
         cateTitle,
         comments : res.data.workerComment
       })
-      wx.hideLoading({
-        success: (res) => {},
-      })
+
     })
     
   },

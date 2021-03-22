@@ -1,6 +1,6 @@
 <!--index.wxml-->
 
-<navBar title='' background='rgba(0,0,0,0)' >
+<navBar title='' background='rgba(0,0,0,0)'>
   <!-- <view slot="left" >
     <view class="nav-left" >
       <block wx:if="{{!userInfo}}">
@@ -22,54 +22,66 @@
 </navBar>
 
 <!-- <view class="head-text">骑行帮，能帮就帮</view> -->
-<view class="user-info user-info-box wrap" >
-  <image class="logo_bg" src="/images/logo_bg.svg" ></image>
-  <image class="logo1" src="/images/logo.svg" ></image>
-  <image  class="logo2" src="/images/logo2.svg" ></image>
+<view class="user-info user-info-box wrap">
+  <image class="logo_bg" src="/images/logo_bg.svg"></image>
+  <image class="logo1" src="/images/logo.svg"></image>
+  <image class="logo2" src="/images/logo2.svg"></image>
 </view>
 
 <view class="navTab theme-bg">
   <view class="item" bindtap="touchNext" data-url="/pages/repair/index?type=1">
-    <view class="imgView"><image src="/images/icon1.svg"></image></view>
+    <view class="imgView">
+      <image src="/images/icon1.svg"></image>
+    </view>
     <view class="name">修车帮</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/rescue/index?type=2">
-    <view class="imgView"><image src="/images/icon2.svg" class="dayidian"></image></view>
+    <view class="imgView">
+      <image src="/images/icon2.svg" class="dayidian"></image>
+    </view>
     <view class="name">救援帮</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/help/index">
-    <view class="imgView"><image src="/images/icon3.svg" class="dayidian"></image></view>
+    <view class="imgView">
+      <image src="/images/icon3.svg" class="dayidian"></image>
+    </view>
     <view class="name">我来帮</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/mission/list">
-    <view class="imgView"><image src="/images/icon4.svg"></image></view>
+    <view class="imgView">
+      <image src="/images/icon4.svg"></image>
+    </view>
     <view class="name">任务帮</view>
   </view>
   <view class="item" bindtap="touchNext" data-url="/pages/quesion/list">
-    <view class="imgView"><image src="/images/question.svg"></image></view>
+    <view class="imgView">
+      <image src="/images/question.svg"></image>
+    </view>
     <view class="name">知问帮</view>
   </view>
 </view>
 <!-- 轮播图  -->
-  <view class="banner-top">
-    <image src="{{banner1[0]}}" >
-    </image>
-  </view>
+<view class="banner-top">
+  <image src="{{banner1[0]}}">
+  </image>
+</view>
 
 <!-- 文字广告 -->
 <view class="notice">
   <view class="notice_cv">
-    <view class="icon"><image class="icon-notice" src="/images/icon-notice.svg"></image></view>
-  <!-- <view class="detail fl">这里是公告</view> -->
-  <view class="swiper_gg detail fl">
-    <swiper class="banner-slide" duration="500" vertical="true" autoplay="true" circular="true">
-      <swiper-item wx:for="{{ newsList }}" wx:key="index">
-        <view class='banner-item'>
-          {{item.title}}
-        </view>
-      </swiper-item>
-    </swiper>
-  </view>
+    <view class="icon">
+      <image class="icon-notice" src="/images/icon-notice.svg"></image>
+    </view>
+    <!-- <view class="detail fl">这里是公告</view> -->
+    <view class="swiper_gg detail fl">
+      <swiper class="banner-slide" duration="500" vertical="true" autoplay="true" circular="true">
+        <swiper-item wx:for="{{ newsList }}" wx:key="index">
+          <view class='banner-item'>
+            {{item.title}}
+          </view>
+        </swiper-item>
+      </swiper>
+    </view>
   </view>
 </view>
 
@@ -105,21 +117,28 @@
   <view class="list">
     <view class="item" wx:for="{{list}}" wx:key="index">
       <navigator url="/pages/mission/detail?id={{item.id}}">
-        <view class="head sb">
-          <view class="title">{{item.title}}</view>
-          <view class="see">{{item.view}}人看过</view>
-        </view>
-        <view class="mission_box" >
-          <image class="mission_pic" src="{{item.images?qiniuShowUrl + item.images[0]:'/images/no_pic.jpg'}}" mode="aspectFill" ></image>
-          <view class="mission_title" >
-            <view class="info sb">
-              <view class="price">￥{{item.bouns}}</view>
-              <view class="btn">详情</view>
+        <view class="list_info_box" >
+          <image class="mission_pic" src="{{item.images?qiniuShowUrl + item.images[0]:'/images/no_pic.jpg'}}"
+            mode="aspectFill"></image>
+          <view class="info_box" >
+            <view class="head sb">
+              <view class="title">{{item.title}}</view>
+              <view class="see">{{item.view}}人看过</view>
             </view>
-            <view class="location">任务地点：{{item.locale}}</view>
+            <view class="mission_box">
+              <view class="mission_title">
+                <view class="info sb">
+                  <view class="price">￥{{item.bouns}}</view>
+                  <view class="btn">详情</view>
+                </view>
+                <view class="location">
+                  <text>地点：{{item.locale}}</text>
+                  <text class="list_time">{{item.create_at}}</text>
+                </view>
+              </view>
+            </view>
           </view>
         </view>
-
         <view class="user sb">
           <view class="username">
             <image src="{{item.userinfo.avatar_url}}" mode="cover"></image>

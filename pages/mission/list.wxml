@@ -1,55 +1,52 @@
 <!--pages/mission/list.wxml-->
-<navBar title='任务帮' back/>
+<navBar title='任务帮' back />
 
 <block wx:if="{{userInfo}}">
-<navigator open-type="navigate" url="/pages/mission/add">
-  <view class="add" >
-    <!-- <image src="/images/moments-add.svg"></image> -->
-    发布
-  </view>
-</navigator>
+  <navigator open-type="navigate" url="/pages/mission/add">
+    <view class="all_add">发布</view>
+  </navigator>
 </block>
 <block wx:else>
-  <button style="width:100rpx" class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">发布</button>
+  <button style="width:100rpx" class="all_add" open-type="getUserInfo" bindgetuserinfo="getUserInfo">发布</button>
 </block>
 
 <!-- 搜索框部分 -->
 <view class="headSearch l1">
   <view class="searchView {{searchShow?'search_sv':''}}" bindtap="touchSearch">
     <image class="icon" src="/images/icon-search.png" mode="widthFix"></image>
-    <!--  -->
-    <input type="search" placeholder="根据关键词搜索" placeholder-class="search_pc" bindblur="loutInput" bindinput="touchToSearch" value="{{searchStr}}" focus="{{focus}}" wx:if="{{searchShow}}"></input>
+    <input type="search" placeholder="根据关键词搜索" placeholder-class="search_pc" bindblur="loutInput"
+      bindinput="touchToSearch" value="{{searchStr}}" focus="{{focus}}" wx:if="{{searchShow}}"></input>
     <text wx:else>根据关键词搜索</text>
   </view>
 </view>
 <view class="head-text">{{headText}}</view>
 <scroll-view scroll-x="true" class="cates wrap">
-  <view wx:for="{{allCategory}}" class="item {{cateActive == item.id ? 'cur' : ''}}" bindtap="changeCate" data-title="{{item.title}}" data-cate="{{item.id}}" wx:key="index">{{item.title}}</view>
+  <view wx:for="{{allCategory}}" class="item {{cateActive == item.id ? 'cur' : ''}}" bindtap="changeCate"
+    data-title="{{item.title}}" data-cate="{{item.id}}" wx:key="index">{{item.title}}</view>
 
 </scroll-view>
 
-<scroll-view 
-  class="list wrap" 
-  scroll-y 
-  style="height:{{listHeight}}rpx"
-  refresher-enabled="{{true}}"
-  refresher-threshold="{{100}}"
-  bindrefresherabort="onAbort"
-  bindscrolltolower="onScrollTolower"
->
-
-    <!-- <list list='{{list}}' isEnd="{{isEnd}}" page="{{page}}"></list> -->
-    <view class="item" wx:for="{{list}}" wx:key="index">
-      <navigator url="/pages/mission/detail?id={{item.id}}">
-      <view class="head sb">
-        <view class="title"><text class="over" wx:if="{{item.show == 0}}">已完成</text>{{item.title}}</view>
-        <view class="see">{{item.view}}人看过</view>
+<scroll-view class="list wrap" scroll-y style="height:{{listHeight}}rpx" refresher-enabled="{{true}}"
+  refresher-threshold="{{100}}" bindrefresherabort="onAbort" bindscrolltolower="onScrollTolower">
+  <view class="item" wx:for="{{list}}" wx:key="index">
+    <navigator url="/pages/mission/detail?id={{item.id}}">
+      <view class="list_info_box" >
+        <image class="mission_pic" src="{{item.images?qiniuShowUrl + item.images[0]:'/images/no_pic.jpg'}}" mode="aspectFill" ></image>
+        <view class="info_box" >
+          <view class="head sb">
+            <view class="title"><text class="over" wx:if="{{item.show == 0}}">已完成</text>{{item.title}}</view>
+            <view class="see">{{item.view}}人看过</view>
+          </view>
+          <view class="info sb">
+            <view class="price">￥{{item.bouns}}</view>
+            <view class="btn">详情</view>
+          </view>
+          <view class="location">
+            <text>地点：{{item.locale}}</text>
+            <text class="list_time">{{item.create_at}}</text>
+          </view>
+        </view>
       </view>
-      <view class="info sb">
-        <view class="price">￥{{item.bouns}}</view>
-        <view class="btn">详情</view>
-      </view>
-      <view class="location">任务地点：{{item.locale}}</view>
 
       <view class="user sb">
         <view class="username">
@@ -58,9 +55,9 @@
         </view>
         <view class="fen"><text class="red">{{item.juli}}</text>km</view>
       </view>
-      </navigator>
-    </view>
-  
+    </navigator>
+  </view>
+
 
 </scroll-view>
 

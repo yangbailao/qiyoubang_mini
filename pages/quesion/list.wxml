@@ -3,11 +3,11 @@
 
 <block wx:if="{{userInfo}}">
 <navigator open-type="navigate" url="/pages/quesion/add">
-  <view class="add" >求帮</view>
+  <view class="all_add" >求帮</view>
 </navigator>
 </block>
 <block wx:else>
-  <button class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">求帮</button>
+  <button class="all_add" open-type="getUserInfo" bindgetuserinfo="getUserInfo">求帮</button>
 </block>
 
 <!-- 搜索框部分 -->

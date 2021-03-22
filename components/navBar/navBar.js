@@ -92,7 +92,7 @@ Component({
 
       let navigationbarinnerStyle = [
         `color: ${this.data.color}`,
-        `background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);`,
+        // `background-image: linear-gradient(285deg, #fe6959 0%,#ff1656 100%);`,
         `height:${navBarHeight + navBarExtendHeight}px`,
         `padding-top:${statusBarHeight}px`,
         `padding-right:${leftWidth}px`,

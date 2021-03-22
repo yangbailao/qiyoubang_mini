@@ -12,11 +12,14 @@
 <view class="head-text">{{headText}}</view>
 <block wx:if="{{userInfo}}">
   <block wx:if="{{userInfo.is_worker == 0}}" ><navigator open-type="navigate"  url="/pages/certification/index">
-    <view class="add" >去认证</view>
+    <view class="all_add" >去认证</view>
   </navigator></block>
+  <!-- <block wx:else ><navigator open-type="navigate"  url="/pages/certification/index">
+    <view class="all_add" >去认证</view>
+  </navigator></block> -->
 </block>
 <block wx:else >
-  <button style="width:100rpx" class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">去认证</button>
+  <button style="width:100rpx" class="all_add" open-type="getUserInfo" bindgetuserinfo="getUserInfo">去认证</button>
 </block>
 <scroll-view scroll-x="true" class="cates wrap">
   <view wx:for="{{allCategory}}" class="item {{cateActive == item.id ? 'cur' : ''}}" bindtap="changeCate" data-title="{{item.title}}" data-cate="{{item.id}}" wx:key="index">{{item.title}}</view>
@@ -47,8 +50,9 @@
           <image src="{{item.avatar_url}}" mode="cover"></image>
           {{item.nickname}}
         </view>
-        <view class="fen">距离：{{filter.distance(item.worker_latitude,item.worker_longitude,latitude,longitude)}}km 帮帮分:<text class="red">{{item.credit}}分</text></view>
+        <view class="fen">距离：{{item.juli}}km;<text style="margin-left:15rpx;" >{{item.worker_rate}}分,{{item.worker_rate_times}}人次评价</text></view>
       </view>
       </navigator>
     </view>
 </scroll-view>
+<!-- <view class="fen">距离：{{filter.distance(item.worker_latitude,item.worker_longitude,latitude,longitude)}}km;<text>0分,0人评分</text></view> -->

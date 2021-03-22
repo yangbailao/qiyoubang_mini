@@ -59,14 +59,6 @@ Page({
       addTop
     });
 
-    // 获取用户信息
-    if (cache.get('userInfo')) {
-      getUser().then(() => {
-        this.setUserInfo()
-      })
-    }else{
-      this.getUserInfo()
-    }
 
     // 头部描述文字
     getSystemConfig({title:'worker_text'}).then((res) => {
@@ -82,6 +74,18 @@ Page({
 
     // 读取信息分类
     this.getCates()
+
+
+    // 获取用户信息
+    if (cache.get('userInfo')) {
+      getUser().then(() => {
+        this.setUserInfo()
+      })
+    }else{
+      this.getUserInfo()
+    }
+
+
   },
 
   /**
@@ -238,6 +242,7 @@ Page({
   },
   // 读取信息分类
   getCates(){
+    console.log(1111);
     getWorkerCate().then(res => {
       this.setData({
         allCategory : res.data.topAllList,

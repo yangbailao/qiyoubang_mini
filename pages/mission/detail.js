@@ -99,12 +99,24 @@ Page({
 
   },
 
+  // 分享到朋友圈 - Start
   /**
-   * 用户点击右上角分享
+   * 用户点击右上角分享朋友圈
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function (res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: this.userInfo.nickname,
+      path: 'pages/mission/detail?id='+this.detail.id
+    }
+  },
+  onShareTimeline:function(res){
 
   },
+  // 分享到朋友圈 - End
 
   // 读取任务详情
   getMissionDetail(){

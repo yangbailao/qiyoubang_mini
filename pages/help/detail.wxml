@@ -65,7 +65,7 @@
       </view>
       <view class="userInfo_R">
         <view class="nickname">
-          <view>{{item.userinfo.nickname}}</view>
+          <view>{{item.userinfo.nickname}}--- <text>{{item.rate}}分</text></view>
           <view class="time"></view>
         </view>
         <view class="cate">评价时间：{{filter.formatTime(item.create_at * 1000,'yyyy-mm-dd')}}</view>

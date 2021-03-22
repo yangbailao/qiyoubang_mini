@@ -2,15 +2,13 @@
 <navBar title='便民信息'/>
 <block wx:if="{{userInfo}}">
 <navigator open-type="navigate" url="/pages/information/add">
-  <view class="add" style="bottom:160rpx">
-    <!-- <image src="/images/moments-add.svg"></image> -->
+  <view class="all_add" style="bottom:120rpx" >
     发布
   </view>
 </navigator>
 </block>
 <block wx:else>
-  <!-- <view class="add" style="bottom:160rpx"><image src="/images/moments-add.svg"></image><button style="width:100rpx" class="login-btn" bindtap="goToAdd">登录</button></view> -->
-  <button style="width:100rpx" class="login-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">发布</button>
+  <button style="width:100rpx" style="bottom:120rpx" class="all_add" open-type="getUserInfo" bindgetuserinfo="getUserInfo">发布</button>
 </block>
 
 <!-- 搜索框部分 -->

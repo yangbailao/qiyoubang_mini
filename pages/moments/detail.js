@@ -101,11 +101,9 @@ Page({
   onReachBottom: function () {
 
   },
-  onShareTimeline:function(res){
-
-  },
+  // 分享到朋友圈 - Start
   /**
-   * 用户点击右上角分享
+   * 用户点击右上角分享朋友圈
    */
   onShareAppMessage: function (res) {
     if (res.from === 'button') {
@@ -113,11 +111,14 @@ Page({
       console.log(res.target)
     }
     return {
-      title: '自定义转发标题',
-      path: '/page/user?id=123'
+      title: this.detail.userinfo.nickname,
+      path: 'pages/moments/detail?id='+this.detail.id
     }
   },
+  onShareTimeline:function(res){
 
+  },
+  // 分享到朋友圈 - End
     // 读取信息分类
     getCates(){
       getWorkerCate().then(res => {
