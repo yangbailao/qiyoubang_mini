@@ -229,7 +229,7 @@ Page({
   // 重新加载数据
   reloadData() {
     console.log('f')
-    const {id, name} = app.globalData.category
+    const {id, name} = app.globalData.category_information
     this.setData({
       isEnd: false,
       page: 1,
@@ -259,7 +259,7 @@ Page({
       data:{
         page,
         pageSize,
-        cate_id: cateActive || '',
+        cate_id: cateActive || 0,
         status : 1,
         title:searchStr
       },
@@ -304,7 +304,7 @@ Page({
       title:title,
       cateActive: cate
     },() => {
-      app.globalData.category.id = cate
+      app.globalData.category_information.id = cate
       this.searchList()
     })
   },

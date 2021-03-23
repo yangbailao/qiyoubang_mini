@@ -149,6 +149,14 @@ App({
     category:{
       id :0
     },
+    category_mission:{
+      id:0,
+      name:''
+    },
+    category_information:{
+      id:0,
+      name:''
+    },
     category_order:{
       id:-1,
       name:''
